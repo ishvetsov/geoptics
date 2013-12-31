@@ -40,12 +40,11 @@ module.exports = function(grunt) {
         requirejs: {
             compile: {
                 options: {
-                    name: 'app',
                     baseUrl: 'src/',
                     mainConfigFile: 'src/boot.js',
                     out: 'dist/script_built.js',
-                    patchs: {
-                        requieLib: 'scripts/libs/require/require'
+                    paths: {
+                        requireLib: 'scripts/libs/require/require'
                     },
                     include: 'requireLib'
                 }
