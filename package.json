@@ -7,33 +7,6 @@
         "grunt-contrib-copy": "latest",
         "grunt-contrib-jshint": "latest",
         "grunt-contrib-sass": "latest",
-        "grunt-contrib-watch": "latest"
-    },
-    "dependencies": {
-        "jquery": "latest",
-        "underscore": "latest",
-        "backbone": "latest",
-        "backbone.marionette": "latest",
-        "backbone-associations": "latest",
-        "requirejs": "latest"
-    },
-    "dependenciesCopyMap": {
-        "node_modules/jquery/dist/jquery.js":
-        "src/scripts/libs/jquery",
-
-        "node_modules/underscore/underscore.js":
-        "src/scripts/libs/underscore",
-
-        "node_modules/backbone/backbone.js":
-        "src/scripts/libs/backbone",
-
-        "node_modules/backbone.marionette/lib/backbone.marionette.js":
-        "src/scripts/libs/backbone",
-
-        "node_modules/backbone-associations/backbone-associations.js":
-        "src/scripts/libs/backbone",
-
-        "node_modules/requirejs/require.js":
-        "src/scripts/libs/require"
+        "grunt-contrib-watch": "latest" 
     }
 }

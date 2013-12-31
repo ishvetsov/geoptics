@@ -1,7 +1,7 @@
-DevDependencies:
--- Node.js with npm (http://nodejs.org/)
--- Grunt.js (http://gruntjs.com/)
--- scss (http://sass-lang.com/)
+Node.js with npm (http://nodejs.org/)
+Grunt.js (http://gruntjs.com/)
+scss (http://sass-lang.com/)
+Bower (https://github.com/bower/bower)
 
 
 
@@ -64,8 +64,8 @@ catch () {
 
 14) Имена объектов возвращаемых jquery, начинать с символа $.
 
-15) Для блока переменных использовать один раз var, объявления с
-инициализацией писать после просто объявлений:
+15) Для блока переменных использовать один var:
 var value1,
     value2,
-    value3 = 10;
+    value3 = 10,
+    value4 = 20;

@@ -1,30 +1,30 @@
 module.exports = function(grunt) {
-    var packageJSON = grunt.file.readJSON('package.json');
+    var packageJSON = '';
     
     /**
      * Функция для создания конфига копирования библиотек из node_modules в
-     * src/scripts/libs, используется в задаче grunt - copy.
+     * src/scripts/venrods, используется в задаче grunt - copy:libs.
      * @return {[]}
      */
-    var getCopyPathsConfig = function () {
-        var files = [],
-            maps = packageJSON.dependenciesCopyMap;
+    // var getCopyPathsConfig = function () {
+    //     var files = [],
+    //         maps = packageJSON.dependenciesCopyMap;
 
-        for (var map in maps) {
-            files.push({
-                src: map,
-                dest: maps[map],
-                expand: true,
-                flatten: true
-            });
-        }
+    //     for (var map in maps) {
+    //         files.push({
+    //             src: map,
+    //             dest: maps[map],
+    //             expand: true,
+    //             flatten: true
+    //         });
+    //     }
 
-        return files;
-    };
+    //     return files;
+    // };
 
 
     grunt.initConfig({
-        pkg: packageJSON,
+        pkg: grunt.file.readJSON('package.json'),
 
         sass: {
             options: {
@@ -44,18 +44,18 @@ module.exports = function(grunt) {
                     mainConfigFile: 'src/boot.js',
                     out: 'dist/script_built.js',
                     paths: {
-                        requireLib: 'scripts/libs/require/require'
+                        requireLib: 'scripts/vendors/require/require'
                     },
                     include: 'requireLib'
                 }
             }
         },
 
-        copy: {
-            libs: {
-                files: getCopyPathsConfig()
-            }
-        },
+        // copy: {
+        //     libs: {
+        //         files: getCopyPathsConfig()
+        //     }
+        // },
 
         watch: {
             sass: {

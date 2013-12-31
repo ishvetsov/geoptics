@@ -1,14 +1,14 @@
 require.config({
-    baseUrl: './',
+    baseUrl: './scripts',
 
     paths: {
-        'jquery': 'libs/jquery/jquery',
-        'underscore': 'libs/underscore/underscore',
-        'backbone': 'libs/backbone/backbone',
-        'backbone.marionette': 'libs/backbone/backbone.marionette',
-        'backbone.associations': 'libs/backbone/backbone-associations',
-        'require.text': 'libs/require/text',
-        'bootstrap': 'libs/bootstrap/bootstrap'
+        'jquery': 'vendors/jquery/jquery',
+        'underscore': 'vendors/underscore/underscore',
+        'backbone': 'vendors/backbone/backbone',
+        'backbone.marionette': 'vendors/backbone/backbone.marionette',
+        'backbone.associations': 'vendors/backbone/backbone-associations',
+        'require.text': 'vendors/require/text',
+        'bootstrap': 'vendors/bootstrap/bootstrap'
     },
 
     shim: {
