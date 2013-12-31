@@ -32,7 +32,7 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'src/styles/main_built.css': 'src/styles/main.scss'
+                    'src/styles/style_built.css': 'src/styles/main.scss'
                 }
             }
         },
@@ -51,11 +51,14 @@ module.exports = function(grunt) {
             }
         },
 
-        // copy: {
-        //     libs: {
-        //         files: getCopyPathsConfig()
-        //     }
-        // },
+        copy: {
+            // vendors: {
+            //     files: getCopyPathsConfig()
+            // }
+            built: {
+
+            }
+        },
 
         watch: {
             sass: {
