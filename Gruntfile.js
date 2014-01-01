@@ -1,11 +1,11 @@
 module.exports = function (grunt) {
     grunt.initConfig({
-        clean: require('./grunt/clean'),
-        copy: require('./grunt/copy'),
-        requirejs: require('./grunt/requirejs'),
-        sass: require('./grunt/sass'),
-        csso: require('./grunt/csso'),
-        watch: require('./grunt/watch')
+        clean: require('./grunt/clean.grunt'),
+        copy: require('./grunt/copy.grunt'),
+        requirejs: require('./grunt/requirejs.grunt'),
+        sass: require('./grunt/sass.grunt'),
+        csso: require('./grunt/csso.grunt'),
+        watch: require('./grunt/watch.grunt')
     });
 
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
