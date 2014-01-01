@@ -8,6 +8,7 @@
         "grunt-contrib-jshint": "latest",
         "grunt-contrib-sass": "latest",
         "grunt-contrib-watch": "latest",
-        "requirejs": "latest"
+        "requirejs": "latest",
+        "matchdep": ">= 0.3.0"
     }
 }
