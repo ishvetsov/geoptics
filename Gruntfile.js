@@ -4,13 +4,14 @@ module.exports = function (grunt) {
         copy: require('./grunt/copy'),
         requirejs: require('./grunt/requirejs'),
         sass: require('./grunt/sass'),
+        csso: require('./grunt/csso'),
         watch: require('./grunt/watch')
     });
 
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     var tasks = {
-        production: 'clean:dist copy:pages sass requirejs',
+        production: 'clean:dist copy:pages sass csso requirejs',
         css: 'sass'
     };
 
