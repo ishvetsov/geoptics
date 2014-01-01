@@ -3,10 +3,7 @@ define(function (require) {
 
     var
         Marionette = require('backbone.marionette');
-
         // TEST
-    
-
 
     var app = new Marionette.Application();
 

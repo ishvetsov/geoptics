@@ -9,6 +9,7 @@ JavaScript Styleguide
 - Приватные/Защищенные методы/функции - _lowerCamelCase
 - Переменные - lowerCamelCase
 - Константы - UPPER_CASE
+- Имена файлов - my_exciting_file.js
 
 ### Принципы именования
 
