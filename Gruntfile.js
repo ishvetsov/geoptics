@@ -1,77 +1,14 @@
-module.exports = function(grunt) {
-    var packageJSON = '';
-    
-    /**
-     * Функция для создания конфига копирования библиотек из node_modules в
-     * src/scripts/venrods, используется в задаче grunt - copy:libs.
-     * @return {[]}
-     */
-    // var getCopyPathsConfig = function () {
-    //     var files = [],
-    //         maps = packageJSON.dependenciesCopyMap;
+'use strict';
 
-    //     for (var map in maps) {
-    //         files.push({
-    //             src: map,
-    //             dest: maps[map],
-    //             expand: true,
-    //             flatten: true
-    //         });
-    //     }
-
-    //     return files;
-    // };
-
-
+module.exports = function (grunt) {
     grunt.initConfig({
-        pkg: grunt.file.readJSON('package.json'),
-
-        sass: {
-            options: {
-                noCache: true
-            },
-            dist: {
-                files: {
-                    'src/styles/style_built.css': 'src/styles/main.scss'
-                }
-            }
-        },
-
-        requirejs: {
-            compile: {
-                options: {
-                    baseUrl: 'src/',
-                    mainConfigFile: 'src/boot.js',
-                    out: 'dist/script_built.js',
-                    paths: {
-                        requireLib: 'scripts/vendors/require/require'
-                    },
-                    include: 'requireLib'
-                }
-            }
-        },
-
-        copy: {
-            // vendors: {
-            //     files: getCopyPathsConfig()
-            // }
-            built: {
-
-            }
-        },
-
-        watch: {
-            sass: {
-                files: ['src/styles/*.scss'],
-                tasks: ['sass']
-            }
-        }
+        sass: require('./grunt/sass.grunt.js'),
+        requirejs: require('./grunt/requirejs.grunt.js'),
+        copy: require('./grunt/copy.grunt.js'),
+        watch: require('./grunt/watch.grunt.js')
     });
 
-    grunt.loadNpmTasks('grunt-contrib-sass');
-    grunt.loadNpmTasks('grunt-contrib-requirejs');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     grunt.registerTask('default', []);
 };
