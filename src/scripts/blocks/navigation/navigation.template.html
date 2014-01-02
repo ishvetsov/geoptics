@@ -1,0 +1,7 @@
+<ul class="nav navbar-nav">
+    {{ _.each(it.items, function (item) { }}
+        <li class="nav__item nav__item_{{= item.mod }}">
+            <a href="{{= item.href }}">{{= item.name }}</a>
+        </li>
+    {{ }) }}
+</ul>

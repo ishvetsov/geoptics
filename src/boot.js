@@ -1,3 +1,5 @@
+'use strict';
+
 require.config({
     baseUrl: './scripts',
 
@@ -7,7 +9,7 @@ require.config({
         'backbone': 'vendors/backbone/backbone',
         'backbone.marionette': 'vendors/backbone/backbone.marionette',
         'backbone.associations': 'vendors/backbone/backbone-associations',
-        'require.text': 'vendors/require/text',
+        'text': 'vendors/require/text',
         'bootstrap': 'vendors/bootstrap/bootstrap'
     },
 
@@ -32,6 +34,6 @@ require.config({
     }
 });
 
-require(['app', 'bootstrap', 'require.text'], function (App) {
-    App.start();
+require(['app', 'bootstrap', 'config/config'], function (app) {
+    app.start();
 });
