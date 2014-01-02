@@ -1,19 +1,16 @@
 'use strict';
 
 function getVendorsCopyConfig () {
-    var files = [],
-        maps = require('../map.package.json');
+    var maps = require('../map.package.json');
 
-    Object.keys(maps).forEach(function (map) {
-        files.push({
+    return Object.keys(maps).map(function (map) {
+        return {
             src: map,
             dest: maps[map],
             expand: true,
             flatten: true
-        });
+        };
     });
-
-    return files;
 }
 
 module.exports = {

@@ -1,17 +1,19 @@
 'use strict';
 
 module.exports = function (grunt) {
-    grunt.initConfig({
-        clean: require('./grunt/clean.grunt'),
-        copy: require('./grunt/copy.grunt'),
-        requirejs: require('./grunt/requirejs.grunt'),
-        sass: require('./grunt/sass.grunt'),
-        csso: require('./grunt/csso.grunt'),
-        watch: require('./grunt/watch.grunt'),
-        autoprefixer: require('./grunt/autoprefixer.grunt'),
-        csscomb: require('./grunt/csscomb.grunt'),
-        processhtml: require('./grunt/processhtml.grunt')
-    });
+    var tasksForLoad = [
+        'clean',
+        'copy',
+        'requirejs',
+        'sass',
+        'csso',
+        'watch',
+        'autoprefixer',
+        'csscomb',
+        'processhtml'
+    ];
+    
+    grunt.initConfig(require('./grunt/config.grunt').getInitConfig(tasksForLoad));
 
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
