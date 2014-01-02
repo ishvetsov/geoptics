@@ -3,7 +3,7 @@ module.exports = {
         options: {
             baseUrl: 'src/',
             mainConfigFile: 'src/boot.js',
-            out: 'dist/script_built.js',
+            out: 'dist/scripts/app.build.js',
             paths: {
                 requireLib: 'scripts/vendors/require/require'
             },

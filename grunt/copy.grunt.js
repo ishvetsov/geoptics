@@ -1,22 +1,25 @@
+'use strict';
+
+function getVendorsCopyConfig () {
+    var files = [],
+        maps = require('../map.package.json');
+
+    Object.keys(maps).forEach(function (map) {
+        files.push({
+            src: map,
+            dest: maps[map],
+            expand: true,
+            flatten: true
+        });
+    });
+
+    return files;
+}
+
 module.exports = {
     vendors: {
-        files: (function () {
-            var files = [],
-                maps = require('../grunt/copy_vendors_map.json');
-
-            for (var map in maps) {
-                files.push({
-                    src: map,
-                    dest: maps[map],
-                    expand: true,
-                    flatten: true
-                });
-            }
-
-            return files;          
-        })()
+        files: getVendorsCopyConfig()
     },
-    pages: {
 
-    }
+    pages: {}
 };

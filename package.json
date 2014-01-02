@@ -10,6 +10,9 @@
         "grunt-contrib-watch": "latest",
         "grunt-contrib-clean": "latest",
         "grunt-csso": "latest",
+        "grunt-processhtml": "latest",
+        "grunt-csscomb": "latest",
+        "grunt-autoprefixer": "latest",
         "requirejs": "latest",
         "matchdep": "latest"
     }
