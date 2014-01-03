@@ -1,7 +1,7 @@
 module.exports = {
     dist: {
         files: {
-            'dist/styles/style.build.css': ['src/styles/style.css']
+            'dist/styles/style.built.css': ['src/styles/style.css']
         }
     }
 };

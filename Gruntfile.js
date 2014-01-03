@@ -1,6 +1,6 @@
-'use strict';
-
 module.exports = function (grunt) {
+    'use strict';
+    
     var tasksForLoad = [
         'clean',
         'copy',
@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         'csscomb',
         'processhtml'
     ];
-    
+
     grunt.initConfig(require('./grunt/config.grunt').getInitConfig(tasksForLoad));
 
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);

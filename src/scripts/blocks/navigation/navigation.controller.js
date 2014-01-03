@@ -5,20 +5,22 @@ define(function (require) {
 
     var
         Marionette = require('backbone.marionette'),
-        Bus = require('bus');
+        Bus = require('bus'),
 
-    var navigationView = new (require('./navigation.view'))([
-            {
-                name: 'Графики',
-                href: '#graphics',
-                mod: 'graphics'
-            },
-            {
-                name: 'Журнал',
-                href: '#journal',
-                mod: 'journal'
-            }
-        ]);
+        NavigationView = require('./navigation.view');
+
+    var navigationView = new NavigationView([
+        {
+            name: 'Графики',
+            href: '#graphics',
+            mod: 'graphics'
+        },
+        {
+            name: 'Журнал',
+            href: '#journal',
+            mod: 'journal'
+        }
+    ]);
 
     var NavigationController = Marionette.Controller.extend({
         getInstance: function () {
