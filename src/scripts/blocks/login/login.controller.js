@@ -16,12 +16,8 @@ define(function (require) {
             return loginView;
         },
 
-        render: function () {
-            Bus.events.trigger('app:login:show', loginView);
-        },
-
         isAuthorized: function () {
-            return false; // TODO: dummy
+            return true; // TODO: dummy
         }
     });
 

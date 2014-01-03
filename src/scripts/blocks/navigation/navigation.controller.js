@@ -25,10 +25,6 @@ define(function (require) {
     var NavigationController = Marionette.Controller.extend({
         getInstance: function () {
             return navigationView;
-        },
-
-        render: function () {
-            Bus.events.trigger('app:header:show', navigationView);
         }
     });
 

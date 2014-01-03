@@ -11,9 +11,11 @@ define(function (require) {
 
     app.addRegions({
         login: '.app__login-region',
-        header: '.app__header-region'
+        header: '.app__header-region',
+        container: '.app__container'
     });
 
+    Bus.events.on('app:show', _.bind(app.container.show, app.container));
     Bus.events.on('app:login:show', _.bind(app.login.show, app.login));
     Bus.events.on('app:header:show', _.bind(app.header.show, app.header));
 
@@ -27,7 +29,7 @@ define(function (require) {
     });
 
     app.addInitializer(function () {
-        require('./bundles/common/common.router')();
+        require('./bundles/auth/auth')();
     });
 
     return app;

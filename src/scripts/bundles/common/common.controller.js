@@ -5,54 +5,30 @@ define(function (require) {
 
     var
         Bus = require('bus'),
+        commonLayout = require('./common.layout'),
         navigationController = require('blocks/navigation/navigation.controller'),
         loginController = require('blocks/login/login.controller');
 
-    function checkAuthorization(passed, ctx) {
-        if (loginController.isAuthorized()) {
-            passed.apply(ctx);
-        } else {
-            Bus.events.trigger('app:all:close');
-            loginController.render();
-        }
-    }
+    commonLayout.on('show', function () {
+        commonLayout.header.show(navigationController.getInstance());
+    });
 
-    var handlers = {
+    return {
         notFound: function () {
-            checkAuthorization(function () {
-                console.log('not found');
-            }, this);
-        },
-
-        index: function () {
-            checkAuthorization(function () {
-                Backbone.history.navigate('graphics');
-                this.graphics();
-            }, this);
+            Backbone.history.navigate('graphics');
+            this.graphics();
         },
 
         journal: function () {
-            checkAuthorization(function () {
-                navigationController.render();
-                navigationController
-                    .getInstance()
-                    .activeItem('journal');
-            }, this);
+            navigationController
+                .getInstance()
+                .activeItem('journal');
         },
 
         graphics: function () {
-            checkAuthorization(function () {
-                navigationController.render();
-                navigationController
-                    .getInstance()
-                    .activeItem('graphics');
-            }, this);
-        }
-    };
-
-    return {
-        init: function () {
-            return handlers;
+            navigationController
+                .getInstance()
+                .activeItem('graphics');
         }
     };
 });

@@ -1,19 +1,18 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette');
+    var Marionette = require('backbone.marionette'),
+        Bus = require('bus');
 
     var Router = Marionette.AppRouter.extend({
         appRoutes: {
-            'graphics': 'graphics',
-            'journal': 'journal',
-            '*other': 'notFound'
+            '*other': 'check'
         }
     });
 
     return function () {
         return new Router({
-            controller: require('./common.controller')
+            controller: require('./auth.controller')
         });
     };
 });
