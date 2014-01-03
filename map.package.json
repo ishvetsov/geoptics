@@ -2,8 +2,13 @@
     "bower_components/jquery/jquery.js":
     "src/scripts/vendors/jquery",
 
+    "bower_components/jquery-cookie/jquery.cookie.js":
+    "src/scripts/vendors/jquery",
+
+
     "bower_components/underscore/underscore.js":
     "src/scripts/vendors/underscore",
+
 
     "bower_components/backbone/backbone.js":
     "src/scripts/vendors/backbone",
@@ -14,15 +19,24 @@
     "bower_components/backbone-associations/backbone-associations.js":
     "src/scripts/vendors/backbone",
 
+
     "bower_components/requirejs/require.js":
     "src/scripts/vendors/require",
 
     "bower_components/requirejs-text/text.js":
     "src/scripts/vendors/require",
 
+
     "bower_components/bootstrap/dist/js/bootstrap.js":
     "src/scripts/vendors/bootstrap",
 
     "bower_components/bootstrap/dist/css/bootstrap.css":
-    "src/styles/vendors"
+    "src/styles/vendors",
+
+
+    "bower_components/rivets/dist/rivets.js":
+    "src/scripts/vendors/rivets",
+
+    "bower_components/rivets-backbone-adapter/rivets-backbone.js":
+    "src/scripts/vendors/rivets"
 }

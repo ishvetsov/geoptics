@@ -2,12 +2,15 @@
     "name": "geoptics",
     "dependencies": {
         "jquery": "2.*",
+        "jquery-cookie": "1.*",
         "underscore": "1.*",
         "backbone": "1.*",
         "backbone.marionette": "1.*",
         "backbone-associations": "0.*",
         "requirejs": "2.*",
         "requirejs-text": "2.*",
-        "bootstrap": "3.*"
+        "bootstrap": "3.*",
+        "rivets": "0.6.5",
+        "rivets-backbone-adapter": "1.*"
     }
 }

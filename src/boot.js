@@ -5,21 +5,27 @@ require.config({
 
     paths: {
         'jquery': 'vendors/jquery/jquery',
+        'jquery.cookie': 'vendors/jquery/jquery.cookie',
         'underscore': 'vendors/underscore/underscore',
         'backbone': 'vendors/backbone/backbone',
         'backbone.marionette': 'vendors/backbone/backbone.marionette',
         'backbone.associations': 'vendors/backbone/backbone-associations',
         'text': 'vendors/require/text',
-        'bootstrap': 'vendors/bootstrap/bootstrap'
+        'bootstrap': 'vendors/bootstrap/bootstrap',
+        'rivets': 'vendors/rivets/rivets',
+        'rivets.adapter': 'vendors/rivets/rivets-backbone'
     },
 
     shim: {
+        'jquery.cookie': {
+            deps: ['jquery']
+        },
+        'Backbone': {
+            deps: ['underscore', 'jquery']
+        },
         'backbone': {
             deps: ['underscore', 'jquery'],
             exports: 'Backbone'
-        },
-        'underscore': {
-            exports: '_'
         },
         'backbone.marionette': {
             deps: ['backbone'],
@@ -28,12 +34,25 @@ require.config({
         'backbone.associations': {
             deps: ['backbone']
         },
+        'underscore': {
+            exports: '_'
+        },
         'bootstrap': {
             deps: ['jquery']
+        },
+        'rivets': {
+            deps: ['jquery']
+        },
+        'rivets.adapter': {
+            deps: ['rivets', 'backbone']
         }
     }
 });
 
-require(['app', 'bootstrap', 'config/config'], function (app) {
+require([
+    'app',
+    'bootstrap',
+    'config/config',
+], function (app) {
     app.start();
 });

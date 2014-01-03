@@ -5,8 +5,8 @@ define(function (require) {
 
     var
         Marionette = require('backbone.marionette'),
-        Bus = require('bus'),
 
+        Bus = require('bus'),
         NavigationView = require('./navigation.view');
 
     var navigationView = new NavigationView([
