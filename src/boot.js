@@ -16,6 +16,12 @@ require.config({
         'rivets.adapter': 'vendors/rivets/rivets-backbone'
     },
 
+    map: {
+        'rivets.adapter': {
+            'Backbone': 'backbone'
+        }
+    },
+
     shim: {
         'jquery.cookie': {
             deps: ['jquery']

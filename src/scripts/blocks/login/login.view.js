@@ -1,26 +1,24 @@
-/* global _, Rivets */
+/* global _ */
 
 define(function (require) {
     'use strict';
 
     var
-        Marionette = require('backbone.marionette');
-        // RivetsAdapter = require('rivets.adapter');
+        Marionette = require('backbone.marionette'),
+        Rivets = require('rivets');
 
     var LoginView = Marionette.ItemView.extend({
         template: _.template(require('text!./login.template.html')),
 
         events: {
-            'click #login': '_login'
+            'click .auth-form__signin': '_onSignInClicked'
         },
 
-        render: function () {
-            // this.binding = Rivets.bind(this.el, {
-
-            // });
+        onRender: function () {
+            this.binding = Rivets.bind(this.el, {});
         },
 
-        _login: function () {
+        _onSignInClicked: function () {
             this.trigger('login:try', {});
         },
     });

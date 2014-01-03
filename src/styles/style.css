@@ -1,1 +1,11 @@
 @import url(vendors/bootstrap.css);
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: ""; }
+
+.clearfix:after {
+  clear: both; }
+
+.clearfix {
+  zoom: 1; }

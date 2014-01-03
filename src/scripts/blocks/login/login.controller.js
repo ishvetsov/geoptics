@@ -21,7 +21,7 @@ define(function (require) {
         },
 
         isAuthorized: function () {
-            return true; // TODO: dummy
+            return false; // TODO: dummy
         }
     });
 
