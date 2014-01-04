@@ -58,7 +58,7 @@ require.config({
 require([
     'app',
     'bootstrap',
-    'config/config',
+    'configs/config',
 ], function (app) {
     app.start();
 });

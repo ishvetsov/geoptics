@@ -6,8 +6,7 @@ define(function (require) {
     var
         Bus = require('bus'),
         commonLayout = require('./common.layout'),
-        navigationController = require('blocks/navigation/navigation.controller'),
-        loginController = require('blocks/login/login.controller');
+        navigationController = require('blocks/navigation/navigation.controller');
 
     commonLayout.on('show', function () {
         commonLayout.header.show(navigationController.getInstance());
@@ -15,6 +14,7 @@ define(function (require) {
 
     return {
         notFound: function () {
+            console.log('notFound');
             Backbone.history.navigate('graphics');
             this.graphics();
         },

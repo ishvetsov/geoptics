@@ -5,7 +5,8 @@ define(function (require) {
 
     var
         Marionette = require('backbone.marionette'),
-        Rivets = require('rivets');
+        Rivets = require('rivets'),
+        RivetsAdapter = require('rivets.adapter');
 
     var LoginView = Marionette.ItemView.extend({
         template: _.template(require('text!./login.template.html')),
@@ -15,12 +16,21 @@ define(function (require) {
         },
 
         onRender: function () {
-            this.binding = Rivets.bind(this.el, {});
+            this.binding = Rivets.bind(this.el, {
+                authData: this._authData
+            });
         },
 
         _onSignInClicked: function () {
-            this.trigger('login:try', {});
+            this.trigger('login:try', this._authData);
         },
+
+        _authData: new Backbone.Model({
+            defaults: {
+                login: '',
+                password: ''
+            }
+        })
     });
 
     return LoginView;
