@@ -1,20 +1,7 @@
 module.exports = function (grunt) {
     'use strict';
-    
-    var tasksForLoad = [
-        'clean',
-        'copy',
-        'requirejs',
-        'sass',
-        'csso',
-        'watch',
-        'autoprefixer',
-        'csscomb',
-        'processhtml'
-    ];
 
-    grunt.initConfig(require('./grunt/config.grunt').getInitConfig(tasksForLoad));
-
+    grunt.initConfig(require('./grunt/config.grunt').build());
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     var tasks = {

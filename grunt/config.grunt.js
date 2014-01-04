@@ -1,14 +1,21 @@
 'use strict';
 
+var path = require('path');
+
 module.exports = {
-    getInitConfig: function (tasks, root) {
-        var config = {};
-        root = root || './';
+    config: {},
 
-        tasks.forEach(function (task) {
-            config[task] = require(root + task + '.grunt');
-        });
+    tasksPath: './tasks/',
 
-        return config;
+    _loadTask: function (file) {
+        this.config[file.split('.')[0]] = require(this.tasksPath + file);
+    },
+
+    build: function () {
+        require('fs')
+            .readdirSync(path.resolve(__dirname, this.tasksPath))
+            .forEach(this._loadTask.bind(this));
+
+        return this.config;
     }
 };
