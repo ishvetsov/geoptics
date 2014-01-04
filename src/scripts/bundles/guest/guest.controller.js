@@ -7,14 +7,15 @@ define(function (require) {
         Cookie = require('jquery.cookie'),
         Bus = require('bus'),
         guestLayout = require('./guest.layout'),
+        sessionController = require('blocks/session/session.controller'),
         loginController = require('blocks/login/login.controller');
 
     guestLayout.on('show', function () {
         guestLayout.container.show(loginController.getInstance());
     });
-
+ 
     Bus.events.on('logout', function () {
-        loginController.logout();
+        sessionController.logout();
         require('./guest')();
     });
 
@@ -24,7 +25,7 @@ define(function (require) {
 
     return {
         check: function () {
-            if (loginController.isAuthorized()) {
+            if (sessionController.isAuthorized()) {
                 require('bundles/common/common')();
             }
         }

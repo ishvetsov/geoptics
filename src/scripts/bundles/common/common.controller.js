@@ -22,13 +22,22 @@ define(function (require) {
         journal: function () {
             navigationController
                 .getInstance()
-                .activeItem('journal');
+                .setActiveItem('journal');
+            Bus.events.trigger('select:journal');
         },
 
         graphics: function () {
             navigationController
                 .getInstance()
-                .activeItem('graphics');
+                .setActiveItem('graphics');
+            Bus.events.trigger('select:graphics');
+        },
+
+        admin: function () {
+            navigationController
+                .getInstance()
+                .setActiveItem('admin');
+            Bus.events.trigger('select:admin');
         }
     };
 });

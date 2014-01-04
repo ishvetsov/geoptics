@@ -10,7 +10,8 @@ define(function (require) {
         className: 'common',
 
         regions: {
-            header: '.common__header'
+            header: '.common__header',
+            body: '.common__body'
         }
     });
 

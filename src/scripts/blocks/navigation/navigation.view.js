@@ -20,7 +20,7 @@ define(function (require) {
             user: '.nav__user'
         },
 
-        activeItem: function (mod) {
+        setActiveItem: function (mod) {
             this.ui.items
                 .removeClass('active')
                 .filter('.nav__item_' + mod)

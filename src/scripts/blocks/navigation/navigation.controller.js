@@ -7,20 +7,14 @@ define(function (require) {
         Marionette = require('backbone.marionette'),
 
         Bus = require('bus'),
-        NavigationView = require('./navigation.view');
+        NavigationView = require('./navigation.view'),
+        sessionController = require('blocks/session/session.controller'),
+        navigationConfig = require('configs/navigation.config');
 
-    var navigationView = new NavigationView([
-        {
-            name: 'Графики',
-            href: '#graphics',
-            mod: 'graphics'
-        },
-        {
-            name: 'Журнал',
-            href: '#journal',
-            mod: 'journal'
-        }
-    ]);
+    var m = sessionController.getCurrentUser();
+    var items = 
+        navigationConfig[sessionController.getCurrentUser().get('type')].items,
+        navigationView = new NavigationView(items);
 
     var NavigationController = Marionette.Controller.extend({
         getInstance: function () {

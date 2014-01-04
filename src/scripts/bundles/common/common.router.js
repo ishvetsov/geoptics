@@ -7,6 +7,7 @@ define(function (require) {
         appRoutes: {
             'graphics': 'graphics',
             'journal': 'journal',
+            'admin': 'admin',
             '*other': 'notFound'
         }
     });
