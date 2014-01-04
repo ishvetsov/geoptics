@@ -3,9 +3,7 @@
 define(function (require) {
     'use strict';
 
-    var
-        Cookie = require('jquery.cookie'),
-        Bus = require('bus'),
+    var Cookie = require('jquery.cookie'),
         guestLayout = require('./guest.layout'),
         sessionController = require('blocks/session/session.controller'),
         loginController = require('blocks/login/login.controller');
@@ -13,13 +11,12 @@ define(function (require) {
     guestLayout.on('show', function () {
         guestLayout.container.show(loginController.getInstance());
     });
- 
-    Bus.events.on('logout', function () {
-        sessionController.logout();
+
+    sessionController.on('session:out', function () {
         require('./guest')();
     });
 
-    Bus.events.on('login:success', function () {
+    loginController.on('login:success', function () {
         require('bundles/common/common')();
     });
 

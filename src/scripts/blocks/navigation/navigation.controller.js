@@ -3,22 +3,31 @@
 define(function (require) {
     'use strict';
 
-    var
-        Marionette = require('backbone.marionette'),
+    var Marionette = require('backbone.marionette'),
 
-        Bus = require('bus'),
         NavigationView = require('./navigation.view'),
-        sessionController = require('blocks/session/session.controller'),
-        navigationConfig = require('configs/navigation.config');
+        navigationConfig = require('./navigation.config'),
+        sessionController = require('blocks/session/session.controller');
 
-    var m = sessionController.getCurrentUser();
-    var items = 
-        navigationConfig[sessionController.getCurrentUser().get('type')].items,
-        navigationView = new NavigationView(items);
+    var navigationView = null;
 
     var NavigationController = Marionette.Controller.extend({
         getInstance: function () {
             return navigationView;
+        },
+
+        init: function () {
+            var userType = sessionController
+                .getCurrentUser()
+                .get('type');
+
+            var items = navigationConfig[userType].items;
+
+            navigationView = new NavigationView(items);
+
+            navigationView.on('user:click', function () {
+                sessionController.trigger('session:out');
+            });
         }
     });
 

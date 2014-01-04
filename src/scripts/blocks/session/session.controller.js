@@ -1,16 +1,26 @@
+/* global _ */
+
 define(function (require) {
     'use strict';
 
-    var
-        Marionette = require('backbone.marionette'),
+    var Marionette = require('backbone.marionette'),
 
         User = require('entities/user.model');
 
     var SessionController = Marionette.Controller.extend({
+        initialize: function () {
+            this.on('session:out', _.bind(this._onLogout, this));
+        },
+
         authorization: function (authData) {
             // Здесь запрос на сервер, если все нормально получить
             // id сессии, юзер данные
-            $.cookie('isAuth', true);
+
+            return $.get('/')
+                .then(function () {
+                    $.cookie('isAuth', true);
+                    return true;
+                });
         },
 
         getCurrentUser: function () {
@@ -29,10 +39,10 @@ define(function (require) {
         },
 
         isAuthorized: function () {
-            return $.cookie('isAuth') === 'true' ? true : false;
+            return $.cookie('isAuth');
         },
 
-        logout: function () {
+        _onLogout: function () {
             this._currentUser = null;
             $.removeCookie('isAuth');
         },

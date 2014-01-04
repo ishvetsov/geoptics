@@ -3,8 +3,7 @@
 define(function (require) {
     'use strict';
 
-    var
-        Bus = require('bus'),
+    var Bus = require('bus'),
         commonLayout = require('./common.layout'),
         navigationController = require('blocks/navigation/navigation.controller');
 
@@ -12,7 +11,7 @@ define(function (require) {
         commonLayout.header.show(navigationController.getInstance());
     });
 
-    return {
+    var handlers = {
         notFound: function () {
             console.log('notFound');
             Backbone.history.navigate('graphics');
@@ -39,5 +38,10 @@ define(function (require) {
                 .setActiveItem('admin');
             Bus.events.trigger('select:admin');
         }
+    };
+
+    return function () {
+        navigationController.init();
+        return handlers;
     };
 });

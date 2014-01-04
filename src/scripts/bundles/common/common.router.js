@@ -14,7 +14,7 @@ define(function (require) {
 
     return function () {
         return new Router({
-            controller: require('./common.controller')
+            controller: require('./common.controller')()
         });
     };
 });

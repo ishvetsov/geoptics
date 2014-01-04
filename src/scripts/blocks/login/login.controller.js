@@ -3,8 +3,7 @@
 define(function (require) {
     'use strict';
 
-    var
-        Marionette = require('backbone.marionette'),
+    var Marionette = require('backbone.marionette'),
 
         Bus = require('bus'),
         LoginView = require('./login.view'),
@@ -14,12 +13,18 @@ define(function (require) {
 
     var LoginController = Marionette.Controller.extend({
         initialize: function () {
+            _.bindAll(this, '_onAuthorizationSucceed');
+
             this.listenTo(loginView, 'login:try', function (authData) {
-                sessionController.authorization(authData);
-                if (sessionController.isAuthorized()) {
-                    Bus.events.trigger('login:success');
-                }
+                sessionController.authorization(authData)
+                    .then(this._onAuthorizationSucceed);
             });
+        },
+
+        _onAuthorizationSucceed: function (data) {
+            if (data === true) {
+                this.trigger('login:success');
+            }
         },
 
         getInstance: function () {

@@ -3,16 +3,15 @@
 define(function (require) {
     'use strict';
 
-    var
-        Marionette = require('backbone.marionette'),
+    var Marionette = require('backbone.marionette'),
         Bus = require('bus');
 
     var NavigationView = Marionette.ItemView.extend({
         template: _.template(require('text!./navigation.template.html')),
         className: 'navbar navbar-inverse navbar-fixed-top',
 
-        events: {
-            'click .nav__user': '_onUserClicked'
+        triggers: {
+            'click .nav__user': 'user:click'
         },
 
         ui: {
@@ -31,10 +30,6 @@ define(function (require) {
             return {
                 items: this.options,
             };
-        },
-
-        _onUserClicked: function () {
-            Bus.events.trigger('logout');
         }
     });
 
