@@ -4,19 +4,16 @@ define(function (require) {
     'use strict';
 
     var Marionette = require('backbone.marionette'),
-        Rivets = require('rivets'),
-        RivetsAdapter = require('rivets.adapter');
+        Rivets = require('rivets');
+
+    var LoginModel = require('./login.model');
 
     var LoginView = Marionette.ItemView.extend({
+        model: new LoginModel(),
         template: _.template(require('text!./login.template.html')),
 
         ui: {
-            signIn: '.auth-form__signin'
-        },
-
-        _authData: {
-            login: '',
-            password: ''
+            signIn: '.login__signin'
         },
 
         initialize: function () {
@@ -25,13 +22,11 @@ define(function (require) {
 
         onRender: function () {
             this.ui.signIn.on('click', this._onSignInClicked);
-            this.binding = Rivets.bind(this.el, {
-                authData: this._authData
-            });
+            this.binding = Rivets.bind(this.el, this.model);
         },
 
         _onSignInClicked: function () {
-            this.trigger('login:try', this._authData);
+            this.trigger('login:try', this.model.toJSON());
         }
     });
 

@@ -1,12 +1,11 @@
-/* global _, $, Backbone */
+/* global _, Backbone */
 
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette'),
+    var Marionette = require('backbone.marionette');
 
-        Bus = require('bus'),
-        LoginView = require('./login.view'),
+    var LoginView = require('./login.view'),
         sessionController = require('blocks/session/session.controller');
 
     var loginView = new LoginView();
