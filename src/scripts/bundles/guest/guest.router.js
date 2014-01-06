@@ -12,7 +12,7 @@ define(function (require) {
 
     return function () {
         return new Router({
-            controller: require('./guest.controller')
+            controller: require('./guest.controller').init()
         });
     };
 });

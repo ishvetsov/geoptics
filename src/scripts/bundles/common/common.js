@@ -4,12 +4,14 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Bus = require('bus');
 
-    return function () {
-        var router = require('./common.router')();
+    return {
+        init: function (route) {
+            var router = require('./common.router')
+                .init()
+                .navigate('/');
 
-        Bus.events.trigger('app:show', require('./common.layout'));
-        router
-            .navigate('/')
-            .navigate('graphics', {trigger: true});
+            Bus.events.trigger('app:show', require('./common.layout'));
+            route && router.navigate('graphics', {trigger: true});
+        }
     };
 });

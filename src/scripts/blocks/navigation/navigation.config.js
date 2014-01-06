@@ -2,7 +2,7 @@ define(function (require) {
     'use strict';
 
     var config = {
-        user: {
+        1: {
             items: [
                 {
                     name: 'Графики',
@@ -17,7 +17,7 @@ define(function (require) {
             ]
         },
             
-        admin: {
+        2: {
             items: [
                 {
                     name: 'Графики',

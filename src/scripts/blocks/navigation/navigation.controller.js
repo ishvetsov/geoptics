@@ -16,12 +16,13 @@ define(function (require) {
             return navigationView;
         },
 
-        init: function () {
-            var userType = sessionController
-                .getCurrentUser()
-                .get('type');
+        active: function (name) {
+            navigationView.setActiveItem(name);
+        },
 
-            var items = navigationConfig[userType].items;
+        init: function () {
+            var userType = sessionController.getAccessLevel(),
+                items = navigationConfig[userType].items;
 
             navigationView = new NavigationView(items);
 

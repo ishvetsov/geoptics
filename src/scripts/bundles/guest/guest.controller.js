@@ -3,28 +3,34 @@
 define(function (require) {
     'use strict';
 
-    var Cookie = require('jquery.cookie'),
-        guestLayout = require('./guest.layout'),
+    var guestLayout = require('./guest.layout'),
         sessionController = require('blocks/session/session.controller'),
         loginController = require('blocks/login/login.controller');
+
+    var handlers = {
+        check: function () {
+            var accessLevel = sessionController.getAccessLevel();
+
+            accessLevel > 0 && require('bundles/common/common').init('graphics');
+            accessLevel > 1 && require('bundles/admin/admin').init();
+        }
+    };
 
     guestLayout.on('show', function () {
         guestLayout.container.show(loginController.getInstance());
     });
 
     sessionController.on('session:out', function () {
-        require('./guest')();
+        require('./guest').init();
     });
 
-    loginController.on('login:success', function () {
-        require('bundles/common/common')();
+    sessionController.on('session:in', function () {
+        handlers.check();
     });
 
     return {
-        check: function () {
-            if (sessionController.isAuthorized()) {
-                require('bundles/common/common')();
-            }
+        init: function () {
+            return handlers;
         }
     };
 });

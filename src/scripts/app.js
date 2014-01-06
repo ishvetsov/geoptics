@@ -20,7 +20,7 @@ define(function (require) {
     });
 
     app.addInitializer(function () {
-        require('./bundles/guest/guest')();
+        require('./bundles/guest/guest').init();
     });
 
     return app;

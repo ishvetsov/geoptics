@@ -7,14 +7,15 @@ define(function (require) {
         appRoutes: {
             'graphics': 'graphics',
             'journal': 'journal',
-            'admin': 'admin',
-            '*other': 'notFound'
+            '*path': 'notFound'
         }
     });
 
-    return function () {
-        return new Router({
-            controller: require('./common.controller')()
-        });
+    return {
+        init: function () {
+            return new Router({
+                controller: require('./common.controller').init()
+            });
+        }
     };
 });

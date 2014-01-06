@@ -3,37 +3,31 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette'),
+    var Cookie = require('jquery.cookie'),
+        Marionette = require('backbone.marionette'),
 
         User = require('entities/user.model');
 
     var SessionController = Marionette.Controller.extend({
         initialize: function () {
-            this.on('session:out', _.bind(this._onLogout, this));
+            _.bindAll(this, '_onSessionOut', 'authorization');
+            this.on('session:out', this._onSessionOut);
         },
 
         authorization: function (authData) {
-            // Здесь запрос на сервер, если все нормально получить
-            // id сессии, юзер данные
+            $.cookie('isAuth', true);
+            this._createUser(authData.isAdmin ? 2 : 1);
+            this.trigger('session:in');
+        },
 
-            return $.get('/')
-                .then(function () {
-                    $.cookie('isAuth', true);
-                    return true;
-                });
+        getAccessLevel: function () {
+            var user = this.getCurrentUser();
+            return user === null ? 0 : user.get('accessLevel') || 0;
         },
 
         getCurrentUser: function () {
             if (this.isAuthorized()) {
-                if (this._currentUser === null) {
-                    // TODO: Dummy
-                    this._currentUser = new User.Model({
-                        firstName: 'Иван',
-                        lastName: 'Иванов',
-                        type: 'admin'
-                    });
-                }
-                return this._currentUser;
+                return this._currentUser || this._createUser();
             }
             return null;
         },
@@ -42,12 +36,23 @@ define(function (require) {
             return $.cookie('isAuth');
         },
 
-        _onLogout: function () {
+        _onSessionOut: function () {
             this._currentUser = null;
             $.removeCookie('isAuth');
         },
 
-        _currentUser: null
+        _currentUser: null,
+        
+        // TODO: Dummy
+        _createUser: function (accessLevel) {
+            this._currentUser = new User.Model({
+                firstName: 'Иван',
+                lastName: 'Иванов',
+                accessLevel: accessLevel || 2
+            });
+
+            return this._currentUser;
+        }
     });
 
     return new SessionController();

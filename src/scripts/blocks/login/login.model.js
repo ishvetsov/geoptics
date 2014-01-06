@@ -6,7 +6,8 @@ define(function (require) {
     var LoginModel = Backbone.Model.extend({
         defaults: {
             user: '',
-            password: ''
+            password: '',
+            isAdmin: true
         }
     });
 

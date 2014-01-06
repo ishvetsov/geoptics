@@ -3,8 +3,7 @@
 define(function (require) {
     'use strict';
 
-    var Bus = require('bus'),
-        commonLayout = require('./common.layout'),
+    var commonLayout = require('./common.layout'),
         navigationController = require('blocks/navigation/navigation.controller');
 
     commonLayout.on('show', function () {
@@ -13,35 +12,23 @@ define(function (require) {
 
     var handlers = {
         notFound: function () {
-            console.log('notFound');
             Backbone.history.navigate('graphics');
             this.graphics();
         },
 
         journal: function () {
-            navigationController
-                .getInstance()
-                .setActiveItem('journal');
-            Bus.events.trigger('select:journal');
+            navigationController.active('journal');
         },
 
         graphics: function () {
-            navigationController
-                .getInstance()
-                .setActiveItem('graphics');
-            Bus.events.trigger('select:graphics');
-        },
-
-        admin: function () {
-            navigationController
-                .getInstance()
-                .setActiveItem('admin');
-            Bus.events.trigger('select:admin');
+            navigationController.active('graphics');
         }
     };
 
-    return function () {
-        navigationController.init();
-        return handlers;
+    return {
+        init: function () {
+            navigationController.init();
+            return handlers;
+        }
     };
 });

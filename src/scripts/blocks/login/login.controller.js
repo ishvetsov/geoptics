@@ -1,29 +1,18 @@
-/* global _, Backbone */
+/* global _ */
 
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette');
+    var Marionette = require('backbone.marionette'),
 
-    var LoginView = require('./login.view'),
+        LoginView = require('./login.view'),
         sessionController = require('blocks/session/session.controller');
 
     var loginView = new LoginView();
 
     var LoginController = Marionette.Controller.extend({
         initialize: function () {
-            _.bindAll(this, '_onAuthorizationSucceed');
-
-            this.listenTo(loginView, 'login:try', function (authData) {
-                sessionController.authorization(authData)
-                    .then(this._onAuthorizationSucceed);
-            });
-        },
-
-        _onAuthorizationSucceed: function (data) {
-            if (data === true) {
-                this.trigger('login:success');
-            }
+            loginView.on('login:try', sessionController.authorization);
         },
 
         getInstance: function () {

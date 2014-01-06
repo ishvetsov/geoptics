@@ -4,8 +4,10 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Bus = require('bus');
 
-    return function () {
-        require('./guest.router')();
-        Bus.events.trigger('app:show', require('./guest.layout'));
+    return {
+        init: function () {
+            require('./guest.router')();
+            Bus.events.trigger('app:show', require('./guest.layout'));
+        }
     };
 });
