@@ -9,11 +9,5 @@ define(function (require) {
         }
     });
 
-    return {
-        init: function () {
-            return new AdminRouter({
-                controller: require('./admin.controller').init()
-            });
-        }
-    };
+    return AdminRouter;
 });

@@ -6,8 +6,12 @@ define(function (require) {
     var navigationController = require('blocks/navigation/navigation.controller');
 
     var handlers = {
-        admin: function () {
-            navigationController.active('admin');
+        journal: function () {
+            navigationController.active('journal');
+        },
+
+        graphics: function () {
+            navigationController.active('graphics');
         }
     };
 

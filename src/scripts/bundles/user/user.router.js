@@ -3,11 +3,12 @@ define(function (require) {
 
     var Marionette = require('backbone.marionette');
 
-    var Router = Marionette.AppRouter.extend({
+    var UserRouter = Marionette.AppRouter.extend({
         appRoutes: {
-            '*path': 'notFound'
+            'graphics': 'graphics',
+            'journal': 'journal'
         }
     });
 
-    return Router;
+    return UserRouter;
 });

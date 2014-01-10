@@ -7,12 +7,11 @@ define(function (require) {
         sessionController = require('blocks/session/session.controller'),
         loginController = require('blocks/login/login.controller');
 
+    var CommonBundle = require('bundles/common/common');
+
     var handlers = {
         check: function () {
-            var accessLevel = sessionController.getAccessLevel();
-
-            accessLevel > 0 && require('bundles/common/common').init('graphics');
-            accessLevel > 1 && require('bundles/admin/admin').init();
+            sessionController.getAccessLevel() > 0 && CommonBundle.init();
         }
     };
 
