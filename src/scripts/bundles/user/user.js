@@ -3,18 +3,14 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette');
+    var Bundle = require('core/marionette.bundle'),
 
-    var Child = require('bundles/child/child');
+        UserRouter = require('./user.router'),
+        UserBehavior = require('./user.behavior');
 
-    var UserRouter = require('./user.router'),
-        userController = require('./user.controller'),
-        userLayout = require('./user.layout');
-
-    var User = Child.extend({
+    var User = Bundle.extend({
         router: UserRouter,
-        controller: userController,
-        layout: userLayout
+        behavior: UserBehavior
     });
 
     return new User();

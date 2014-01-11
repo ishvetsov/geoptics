@@ -3,11 +3,13 @@
 define(function (require) {
     'use strict';
 
-    var guestLayout = require('./guest.layout'),
+    var GuestLayout = require('./guest.layout'),
         sessionController = require('blocks/session/session.controller'),
         loginController = require('blocks/login/login.controller');
 
     var CommonBundle = require('bundles/common/common');
+
+    var guestLayout = new GuestLayout();
 
     var handlers = {
         check: function () {
@@ -28,8 +30,7 @@ define(function (require) {
     });
 
     return {
-        init: function () {
-            return handlers;
-        }
+        handlers:handlers,
+        layout: guestLayout
     };
 });

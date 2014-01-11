@@ -1,25 +1,24 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette'),
-        Bus = require('bus');
+    var Bundle = require('core/marionette.bundle'),
+        Bus = require('bus'),
 
-    var CommonRouter = require('./common.router'),
-        commonController = require('./common.controller');
+        CommonRouter = require('./common.router'),
+        CommonBehavior = require('./common.behavior');
 
-    return {
-        init: function (route) {
-            var router = new CommonRouter({
-                controller: commonController.handlers
-            });
+    var Common = Bundle.extend({
+        router: CommonRouter,
+        behavior: CommonBehavior,
 
-            commonController.init();
+        settings: {
+            navigate: true
+        },
 
-            var currentHash = window.location.hash;
-
-            Bus.events.trigger('app:show', require('./common.layout'));
-
-            router.navigate('/').navigate(currentHash, {trigger: true});
+        render: function (layout) {
+            Bus.events.trigger('app:show', layout);
         }
-    };
+    });
+
+    return new Common();
 });

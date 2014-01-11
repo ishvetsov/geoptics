@@ -1,13 +1,20 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette'),
-        Bus = require('bus');
+    var Bundle = require('core/marionette.bundle'),
+        Bus = require('bus'),
 
-    return {
-        init: function () {
-            require('./guest.router')();
-            Bus.events.trigger('app:show', require('./guest.layout'));
+        GuestRouter = require('./guest.router'),
+        GuestBehavior = require('./guest.behavior');
+
+    var Guest = Bundle.extend({
+        router: GuestRouter,
+        behavior: GuestBehavior,
+
+        render: function (layout) {
+            Bus.events.trigger('app:show', layout);
         }
-    };
+    });
+
+    return new Guest();
 });

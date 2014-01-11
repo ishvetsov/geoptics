@@ -4,15 +4,11 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Bus = require('bus');
 
-    var Router = Marionette.AppRouter.extend({
+    var GuestRouter = Marionette.AppRouter.extend({
         appRoutes: {
             '*any': 'check'
         }
     });
 
-    return function () {
-        return new Router({
-            controller: require('./guest.controller').init()
-        });
-    };
+    return GuestRouter;
 });

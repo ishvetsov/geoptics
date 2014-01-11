@@ -15,5 +15,5 @@ define(function (require) {
         }
     });
 
-    return new CommonLayout();
+    return CommonLayout;
 });
