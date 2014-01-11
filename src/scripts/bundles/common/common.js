@@ -5,15 +5,15 @@ define(function (require) {
         Bus = require('bus');
 
     var CommonRouter = require('./common.router'),
-        commonController = require('./common.controller');
+        СommonController = require('./common.controller');
 
     return {
         init: function (route) {
             var router = new CommonRouter({
-                controller: commonController.handlers
+                controller: СommonController.handlers
             });
 
-            commonController.init();
+            СommonController.init();
 
             var currentHash = window.location.hash;
 

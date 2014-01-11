@@ -3,27 +3,32 @@
 define(function (require) {
     'use strict';
 
-    var guestLayout = require('./guest.layout'),
-        sessionController = require('blocks/session/session.controller'),
-        loginController = require('blocks/login/login.controller');
+    var SessionBlock = require('blocks/session/session.block'),
+        LoginBlock = require('blocks/login/login.block'),
+        CommonBundle = require('bundles/common/common'),
 
-    var CommonBundle = require('bundles/common/common');
+        guestLayout = require('./guest.layout');
+
+    var sessionBlock = SessionBlock.getInstance(),
+        loginBlock = LoginBlock.getInstance();
+        
+    loginBlock.init();
 
     var handlers = {
         check: function () {
-            sessionController.getAccessLevel() > 0 && CommonBundle.init();
+            sessionBlock.getAccessLevel() > 0 && CommonBundle.init();
         }
     };
 
     guestLayout.on('show', function () {
-        guestLayout.container.show(loginController.getInstance());
+        guestLayout.container.show(loginBlock.getInstanceView());
     });
 
-    sessionController.on('session:out', function () {
+    sessionBlock.on('session:out', function () {
         require('./guest').init();
     });
 
-    sessionController.on('session:in', function () {
+    sessionBlock.on('session:in', function () {
         handlers.check();
     });
 

@@ -4,10 +4,12 @@ define(function (require) {
     'use strict';
 
     var Marionette = require('backbone.marionette'),
-        Bus = require('bus');
+        Bus = require('bus'),
+
+        NavigationTemplate = require('text!./navigation.template.html');
 
     var NavigationView = Marionette.ItemView.extend({
-        template: _.template(require('text!./navigation.template.html')),
+        template: _.template(NavigationTemplate),
         className: 'navbar navbar-inverse navbar-fixed-top',
 
         triggers: {

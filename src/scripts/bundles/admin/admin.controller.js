@@ -3,11 +3,13 @@
 define(function (require) {
     'use strict';
 
-    var navigationController = require('blocks/navigation/navigation.controller');
+    var NavigationBlock = require('blocks/navigation/navigation.block');
+
+    var navigationBlock = NavigationBlock.getInstance();
 
     var handlers = {
         admin: function () {
-            navigationController.active('admin');
+            navigationBlock.activateItem('admin');
         }
     };
 

@@ -3,15 +3,17 @@
 define(function (require) {
     'use strict';
 
-    var navigationController = require('blocks/navigation/navigation.controller');
+    var NavigationBlock = require('blocks/navigation/navigation.block');
+
+    var navigationBlock = NavigationBlock.getInstance();
 
     var handlers = {
         journal: function () {
-            navigationController.active('journal');
+            navigationBlock.activateItem('journal');
         },
 
         graphics: function () {
-            navigationController.active('graphics');
+            navigationBlock.activateItem('graphics');
         }
     };
 
