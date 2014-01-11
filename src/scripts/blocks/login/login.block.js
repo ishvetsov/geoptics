@@ -10,24 +10,10 @@ define(function (require) {
 
     var LoginBlock = Block.extend({
         init: function () {
-            this._loginView = new LoginView();
-            this._loginView.on('login:try', SessionBlock.authorization);
+            this._view = new LoginView();
+            this._view.on('login:try', SessionBlock.authorization);
             return this;
-        },
-        
-        getInstance: function () {
-            return this;
-        },
-
-        getInstanceView: function () {
-            // Только для этапа разработки
-            if (this._loginView === null) {
-                throw 'LoginView is not created';
-            }
-            return this._loginView;
-        },
-
-        _loginView: null
+        }
     });
 
     return new LoginBlock();

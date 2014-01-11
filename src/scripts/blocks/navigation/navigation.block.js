@@ -14,31 +14,17 @@ define(function (require) {
             var userType = SessionBlock.getAccessLevel(),
                 items = NavigationConfig[userType].items;
 
-            this._navigationView = new NavigationView(items);
-            this._navigationView.on('user:click', function () {
+            this._view = new NavigationView(items);
+            this._view.on('user:click', function () {
                 SessionBlock.trigger('session:out');
             });
 
             return this;
         },
 
-        getInstance: function () {
-            return this;
-        },
-
-        getInstanceView: function () {
-            // Только для этапа разработки
-            if (this._navigationView === null) {
-                throw 'NavigationView is not created';
-            }
-            return this._navigationView;
-        },
-
         activateItem: function (name) {
-            this._navigationView.setActiveItem(name);
-        },
-
-        _navigationView: null
+            this._view.setActiveItem(name);
+        }
     });
 
     return new NavigationBlock();
