@@ -2,14 +2,16 @@
 
 define(function (require) {
     'use strict';
-    var AdminLayout = require('./admin.layout'),
-        navigationController = require('blocks/navigation/navigation.controller');
 
-    var adminLayout = new AdminLayout();
+    var NavigationBlock = require('blocks/navigation/navigation.block'),
+        AdminLayout = require('./admin.layout');
+
+    var navigationBlock = NavigationBlock.getInstance(),
+        adminLayout = new AdminLayout();
 
     var handlers = {
         admin: function () {
-            navigationController.active('admin');
+            navigationBlock.activateItem('admin');
         }
     };
 

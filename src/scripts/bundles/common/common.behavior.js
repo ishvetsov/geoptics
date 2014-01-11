@@ -3,15 +3,16 @@
 define(function (require) {
     'use strict';
 
-    var NavigationController = require('blocks/navigation/navigation.controller'),
-        SessionController = require('blocks/session/session.controller'),
-
+    var NavigationBlock = require('blocks/navigation/navigation.block'),
+        SessionBlock = require('blocks/session/session.block'),
         AdminBundle = require('bundles/admin/admin'),
         UserBundle = require('bundles/user/user'),
 
         CommonLayout = require('./common.layout');
 
-    var commonLayout = new CommonLayout();
+    var commonLayout = new CommonLayout(),
+        sessionBlock = SessionBlock.getInstance(),
+        navigationBlock = NavigationBlock.getInstance();
 
     AdminBundle.on('state:active', function (layout) {
         commonLayout.body.show(layout);
@@ -22,13 +23,13 @@ define(function (require) {
     });
 
     commonLayout.on('show', function () {
-        commonLayout.header.show(NavigationController.getInstance());
+        commonLayout.header.show(navigationBlock.getInstanceView());
     });
 
     var initialize = function () {
-        NavigationController.init();
+        navigationBlock.init();
         UserBundle.init();
-        SessionController.getAccessLevel() > 1 && AdminBundle.init();
+        sessionBlock.getAccessLevel() > 1 && AdminBundle.init();
     };
 
     var handlers = {

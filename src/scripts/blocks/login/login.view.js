@@ -4,13 +4,14 @@ define(function (require) {
     'use strict';
 
     var Marionette = require('backbone.marionette'),
-        Rivets = require('rivets');
-
-    var LoginModel = require('./login.model');
+        Rivets = require('rivets'),
+        
+        LoginModel = require('./login.model'),
+        LoginTemplate = require('text!./login.template.html');
 
     var LoginView = Marionette.ItemView.extend({
         model: new LoginModel(),
-        template: _.template(require('text!./login.template.html')),
+        template: _.template(LoginTemplate),
 
         ui: {
             signIn: '.login__signin'

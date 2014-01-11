@@ -4,14 +4,18 @@ define(function (require) {
     'use strict';
 
     var Cookie = require('jquery.cookie'),
-        Marionette = require('backbone.marionette'),
 
+        Block = require('core/marionette.block'),
         User = require('entities/user.model');
 
-    var SessionController = Marionette.Controller.extend({
+    var SessionController = Block.extend({
         initialize: function () {
             _.bindAll(this, '_onSessionOut', 'authorization');
             this.on('session:out', this._onSessionOut);
+        },
+
+        getInstance: function () {
+            return this;
         },
 
         authorization: function (authData) {
@@ -33,7 +37,7 @@ define(function (require) {
         },
 
         isAuthorized: function () {
-            return $.cookie('isAuth');
+            return $.cookie('isAuth') === 'true';
         },
 
         _onSessionOut: function () {

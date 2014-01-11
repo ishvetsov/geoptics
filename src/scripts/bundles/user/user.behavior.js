@@ -3,18 +3,20 @@
 define(function (require) {
     'use strict';
 
-    var navigationController = require('blocks/navigation/navigation.controller');
-    var UserLayout = require('./user.layout');
+    var NavigationBlock = require('blocks/navigation/navigation.block'),
 
-    var userLayout = new UserLayout();
+        UserLayout = require('./user.layout');
+
+    var navigationBlock = NavigationBlock.getInstance(),
+        userLayout = new UserLayout();
 
     var handlers = {
         journal: function () {
-            navigationController.active('journal');
+            navigationBlock.activateItem('journal');
         },
 
         graphics: function () {
-            navigationController.active('graphics');
+            navigationBlock.activateItem('graphics');
         }
     };
 
