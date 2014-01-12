@@ -3,9 +3,10 @@
 define(function (require) {
     'use strict';
 
-    var
-        Marionette = require('backbone.marionette'),
-        Bus = require('./bus');
+    var Marionette = require('backbone.marionette'),
+        Bus = require('./bus'),
+
+        GuestBundle = require('./bundles/guest/guest.bundle');
 
     var app = new Marionette.Application();
 
@@ -20,7 +21,7 @@ define(function (require) {
     });
 
     app.addInitializer(function () {
-        require('./bundles/guest/guest.bundle').init();
+        GuestBundle.getInstance().init();
     });
 
     return app;

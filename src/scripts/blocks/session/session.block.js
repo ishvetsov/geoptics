@@ -3,7 +3,8 @@
 define(function (require) {
     'use strict';
 
-    var Cookie = require('jquery.cookie'),
+    var Backbone = require('backbone'),
+        Cookie = require('jquery.cookie'),
 
         Block = require('core/marionette.block'),
         User = require('entities/user.model');
@@ -43,6 +44,7 @@ define(function (require) {
         _onSessionOut: function () {
             this._currentUser = null;
             $.removeCookie('isAuth');
+
         },
 
         _currentUser: null,

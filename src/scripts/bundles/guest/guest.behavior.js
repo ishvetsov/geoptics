@@ -25,7 +25,13 @@ define(function (require) {
     });
 
     sessionBlock.on('session:out', function () {
-        require('./guest.bundle').init();
+        // TODO: Выпилить отсюда require, щас не будет работать,
+        // потому что предположительно существует циклическая зависимость
+        // GuestBundle и GuestBehavior.
+        // Найти способ не подгружать модуль GuestBundle в этом модуле,
+        // т.к. это ошибка проектирования.
+        var GuestBundle = require('./guest.bundle');
+        GuestBundle.getInstance().init();
     });
 
     sessionBlock.on('session:in', function () {
