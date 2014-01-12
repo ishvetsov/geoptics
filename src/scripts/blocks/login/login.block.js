@@ -1,4 +1,4 @@
-/* global _, Backbone */
+/* global _ */
 
 define(function (require) {
     'use strict';
@@ -13,7 +13,17 @@ define(function (require) {
             this._view = new LoginView();
             this._view.on('login:try', SessionBlock.authorization);
             return this;
-        }
+        },
+
+        getInstance: function () {
+            return this;
+        },
+
+        getInstanceView: function () {
+            return this._view;
+        },
+
+        _view: null
     });
 
     return new LoginBlock();

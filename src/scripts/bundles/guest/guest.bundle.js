@@ -7,14 +7,18 @@ define(function (require) {
         GuestRouter = require('./guest.router'),
         GuestBehavior = require('./guest.behavior');
 
-    var Guest = Bundle.extend({
+    var GuestBundle = Bundle.extend({
         router: GuestRouter,
         behavior: GuestBehavior,
+
+        getInstance: function () {
+            return this;
+        },
 
         render: function (layout) {
             Bus.events.trigger('app:show', layout);
         }
     });
 
-    return new Guest();
+    return new GuestBundle();
 });

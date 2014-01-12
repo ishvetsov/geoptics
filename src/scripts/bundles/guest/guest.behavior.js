@@ -5,17 +5,18 @@ define(function (require) {
 
     var SessionBlock = require('blocks/session/session.block'),
         LoginBlock = require('blocks/login/login.block'),
-        CommonBundle = require('bundles/common/common'),
+        CommonBundle = require('bundles/common/common.bundle'),
 
         GuestLayout = require('./guest.layout');
 
     var sessionBlock = SessionBlock.getInstance(),
         loginBlock = LoginBlock.init().getInstance(),
+        commonBundle = CommonBundle.getInstance(),
         guestLayout = new GuestLayout();
 
     var handlers = {
         check: function () {
-            sessionBlock.getAccessLevel() > 0 && CommonBundle.init();
+            sessionBlock.getAccessLevel() > 0 && commonBundle.init();
         }
     };
 
@@ -24,7 +25,7 @@ define(function (require) {
     });
 
     sessionBlock.on('session:out', function () {
-        require('./guest').init();
+        require('./guest.bundle').init();
     });
 
     sessionBlock.on('session:in', function () {

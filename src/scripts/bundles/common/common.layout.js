@@ -3,10 +3,12 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette');
+    var Marionette = require('backbone.marionette'),
+
+        CommonTemplate = require('text!./common.template.html');
 
     var CommonLayout = Marionette.Layout.extend({
-        template: _.template(require('text!./common.template.html')),
+        template: _.template(CommonTemplate),
         className: 'common',
 
         regions: {

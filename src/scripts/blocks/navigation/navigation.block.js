@@ -22,9 +22,19 @@ define(function (require) {
             return this;
         },
 
+        getInstance: function () {
+            return this;
+        },
+
+        getInstanceView: function () {
+            return this._view;
+        },
+
         activateItem: function (name) {
             this._view.setActiveItem(name);
-        }
+        },
+
+        _view: null
     });
 
     return new NavigationBlock();

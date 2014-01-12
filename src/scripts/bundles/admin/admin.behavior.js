@@ -4,6 +4,7 @@ define(function (require) {
     'use strict';
 
     var NavigationBlock = require('blocks/navigation/navigation.block'),
+    
         AdminLayout = require('./admin.layout');
 
     var navigationBlock = NavigationBlock.getInstance(),

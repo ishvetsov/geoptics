@@ -8,7 +8,7 @@ define(function (require) {
         Block = require('core/marionette.block'),
         User = require('entities/user.model');
 
-    var SessionController = Block.extend({
+    var SessionBlock = Block.extend({
         initialize: function () {
             _.bindAll(this, '_onSessionOut', 'authorization');
             this.on('session:out', this._onSessionOut);
@@ -59,5 +59,5 @@ define(function (require) {
         }
     });
 
-    return new SessionController();
+    return new SessionBlock();
 });
