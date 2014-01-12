@@ -31,7 +31,7 @@ define(function (require) {
                 },
                 {
                     name: 'Администрирование',
-                    href: '#admin',
+                    href: '#admin/users',
                     mod: 'admin'
                 }
             ]

@@ -1,0 +1,7 @@
+<ul class="nav nav-pills nav-stacked">
+    {{ _.each(it.items, function (item) { }}
+        <li class="item" data-type="{{= item.mod }}">
+            <a href="{{= item.href }}">{{= item.name }}</a>
+        </li>
+    {{ }) }}
+</ul>

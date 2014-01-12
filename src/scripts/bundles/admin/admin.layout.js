@@ -12,7 +12,8 @@ define(function (require) {
         className: 'admin',
 
         regions: {
-            container: '.admin__contianer',
+            navigation: '#admin-navigation',
+            container: '#admin-container',
         }
     });
 

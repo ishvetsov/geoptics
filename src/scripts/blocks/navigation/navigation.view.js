@@ -4,7 +4,6 @@ define(function (require) {
     'use strict';
 
     var Marionette = require('backbone.marionette'),
-        Bus = require('bus'),
 
         NavigationTemplate = require('text!./navigation.template.html');
 
@@ -30,7 +29,7 @@ define(function (require) {
 
         serializeData: function () {
             return {
-                items: this.options,
+                items: this.options
             };
         }
     });
