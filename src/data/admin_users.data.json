@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "name": "Matthew Greene",
+        "group": "Admin1"
+    },
+    {
+        "id": 2,
+        "name": "George Payne",
+        "group": "Admin"
+    }
+]

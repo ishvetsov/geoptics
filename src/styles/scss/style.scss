@@ -1,5 +1,9 @@
 @import url(vendors/bootstrap.css);
 
-@import "clearfix";
-@import "common";
-@import "admin_navigation.block"
+@import "common/clearfix.common";
+
+@import "bundles/common.bundle";
+@import "bundles/admin.bundle";
+
+@import "blocks/admin_navigation.block";
+@import "blocks/admin_users.block";

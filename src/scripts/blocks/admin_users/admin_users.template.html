@@ -1,0 +1,14 @@
+<table class="admin_users-table table table-condensed">
+    <tbody>
+        <tr rv-each-user="users:models">
+            <td class="user-table-name">{ user:name }</td>
+            <td>{ user:group }</td>
+            <td class="user-table-controls">
+                <button
+                    rv-on-click="view.edit"
+                    type="button"
+                    class="btn btn-default btn-xs">Редактировать</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

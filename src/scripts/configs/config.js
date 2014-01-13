@@ -5,5 +5,9 @@ define(function (require) {
     require('./backbone.config')();
     require('rivets.adapter');
 
-    return {};
+    var rest = require('./rest.config');
+
+    return {
+        rest: rest['local']
+    };
 });

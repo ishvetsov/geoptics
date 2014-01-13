@@ -1,4 +1,8 @@
+/* global _ */
+
 define(function (require) {
+    'use strict';
+
     var Marionette = require('backbone.marionette'),
 
         AdminNavigationTemplate = require('text!./admin_navigation.template.html');
@@ -9,10 +13,6 @@ define(function (require) {
         
         ui: {
             items: 'li'
-        },
-
-        onRender: function () {
-            // console.log(this.ui.items);
         },
 
         setActiveItem: function (mod) {
