@@ -44,7 +44,6 @@ define(function (require) {
         _onSessionOut: function () {
             this._currentUser = null;
             $.removeCookie('isAuth');
-
         },
 
         _currentUser: null,

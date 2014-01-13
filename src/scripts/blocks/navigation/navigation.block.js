@@ -12,9 +12,11 @@ define(function (require) {
     var NavigationBlock = Block.extend({
         init: function () {
             var userType = SessionBlock.getAccessLevel(),
-                items = NavigationConfig[userType].items;
+                configView = NavigationConfig[userType];
 
-            this._view = new NavigationView(items);
+            this._view = new NavigationView({
+                config: configView
+            });
             this._view.on('user:click', function () {
                 SessionBlock.trigger('session:out');
             });

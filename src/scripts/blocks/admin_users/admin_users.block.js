@@ -12,12 +12,15 @@ define(function (require) {
         settings: {
             isSingleton: true
         },
+
         triggers: {
             'view:user:edit': 'user:edit'
         },
+
         viewOptions: {
             collection: adminUsersCollection
         },
+        
         view: AdminUsersView,
 
         fetch: function () {
