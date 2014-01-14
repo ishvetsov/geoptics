@@ -38,5 +38,8 @@
     "src/scripts/vendors/rivets",
 
     "bower_components/rivets-backbone-adapter/rivets-backbone.js":
-    "src/scripts/vendors/rivets"
+    "src/scripts/vendors/rivets",
+
+    "bower_components/momentjs/moment.js":
+    "src/scripts/vendors/moment"
 }
