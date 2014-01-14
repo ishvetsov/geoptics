@@ -6,15 +6,15 @@ define(function (require) {
 
         Config = require('configs/config'),
 
-        Comment = require('./comment'),
-        Cluster = require('./cluster');
+        Well = require('./well.entity'),
+        Comment = require('./comment.entity');
 
-    var DepositModel = Backbone.AssociatedModel.extend({
+    var ClusterModel = Backbone.AssociatedModel.extend({
         defaults: {
             name: '',
             number: '',
             comments: [],
-            clusters: []
+            wells: []
         },
 
         relations: [
@@ -25,18 +25,18 @@ define(function (require) {
             },
             {
                 type: Backbone.Many,
-                key: 'clusters',
-                relatedModel: Cluster.Model
+                key: 'wells',
+                relatedModel: Well.Model
             }
         ]
     });
 
-    var DepositCollection = Backbone.Collection.extend({
-        model: DepositModel
+    var ClusterCollection = Backbone.Collection.extend({
+        model: ClusterModel
     });
 
     return {
-        Model: DepositModel,
-        Collection: DepositCollection
+        Model: ClusterModel,
+        Collection: ClusterCollection
     };
 });

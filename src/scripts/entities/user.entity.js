@@ -2,9 +2,9 @@ define(function (require) {
     'use strict';
 
     var Backbone = require('backbone'),
-        Config = require('configs/config');
+        Associations = require('backbone.associations');
 
-    var UserModel = Backbone.Model.extend();
+    var UserModel = Backbone.AssociatedModel.extend();
 
     var UsersCollection = Backbone.Collection.extend({
         model: UserModel

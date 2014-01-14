@@ -4,14 +4,16 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
-        Comment = require('./comment');
+        Config = require('configs/config'),
 
-    var TemperatureSensorModel = Backbone.AssociatedModel.extend({
+        Comment = require('./comment.entity');
+
+    var PressureSensorModel = Backbone.AssociatedModel.extend({
         defaults: {
             name: '',
             comments: [],
             channelNumber: '',
-            cableDepth: ''
+            depthPlacement: ''
         },
 
         relations: [
@@ -23,12 +25,12 @@ define(function (require) {
         ]
     });
 
-    var TemperatureSensorCollection = Backbone.Collection.extend({
-        model: TemperatureSensorModel
+    var PressureSensorCollection = Backbone.Collection.extend({
+        model: PressureSensorModel
     });
 
     return {
-        Model: TemperatureSensorModel,
-        Collection: TemperatureSensorCollection
+        Model: PressureSensorModel,
+        Collection: PressureSensorCollection
     };
 });
