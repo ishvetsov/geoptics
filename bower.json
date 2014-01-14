@@ -11,6 +11,7 @@
         "requirejs-text": "2.*",
         "bootstrap": "3.*",
         "rivets": "0.6.5",
-        "rivets-backbone-adapter": "1.*"
+        "rivets-backbone-adapter": "1.*",
+        "momentjs": "2.*"
     }
 }

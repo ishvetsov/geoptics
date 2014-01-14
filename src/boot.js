@@ -13,7 +13,8 @@ require.config({
         'text': 'vendors/require/text',
         'bootstrap': 'vendors/bootstrap/bootstrap',
         'rivets': 'vendors/rivets/rivets',
-        'rivets.adapter': 'vendors/rivets/rivets-backbone'
+        'rivets.adapter': 'vendors/rivets/rivets-backbone',
+        'moment': 'vendors/moment/moment'
     },
 
     map: {
@@ -58,7 +59,7 @@ require.config({
 require([
     'app',
     'bootstrap',
-    'configs/config',
+    'configs/config'
 ], function (app) {
     app.start();
 });
