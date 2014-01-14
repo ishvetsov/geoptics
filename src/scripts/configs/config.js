@@ -3,7 +3,7 @@ define(function (require) {
 
     require('./underscore.config')();
     require('./backbone.config')();
-    require('rivets.adapter');
+    require('./rivets.config')();
 
     var rest = require('./rest.config');
 

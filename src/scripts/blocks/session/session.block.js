@@ -7,7 +7,7 @@ define(function (require) {
         Cookie = require('jquery.cookie'),
 
         Block = require('core/marionette.block'),
-        User = require('entities/user.model');
+        User = require('entities/user.entity');
 
     var SessionBlock = Block.extend({
         initialize: function () {

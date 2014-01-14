@@ -16,8 +16,7 @@ define(function (require) {
             _.bindAll(this, 'edit');
 
             this.binding = Rivets.bind(this.el, {
-                users: this.collection,
-                view: this
+                users: this.collection
             });
         },
 

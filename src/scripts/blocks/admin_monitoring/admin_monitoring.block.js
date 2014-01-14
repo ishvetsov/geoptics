@@ -6,10 +6,6 @@ define(function (require) {
         AdminMonitoringView = require('./admin_monitoring.view');
 
     var AdminMonitoringBlock = Block.create({
-        settings: {
-            isSingleton: true
-        },
-
         view: AdminMonitoringView,
 
         fetch: function () {

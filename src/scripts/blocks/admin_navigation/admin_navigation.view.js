@@ -16,10 +16,13 @@ define(function (require) {
         },
 
         setActiveItem: function (mod) {
-            this.ui.items
-                .removeClass('active')
+            this.disactiveAllItems()
                 .filter('li[data-type=' + mod + ']')
                 .addClass('active');
+        },
+
+        disactiveAllItems: function () {
+            return this.ui.items.removeClass('active');
         },
 
         serializeData: function () {
