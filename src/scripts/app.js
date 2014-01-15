@@ -9,7 +9,7 @@ define(function (require) {
         GuestBundle = require('./bundles/guest/guest.bundle');
 
     var app = new Marionette.Application();
-
+ 
     app.addRegions({
         container: '.app__container'
     });

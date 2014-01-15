@@ -32,7 +32,8 @@ define(function (require) {
     });
 
     var DepositCollection = Backbone.Collection.extend({
-        model: DepositModel
+        model: DepositModel,
+        url: Config.rest.deposits
     });
 
     return {
