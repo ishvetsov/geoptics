@@ -6,9 +6,9 @@ define(function (require) {
 
         Config = require('configs/config'),
 
-        PressureSensor = require('./pressure_sensor'),
-        TemperatureSensor = require('./temperature_sensor'),
-        Comment = require('./comment');
+        PressureSensor = require('./pressure_sensor.entity'),
+        TemperatureSensor = require('./temperature_sensor.entity'),
+        Comment = require('./comment.entity');
 
     var WellModel = Backbone.Model.extend({
         defaults: {

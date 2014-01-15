@@ -7,7 +7,7 @@ define(function (require) {
 
         Config = require('configs/config'),
 
-        User = require('./user');
+        User = require('./user.entity');
 
     var CommentModel = Backbone.AssociatedModel.extend({
         defaults: {

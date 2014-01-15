@@ -1,34 +1,20 @@
 define(function (require) {
     'use strict';
 
-    var Block = require('core/marionette.block'),
+    var Block = require('core/block'),
 
         AdminNavigationView = require('./admin_navigation.view'),
         AdminNavigationConfig = require('./admin_navigation.config');
 
-    var AdminNavigationBlock = Block.extend({
-        init: function () {
-            var items = AdminNavigationConfig.items;
+    var AdminNavigationBlock = Block.create({
+        view: AdminNavigationView,
+        viewOptions: AdminNavigationConfig.items,
 
-            this._view = new AdminNavigationView(items);
-
-            return this;
-        },
-
-        getInstance: function () {
-            return this;
-        },
-
-        getInstanceView: function () {
-            return this._view;
-        },
-
-        activateItem: function (name) {
-            this._view.setActiveItem(name);
-        },
-
-        _view: null
+        functions: {
+            'view:setActiveItem': 'activateItem',
+            'view:disactiveAllItems': 'disactivateAll'
+        }
     });
 
-    return new AdminNavigationBlock();
+    return AdminNavigationBlock;
 });

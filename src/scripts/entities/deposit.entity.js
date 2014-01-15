@@ -6,8 +6,8 @@ define(function (require) {
 
         Config = require('configs/config'),
 
-        Comment = require('./comment'),
-        Cluster = require('./cluster');
+        Comment = require('./comment.entity'),
+        Cluster = require('./cluster.entity');
 
     var DepositModel = Backbone.AssociatedModel.extend({
         defaults: {

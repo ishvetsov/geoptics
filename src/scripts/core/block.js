@@ -17,12 +17,20 @@ define(function (require) {
                 view: this._viewInstance
             };
 
-            _.each(this.triggers, function(val, key) {
-                var eventInfo = this._getEventInfo(key);
+            _.each(this.triggers, function (val, key) {
+                var eventInfo = this._getDelegateInfo(key);
 
-                eventInfo.target.on(eventInfo.eventName, function (data) {
+                eventInfo.target.on(eventInfo.name, function (data) {
                     this.trigger(val, data);
                 }, this);
+            }, this);
+
+            _.each(this.functions, function (val, key) {
+                var functionInfo = this._getDelegateInfo(key);
+
+                this[val] = _.bind(
+                    functionInfo.target[functionInfo.name],
+                    functionInfo.target);
             }, this);
 
             _.isFunction(this.onInit) && this.onInit();
@@ -40,20 +48,23 @@ define(function (require) {
             return this._viewInstance;
         },
 
-        _getEventInfo: function (eventFullName) {
-            var targetName = eventFullName.split(':')[0],
-                eventName = eventFullName.match(/:.*(?=$)/);
+        _getDelegateInfo: function (fullName) {
+            var targetName = fullName.split(':')[0],
+                name = fullName.match(/:.*(?=$)/);
 
             return {
                 target: this._instanceMap[targetName],
-                eventName: eventName ? eventName[0].substr(1) : ''
+                name: name ? name[0].substr(1) : ''
             };
         }
     });
 
     var Block = {
         create: function (arg) {
-            var settings = arg && arg.settings ? arg.settings : {};
+            var settings = _.extend({
+                isSingleton: true,
+            }, arg.settings);
+
             return {
                 _constructor: MarionetteBlock.extend(arg),
                 getInstance: function () {

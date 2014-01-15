@@ -6,10 +6,6 @@ define(function (require) {
         AdminWellsView = require('./admin_wells.view');
 
     var AdminWellsBlock = Block.create({
-        settings: {
-            isSingleton: true
-        },
-
         view: AdminWellsView,
 
         fetch: function () {

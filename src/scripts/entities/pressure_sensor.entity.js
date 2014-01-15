@@ -6,15 +6,14 @@ define(function (require) {
 
         Config = require('configs/config'),
 
-        Well = require('./well'),
-        Comment = require('./comment');
+        Comment = require('./comment.entity');
 
-    var ClusterModel = Backbone.AssociatedModel.extend({
+    var PressureSensorModel = Backbone.AssociatedModel.extend({
         defaults: {
             name: '',
-            number: '',
             comments: [],
-            wells: []
+            channelNumber: '',
+            depthPlacement: ''
         },
 
         relations: [
@@ -22,21 +21,16 @@ define(function (require) {
                 type: Backbone.Many,
                 key: 'comments',
                 relatedModel: Comment.Model
-            },
-            {
-                type: Backbone.Many,
-                key: 'wells',
-                relatedModel: Well.Model
             }
         ]
     });
 
-    var ClusterCollection = Backbone.Collection.extend({
-        model: ClusterModel
+    var PressureSensorCollection = Backbone.Collection.extend({
+        model: PressureSensorModel
     });
 
     return {
-        Model: ClusterModel,
-        Collection: ClusterCollection
+        Model: PressureSensorModel,
+        Collection: PressureSensorCollection
     };
 });

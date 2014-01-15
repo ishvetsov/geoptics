@@ -4,7 +4,7 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
-        Comment = require('./comment');
+        Comment = require('./comment.entity');
 
     var TemperatureSensorModel = Backbone.AssociatedModel.extend({
         defaults: {

@@ -9,19 +9,10 @@ define(function (require) {
     var adminUsersCollection = new AdminUsersCollection();
 
     var AdminUsersBlock = Block.create({
-        settings: {
-            isSingleton: true
-        },
-
-        triggers: {
-            'view:user:edit': 'user:edit'
-        },
-
+        view: AdminUsersView,
         viewOptions: {
             collection: adminUsersCollection
         },
-        
-        view: AdminUsersView,
 
         fetch: function () {
             return adminUsersCollection.fetch();

@@ -6,9 +6,9 @@ define(function (require) {
     var User = require('entities/user.entity'),
         Config = require('configs/config');
 
-    var AdminUsersCollection = User.Collection.extend({
-        url: Config.rest.adminUsers
+    var AdminUserModel = User.Model.extend({
+        urlRoot: Config.rest.adminUser
     });
 
-    return AdminUsersCollection;
+    return AdminUserModel;
 });
