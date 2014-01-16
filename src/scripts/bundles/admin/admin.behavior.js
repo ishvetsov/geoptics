@@ -27,16 +27,12 @@ define(function (require) {
 
     var initialize = function () {
         adminNavigationBlock.init();
-        adminUsersBlock.init();
-        adminUserBlock.init();
-        adminWellsBlock.init();
-        adminMonitoringBlock.init();
     };
 
     var handlers = {
         users: function () {
             adminNavigationBlock.activateItem('users');
-
+            adminUsersBlock.init();
             adminUsersBlock.fetch()
                 .then(function () {
                     adminLayout.container.show(adminUsersBlock.getViewInstance());
@@ -45,7 +41,7 @@ define(function (require) {
 
         user: function (id) {
             adminNavigationBlock.disactivateAll();
-
+            adminUserBlock.init();
             adminUserBlock.fetch(id)
                 .then(function () {
                     adminLayout.container.show(adminUserBlock.getViewInstance());
@@ -54,17 +50,16 @@ define(function (require) {
 
         wells: function () {
             adminNavigationBlock.activateItem('wells');
-
-            // adminWellsBlock.fetch()
-            //     .then(function () {
-            //         adminLayout.container.show(adminWellsBlock.getInstanceView());
-            //     });
-            adminLayout.container.show(adminWellsBlock.getViewInstance());
+            adminWellsBlock.init();
+            adminWellsBlock.fetch()
+                .then(function () {
+                    adminLayout.container.show(adminWellsBlock.getViewInstance());
+                });
         },
 
         monitoring: function () {
             adminNavigationBlock.activateItem('monitoring');
-
+            adminMonitoringBlock.init();
             adminLayout.container.show(adminMonitoringBlock.getViewInstance());
         }
     };
