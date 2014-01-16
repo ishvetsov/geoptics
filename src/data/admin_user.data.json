@@ -6,5 +6,11 @@
     "email": "patrickw@novator.ru",
     "tel": "",
     "comment": "",
-    "isActive": true
+    "isActive": true,
+    "groups": [
+        {
+            "id": 1,
+            "name": "Все пользователи"
+        }
+    ]
 }
