@@ -15,23 +15,20 @@ define(function (require) {
         view: AdminWellsLayout,
 
         onInit: function () {
+            _.bindAll(this, '_setNoAttachedWellsRegion');
+
             noAttachedWellsBlock.init();
+
+            this._viewInstance.on('show', this._setNoAttachedWellsRegion);
         },
 
         fetch: function () {
-            var _this = this;
-            return noAttachedWellsBlock.fetch().then(function () {
-                _this._viewInstance.noAttachedWellsRegion.show(
-                    noAttachedWellsBlock.getViewInstance());
-            });
-            // var _this = this;
-            // return $.when(
-            //     noAttachedWellsBlock.fetch()
+            return $.when(noAttachedWellsBlock.fetch());
+        },
 
-            //     ).then(function () {
-            //         _this._viewInstance.noAttachedWellsRegion.show(
-            //             noAttachedWellsBlock.getViewInstance());
-            //     });
+        _setNoAttachedWellsRegion: function () {
+            this._viewInstance.noAttachedWellsRegion.show(
+                noAttachedWellsBlock.getViewInstance());
         }
     });
 
