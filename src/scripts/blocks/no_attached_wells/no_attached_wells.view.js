@@ -11,10 +11,6 @@ define(function (require) {
 				return _.template(NoAttachedWellsTemplate);
 			}
 			return _.template(NoAttachedWellsEmptyTemplate);
-		},
-
-		onRender: function () {
-			console.log('render NoAttachedWellsView');
 		}
 	});
 
