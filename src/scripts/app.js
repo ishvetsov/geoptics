@@ -11,10 +11,11 @@ define(function (require) {
     var app = new Marionette.Application();
 
     app.addRegions({
-        container: '.app__container'
+        containerRegion: '.app__container'
     });
 
-    Bus.events.on('app:show', _.bind(app.container.show, app.container));
+    Bus.events.on('app:show', _.bind(app.containerRegion.show,
+        app.containerRegion));
 
     app.on('initialize:after', function () {
         Backbone.history.start();

@@ -1,4 +1,4 @@
-/* global Backbone */
+/* global Backbone, _ */
 
 define(function (require) {
     'use strict';
@@ -24,45 +24,73 @@ define(function (require) {
     });
 
     var initialize = function () {
+<<<<<<< HEAD
         b.adminUsers.init();
         b.adminUser.init();
         b.adminWells.init();
         b.adminMonitoring.init();
         b.adminNavigation.init();
+=======
+        adminNavigationBlock.init();
+>>>>>>> a8ff4b764a5729ab247e88a664a3912c987e9e7d
     };
 
     var handlers = {
         users: function () {
+<<<<<<< HEAD
             b.adminNavigation.activateItem('users');
 
             b.adminUsers.fetch()
+=======
+            adminNavigationBlock.activateItem('users');
+            adminUsersBlock.init();
+            adminUsersBlock.fetch()
+>>>>>>> a8ff4b764a5729ab247e88a664a3912c987e9e7d
                 .then(function () {
                     adminLayout.container.show(b.adminUsers.getViewInstance());
                 });
         },
 
         user: function (id) {
+<<<<<<< HEAD
             b.adminNavigation.disactivateAll();
 
             b.adminUser.fetch(id)
+=======
+            adminNavigationBlock.disactivateAll();
+            adminUserBlock.init();
+            adminUserBlock.fetch(id)
+>>>>>>> a8ff4b764a5729ab247e88a664a3912c987e9e7d
                 .then(function () {
                     adminLayout.container.show(b.adminUser.getViewInstance());
                 });
         },
 
         wells: function () {
+<<<<<<< HEAD
             b.adminNavigation.activateItem('wells');
 
-            b.adminWells.fetch()
-                .then(function () {
-                    adminLayout.container.show(b.adminWells.getViewInstance());
-                });
+            adminLayout.container.show(b.adminWells.getViewInstance());
         },
 
         monitoring: function () {
             b.adminNavigation.activateItem('monitoring');
 
             adminLayout.container.show(b.adminMonitoring.getViewInstance());
+=======
+            adminNavigationBlock.activateItem('wells');
+            adminWellsBlock.init();
+            adminWellsBlock.fetch()
+                .then(function () {
+                    adminLayout.container.show(adminWellsBlock.getViewInstance());
+                });
+        },
+
+        monitoring: function () {
+            adminNavigationBlock.activateItem('monitoring');
+            adminMonitoringBlock.init();
+            adminLayout.container.show(adminMonitoringBlock.getViewInstance());
+>>>>>>> a8ff4b764a5729ab247e88a664a3912c987e9e7d
         }
     };
 

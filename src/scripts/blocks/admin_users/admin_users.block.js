@@ -10,6 +10,7 @@ define(function (require) {
 
     var AdminUsersBlock = Block.create({
         view: AdminUsersView,
+        
         viewOptions: {
             collection: adminUsersCollection
         },
