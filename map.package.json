@@ -33,6 +33,9 @@
     "bower_components/bootstrap/dist/css/bootstrap.css":
     "src/styles/vendors",
 
+    "bower_components/bootstrap/dist/fonts/*":
+    "src/styles/fonts/",
+
 
     "bower_components/rivets/dist/rivets.js":
     "src/scripts/vendors/rivets",

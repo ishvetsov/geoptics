@@ -21,7 +21,7 @@ define(function (require) {
         },
 
         resetModel: function () {
-            adminUserModel.clear();
+            adminUserModel.clear().set('groups', []);
             return this;
         }
     });

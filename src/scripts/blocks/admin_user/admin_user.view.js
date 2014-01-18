@@ -12,8 +12,27 @@ define(function (require) {
         template: _.template(AdminUserTemplate),
         className: 'admin_user',
 
+        initialize: function () {
+            _.bindAll(this, 'addGroup');
+        },
+
         onRender: function () {
-            this.binding = Rivets.bind(this.el, this.model);
+            this.binding = Rivets.bind(this.el, {
+                model: this.model,
+                view: this
+            });
+        },
+
+        addGroup: function () {
+            // Dummy
+            this._group.id = Math.random();
+
+            this.model.get('groups').add(this._group);
+        },
+
+        _group: {
+            id: '',
+            name: ''
         }
     });
 
