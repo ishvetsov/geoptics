@@ -1,12 +1,15 @@
-/* global Backbone, _ */
+/* global _ */
 
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette'),
-        Bus = require('bus');
+    var Marionette = require('backbone.marionette');
 
-    Marionette.Bundle = Marionette.Controller.extend({
+    var MarionetteBundle = Marionette.Controller.extend({
+        initialize: function () {
+            _.bindAll(this, 'init');
+        },
+
         init: function () {
             this._settings = _.extend({
                 navigate: false
@@ -54,5 +57,18 @@ define(function (require) {
         }
     });
 
-    return Marionette.Bundle;
+    var Bundle = {
+        create: function (arg) {
+            return {
+                _constructor: MarionetteBundle.extend(arg),
+                getInstance: function () {
+                    return typeof this._instance !== 'undefined'
+                        ? this._instance
+                        : this._instance = new this._constructor();
+                }
+            };
+        }
+    };
+
+    return Bundle;
 });

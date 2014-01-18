@@ -15,56 +15,59 @@ define(function (require) {
         AdminNavigation: require('blocks/admin_navigation/admin_navigation.block')
     };
 
-    var b = Utils.getInstances(Blocks),
+    var blocks = Utils.getInstances(Blocks),
         adminLayout = new AdminLayout();
 
     adminLayout.on('show', function () {
-        adminLayout.navigation.show(b.adminNavigation.getViewInstance());
-        b.navigation.activateItem('admin');
+        adminLayout.navigation.show(blocks.adminNavigation.getViewInstance());
+        blocks.navigation.activateItem('admin');
     });
 
     var initialize = function () {
-        b.adminUsers.init();
-        b.adminUser.init();
-        b.adminWells.init();
-        b.adminMonitoring.init();
-        b.adminNavigation.init();
+        blocks.adminUsers.init();
+        blocks.adminUser.init();
+        blocks.adminWells.init();
+        blocks.adminMonitoring.init();
+        blocks.adminNavigation.init();
     };
 
     var handlers = {
         users: function () {
-            b.adminNavigation.activateItem('users');
-            b.adminUsers.fetch()
+            blocks.adminNavigation.activateItem('users');
+            blocks.adminUsers.fetch()
                 .then(function () {
-                    adminLayout.container.show(b.adminUsers.getViewInstance());
+                    adminLayout.container.show(
+                        blocks.adminUsers.getViewInstance());
                 });
         },
 
         user: function (id) {
-            b.adminNavigation.disactivateAll();
-            b.adminUser.fetch(id)
+            blocks.adminNavigation.disactivateAll();
+            blocks.adminUser.fetch(id)
                 .then(function () {
-                    adminLayout.container.show(b.adminUser.getViewInstance());
+                    adminLayout.container.show(
+                        blocks.adminUser.getViewInstance());
                 });
         },
 
         newUser: function () {
-            b.adminNavigation.disactivateAll();
+            blocks.adminNavigation.disactivateAll();
             adminLayout.container.show(
-                b.adminUser.resetModel().getViewInstance());
+                blocks.adminUser.resetModel().getViewInstance());
         },
 
         wells: function () {
-            b.adminNavigation.activateItem('wells');
-            b.adminWells.fetch()
+            blocks.adminNavigation.activateItem('wells');
+            blocks.adminWells.fetch()
                 .then(function () {
-                    adminLayout.container.show(b.adminWells.getViewInstance());
+                    adminLayout.container.show(
+                        blocks.adminWells.getViewInstance());
                 });
         },
 
         monitoring: function () {
-            b.adminNavigation.activateItem('monitoring');
-            adminLayout.container.show(b.adminMonitoring.getViewInstance());
+            blocks.adminNavigation.activateItem('monitoring');
+            adminLayout.container.show(blocks.adminMonitoring.getViewInstance());
         }
     };
 

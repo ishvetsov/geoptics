@@ -4,44 +4,36 @@ define(function (require) {
     'use strict';
 
     var Utils = require('core/utils'),
-        CommonBundle = require('bundles/common/common.bundle'),
         GuestLayout = require('./guest.layout');
 
     var Blocks = {
-        Session: require('blocks/session/session.block'),
-        Login: require('blocks/login/login.block')
-    };
+            Session: require('blocks/session/session.block'),
+            Login: require('blocks/login/login.block')
+        },
+        Bundles = {
+            Common: require('bundles/common/common.bundle')
+        };
 
-    var b = Utils.getInstances(Blocks),
-        commonBundle = CommonBundle.getInstance(),
+    var blocks = Utils.getInstances(Blocks),
+        commonBundle = Bundles.Common.getInstance(),
         guestLayout = new GuestLayout();
 
     var initialize = function () {
-        b.session.init();
-        b.login.init();
+        blocks.session.init();
+        blocks.login.init();
     };
 
     guestLayout.on('show', function () {
-        guestLayout.container.show(b.login.getViewInstance());
+        guestLayout.container.show(blocks.login.getViewInstance());
     });
 
-    b.session.on('session:out', function () {
-        // TODO: Выпилить отсюда require, щас не будет работать,
-        // потому что предположительно существует циклическая зависимость
-        // GuestBundle и GuestBehavior.
-        // Найти способ не подгружать модуль GuestBundle в этом модуле,
-        // т.к. это ошибка проектирования.
-        var GuestBundle = require('./guest.bundle');
-        GuestBundle.getInstance().init();
-    });
-
-    b.session.on('session:in', function () {
+    blocks.session.on('session:in', function () {
         handlers.check();
     });
 
     var handlers = {
         check: function () {
-            b.session.getAccessLevel() > 0 && commonBundle.init();
+            blocks.session.getAccessLevel() > 0 && commonBundle.init();
         }
     };
 

@@ -3,19 +3,15 @@
 define(function (require) {
     'use strict';
 
-    var Bundle = require('core/marionette.bundle'),
+    var Bundle = require('core/bundle'),
 
         UserRouter = require('./user.router'),
         UserBehavior = require('./user.behavior');
 
-    var UserBundle = Bundle.extend({
+    var UserBundle = Bundle.create({
         router: UserRouter,
-        behavior: UserBehavior,
-
-        getInstance: function () {
-            return this;
-        }
+        behavior: UserBehavior
     });
 
-    return new UserBundle();
+    return UserBundle;
 });

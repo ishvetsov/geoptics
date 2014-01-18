@@ -6,7 +6,11 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Bus = require('./bus'),
 
-        GuestBundle = require('./bundles/guest/guest.bundle');
+        GuestBundle = require('bundles/guest/guest.bundle'),
+        SessionBlock = require('blocks/session/session.block');
+
+    var guestBundle = GuestBundle.getInstance(),
+        sessionBlock = SessionBlock.getInstance();
 
     var app = new Marionette.Application();
 
@@ -14,16 +18,16 @@ define(function (require) {
         containerRegion: '.app__container'
     });
 
-    Bus.events.on('app:show', _.bind(app.containerRegion.show,
-        app.containerRegion));
-
     app.on('initialize:after', function () {
         Backbone.history.start();
     });
 
-    app.addInitializer(function () {
-        GuestBundle.getInstance().init();
-    });
+    app.addInitializer(guestBundle.init);
+    sessionBlock.on('session:out', guestBundle.init);
+
+    Bus.events.on('app:show', _.bind(
+        app.containerRegion.show,
+        app.containerRegion));
 
     return app;
 });

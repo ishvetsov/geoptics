@@ -3,19 +3,15 @@
 define(function (require) {
     'use strict';
 
-    var Bundle = require('core/marionette.bundle'),
+    var Bundle = require('core/bundle'),
 
         AdminRouter = require('./admin.router'),
         AdminBehavior = require('./admin.behavior');
 
-    var AdminBundle = Bundle.extend({
+    var AdminBundle = Bundle.create({
         router: AdminRouter,
-        behavior: AdminBehavior,
-
-        getInstance: function () {
-            return this;
-        }
+        behavior: AdminBehavior
     });
 
-    return new AdminBundle();
+    return AdminBundle;
 });
