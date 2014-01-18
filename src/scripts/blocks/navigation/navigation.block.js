@@ -3,41 +3,35 @@
 define(function (require) {
     'use strict';
 
-    var Block = require('core/marionette.block'),
+    var Block = require('core/block'),
         SessionBlock = require('blocks/session/session.block'),
 
         NavigationView = require('./navigation.view'),
         NavigationConfig = require('./navigation.config');
-        
-    var NavigationBlock = Block.extend({
-        init: function () {
-            var userType = SessionBlock.getAccessLevel(),
-                configView = NavigationConfig[userType];
 
-            this._view = new NavigationView({
-                config: configView
+    var sessionBlock = SessionBlock.getInstance();
+
+    var NavigationBlock = Block.create({
+        view: NavigationView,
+
+        functions: {
+            'view:setActiveItem': 'activateItem'
+        },
+
+        onBeforeInit: function () {
+            var userType = sessionBlock.getAccessLevel();
+
+            this.viewOptions = {
+                config: NavigationConfig[userType]
+            };
+        },
+
+        onInit: function () {
+            this._viewInstance.on('user:click', function () {
+                sessionBlock.trigger('session:out');
             });
-            this._view.on('user:click', function () {
-                SessionBlock.trigger('session:out');
-            });
-
-            return this;
-        },
-
-        getInstance: function () {
-            return this;
-        },
-
-        getInstanceView: function () {
-            return this._view;
-        },
-
-        activateItem: function (name) {
-            this._view.setActiveItem(name);
-        },
-
-        _view: null
+        }
     });
 
-    return new NavigationBlock();
+    return NavigationBlock;
 });

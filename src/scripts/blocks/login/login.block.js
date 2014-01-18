@@ -3,28 +3,20 @@
 define(function (require) {
     'use strict';
 
-    var Block = require('core/marionette.block'),
+    var Block = require('core/block'),
         SessionBlock = require('blocks/session/session.block'),
 
         LoginView = require('./login.view');
 
-    var LoginBlock = Block.extend({
-        init: function () {
-            this._view = new LoginView();
-            this._view.on('login:try', SessionBlock.authorization);
-            return this;
-        },
+    var sessionBlock = SessionBlock.getInstance();
 
-        getInstance: function () {
-            return this;
-        },
+    var LoginBlock = Block.create({
+        view: LoginView,
 
-        getInstanceView: function () {
-            return this._view;
-        },
-
-        _view: null
+        onInit: function () {
+            this._viewInstance.on('login:try', sessionBlock.authorization);
+        }
     });
 
-    return new LoginBlock();
+    return LoginBlock;
 });

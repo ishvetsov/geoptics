@@ -34,7 +34,6 @@ define(function (require) {
     var handlers = {
         users: function () {
             b.adminNavigation.activateItem('users');
-
             b.adminUsers.fetch()
                 .then(function () {
                     adminLayout.container.show(b.adminUsers.getViewInstance());
@@ -43,16 +42,20 @@ define(function (require) {
 
         user: function (id) {
             b.adminNavigation.disactivateAll();
-
             b.adminUser.fetch(id)
                 .then(function () {
                     adminLayout.container.show(b.adminUser.getViewInstance());
                 });
         },
 
+        newUser: function () {
+            b.adminNavigation.disactivateAll();
+            adminLayout.container.show(
+                b.adminUser.resetModel().getViewInstance());
+        },
+
         wells: function () {
             b.adminNavigation.activateItem('wells');
-
             b.adminWells.fetch()
                 .then(function () {
                     adminLayout.container.show(b.adminWells.getViewInstance());
@@ -61,7 +64,6 @@ define(function (require) {
 
         monitoring: function () {
             b.adminNavigation.activateItem('monitoring');
-
             adminLayout.container.show(b.adminMonitoring.getViewInstance());
         }
     };

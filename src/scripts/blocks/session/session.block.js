@@ -5,18 +5,14 @@ define(function (require) {
 
     var Backbone = require('backbone'),
         Cookie = require('jquery.cookie'),
+        Block = require('core/block'),
 
-        Block = require('core/marionette.block'),
         User = require('entities/user.entity');
 
-    var SessionBlock = Block.extend({
-        initialize: function () {
+    var SessionBlock = Block.create({
+        onInit: function () {
             _.bindAll(this, '_onSessionOut', 'authorization');
             this.on('session:out', this._onSessionOut);
-        },
-
-        getInstance: function () {
-            return this;
         },
 
         authorization: function (authData) {
@@ -47,7 +43,7 @@ define(function (require) {
         },
 
         _currentUser: null,
-        
+
         // TODO: Dummy
         _createUser: function (accessLevel) {
             this._currentUser = new User.Model({
@@ -60,5 +56,5 @@ define(function (require) {
         }
     });
 
-    return new SessionBlock();
+    return SessionBlock;
 });

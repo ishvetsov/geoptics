@@ -6,6 +6,7 @@ define(function (require) {
     var AdminRouter = Marionette.AppRouter.extend({
         appRoutes: {
             'admin/users': 'users',
+            'admin/user/new': 'newUser',
             'admin/user/:id': 'user',
             'admin/wells': 'wells',
             'admin/monitoring': 'monitoring'

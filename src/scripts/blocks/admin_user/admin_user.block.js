@@ -18,6 +18,11 @@ define(function (require) {
             return adminUserModel.fetch({
                 data: {id: id}
             });
+        },
+
+        resetModel: function () {
+            adminUserModel.clear();
+            return this;
         }
     });
 
