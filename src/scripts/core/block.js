@@ -1,9 +1,5 @@
 /* global _ */
 
-/**
- * Тестовая версия
- */
-
 define(function (require) {
     'use strict';
 
@@ -11,6 +7,8 @@ define(function (require) {
 
     var MarionetteBlock = Marionette.Controller.extend({
         init: function () {
+            _.isFunction(this.onBeforeInit) && this.onBeforeInit();
+
             this._viewInstance = this.createViewInstance();
 
             this._instanceMap = {

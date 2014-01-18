@@ -1,71 +1,65 @@
-/* global Backbone */
+/* global Backbone, _ */
 
 define(function (require) {
     'use strict';
 
-    var NavigationBlock = require('blocks/navigation/navigation.block'),
-        AdminUsersBlock = require('blocks/admin_users/admin_users.block'),
-        AdminUserBlock = require('blocks/admin_user/admin_user.block'),
-        AdminWellsBlock = require('blocks/admin_wells/admin_wells.block'),
-        AdminMonitoringBlock = require('blocks/admin_monitoring/admin_monitoring.block'),
-        AdminNavigationBlock = require('blocks/admin_navigation/admin_navigation.block'),
-
+    var Utils = require('core/utils'),
         AdminLayout = require('./admin.layout');
 
-    var navigationBlock = NavigationBlock.getInstance(),
-        adminUsersBlock = AdminUsersBlock.getInstance(),
-        adminUserBlock = AdminUserBlock.getInstance(),
-        adminWellsBlock = AdminWellsBlock.getInstance(),
-        adminMonitoringBlock = AdminMonitoringBlock.getInstance(),
-        adminNavigationBlock = AdminNavigationBlock.getInstance(),
+    var Blocks = {
+        Navigation: require('blocks/navigation/navigation.block'),
+        AdminUsers: require('blocks/admin_users/admin_users.block'),
+        AdminUser: require('blocks/admin_user/admin_user.block'),
+        AdminWells: require('blocks/admin_wells/admin_wells.block'),
+        AdminMonitoring: require('blocks/admin_monitoring/admin_monitoring.block'),
+        AdminNavigation: require('blocks/admin_navigation/admin_navigation.block')
+    };
+
+    var b = Utils.getInstances(Blocks),
         adminLayout = new AdminLayout();
 
     adminLayout.on('show', function () {
-        adminLayout.navigation.show(adminNavigationBlock.getViewInstance());
-        navigationBlock.activateItem('admin');
+        adminLayout.navigation.show(b.adminNavigation.getViewInstance());
+        b.navigation.activateItem('admin');
     });
 
     var initialize = function () {
-        adminNavigationBlock.init();
-        adminUsersBlock.init();
-        adminUserBlock.init();
-        adminWellsBlock.init();
-        adminMonitoringBlock.init();
+        b.adminUsers.init();
+        b.adminUser.init();
+        b.adminWells.init();
+        b.adminMonitoring.init();
+        b.adminNavigation.init();
     };
 
     var handlers = {
         users: function () {
-            adminNavigationBlock.activateItem('users');
+            b.adminNavigation.activateItem('users');
 
-            adminUsersBlock.fetch()
+            b.adminUsers.fetch()
                 .then(function () {
-                    adminLayout.container.show(adminUsersBlock.getViewInstance());
+                    adminLayout.container.show(b.adminUsers.getViewInstance());
                 });
         },
 
         user: function (id) {
-            adminNavigationBlock.disactivateAll();
+            b.adminNavigation.disactivateAll();
 
-            adminUserBlock.fetch(id)
+            b.adminUser.fetch(id)
                 .then(function () {
-                    adminLayout.container.show(adminUserBlock.getViewInstance());
+                    adminLayout.container.show(b.adminUser.getViewInstance());
                 });
         },
 
         wells: function () {
-            adminNavigationBlock.activateItem('wells');
+            b.adminNavigation.activateItem('wells');
 
-            // adminWellsBlock.fetch()
-            //     .then(function () {
-            //         adminLayout.container.show(adminWellsBlock.getInstanceView());
-            //     });
-            adminLayout.container.show(adminWellsBlock.getViewInstance());
+            adminLayout.container.show(b.adminWells.getViewInstance());
         },
 
         monitoring: function () {
-            adminNavigationBlock.activateItem('monitoring');
+            b.adminNavigation.activateItem('monitoring');
 
-            adminLayout.container.show(adminMonitoringBlock.getViewInstance());
+            adminLayout.container.show(b.adminMonitoring.getViewInstance());
         }
     };
 

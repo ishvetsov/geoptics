@@ -15,7 +15,7 @@ define(function (require) {
         },
 
         fetch: function () {
-            return adminUsersCollection.fetch();
+            return $.when(adminUsersCollection.fetch());
         }
     });
 
