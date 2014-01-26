@@ -67,6 +67,12 @@
 
 .well-item {
   cursor: pointer;
-  line-height: 18px; }
+  line-height: 20px; }
   .well-item:hover {
+    background-color: #EEE; }
+
+.pressure-sensor-item, .temperature-sensor-item {
+  cursor: pointer;
+  line-height: 20px; }
+  .pressure-sensor-item:hover, .temperature-sensor-item:hover {
     background-color: #EEE; }
