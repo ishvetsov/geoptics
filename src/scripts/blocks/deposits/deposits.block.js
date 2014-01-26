@@ -3,13 +3,13 @@ define(function (require) {
 
     var Block = require('core/block'),
 
-        DepositsListView = require('./deposits_list.view'),
+        DepositsView = require('./deposits.view'),
         Deposit = require('entities/deposit.entity');
 
     var depositsCollection = new Deposit.Collection();
 
-    var DepositsListBlock = Block.create({
-        view: DepositsListView,
+    var DepositsBlock = Block.create({
+        view: DepositsView,
 
         viewOptions: {
             collection: depositsCollection
@@ -20,5 +20,5 @@ define(function (require) {
         }
     });
 
-    return DepositsListBlock;
+    return DepositsBlock;
 });

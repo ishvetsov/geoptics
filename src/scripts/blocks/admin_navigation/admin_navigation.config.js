@@ -9,9 +9,9 @@ define(function (require) {
                 mod: 'users'
             },
             {
-                name: 'Скважины',
-                href: '#admin/wells',
-                mod: 'wells'
+                name: 'Ресурсодобыча',
+                href: '#admin/deposits',
+                mod: 'deposits'
             },
             {
                 name: 'Мониторинг',
@@ -19,7 +19,7 @@ define(function (require) {
                 mod:'monitoring'
             }
         ]
-    }
+    };
 
     return config;
 });

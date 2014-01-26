@@ -1,11 +1,26 @@
-@media screen and (min-width: 970px) {
-    .admin_deposits-table {
-        width: 65%;
+.admin_deposits {
+    width: 800px;
+
+    .deposit-item {
+        cursor: pointer;
     }
 }
 
-.admin_deposits-table {
-    .deposit-table-name {
-        width: 60%
+.deposit-item {
+    &:hover {
+        background-color: #EEE;
     }
+
+    .name {
+        width: 70%;
+    }
+
+    .number {
+        width: 30%;
+    }
+}
+
+.clusters {
+    width: 100%;
+    margin-left: 20px;
 }

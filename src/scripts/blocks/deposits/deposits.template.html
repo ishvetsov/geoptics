@@ -1,0 +1,26 @@
+<div class="admin_deposits">
+    <div class="deposit-item clearfix"
+        rv-on-click="view.clickDeposit"
+        rv-each-deposit="deposits:models"
+    >
+        <div class="name pull-left">{ deposit:name }</div>
+        <div class="number pull-left">№{ deposit:number }</div>
+    </div>
+</div>
+
+<div hidden="true" class="clusters-template">
+    <div class="clusters">
+        <div class="cluster-item" rv-on-click="view.clickCluster">
+            <div>Cluster №1</div>
+        </div>
+        <div class="cluster-item" rv-on-click="view.clickCluster">
+            <div>Cluster №1</div>
+        </div>
+        <div class="cluster-item" rv-on-click="view.clickCluster">
+            <div>Cluster №1</div>
+        </div>
+        <div>
+            <a class="btn btn-default btn-xs">Редактировать</a>
+        </div>
+    </div>
+</div>

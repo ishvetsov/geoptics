@@ -35,8 +35,18 @@
 .user-table-controls {
   text-align: right; }
 
-@media screen and (min-width: 970px) {
-  .admin_deposits-table {
-    width: 65%; } }
-.admin_deposits-table .deposit-table-name {
-  width: 60%; }
+.admin_deposits {
+  width: 800px; }
+  .admin_deposits .deposit-item {
+    cursor: pointer; }
+
+.deposit-item:hover {
+  background-color: #EEE; }
+.deposit-item .name {
+  width: 70%; }
+.deposit-item .number {
+  width: 30%; }
+
+.clusters {
+  width: 100%;
+  margin-left: 20px; }

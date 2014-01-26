@@ -8,7 +8,7 @@ define(function (require) {
             'admin/users': 'users',
             'admin/user/new': 'newUser',
             'admin/user/:id': 'user',
-            'admin/wells': 'wells',
+            'admin/deposits': 'deposits',
             'admin/monitoring': 'monitoring'
         }
     });

@@ -10,7 +10,7 @@ define(function (require) {
         Navigation: require('blocks/navigation/navigation.block'),
         AdminUsers: require('blocks/admin_users/admin_users.block'),
         AdminUser: require('blocks/admin_user/admin_user.block'),
-        AdminWells: require('blocks/admin_wells/admin_wells.block'),
+        AdminResources: require('blocks/admin_resources/admin_resources.block'),
         AdminMonitoring: require('blocks/admin_monitoring/admin_monitoring.block'),
         AdminNavigation: require('blocks/admin_navigation/admin_navigation.block')
     };
@@ -26,7 +26,7 @@ define(function (require) {
     var initialize = function () {
         blocks.adminUsers.init();
         blocks.adminUser.init();
-        blocks.adminWells.init();
+        blocks.adminResources.init();
         blocks.adminMonitoring.init();
         blocks.adminNavigation.init();
     };
@@ -56,12 +56,12 @@ define(function (require) {
                 blocks.adminUser.resetModel().getViewInstance());
         },
 
-        wells: function () {
-            blocks.adminNavigation.activateItem('wells');
-            blocks.adminWells.fetch()
+        deposits: function () {
+            blocks.adminNavigation.activateItem('deposits');
+            blocks.adminResources.fetch()
                 .then(function () {
                     adminLayout.container.show(
-                        blocks.adminWells.getViewInstance());
+                        blocks.adminResources.getViewInstance());
                 });
         },
 

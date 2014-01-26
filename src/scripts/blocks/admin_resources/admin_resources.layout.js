@@ -6,10 +6,10 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
 
-        AdminWellsTemplate = require('text!./admin_wells.template.html');
+        AdminResourcesTemplate = require('text!./admin_resources.template.html');
 
-    var AdminWellsLayout = Marionette.Layout.extend({
-        template: _.template(AdminWellsTemplate),
+    var AdminResourcesLayout = Marionette.Layout.extend({
+        template: _.template(AdminResourcesTemplate),
 
         regions: {
             depositsRegion: '#deposits-region',
@@ -17,5 +17,5 @@ define(function (require) {
         }
     });
 
-    return AdminWellsLayout;
+    return AdminResourcesLayout;
 });

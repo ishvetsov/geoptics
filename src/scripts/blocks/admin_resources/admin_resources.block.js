@@ -6,21 +6,21 @@ define(function (require) {
     var Block = require('core/block'),
         Deposit = require('entities/deposit.entity'),
 
-        AdminWellsLayout = require('./admin_wells.layout'),
+        AdminResourcesLayout = require('./admin_resources.layout'),
         NoAttachedWellsBlock = require('blocks/no_attached_wells/no_attached_wells.block'),
-        DepositsListBlock = require('blocks/deposits_list/deposits_list.block');
+        DepositsBlock = require('blocks/deposits/deposits.block');
 
     var noAttachedWellsBlock = NoAttachedWellsBlock.getInstance(),
-        depositsListBlock = DepositsListBlock.getInstance();
+        depositsBlock = DepositsBlock.getInstance();
 
     var AdminWellsBlock = Block.create({
-        view: AdminWellsLayout,
+        view: AdminResourcesLayout,
 
         onInit: function () {
             _.bindAll(this, '_onShowAdminWellsLayout');
 
             noAttachedWellsBlock.init();
-            depositsListBlock.init();
+            depositsBlock.init();
 
             this._viewInstance.on('show', this._onShowAdminWellsLayout);
         },
@@ -28,7 +28,7 @@ define(function (require) {
         fetch: function () {
             return $.when(
                 noAttachedWellsBlock.fetch(),
-                depositsListBlock.fetch()
+                depositsBlock.fetch()
             );
         },
 
@@ -36,7 +36,7 @@ define(function (require) {
             this._viewInstance.noAttachedWellsRegion.show(
                 noAttachedWellsBlock.getViewInstance());
             this._viewInstance.depositsRegion.show(
-                depositsListBlock.getViewInstance());
+                depositsBlock.getViewInstance());
         }
     });
 
