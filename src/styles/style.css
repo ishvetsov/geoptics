@@ -34,3 +34,9 @@
 
 .user-table-controls {
   text-align: right; }
+
+@media screen and (min-width: 970px) {
+  .admin_deposits-table {
+    width: 65%; } }
+.admin_deposits-table .deposit-table-name {
+  width: 60%; }
