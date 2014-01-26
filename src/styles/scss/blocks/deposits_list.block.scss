@@ -1,12 +1,15 @@
 .admin_deposits {
     width: 800px;
+}
 
-    .deposit-item {
-        cursor: pointer;
-    }
+.deposit-info {
+    margin-left: 20px;
 }
 
 .deposit-item {
+    cursor: pointer;
+    line-height: 25px;
+
     &:hover {
         background-color: #EEE;
     }
@@ -20,7 +23,31 @@
     }
 }
 
-.clusters {
+.cluster-info {
     width: 100%;
     margin-left: 20px;
 }
+
+.cluster-item {
+    cursor: pointer;
+    line-height: 20px;
+
+    &:hover {
+        background-color: #EEE;
+    }
+}
+
+.well-info {
+    width: 100%;
+    margin-left: 20px;
+}
+
+.well-item {
+    cursor: pointer;
+    line-height: 18px;
+
+    &:hover {
+        background-color: #EEE;
+    }
+}
+
