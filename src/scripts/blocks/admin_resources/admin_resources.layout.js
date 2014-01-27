@@ -6,14 +6,14 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
 
-        AdminResourcesTemplate = require('text!./admin_resources.template.html');
+        Template = require('text!./admin_resources.template.html');
 
     var AdminResourcesLayout = Marionette.Layout.extend({
-        template: _.template(AdminResourcesTemplate),
+        template: _.template(Template),
 
         regions: {
-            depositsRegion: '#deposits-region',
-            noAttachedWellsRegion: '#no-attached-wells-region'
+            fieldsRegion: '#fields-region',
+            noAttachedBoreholesRegion: '#no-attached-boreholes-region'
         }
     });
 

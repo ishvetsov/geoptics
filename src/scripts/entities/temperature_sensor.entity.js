@@ -8,10 +8,12 @@ define(function (require) {
 
     var TemperatureSensorModel = Backbone.AssociatedModel.extend({
         defaults: {
+            id: '',
             name: '',
-            comments: [],
             channelNumber: '',
-            cableDepth: ''
+            cableDepth: '',
+
+            comments: []
         },
 
         relations: [

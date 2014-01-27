@@ -4,16 +4,16 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
-        Config = require('configs/config'),
-
         Comment = require('./comment.entity');
 
     var PressureSensorModel = Backbone.AssociatedModel.extend({
         defaults: {
+            id: '',
             name: '',
-            comments: [],
             channelNumber: '',
-            depthPlacement: ''
+            depthPlacement: '',
+
+            comments: []
         },
 
         relations: [

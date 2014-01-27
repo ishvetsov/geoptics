@@ -3,12 +3,13 @@ define(function (require) {
 
     var Block = require('core/block'),
 
-        AdminNavigationView = require('./admin_navigation.view'),
-        AdminNavigationConfig = require('./admin_navigation.config');
+        View = require('./admin_navigation.view'),
+        Config = require('./admin_navigation.config');
 
     var AdminNavigationBlock = Block.create({
-        view: AdminNavigationView,
-        viewOptions: AdminNavigationConfig.items,
+        view: View,
+        
+        viewOptions: Config.items,
 
         functions: {
             'view:setActiveItem': 'activateItem',

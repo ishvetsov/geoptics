@@ -5,15 +5,13 @@ define(function (require) {
         Associations = require('backbone.associations'),
         moment = require('moment'),
 
-        Config = require('configs/config'),
-
         User = require('./user.entity');
 
     var CommentModel = Backbone.AssociatedModel.extend({
         defaults: {
+            id: '',
             createDate: '',
-            text: '',
-            author: null
+            text: ''
         },
 
         relations: [

@@ -4,15 +4,17 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
-        Config = require('configs/config'),
+        AppConfig = require('configs/app.config'),
 
         Comment = require('./comment.entity'),
         Cluster = require('./cluster.entity');
 
-    var DepositModel = Backbone.AssociatedModel.extend({
+    var FieldModel = Backbone.AssociatedModel.extend({
         defaults: {
+            id: '',
             name: '',
             number: '',
+
             comments: [],
             clusters: []
         },
@@ -30,16 +32,16 @@ define(function (require) {
             }
         ],
 
-        urlRoot: Config.rest.deposits
+        urlRoot: AppConfig.rest.fields
     });
 
-    var DepositCollection = Backbone.Collection.extend({
-        model: DepositModel,
-        url: Config.rest.deposits
+    var FieldCollection = Backbone.Collection.extend({
+        model: FieldModel,
+        url: AppConfig.rest.fields
     });
 
     return {
-        Model: DepositModel,
-        Collection: DepositCollection
+        Model: FieldModel,
+        Collection: FieldCollection
     };
 });

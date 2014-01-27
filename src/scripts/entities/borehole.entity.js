@@ -4,15 +4,14 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
-        Config = require('configs/config'),
-
         PressureSensor = require('./pressure_sensor.entity'),
         TemperatureSensor = require('./temperature_sensor.entity'),
         Comment = require('./comment.entity');
 
-    var WellModel = Backbone.Model.extend({
+    var Borehole = Backbone.Model.extend({
         defaults: {
             id: '',
+            name: '',
             location: '',
             number: '',
             fishing: '',
@@ -26,6 +25,7 @@ define(function (require) {
             perforations: [],
             interestingDepths: [],
             interestingTimes: [],
+            
             adminComments: [],
             temperatureSensors: [],
             pressureSensors: []
@@ -49,13 +49,13 @@ define(function (require) {
             }
         ]
     });
-        
-    var WellCollection = Backbone.Collection.extend({
-        model: WellModel
+
+    var BoreholeCollection = Backbone.Collection.extend({
+        model: Borehole
     });
 
     return {
-        Model: WellModel,
-        Collection: WellCollection
+        Model: Borehole,
+        Collection: BoreholeCollection
     };
 });

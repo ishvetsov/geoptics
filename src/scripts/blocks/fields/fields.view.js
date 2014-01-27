@@ -6,8 +6,8 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
 
-        DepositsTemplate = require('text!./deposits.template.html'),
-        DepositsEmptyTemplate = require('text!./deposits_empty.template.html');
+        Template = require('text!./fields.template.html'),
+        EmptyTemplate = require('text!./fields_empty.template.html');
 
     function showHideSubItems(ev) {
         var $target = $(ev.currentTarget);
@@ -19,35 +19,35 @@ define(function (require) {
         }
     }
 
-    var DepositsView = Marionette.ItemView.extend({
-        className: 'admin_deposits',
+    var FieldsView = Marionette.ItemView.extend({
+        className: 'admin_fields',
 
         getTemplate: function () {
             if (this.collection.length) {
-                return _.template(DepositsTemplate);
+                return _.template(Template);
             }
-            return _.template(DepositsEmptyTemplate);
+            return _.template(EmptyTemplate);
         },
 
         onRender: function () {
             this.binding = Rivets.bind(this.el, {
-                deposits: this.collection,
+                fields: this.collection,
                 view: this
             });
         },
 
-        clickDeposit: function (ev, data) {
+        expandField: function (ev, data) {
             showHideSubItems(ev);
         },
 
-        clickCluster: function (ev, data) {
+        expandCluster: function (ev, data) {
             showHideSubItems(ev);
         },
 
-        clickWell: function (ev, data) {
+        expandBorehole: function (ev, data) {
             showHideSubItems(ev);
         }
     });
 
-    return DepositsView;
+    return FieldsView;
 });

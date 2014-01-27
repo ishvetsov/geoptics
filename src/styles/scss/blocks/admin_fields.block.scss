@@ -1,0 +1,67 @@
+.admin_fields {
+    width: 65%;
+}
+
+.field-item .field-name {
+    width: 60%;
+    float: left;
+}
+
+.field-item .field-number {
+    width: 35%;
+    float: left;
+}
+
+.cluster-item .cluster-name {
+    width: 60%;
+    float: left;
+}
+
+.cluster-item .cluster-number {
+    width: 35%;
+    float: left;
+}
+
+.borehole-item .borehole-id {
+    float: left;
+    width: 60%;
+}
+
+.borehole-item .borehole-number {
+    float: left;
+    width: 35%;
+}
+
+.sensor-item {
+    line-height: 25px;
+}
+
+.sensor-item .sensor-name {
+    float: left;
+    width: 50%;
+}
+
+.sensor-item .sensor-channel-number {
+    width: 45%;
+    float: left;
+}
+
+.clusters,
+.boreholes,
+.sensors {
+    padding-left: 30px;
+}
+
+.clusters,
+.boreholes,
+.sensors {
+    width: 100%;
+}
+
+.field-item,
+.cluster-item,
+.borehole-item {
+    border-bottom: 1px solid #DDD;
+    cursor: pointer;
+    line-height: 25px;
+}

@@ -5,10 +5,10 @@ define(function (require) {
 
     var Marionette = require('backbone.marionette'),
 
-        AdminNavigationTemplate = require('text!./admin_navigation.template.html');
+        Template = require('text!./admin_navigation.template.html');
 
     var AdminNavigationView = Marionette.ItemView.extend({
-        template: _.template(AdminNavigationTemplate),
+        template: _.template(Template),
         className: 'admin_navigation',
         
         ui: {

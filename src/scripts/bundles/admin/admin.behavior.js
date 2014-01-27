@@ -56,13 +56,41 @@ define(function (require) {
                 blocks.adminUser.resetModel().getViewInstance());
         },
 
-        deposits: function () {
-            blocks.adminNavigation.activateItem('deposits');
+        fields: function () {
+            blocks.adminNavigation.activateItem('fields');
             blocks.adminResources.fetch()
                 .then(function () {
                     adminLayout.container.show(
                         blocks.adminResources.getViewInstance());
                 });
+        },
+
+        field: function (id) {
+            blocks.adminNavigation.disactivateAll();
+        },
+
+        newField: function () {
+            blocks.adminNavigation.disactivateAll();
+        },
+
+        cluster: function (id) {
+            blocks.adminNavigation.disactivateAll();
+        },
+
+        newCluster: function () {
+            blocks.adminNavigation.disactivateAll();
+        },
+
+        borehole: function (id) {
+            blocks.adminNavigation.disactivateAll();
+        },
+
+        temperatureSensor: function (boreholeId, id) {
+            blocks.adminNavigation.disactivateAll();
+        },
+
+        pressureSensor: function (boreholeId, id) {
+            blocks.adminNavigation.disactivateAll();
         },
 
         monitoring: function () {

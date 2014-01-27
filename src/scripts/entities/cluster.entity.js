@@ -4,17 +4,17 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
-        Config = require('configs/config'),
-
-        Well = require('./well.entity'),
+        Borehole = require('./borehole.entity'),
         Comment = require('./comment.entity');
 
     var ClusterModel = Backbone.AssociatedModel.extend({
         defaults: {
+            id: '',
             name: '',
             number: '',
+
             comments: [],
-            wells: []
+            boreholes: []
         },
 
         relations: [
@@ -25,8 +25,8 @@ define(function (require) {
             },
             {
                 type: Backbone.Many,
-                key: 'wells',
-                relatedModel: Well.Model
+                key: 'boreholes',
+                relatedModel: Borehole.Model
             }
         ]
     });

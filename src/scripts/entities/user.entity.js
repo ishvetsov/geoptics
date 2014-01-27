@@ -20,12 +20,12 @@ define(function (require) {
         ]
     });
 
-    var UsersCollection = Backbone.Collection.extend({
+    var UserCollection = Backbone.Collection.extend({
         model: UserModel
     });
 
     return {
         Model: UserModel,
-        Collection: UsersCollection
+        Collection: UserCollection
     };
 });

@@ -4,41 +4,40 @@ define(function (require) {
     'use strict';
 
     var Block = require('core/block'),
-        Deposit = require('entities/deposit.entity'),
 
-        AdminResourcesLayout = require('./admin_resources.layout'),
-        NoAttachedWellsBlock = require('blocks/no_attached_wells/no_attached_wells.block'),
-        DepositsBlock = require('blocks/deposits/deposits.block');
+        Layout = require('./admin_resources.layout'),
+        NoAttachedBoreholesBlock = require('blocks/no_attached_boreholes/no_attached_boreholes.block'),
+        FieldsBlock = require('blocks/fields/fields.block');
 
-    var noAttachedWellsBlock = NoAttachedWellsBlock.getInstance(),
-        depositsBlock = DepositsBlock.getInstance();
+    var noAttachedBoreholesBlock = NoAttachedBoreholesBlock.getInstance(),
+        fieldsBlock = FieldsBlock.getInstance();
 
-    var AdminWellsBlock = Block.create({
-        view: AdminResourcesLayout,
+    var AdminResourcesBlock = Block.create({
+        view: Layout,
 
         onInit: function () {
-            _.bindAll(this, '_onShowAdminWellsLayout');
+            _.bindAll(this, '_onShowAdminResourcesLayout');
 
-            noAttachedWellsBlock.init();
-            depositsBlock.init();
+            noAttachedBoreholesBlock.init();
+            fieldsBlock.init();
 
-            this._viewInstance.on('show', this._onShowAdminWellsLayout);
+            this._viewInstance.on('show', this._onShowAdminResourcesLayout);
         },
 
         fetch: function () {
             return $.when(
-                noAttachedWellsBlock.fetch(),
-                depositsBlock.fetch()
+                noAttachedBoreholesBlock.fetch(),
+                fieldsBlock.fetch()
             );
         },
 
-        _onShowAdminWellsLayout: function () {
-            this._viewInstance.noAttachedWellsRegion.show(
-                noAttachedWellsBlock.getViewInstance());
-            this._viewInstance.depositsRegion.show(
-                depositsBlock.getViewInstance());
+        _onShowAdminResourcesLayout: function () {
+            this._viewInstance.noAttachedBoreholesRegion.show(
+                noAttachedBoreholesBlock.getViewInstance());
+            this._viewInstance.fieldsRegion.show(
+                fieldsBlock.getViewInstance());
         }
     });
 
-    return AdminWellsBlock;
+    return AdminResourcesBlock;
 });

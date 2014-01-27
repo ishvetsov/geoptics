@@ -6,13 +6,13 @@ define(function (require) {
     var Block = require('core/block'),
         SessionBlock = require('blocks/session/session.block'),
 
-        NavigationView = require('./navigation.view'),
-        NavigationConfig = require('./navigation.config');
+        View = require('./navigation.view'),
+        Config = require('./navigation.config');
 
     var sessionBlock = SessionBlock.getInstance();
 
     var NavigationBlock = Block.create({
-        view: NavigationView,
+        view: View,
 
         functions: {
             'view:setActiveItem': 'activateItem'
@@ -22,7 +22,7 @@ define(function (require) {
             var userType = sessionBlock.getAccessLevel();
 
             this.viewOptions = {
-                config: NavigationConfig[userType]
+                config: Config[userType]
             };
         },
 

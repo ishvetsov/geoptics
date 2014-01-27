@@ -4,11 +4,11 @@ define(function (require) {
     'use strict';
 
     var User = require('entities/user.entity'),
-        Config = require('configs/config');
+        AppConfig = require('configs/app.config');
 
-    var AdminUsersCollection = User.Collection.extend({
-        url: Config.rest.adminUsers
+    var AdminUserCollection = User.Collection.extend({
+        url: AppConfig.rest.adminUsers
     });
 
-    return AdminUsersCollection;
+    return AdminUserCollection;
 });

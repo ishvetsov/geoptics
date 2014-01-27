@@ -1,37 +1,36 @@
-<div rv-each-deposit="deposits:models">
-    <div class="deposit-item clearfix" rv-on-click="view.clickDeposit">
-        <div class="deposit-name">{ deposit:name }</div>
-        <div class="deposit-number">№{ deposit:number }</div>
+<div rv-each-field="fields:models">
+    <div class="field-item clearfix" rv-on-click="view.expandField">
+        <div class="field-name">{ field:name }</div>
+        <div class="field-number">№{ field:number }</div>
         <div class="pull-left">
-            <a class="btn btn-default btn-xs" href="">
+            <a class="btn btn-default btn-xs"
+                rv-href="field:id | prepend #admin/fields/">
                 <span class="glyphicon glyphicon-pencil"></span>
             </a>
         </div>
     </div>
 
     <div hidden="true" class="clusters">
-        <div rv-each-cluster="deposit:clusters:models">
-            <div class="cluster-item clearfix" 
-                rv-on-click="view.clickCluster"
-            >
+        <div rv-each-cluster="field:clusters:models">
+            <div class="cluster-item clearfix" rv-on-click="view.expandCluster">
                 <div class="cluster-name">{ cluster:name }</div>
                 <div class="cluster-number">{ cluster:number }</div>
                 <div class="pull-left">
-                    <a class="btn btn-default btn-xs" href="">
+                    <a class="btn btn-default btn-xs" 
+                        rv-href="cluster:id | prepend #admin/clusters/">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                 </div>
             </div>
 
-            <div hidden="true" class="wells">
-                <div rv-each-well="cluster:wells:models">
-                    <div class="well-item clearfix"
-                        rv-on-click="view.clickWell"
-                    >
-                        <div class="well-id">{ well:id }</div>
-                        <div class="well-number">{ well:number }</div>
+            <div hidden="true" class="boreholes">
+                <div rv-each-borehole="cluster:boreholes:models">
+                    <div class="borehole-item clearfix" rv-on-click="view.expandBorehole">
+                        <div class="borehole-id">{ borehole:id }</div>
+                        <div class="borehole-number">{ borehole:number }</div>
                         <div class="pull-left">
-                            <a class="btn btn-default btn-xs" href="">
+                            <a class="btn btn-default btn-xs"
+                                rv-href="borehole:id | prepend #admin/boreholes/">
                                 <span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </div>
@@ -39,7 +38,7 @@
 
                     <div hidden="true" class="sensors">
                         <div>Датчики температуры:</div>
-                        <div rv-each-tsensor="well:temperatureSensors:models">
+                        <div rv-each-tsensor="borehole:temperatureSensors:models">
                             <div class="sensor-item clearfix">
                                 <div class="sensor-name">
                                     { tsensor.name }
@@ -47,26 +46,17 @@
                                 <div class="sensor-channel-number">
                                     { tsensor.channelNumber }
                                 </div>
-                                <div class="pull-left">
-                                    <a class="btn btn-default btn-xs" href="">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
+
                         <div>Датчики давления:</div>
-                        <div rv-each-psensor="well:pressureSensors:models">
+                        <div rv-each-psensor="borehole:pressureSensors:models">
                             <div class="sensor-item clearfix">
                                 <div class="sensor-name">
                                     { psensor.name }
                                 </div>
                                 <div class="sensor-channel-number">
                                     { psensor.channelNumber }
-                                </div>
-                                <div class="pull-left">
-                                    <a class="btn btn-default btn-xs" href="">
-                                        <span class="glyphicon glyphicon-pencil"></span>
-                                    </a>
                                 </div>
                             </div>
                         </div>

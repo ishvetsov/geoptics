@@ -8,7 +8,16 @@ define(function (require) {
             'admin/users': 'users',
             'admin/user/new': 'newUser',
             'admin/user/:id': 'user',
-            'admin/deposits': 'deposits',
+
+            'admin/fields': 'fields',
+            'admin/fields/new': 'newField',
+            'admin/fields/:id': 'field',
+            
+            'admin/clusters/:id': 'cluster',
+            'admin/clusters/new': 'newCluster',
+
+            'admin/boreholes/:id': 'borehole',  
+
             'admin/monitoring': 'monitoring'
         }
     });

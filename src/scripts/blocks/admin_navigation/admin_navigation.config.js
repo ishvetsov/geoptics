@@ -10,8 +10,8 @@ define(function (require) {
             },
             {
                 name: 'Ресурсодобыча',
-                href: '#admin/deposits',
-                mod: 'deposits'
+                href: '#admin/fields',
+                mod: 'fields'
             },
             {
                 name: 'Мониторинг',
