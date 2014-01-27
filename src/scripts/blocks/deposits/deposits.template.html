@@ -1,6 +1,79 @@
-<div class="admin_deposits">
-    <div class="deposit-item clearfix" rv-each-deposit="deposits:models">
-        <div class="name pull-left">{ deposit:name }</div>
-        <div class="number pull-left">№{ deposit:number }</div>
+<div rv-each-deposit="deposits:models">
+    <div class="deposit-item clearfix" rv-on-click="view.clickDeposit">
+        <div class="deposit-name">{ deposit:name }</div>
+        <div class="deposit-number">№{ deposit:number }</div>
+        <div class="pull-left">
+            <a class="btn btn-default btn-xs" href="">
+                <span class="glyphicon glyphicon-pencil"></span>
+            </a>
+        </div>
+    </div>
+
+    <div hidden="true" class="clusters">
+        <div rv-each-cluster="deposit:clusters:models">
+            <div class="cluster-item clearfix" 
+                rv-on-click="view.clickCluster"
+            >
+                <div class="cluster-name">{ cluster:name }</div>
+                <div class="cluster-number">{ cluster:number }</div>
+                <div class="pull-left">
+                    <a class="btn btn-default btn-xs" href="">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </div>
+            </div>
+
+            <div hidden="true" class="wells">
+                <div rv-each-well="cluster:wells:models">
+                    <div class="well-item clearfix"
+                        rv-on-click="view.clickWell"
+                    >
+                        <div class="well-id">{ well:id }</div>
+                        <div class="well-number">{ well:number }</div>
+                        <div class="pull-left">
+                            <a class="btn btn-default btn-xs" href="">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div hidden="true" class="sensors">
+                        <div>Датчики температуры:</div>
+                        <div rv-each-tsensor="well:temperatureSensors:models">
+                            <div class="sensor-item clearfix">
+                                <div class="sensor-name">
+                                    { tsensor.name }
+                                </div>
+                                <div class="sensor-channel-number">
+                                    { tsensor.channelNumber }
+                                </div>
+                                <div class="pull-left">
+                                    <a class="btn btn-default btn-xs" href="">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div>Датчики давления:</div>
+                        <div rv-each-psensor="well:pressureSensors:models">
+                            <div class="sensor-item clearfix">
+                                <div class="sensor-name">
+                                    { psensor.name }
+                                </div>
+                                <div class="sensor-channel-number">
+                                    { psensor.channelNumber }
+                                </div>
+                                <div class="pull-left">
+                                    <a class="btn btn-default btn-xs" href="">
+                                        <span class="glyphicon glyphicon-pencil"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+

@@ -9,6 +9,16 @@ define(function (require) {
         DepositsTemplate = require('text!./deposits.template.html'),
         DepositsEmptyTemplate = require('text!./deposits_empty.template.html');
 
+    function showHideSubItems(ev) {
+        var $target = $(ev.currentTarget);
+
+        if ($target.next().attr('hidden')) {
+            $target.next().removeAttr('hidden');
+        } else {
+            $target.next().attr('hidden', true);
+        }
+    }
+
     var DepositsView = Marionette.ItemView.extend({
         className: 'admin_deposits',
 
@@ -24,6 +34,18 @@ define(function (require) {
                 deposits: this.collection,
                 view: this
             });
+        },
+
+        clickDeposit: function (ev, data) {
+            showHideSubItems(ev);
+        },
+
+        clickCluster: function (ev, data) {
+            showHideSubItems(ev);
+        },
+
+        clickWell: function (ev, data) {
+            showHideSubItems(ev);
         }
     });
 

@@ -94,6 +94,104 @@
                         "bottomDepth": "bottomDepth",
                         "temperatureSensors": [
                             {
+                                "name": "name1",
+                                "channelNumber": "channelNumber1",
+                                "cableDepth": "cableDepth1"
+                            },
+                            {
+                                "name": "name2",
+                                "channelNumber": "channelNumber2",
+                                "cableDepth": "cableDepth2"
+                            }
+                        ],
+                        "pressureSensors": [
+                            {
+                                "name": "name3",
+                                "channelNumber": "channelNumber3",
+                                "depthPlacement": "depthPlacement3"
+                            },
+                            {
+                                "name": "name4",
+                                "channelNumber": "channelNumber4",
+                                "depthPlacement": "depthPlacement4"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "name": "Куст 1",
+                "number": "1",
+                "comments": [
+                    {
+                        "createDate": "10.10.2000",
+                        "author": {
+                            "firstName": "Иван",
+                            "lastName": "Иванов",
+                            "type": "user"
+                        }
+                    },
+                    {
+                        "createDate": "10.10.2001",
+                        "author": {
+                            "firstName": "Иван",
+                            "lastName": "Иванов",
+                            "type": "user"
+                        }
+                    }
+                ],
+                "wells": [
+                    {
+                        "id": "w00001",
+                        "location": "location",
+                        "number": "123123",
+                        "fishing": "fishing",
+                        "companyOwner": "companyOwner",
+                        "serviceCompany": "serviceCompany",
+                        "paramsDescription": "paramsDescription",
+                        "installedEquipmentDescription": "installedEquipmentDescription",
+                        "seaLevelRelativePosition": "seaLevelRelativePosition",
+                        "craterDepth": "craterDepth",
+                        "bottomDepth": "bottomDepth",
+                        "temperatureSensors": [
+                            {
+                                "name": "name45",
+                                "channelNumber": "channelNumber665",
+                                "cableDepth": "cableDepth788"
+                            },
+                            {
+                                "name": "name64",
+                                "channelNumber": "channelNumber443",
+                                "cableDepth": "cableDepth667"
+                            }
+                        ],
+                        "pressureSensors": [
+                            {
+                                "name": "name76",
+                                "channelNumber": "channelNumber5345",
+                                "depthPlacement": "depthPlacement6664"
+                            },
+                            {
+                                "name": "name54",
+                                "channelNumber": "channelNumber756858",
+                                "depthPlacement": "depthPlacement8956"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "w00001",
+                        "location": "location",
+                        "number": "123123",
+                        "fishing": "fishing",
+                        "companyOwner": "companyOwner",
+                        "serviceCompany": "serviceCompany",
+                        "paramsDescription": "paramsDescription",
+                        "installedEquipmentDescription": "installedEquipmentDescription",
+                        "seaLevelRelativePosition": "seaLevelRelativePosition",
+                        "craterDepth": "craterDepth",
+                        "bottomDepth": "bottomDepth",
+                        "temperatureSensors": [
+                            {
                                 "name": "name",
                                 "channelNumber": "channelNumber",
                                 "cableDepth": "cableDepth"

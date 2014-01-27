@@ -1,61 +1,69 @@
 .admin_deposits {
-    width: 800px;
-}
-
-.deposit-info {
-    margin-left: 20px;
+    width: 80%;
 }
 
 .deposit-item {
+    .deposit-name {
+        width: 60%;
+        float: left;
+    }
+
+    .deposit-number {
+        width: 35%;
+        float: left;
+    }
+}
+
+.cluster-item {
+    .cluster-name {
+        width: 60%;
+        float: left;
+    }
+
+    .cluster-number {
+        width: 35%;
+        float: left;
+    }
+}
+
+.well-item {
+    .well-id {
+        width: 60%;
+        float: left;
+    }
+
+    .well-number {
+        width: 35%;
+        float: left;
+    }
+}
+
+.sensor-item {
+    .sensor-name {
+        width: 50%;
+        float: left;
+    }
+
+    .sensor-channel-number {
+        width: 45%;
+        float: left;
+    }
+}
+
+.clusters,.wells,.sensors {
+    padding-left: 30px;
+}
+
+.clusters,.wells,.sensors {
+    width: 100%;
+}
+
+.deposit-item,.cluster-item,.well-item,.sensor-item {
+    border-bottom: 1px solid #DDD;
     cursor: pointer;
     line-height: 25px;
 
     &:hover {
-        background-color: #EEE;
-    }
-
-    .name {
-        width: 70%;
-    }
-
-    .number {
-        width: 30%;
-    }
-}
-
-.cluster-info {
-    width: 100%;
-    margin-left: 20px;
-}
-
-.cluster-item {
-    cursor: pointer;
-    line-height: 20px;
-
-    &:hover {
-        background-color: #EEE;
-    }
-}
-
-.well-info {
-    width: 100%;
-    margin-left: 20px;
-}
-
-.well-item {
-    cursor: pointer;
-    line-height: 20px;
-
-    &:hover {
-        background-color: #EEE;
-    }
-}
-
-.pressure-sensor-item,.temperature-sensor-item {
-    cursor: pointer;
-    line-height: 20px;
-
-    &:hover {
-        background-color: #EEE;
+        // background-color: #EEE;
     }
 }
