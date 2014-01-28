@@ -12,7 +12,7 @@ require.config({
         'backbone.associations': 'vendors/backbone/backbone-associations',
         'text': 'vendors/require/text',
         'bootstrap': 'vendors/bootstrap/bootstrap',
-        'rivets': 'vendors/rivets/rivets',
+        'rivets': 'vendors/rivets/rivets.modified',
         'rivets.adapter': 'vendors/rivets/rivets-backbone',
         'moment': 'vendors/moment/moment'
     },
