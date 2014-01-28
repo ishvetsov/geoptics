@@ -6,6 +6,8 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
 
+        AppConfig = require('configs/app.config'),
+
         Template = require('text!./fields.template.html'),
         EmptyTemplate = require('text!./fields_empty.template.html');
 
@@ -37,7 +39,14 @@ define(function (require) {
         },
 
         expandField: function (ev, data) {
-            showHideSubItems(ev);
+            var field = data.field;
+
+            field.get('clusters').fetch({
+                url: AppConfig.rest.adminClusters,
+                id: field.id
+            }).then(function () {
+                showHideSubItems(ev);
+            });
         },
 
         expandCluster: function (ev, data) {

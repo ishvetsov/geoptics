@@ -5,9 +5,9 @@ define(function (require) {
 
     var Block = require('core/block'),
 
-        Layout = require('./admin_resources.layout'),
-        NoAttachedBoreholesBlock = require('blocks/no_attached_boreholes/no_attached_boreholes.block'),
-        FieldsBlock = require('blocks/fields/fields.block');
+        NoAttachedBoreholesBlock = require('../no_attached_boreholes/no_attached_boreholes.block'),
+        FieldsBlock = require('../fields/fields.block'),
+        Layout = require('./admin_resources.layout');
 
     var noAttachedBoreholesBlock = NoAttachedBoreholesBlock.getInstance(),
         fieldsBlock = FieldsBlock.getInstance();

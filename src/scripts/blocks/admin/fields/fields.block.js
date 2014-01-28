@@ -2,9 +2,9 @@ define(function (require) {
     'use strict';
 
     var Block = require('core/block'),
+        Field = require('entities/field.entity'),
 
-        View = require('./fields.view'),
-        Field = require('entities/field.entity');
+        View = require('./fields.view');
 
     var fields = new Field.Collection();
 

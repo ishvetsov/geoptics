@@ -5,7 +5,7 @@ define(function (require) {
         AppConfig = require('configs/app.config');
 
     var NoAttachedBoreholeCollection = Borehole.Collection.extend({
-        url: AppConfig.rest.noAttachedBoreholes
+        url: AppConfig.rest.adminNoAttachedBoreholes
     });
 
     return NoAttachedBoreholeCollection;
