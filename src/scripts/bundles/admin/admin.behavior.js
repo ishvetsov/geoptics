@@ -8,11 +8,11 @@ define(function (require) {
 
     var Blocks = {
         Navigation: require('blocks/navigation/navigation.block'),
-        AdminUsers: require('blocks/admin/admin_users/admin_users.block'),
-        AdminUser: require('blocks/admin/admin_user/admin_user.block'),
+        AdminUsers: require('blocks/admin/users/admin_users.block'),
+        AdminUser: require('blocks/admin/user/admin_user.block'),
         AdminResources: require('blocks/admin/resources/admin_resources.block'),
-        AdminMonitoring: require('blocks/admin/admin_monitoring/admin_monitoring.block'),
-        AdminNavigation: require('blocks/admin/admin_navigation/admin_navigation.block')
+        AdminMonitoring: require('blocks/admin/monitoring/admin_monitoring.block'),
+        AdminNavigation: require('blocks/admin/navigation/admin_navigation.block')
     };
 
     var blocks = Utils.getInstances(Blocks),

@@ -38,17 +38,13 @@ define(function (require) {
 
         _expand: function (ev, model, children, url) {
             children = model.get(children);
+            
+            !children.size() && children.fetch({
+                url: url,
+                data: {id: model.get('id')}
+            });
 
-            if (children.size()) {
-                $(ev.currentTarget).next().toggle();
-            } else {
-                children.fetch({
-                    url: url,
-                    data: {id: model.get('id')}
-                }).then(function () {
-                    $(ev.currentTarget).next().toggle();
-                });
-            }
+            $(ev.currentTarget).next().toggle();
         },
 
         expandField: function (ev, data) {
