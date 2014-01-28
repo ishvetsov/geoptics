@@ -11,18 +11,16 @@ define(function (require) {
         Template = require('text!./fields.template.html'),
         EmptyTemplate = require('text!./fields_empty.template.html');
 
-    function showHideSubItems(ev) {
-        var $target = $(ev.currentTarget);
-
-        if ($target.next().attr('hidden')) {
-            $target.next().removeAttr('hidden');
-        } else {
-            $target.next().attr('hidden', true);
-        }
-    }
+    // function showHideSubItems (ev) {
+    //     $(ev.currentTarget).next().toggle();
+    // }
 
     var FieldsView = Marionette.ItemView.extend({
         className: 'admin_fields',
+
+        initialize: function () {
+            _.bindAll(this, 'expandField');
+        },
 
         getTemplate: function () {
             if (this.collection.length) {
@@ -38,24 +36,44 @@ define(function (require) {
             });
         },
 
+        _expand: function (ev, model, children, url) {
+            children = model.get(children);
+
+            if (children.size()) {
+                $(ev.currentTarget).next().toggle();
+            } else {
+                children.fetch({
+                    url: url,
+                    data: {id: model.get('id')}
+                }).then(function () {
+                    $(ev.currentTarget).next().toggle();
+                });
+            }
+        },
+
         expandField: function (ev, data) {
-            var field = data.field;
-
-            field.get('clusters').fetch({
-                url: AppConfig.rest.adminClusters,
-                id: field.id
-            }).then(function () {
-                showHideSubItems(ev);
-            });
+            this._expand(ev, data.field, 'clusters',
+                AppConfig.rest.adminClusters);
         },
 
-        expandCluster: function (ev, data) {
-            showHideSubItems(ev);
-        },
+        // expandField: function (ev, data) {
+        //     var field = data.field;
 
-        expandBorehole: function (ev, data) {
-            showHideSubItems(ev);
-        }
+        //     field.get('clusters').fetch({
+        //         url: AppConfig.rest.adminClusters,
+        //         data: {id: field.id}
+        //     }).then(function () {
+        //         showHideSubItems(ev);
+        //     });
+        // },
+
+        // expandCluster: function (ev, data) {
+        //     showHideSubItems(ev);
+        // },
+
+        // expandBorehole: function (ev, data) {
+        //     showHideSubItems(ev);
+        // }
     });
 
     return FieldsView;

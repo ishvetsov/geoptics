@@ -83,6 +83,7 @@
                 collection = root.model.get(root.key);
 
             if (collection instanceof Collection) {
+                // collection[action]('add remove reset', callback);
                 collection[action]('add remove reset', callback);
             } else {
                 root.model[action]('change:' + root.key, callback);
