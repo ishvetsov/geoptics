@@ -4,9 +4,9 @@ define(function (require) {
     var Block = require('core/block'),
 
         AdminUserView = require('./admin_user.view'),
-        AdminUserModel = require('./admin_user.model');
+        AdminUser = require('./admin_user.entity');
 
-    var adminUserModel = new AdminUserModel();
+    var adminUserModel = new AdminUser.Model();
 
     var AdminUserBlock = Block.create({
         view: AdminUserView,

@@ -10,5 +10,7 @@ define(function (require) {
         urlRoot: AppConfig.rest.adminUser
     });
 
-    return AdminUserModel;
+    return {
+        Model: AdminUserModel
+    };
 });

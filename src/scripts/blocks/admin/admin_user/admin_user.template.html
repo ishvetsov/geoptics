@@ -63,7 +63,7 @@
         <div class="col-sm-10">
             <div rv-each-group="model:groups">
                 { group:name }
-                <span class="glyphicon glyphicon-remove"></span>
+                <span rv-on-click="group.destroy" class="glyphicon glyphicon-remove user_group-remove js-user_group-remove"></span>
             </div>
             <div class="input-group">
                 <input rv-value="view._group.name" type="text" class="form-control" placeholder="Группа">

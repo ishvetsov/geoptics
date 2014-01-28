@@ -3,32 +3,38 @@
 }
 
 .field-item .field-name {
-    width: 60%;
     float: left;
+
+    width: 60%;
 }
 
 .field-item .field-number {
-    width: 35%;
     float: left;
+
+    width: 35%;
 }
 
 .cluster-item .cluster-name {
-    width: 60%;
     float: left;
+
+    width: 60%;
 }
 
 .cluster-item .cluster-number {
-    width: 35%;
     float: left;
+
+    width: 35%;
 }
 
 .borehole-item .borehole-id {
     float: left;
+
     width: 60%;
 }
 
 .borehole-item .borehole-number {
     float: left;
+
     width: 35%;
 }
 
@@ -38,12 +44,14 @@
 
 .sensor-item .sensor-name {
     float: left;
+
     width: 50%;
 }
 
 .sensor-item .sensor-channel-number {
-    width: 45%;
     float: left;
+
+    width: 45%;
 }
 
 .clusters,
@@ -61,7 +69,9 @@
 .field-item,
 .cluster-item,
 .borehole-item {
-    border-bottom: 1px solid #DDD;
     cursor: pointer;
+
     line-height: 25px;
+
+    border-bottom: 1px solid #ddd;
 }

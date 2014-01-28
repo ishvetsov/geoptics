@@ -24,9 +24,6 @@ define(function (require) {
         },
 
         addGroup: function () {
-            // Dummy
-            this._group.id = Math.random();
-
             this.model.get('groups').add(this._group);
         },
 

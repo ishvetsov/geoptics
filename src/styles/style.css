@@ -35,6 +35,12 @@
 .user-table-controls {
   text-align: right; }
 
+.admin_user .user_group-remove {
+  opacity: .4; }
+  .admin_user .user_group-remove:hover {
+    cursor: pointer;
+    opacity: 1; }
+
 .admin_fields {
   width: 65%; }
 
