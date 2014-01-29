@@ -5,7 +5,7 @@ define(function (require) {
 
     var Backbone = require('backbone'),
         Cookie = require('jquery.cookie'),
-        Block = require('core/block'),
+        Block = require('core/block.base'),
 
         User = require('entities/user.entity');
 

@@ -3,7 +3,7 @@
 define(function (require) {
     'use strict';
 
-    var Block = require('core/block'),
+    var Block = require('core/block.ui'),
         SessionBlock = require('blocks/session/session.block'),
 
         View = require('./navigation.view'),

@@ -3,9 +3,10 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette');
+    var Emitter = require('./emitter'),
+        Factory = require('./factory');
 
-    var MarionetteBundle = Marionette.Controller.extend({
+    var Bundle = Emitter.extend({
         initialize: function () {
             _.bindAll(this, 'init');
         },
@@ -57,18 +58,5 @@ define(function (require) {
         }
     });
 
-    var Bundle = {
-        create: function (arg) {
-            return {
-                _constructor: MarionetteBundle.extend(arg),
-                getInstance: function () {
-                    return typeof this._instance !== 'undefined'
-                        ? this._instance
-                        : this._instance = new this._constructor();
-                }
-            };
-        }
-    };
-
-    return Bundle;
+    return Factory.decl(Bundle);
 });

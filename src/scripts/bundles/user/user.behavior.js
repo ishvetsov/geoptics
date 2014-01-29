@@ -1,5 +1,3 @@
-/* global Backbone */
-
 define(function (require) {
     'use strict';
 

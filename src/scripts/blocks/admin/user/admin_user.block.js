@@ -1,27 +1,23 @@
 define(function (require) {
     'use strict';
 
-    var Block = require('core/block'),
+    var Block = require('core/block.ui'),
 
         AdminUserView = require('./admin_user.view'),
         AdminUser = require('./admin_user.entity');
 
-    var adminUserModel = new AdminUser.Model();
-
     var AdminUserBlock = Block.create({
         view: AdminUserView,
-        viewOptions: {
-            model: adminUserModel
-        },
+        model: AdminUser.Model,
 
         fetch: function (id) {
-            return adminUserModel.fetch({
+            return this._modelInstance.fetch({
                 data: {id: id}
             });
         },
 
         resetModel: function () {
-            adminUserModel.clear().set('groups', []);
+            this._modelInstance.clear().set('groups', []);
             return this;
         }
     });

@@ -1,24 +1,21 @@
 define(function (require) {
-	'use strict';
+    'use strict';
 
-	var Block = require('core/block'),
+    var Block = require('core/block.ui'),
 
-		View = require('./no_attached_boreholes.view'),
-		Collection = require('./no_attached_boreholes.collection');
+        View = require('./no_attached_boreholes.view'),
+        Collection = require('./no_attached_boreholes.collection');
 
-	var noAttachedBoreholes = new Collection();
+    var noAttachedBoreholes = new Collection();
 
-	var NoAttachedBoreholesBlock = Block.create({
-		view: View,
+    var NoAttachedBoreholesBlock = Block.create({
+        view: View,
+        collection: Collection,
 
-		viewOptions: {
-			collection: noAttachedBoreholes
-		},
+        fetch: function () {
+            return noAttachedBoreholes.fetch();
+        }
+    });
 
-		fetch: function () {
-			return noAttachedBoreholes.fetch();
-		}
-	});
-
-	return NoAttachedBoreholesBlock;
+    return NoAttachedBoreholesBlock;
 });

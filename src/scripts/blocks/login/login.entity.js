@@ -11,5 +11,7 @@ define(function (require) {
         }
     });
 
-    return LoginModel;
+    return {
+        Model: LoginModel
+    };
 });

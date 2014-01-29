@@ -1,15 +1,17 @@
 define(function (require) {
     'use strict';
 
-    var Block = require('core/block'),
+    var Block = require('core/block.ui'),
 
         View = require('./admin_navigation.view'),
         Config = require('./admin_navigation.config');
 
     var AdminNavigationBlock = Block.create({
         view: View,
-        
-        viewOptions: Config.items,
+
+        viewOptions: {
+            config: Config.items
+        },
 
         functions: {
             'view:setActiveItem': 'activateItem',

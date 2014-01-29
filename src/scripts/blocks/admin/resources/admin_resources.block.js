@@ -3,7 +3,7 @@
 define(function (require) {
     'use strict';
 
-    var Block = require('core/block'),
+    var Block = require('core/block.ui'),
 
         NoAttachedBoreholesBlock = require('../no_attached_boreholes/no_attached_boreholes.block'),
         FieldsBlock = require('../fields/fields.block'),

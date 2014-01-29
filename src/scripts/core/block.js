@@ -3,17 +3,19 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette');
+    var Emitter = require('./emitter');
 
-    var MarionetteBlock = Marionette.Controller.extend({
+    var Block = Emitter.extend({
+        _instanceMap: {},
+
         init: function () {
             _.isFunction(this.onBeforeInit) && this.onBeforeInit();
+            _.isFunction(this._createInstances) && this._createInstances();
 
-            this._viewInstance = this.createViewInstance();
-
-            this._instanceMap = {
-                view: this._viewInstance
-            };
+            _.extend(
+                this._instanceMap,
+                this._getDefaultInstanceMap(),
+                this.instanceMap);
 
             _.each(this.triggers, function (val, key) {
                 var eventInfo = this._getDelegateInfo(key);
@@ -36,15 +38,7 @@ define(function (require) {
             return this;
         },
 
-        createViewInstance: function () {
-            return _.isFunction(this.view)
-                ? new this.view(this.viewOptions)
-                : null;
-        },
-
-        getViewInstance: function () {
-            return this._viewInstance;
-        },
+        _getDefaultInstanceMap: function () {},
 
         _getDelegateInfo: function (fullName) {
             var targetName = fullName.split(':')[0],
@@ -56,24 +50,6 @@ define(function (require) {
             };
         }
     });
-
-    var Block = {
-        create: function (arg) {
-            var settings = _.extend({
-                isSingleton: true,
-            }, arg.settings);
-
-            return {
-                _constructor: MarionetteBlock.extend(arg),
-                getInstance: function () {
-                    return settings.isSingleton
-                        && typeof this._instance !== 'undefined'
-                            ? this._instance
-                            : this._instance = new this._constructor();
-                }
-            };
-        }
-    };
 
     return Block;
 });

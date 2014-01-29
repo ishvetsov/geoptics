@@ -27,7 +27,7 @@ define(function (require) {
 
         serializeData: function () {
             return {
-                items: this.options
+                items: this.options.config
             };
         }
     });

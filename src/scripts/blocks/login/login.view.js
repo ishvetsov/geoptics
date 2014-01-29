@@ -5,12 +5,10 @@ define(function (require) {
 
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
-        
-        LoginModel = require('./login.model'),
+
         LoginTemplate = require('text!./login.template.html');
 
     var LoginView = Marionette.ItemView.extend({
-        model: new LoginModel(),
         template: _.template(LoginTemplate),
 
         ui: {
