@@ -12,7 +12,7 @@ define(function (require) {
         },
         Bundles = {
             Admin: require('bundles/admin/admin.bundle'),
-            User: require('bundles/user/user.bundle')
+            Prime: require('bundles/prime/prime.bundle')
         };
 
     var blocks = Utils.getInstances(Blocks),
@@ -23,7 +23,7 @@ define(function (require) {
         commonLayout.body.show(layout);
     });
 
-    bundles.user.on('state:active', function (layout) {
+    bundles.prime.on('state:active', function (layout) {
         commonLayout.body.show(layout);
     });
 
@@ -33,7 +33,7 @@ define(function (require) {
 
     var initialize = function () {
         blocks.navigation.init();
-        bundles.user.init();
+        bundles.prime.init();
 
         blocks.session.getAccessLevel() > 1 && bundles.admin.init();
     };
