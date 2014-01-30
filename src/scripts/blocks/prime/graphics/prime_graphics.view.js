@@ -7,10 +7,10 @@ define(function (require) {
         Rivets = require('rivets'),
         HighstockExporting = require('highstock.exporting'),
 
-        GraphicsTemplate = require('text!./prime_graphics.template.html');
+        Template = require('text!./prime_graphics.template.html');
 
     var GraphicsView = Marionette.ItemView.extend({
-        template: _.template(GraphicsTemplate),
+        template: _.template(Template),
         className: 'graphics',
 
         ui: {
