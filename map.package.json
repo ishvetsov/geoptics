@@ -44,5 +44,11 @@
     "src/scripts/vendors/rivets",
 
     "bower_components/momentjs/moment.js":
-    "src/scripts/vendors/moment"
+    "src/scripts/vendors/moment",
+
+    "bower_components/js/highstock.src.js":
+    "src/scripts/vendors/highcharts",
+
+    "bower_components/js/modules/exporting.src":
+    "src/scripts/vendors/highcharts/modules"
 }
