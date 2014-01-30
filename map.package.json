@@ -46,9 +46,9 @@
     "bower_components/momentjs/moment.js":
     "src/scripts/vendors/moment",
 
-    "bower_components/js/highstock.src.js":
-    "src/scripts/vendors/highcharts",
+    "bower_components/highstock/js/highstock.src.js":
+    "src/scripts/vendors/highstock",
 
-    "bower_components/js/modules/exporting.src":
-    "src/scripts/vendors/highcharts/modules"
+    "bower_components/highstock/js/modules/exporting.src.js":
+    "src/scripts/vendors/highstock/modules"
 }
