@@ -14,7 +14,9 @@ define(function (require) {
 
         initialize: function () {},
 
-        onRender: function () {}
+        onRender: function () {
+            // this.collection;
+        }
     });
 
     return GraphicsView;

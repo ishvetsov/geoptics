@@ -8,6 +8,8 @@ define({
         adminClusters: 'data/admin_clusters.data.json',
         adminBoreholes: 'data/admin_boreholes.json',
         adminPressureSensors: 'data/admin_pressure_sensors.json',
-        adminTemperatureSensors: 'data/admin_temperature_sensors.json'
+        adminTemperatureSensors: 'data/admin_temperature_sensors.json',
+
+        graphics: 'data/graphics.data.json'
     }
 });

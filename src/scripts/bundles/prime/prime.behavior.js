@@ -1,27 +1,36 @@
 define(function (require) {
     'use strict';
 
-    var NavigationBlock = require('blocks/navigation/navigation.block'),
-        GraphicsBlock = require('blocks/prime/graphics/prime_graphics.block'),
-
+    var Utils = require('core/utils'),
         PrimeLayout = require('./prime.layout');
 
-    var navigationBlock = NavigationBlock.getInstance(),
-        graphicsBlock = GraphicsBlock.getInstance(),
+    var Blocks = {
+        Navigation: require('blocks/navigation/navigation.block'),
+        Graphics: require('blocks/prime/graphics/prime_graphics.block'),
+        Journal: require('blocks/prime/journal/prime_journal.block')
+    };
+
+    var blocks = Utils.getInstances(Blocks),
         primeLayout = new PrimeLayout();
 
     var initialize = function () {
-        graphicsBlock.init();
+        blocks.graphics.init();
+        blocks.journal.init();
     };
 
     var handlers = {
         journal: function () {
-            navigationBlock.activateItem('journal');
+            blocks.navigation.activateItem('journal');
+            primeLayout.container.show(blocks.journal.getViewInstance());
         },
 
         graphics: function () {
-            navigationBlock.activateItem('graphics');
-            primeLayout.container.show(graphicsBlock.getViewInstance());
+            blocks.navigation.activateItem('graphics');
+
+            blocks.graphics.fetch([1, 2, 3])
+                .then(function () {
+                    primeLayout.container.show(blocks.graphics.getViewInstance());
+                });
         }
     };
 
