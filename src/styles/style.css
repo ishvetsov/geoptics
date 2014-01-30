@@ -45,20 +45,20 @@
   width: 65%; }
 
 .field-item .field-name {
-  width: 60%;
-  float: left; }
+  float: left;
+  width: 60%; }
 
 .field-item .field-number {
-  width: 35%;
-  float: left; }
+  float: left;
+  width: 35%; }
 
 .cluster-item .cluster-name {
-  width: 60%;
-  float: left; }
+  float: left;
+  width: 60%; }
 
 .cluster-item .cluster-number {
-  width: 35%;
-  float: left; }
+  float: left;
+  width: 35%; }
 
 .borehole-item .borehole-id {
   float: left;
@@ -76,8 +76,8 @@
   width: 50%; }
 
 .sensor-item .sensor-channel-number {
-  width: 45%;
-  float: left; }
+  float: left;
+  width: 45%; }
 
 .clusters,
 .boreholes,
@@ -92,6 +92,11 @@
 .field-item,
 .cluster-item,
 .borehole-item {
-  border-bottom: 1px solid #DDD;
   cursor: pointer;
-  line-height: 25px; }
+  line-height: 25px;
+  border-bottom: 1px solid #ddd; }
+
+.prime_graphics {
+  min-width: 310px;
+  height: 400px;
+  margin: 0 auto; }

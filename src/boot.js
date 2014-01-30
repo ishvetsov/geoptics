@@ -14,7 +14,9 @@ require.config({
         'bootstrap': 'vendors/bootstrap/bootstrap',
         'rivets': 'vendors/rivets/rivets.modified',
         'rivets.adapter': 'vendors/rivets/rivets-backbone',
-        'moment': 'vendors/moment/moment'
+        'moment': 'vendors/moment/moment',
+        'highcharts': 'vendors/highcharts/highstock.src',
+        'highcharts.exporting': 'vendors/highcharts/modules/exporting.src'
     },
 
     map: {
@@ -52,13 +54,20 @@ require.config({
         },
         'rivets.adapter': {
             deps: ['rivets', 'backbone']
+        },
+        'highcharts': {
+            deps: ['jquery'],
+            exports: 'Highcharts'
+        },
+        'highcharts.exporting': {
+            deps: ['highcharts']
         }
     }
 });
 
 require([
     'app',
-    'bootstrap',
+    'bootstrap', // TODO: надо выпилить отсюда в конкретные места
     'configs/app.config'
 ], function (app) {
     app.start();
