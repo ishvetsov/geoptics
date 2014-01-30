@@ -14,7 +14,10 @@ require.config({
         'bootstrap': 'vendors/bootstrap/bootstrap',
         'rivets': 'vendors/rivets/rivets.modified',
         'rivets.adapter': 'vendors/rivets/rivets-backbone',
-        'moment': 'vendors/moment/moment'
+        'moment': 'vendors/moment/moment',
+
+        'highstock': 'vendors/highstock/highstock',
+        'highstock.exporting': 'vendors/highstock/modules/exporting'
     },
 
     map: {
@@ -52,6 +55,14 @@ require.config({
         },
         'rivets.adapter': {
             deps: ['rivets', 'backbone']
+        },
+
+        'highstock': {
+            'exports': 'StockChart',
+            'deps': ['jquery']
+        },
+        'highstock.exporting': {
+            'deps': ['highstock']
         }
     }
 });
