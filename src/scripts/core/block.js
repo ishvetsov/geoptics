@@ -6,8 +6,10 @@ define(function (require) {
     var Emitter = require('./emitter');
 
     var Block = Emitter.extend({
-        _instanceMap: {},
+        _instanceMap: {}
+    });
 
+    _.extend(Block.prototype, {
         init: function () {
             _.isFunction(this.onBeforeInit) && this.onBeforeInit();
             _.isFunction(this._createInstances) && this._createInstances();

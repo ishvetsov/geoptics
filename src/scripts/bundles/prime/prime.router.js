@@ -1,9 +1,9 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette');
+    var Router = require('core/router');
 
-    var PrimeRouter = Marionette.AppRouter.extend({
+    var PrimeRouter = Router.extend({
         appRoutes: {
             'graphics': 'graphics',
             'journal': 'journal'

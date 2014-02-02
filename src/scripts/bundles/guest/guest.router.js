@@ -1,10 +1,9 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette'),
-        Bus = require('bus');
+    var Router = require('core/router');
 
-    var GuestRouter = Marionette.AppRouter.extend({
+    var GuestRouter = Router.extend({
         appRoutes: {
             '*any': 'check'
         }
