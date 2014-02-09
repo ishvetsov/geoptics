@@ -1,9 +1,9 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette');
+    var Router = require('core/router');
 
-    var AdminRouter = Marionette.AppRouter.extend({
+    var AdminRouter = Router.extend({
         appRoutes: {
             'admin/users': 'users',
             'admin/user/new': 'newUser',
