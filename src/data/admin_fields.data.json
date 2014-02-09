@@ -23,9 +23,9 @@
         ]
     },
     {
-        "id": "idfield3",
+        "id": "idfield2",
         "name": "Месторождение 2",
-        "number": "1213141252",
+        "number": "1213141251",
         "comments": [
             {
                 "createDate": "10.10.2000",
@@ -46,7 +46,7 @@
         ]
     },
     {
-        "id": "idfield6",
+        "id": "idfield3",
         "name": "Месторождение 3",
         "number": "1213141251",
         "comments": [

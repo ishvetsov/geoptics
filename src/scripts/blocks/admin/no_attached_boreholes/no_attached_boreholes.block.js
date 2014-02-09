@@ -4,16 +4,14 @@ define(function (require) {
     var Block = require('core/block.ui'),
 
         View = require('./no_attached_boreholes.view'),
-        Collection = require('./no_attached_boreholes.collection');
-
-    var noAttachedBoreholes = new Collection();
+        NoAttachedBoreholesCollection = require('./no_attached_boreholes.collection');
 
     var NoAttachedBoreholesBlock = Block.create({
         view: View,
-        collection: Collection,
+        collection: NoAttachedBoreholesCollection,
 
         fetch: function () {
-            return noAttachedBoreholes.fetch();
+            return this._collectionInstance.fetch();
         }
     });
 

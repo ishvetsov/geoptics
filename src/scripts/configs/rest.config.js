@@ -10,6 +10,12 @@ define({
         adminPressureSensors: 'data/admin_pressure_sensors.json',
         adminTemperatureSensors: 'data/admin_temperature_sensors.json',
 
+        adminField: '',
+        adminCluster: '',
+        adminBorehole: '',
+        adminPressureSensor: '',
+        adminTemperatureSensor: '',
+
         graphics: 'data/graphics.data.json'
     }
 });
