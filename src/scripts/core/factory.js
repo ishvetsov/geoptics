@@ -7,8 +7,13 @@ define({
 
         return {
             _constructor: constructor,
-            create: function (arg) {
+            create: function (arg, bindedMethods) {
                 var settings = _.extend(defaultSettings, arg.settings);
+
+                if(_.isObject(bindedMethods)) {
+                    _.extend(arg, bindedMethods);
+                    arg._bindedMethodsNames = _.keys(bindedMethods);
+                }
 
                 return {
                     _constructor: this._constructor.extend(arg),
