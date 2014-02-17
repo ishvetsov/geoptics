@@ -7,15 +7,21 @@ define(function (require) {
     var Blocks = {
         Navigation: require('blocks/navigation/navigation.block'),
         Graphics: require('blocks/prime/graphics/prime_graphics.block'),
-        Journal: require('blocks/prime/journal/prime_journal.block')
+        Journal: require('blocks/prime/journal/prime_journal.block'),
+        Boreholes: require('blocks/prime/boreholes/prime_boreholes.block')
     };
 
     var blocks = Utils.getInstances(Blocks),
         primeLayout = new PrimeLayout();
 
+    primeLayout.on('show', function () {
+        primeLayout.sidebar.show(blocks.boreholes.getViewInstance());
+    });
+
     var initialize = function () {
         blocks.graphics.init();
         blocks.journal.init();
+        blocks.boreholes.init();
     };
 
     var handlers = {

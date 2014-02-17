@@ -8,7 +8,7 @@ define(function (require) {
         TemperatureSensor = require('./temperature_sensor.entity'),
         Comment = require('./comment.entity');
 
-    var Borehole = Backbone.Model.extend({
+    var Borehole = Backbone.AssociatedModel.extend({
         defaults: {
             id: '',
             name: '',

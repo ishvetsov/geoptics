@@ -9,7 +9,6 @@ define(function (require) {
     var AdminUsersBlock = Block.create({
         view: AdminUsersView,
         collection: AdminUsersCollection,
-        
 
         fetch: function () {
             return this._collectionInstance.fetch();

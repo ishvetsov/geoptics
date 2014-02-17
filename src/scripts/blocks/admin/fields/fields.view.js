@@ -45,7 +45,6 @@ define(function (require) {
         },
 
         expandField: function (ev, data) {
-            console.trace();
             this._expand(ev, data.field, 'clusters',
                 AppConfig.rest.adminClusters);
         },
@@ -60,18 +59,19 @@ define(function (require) {
                 psensors = borehole.get('pressureSensors'),
                 tsensors = borehole.get('temperatureSensors');
 
-            // if (!psensors.size()) {
-            //     psensors.fetch({
-            //         url: AppConfig.rest.adminPressureSensors,
-            //         data: {id: borehole.get('id')}
-            //     });
-            // }
-            // if (!tsensors.size()) {
-            //     tsensors.fetch({
-            //         url: AppConfig.rest.adminTemperatureSensors,
-            //         data: {id: model.get('id')}
-            //     });
-            // }
+            if (!psensors.size()) {
+                psensors.fetch({
+                    url: AppConfig.rest.adminPressureSensors,
+                    data: {id: borehole.get('id')}
+                });
+            }
+            if (!tsensors.size()) {
+                tsensors.fetch({
+                    url: AppConfig.rest.adminTemperatureSensors,
+                    data: {id: borehole.get('id')}
+                });
+            }
+            $(ev.currentTarget).next().toggle();
         }
     });
 

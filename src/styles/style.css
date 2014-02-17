@@ -10,6 +10,18 @@
 .clearfix {
   zoom: 1; }
 
+.comment {
+  margin-bottom: 5px; }
+
+.comment .comment-date {
+  margin-left: 15px; }
+
+.comment .comment-text {
+  margin-left: 15px; }
+
+.comment .comment-remove {
+  margin-left: 15px; }
+
 .common__body {
   padding: 80px 0 0; }
 
@@ -22,6 +34,16 @@
 
 .admin_container-region {
   margin: 0 0 0 200px; }
+
+.prime {
+  padding: 0 30px; }
+
+.prime__sidebar {
+  position: fixed;
+  width: 300px; }
+
+.prime__container {
+  margin: 0 0 0 300px; }
 
 .admin_navigation .item {
   width: 150px; }
@@ -43,6 +65,10 @@
 
 .admin_fields {
   width: 65%; }
+
+.admin_fields .title {
+  font-size: 1.2em;
+  margin-bottom: 5px; }
 
 .field-item .field-name {
   float: left;
@@ -95,3 +121,13 @@
   cursor: pointer;
   line-height: 25px;
   border-bottom: 1px solid #ddd; }
+
+.admin_no-attached-boreholes {
+  padding-top: 20px; }
+
+.admin_no-attached-boreholes .title {
+  font-size: 1.2em;
+  margin-bottom: 5px; }
+
+.graphics {
+  margin: 0 30px; }

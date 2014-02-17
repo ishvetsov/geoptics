@@ -13,10 +13,10 @@ define(function (require) {
             'admin/fields/new': 'newField',
             'admin/fields/:id': 'field',
             
-            'admin/clusters/:id': 'cluster',
             'admin/clusters/new': 'newCluster',
+            'admin/clusters/:id': 'cluster',
 
-            'admin/boreholes/:id': 'borehole',  
+            'admin/boreholes/:id': 'borehole',
 
             'admin/monitoring': 'monitoring'
         }

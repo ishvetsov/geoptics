@@ -27,6 +27,8 @@ define(function (require) {
                     (typeof options[optionName] !== 'undefined');
 
             return (hasOption ? options : target)[optionName];
-        }
+        },
+
+        strings: strings
     };
 });

@@ -7,7 +7,12 @@ define(function (require) {
         AppConfig = require('configs/app.config');
 
     var AdminUserModel = User.Model.extend({
-        urlRoot: AppConfig.rest.adminUser
+        // urlRoot: AppConfig.rest.adminUser,
+        url: AppConfig.rest.adminUser,
+
+        initialize: function () {
+            _.bindAll(this, 'save');
+        }
     });
 
     return {

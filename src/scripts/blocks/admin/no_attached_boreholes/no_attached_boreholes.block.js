@@ -2,16 +2,19 @@ define(function (require) {
     'use strict';
 
     var Block = require('core/block.ui'),
+        Borehole = require('entities/borehole.entity'),
+        AppConfig = require('configs/app.config'),
 
-        View = require('./no_attached_boreholes.view'),
-        NoAttachedBoreholesCollection = require('./no_attached_boreholes.collection');
-
+        View = require('./no_attached_boreholes.view');
+        
     var NoAttachedBoreholesBlock = Block.create({
         view: View,
-        collection: NoAttachedBoreholesCollection,
+        collection: Borehole.Collection,
 
         fetch: function () {
-            return this._collectionInstance.fetch();
+            return this._collectionInstance.fetch({
+                url: AppConfig.rest.adminNoAttachedBoreholes
+            });
         }
     });
 

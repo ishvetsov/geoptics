@@ -1,3 +1,4 @@
+<div class="title">Месторождения</div>
 <div rv-each-field="fields:models">
     <div class="field-item clearfix" rv-on-click="view.expandField">
         <div class="field-name">{ field:name }</div>
@@ -41,10 +42,10 @@
                         <div rv-each-tsensor="borehole:temperatureSensors">
                             <div class="sensor-item clearfix">
                                 <div class="sensor-name">
-                                    { tsensor.name }
+                                    { tsensor:name }
                                 </div>
                                 <div class="sensor-channel-number">
-                                    { tsensor.channelNumber }
+                                    { tsensor:channelNumber }
                                 </div>
                             </div>
                         </div>
@@ -53,10 +54,10 @@
                         <div rv-each-psensor="borehole:pressureSensors">
                             <div class="sensor-item clearfix">
                                 <div class="sensor-name">
-                                    { psensor.name }
+                                    { psensor:name }
                                 </div>
                                 <div class="sensor-channel-number">
-                                    { psensor.channelNumber }
+                                    { psensor:channelNumber }
                                 </div>
                             </div>
                         </div>
