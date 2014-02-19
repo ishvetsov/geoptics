@@ -58,15 +58,22 @@ define(function (require) {
 		},
 
 		saveSelectedBoreholes: function () {
-			var checkedIds = new Borehole.Collection(
+			this._selectedBoreholes = new Borehole.Collection(
 				this.model.get('noAttachedBoreholes').where({
 					isChecked: true
-				})).pluck('id');
+				}));
+
 			this.trigger('view:saveBoreholes', {
-				field: this._selectedField.get('id'),
-				cluster: this._selectedCluster.get('id'),
-				boreholeIds: checkedIds
+				field: this._selectedField,
+				cluster: this._selectedCluster,
+				boreholesIds: this._selectedBoreholes.pluck('id')
 			});
+		},
+
+		removeCheckedBoreholes: function () {
+			this.model.get('noAttachedBoreholes').remove(
+				this._selectedBoreholes.models);
+			this._onChecked();
 		},
 
 		_onChecked: function (ev) {
