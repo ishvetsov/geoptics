@@ -67,8 +67,8 @@
   width: 65%; }
 
 .admin_fields .title {
-  font-size: 1.2em;
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+  font-size: 1.2em; }
 
 .field-item .field-name {
   float: left;
@@ -126,8 +126,8 @@
   padding-top: 20px; }
 
 .admin_no-attached-boreholes .title {
-  font-size: 1.2em;
-  margin-bottom: 5px; }
+  margin-bottom: 5px;
+  font-size: 1.2em; }
 
 .graphics {
   margin: 0 30px; }
