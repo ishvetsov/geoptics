@@ -18,16 +18,23 @@ define(function (require) {
         onInit: function () {
             _.bindAll(this, '_onShowAdminResourcesLayout');
 
-            noAttachedBoreholesBlock.init();
             fieldsBlock.init();
+
+            noAttachedBoreholesBlock.init();
 
             this._viewInstance.on('show', this._onShowAdminResourcesLayout);
         },
 
         fetch: function () {
+            var fieldsBlockDeffered = fieldsBlock.fetch();
+
+            fieldsBlockDeffered.then(function () {
+                noAttachedBoreholesBlock.setFields(fieldsBlock.getCollection());
+            });
+
             return $.when(
                 noAttachedBoreholesBlock.fetch(),
-                fieldsBlock.fetch()
+                fieldsBlockDeffered
             );
         },
 

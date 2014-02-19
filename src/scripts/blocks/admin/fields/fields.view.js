@@ -15,7 +15,7 @@ define(function (require) {
         className: 'admin_fields',
 
         initialize: function () {
-            _.bindAll(this, 'expandField', 'expandCluster');
+            _.bindAll(this, 'expandField', 'expandCluster', 'expandBorehole');
         },
 
         getTemplate: function () {
@@ -32,26 +32,21 @@ define(function (require) {
             });
         },
 
-        _expand: function (ev, model, children, url) {
-            children = model.get(children);
-            if (!children.size()) {
-                children.fetch({
-                    url: url,
-                    data: {id: model.get('id')}
-                });
-            }
-
+        expandField: function (ev, data) {
             $(ev.currentTarget).next().toggle();
         },
 
-        expandField: function (ev, data) {
-            this._expand(ev, data.field, 'clusters',
-                AppConfig.rest.adminClusters);
-        },
-
         expandCluster: function (ev, data) {
-            this._expand(ev, data.cluster, 'boreholes',
-                AppConfig.rest.adminBoreholes);
+            var cluster = data.cluster,
+                boreholes = cluster.get('boreholes');
+
+            if (!boreholes.size()) {
+                boreholes.fetch({
+                    url: AppConfig.rest.adminBoreholes,
+                    data: {id: cluster.get('id')}
+                });
+            }
+            $(ev.currentTarget).next().toggle();
         },
 
         expandBorehole: function (ev, data) {
