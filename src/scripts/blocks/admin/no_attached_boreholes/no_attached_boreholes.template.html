@@ -1,32 +1,32 @@
 <div class="title">Не прикрепленные скважины</div>
 <div rv-each-borehole="boreholes.models">
-	<div class="no-attached-borehole-item clearfix">
-		<div class="pull-left">
-			<input rv-checked="borehole:isChecked" type="checkbox">
-		</div>
-		<div class="pull-left">{ borehole:id }</div>
-	</div>
+    <div class="no-attached-borehole-item clearfix">
+        <div class="pull-left">
+            <input rv-checked="borehole:isChecked" type="checkbox">
+        </div>
+        <div class="pull-left">{ borehole:id }</div>
+    </div>
 </div>
 <div class="clearfix">
-	<div class="pull-left">Переместить в:</div>
-	<div class="pull-left">
-		<select class="select-fields">
-			<option rv-each-field="fields.models" rv-value="field:id">
-				{ field:name }
-			</option>
-		</select>	
-	</div>
-	<div class="pull-left">Куст:</div>
-	<div class="pull-left">
-		<select class="select-clusters">
-			<option rv-each-cluster="clusters.models" rv-value="cluster:id">
-				{ cluster:name }
-			</option>
-		</select>
-	</div>
-	<div class="pull-left">
-		<button disabled="true"
-			id="save-boreholes"
-			rv-on-click="view.saveSelectedBoreholes">Применить</button>
-	</div>
+    <div class="pull-left">Переместить в:</div>
+    <div class="pull-left">
+        <select class="select-fields">
+            <option rv-each-field="fields.models" rv-value="field:id">
+                { field:name }
+            </option>
+        </select>
+    </div>
+    <div class="pull-left">Куст:</div>
+    <div class="pull-left">
+        <select class="select-clusters">
+            <option rv-each-cluster="clusters.models" rv-value="cluster:id">
+                { cluster:name }
+            </option>
+        </select>
+    </div>
+    <div class="pull-left">
+        <button disabled="true"
+            id="save-boreholes"
+            rv-on-click="view.saveSelectedBoreholes">Применить</button>
+    </div>
 </div>

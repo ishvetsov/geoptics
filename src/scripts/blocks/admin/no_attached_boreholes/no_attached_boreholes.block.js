@@ -1,22 +1,29 @@
 define(function (require) {
     'use strict';
-
     var $ = require('jquery'),
 
         Block = require('core/block.ui'),
         AppConfig = require('configs/app.config'),
+        Borehole = require('./borehole.entity'),
 
-        NoAttachedBoreholes = require('./no_attached_boreholes.entity'),
         View = require('./no_attached_boreholes.view');
 
     var NoAttachedBoreholesBlock = Block.create({
         view: View,
-        model: NoAttachedBoreholes.Model,
+
+        collection: Borehole.Collection,
 
         onInit: function () {
             var _this = this;
-            console.log('init');
-            _this._viewInstance.on('view:saveBoreholes', function (saveResult) {
+        },
+
+        fetch: function () {
+            var _this = this;
+
+            _this._createInstances();
+
+            _this._viewInstance.on('view:save', function (saveResult) {
+                // TODO: Dummy
                 $.post(AppConfig.rest.saveNoAttachedBoreholes, {
                     clusterId: saveResult.cluster.get('id'),
                     boreholesIds: saveResult.boreholesIds
@@ -24,17 +31,14 @@ define(function (require) {
                     _this._viewInstance.removeCheckedBoreholes();
                 });
             });
-        },
 
-        fetch: function () {
-            this._modelInstance.get('noAttachedBoreholes').reset();
-            return this._modelInstance.get('noAttachedBoreholes').fetch({
+            return _this._collectionInstance.fetch({
                 url: AppConfig.rest.adminNoAttachedBoreholes
             });
         },
 
         setFields: function (fields) {
-            this._modelInstance.set('fields', fields);
+            this._viewInstance.setFields(fields);
         }
     });
 

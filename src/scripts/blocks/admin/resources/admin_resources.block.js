@@ -19,7 +19,6 @@ define(function (require) {
             _.bindAll(this, '_onShowAdminResourcesLayout');
 
             fieldsBlock.init();
-
             noAttachedBoreholesBlock.init();
 
             this._viewInstance.on('show', this._onShowAdminResourcesLayout);

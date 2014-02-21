@@ -1,111 +1,112 @@
 define(function (require) {
-	var Marionette = require('backbone.marionette'),
-		Rivets = require('rivets'),
+    var Marionette = require('backbone.marionette'),
+        Rivets = require('rivets'),
 
-		Cluster = require('entities/cluster.entity'),
-		Borehole = require('entities/borehole.entity'),
+        Cluster = require('entities/cluster.entity'),
+        AppConfig = require('configs/app.config'),
+        Borehole = require('./borehole.entity'),
+        Template = require('text!./no_attached_boreholes.template.html'),
+        EmptyTemplate = require('text!./no_attached_boreholes_empty.template.html');
 
-		Template = require('text!./no_attached_boreholes.template.html'),
-		EmptyTemplate = require('text!./no_attached_boreholes_empty.template.html');
+    var NoAttachedBoreholesView = Marionette.ItemView.extend({
+        className: 'admin_no-attached-boreholes',
 
-	var NoAttachedBoreholesView = Marionette.ItemView.extend({
-		className: 'admin_no-attached-boreholes',
+        ui: {
+            saveBtn: 'button'
+        },
 
-		ui: {
-			saveBtn: 'button'
-		},
+        events: {
+            'change select.select-fields': '_onSelectedField',
+            'change .select-clusters': '_onSelectedClutser',
+            'click input': '_onChecked'
+        },
 
-		events: {
-			'change select.select-fields': '_onSelectedField',
-			'change .select-clusters': '_onSelectedClutser',
-			'click input': '_onChecked'
-		},
+        initialize: function () {
+            _.bindAll(this, 'saveSelectedBoreholes',
+                '_onChecked', '_onSelectedClutser', '_onSelectedField');
 
-		initialize: function () {
-			_.bindAll(this, 'saveSelectedBoreholes',
-				'_onChecked',
-				'_onSelectedClutser',
-				'_onSelectedField');
+            this._clusters = new Cluster.Collection();
+        },
 
-			this.clusters = new Cluster.Collection();
-			this.selectedBoreholes = new Borehole.Collection();
-		},
+        template: _.template(Template),
 
-		getTemplate: function () {
-			if (this.model.get('noAttachedBoreholes').length) {
-				return _.template(Template);
-			}
-			return _.template(EmptyTemplate);
-		},
+        getTemplate: function () {
+            if (this.collection.length) {
+                return _.template(Template);
+            }
+            return _.template(EmptyTemplate);
+        },
 
-		onBeforeRender: function () {
-			var firstField = this.model.get('fields').at(0);
+        onBeforeRender: function () {
+            var firstField = this._fields.at(0);
 
-			if (firstField) {
-				this.clusters.reset(firstField.get('clusters').models);
-			}
-			this._selectedField = firstField;
-			this._selectedCluster = this.clusters.at(0);
-		},
+            if (firstField) {
+                this._clusters.reset(firstField.get('clusters').models);
+                this._selectedCluster = this._clusters.at(0);
+            }
 
-		onRender: function () {
-			this.binding = Rivets.bind(this.el, {
-				boreholes: this.model.get('noAttachedBoreholes'),
-				fields: this.model.get('fields'),
-				clusters: this.clusters,
-				view: this
-			});
-		},
+            this._selectedField = firstField;
+        },
 
-		saveSelectedBoreholes: function () {
-			this._selectedBoreholes = new Borehole.Collection(
-				this.model.get('noAttachedBoreholes').where({
-					isChecked: true
-				}));
+        onRender: function () {
+            this.binding = Rivets.bind(this.el, {
+                boreholes: this.collection,
+                fields: this._fields,
+                clusters: this._clusters,
+                view: this
+            });
+        },
 
-			this.trigger('view:saveBoreholes', {
-				field: this._selectedField,
-				cluster: this._selectedCluster,
-				boreholesIds: this._selectedBoreholes.pluck('id')
-			});
-		},
+        saveSelectedBoreholes: function () {
+            this._selectedBoreholes = new Borehole.Collection(
+                this.collection.where({isChecked: true}));
 
-		removeCheckedBoreholes: function () {
-			this.model.get('noAttachedBoreholes').remove(
-				this._selectedBoreholes.models);
-			this._onChecked();
-		},
+            var result = {
+                field: this._selectedField,
+                cluster: this._selectedCluster,
+                boreholesIds: this._selectedBoreholes.pluck('id')
+            };
 
-		_onChecked: function (ev) {
-			var checkeds = this.model.get('noAttachedBoreholes').where({
-				isChecked: true
-			});
-			if (checkeds.length) {
-				this.ui.saveBtn.attr('disabled', false);
-			} else {
-				this.ui.saveBtn.attr('disabled', true);
-			}
-		},
+            this.trigger('view:save', result);
+        },
 
-		_onSelectedField: function (ev) {
-			var target = ev.currentTarget,
-				fieldId = target[target.selectedIndex].value;
+        removeCheckedBoreholes: function () {
+            // debugger;
+            this.collection.remove(this._selectedBoreholes.models);
+            this._onChecked();
+        },
 
-			var field = this.model.get('fields')
-				.findWhere({id: fieldId});
+        setFields: function (fields) {
+            this._fields = fields;
+        },
 
-			this.clusters.reset(field.get('clusters').models);
-			this._selectedField = field;
-		},
+        _onChecked: function (ev) {
+            var checkeds = this.collection.where({isChecked: true});
+            if (checkeds.length) {
+                this.ui.saveBtn.attr('disabled', false);
+            } else {
+                this.ui.saveBtn.attr('disabled', true);
+            }
+        },
 
-		_onSelectedClutser: function (ev) {
-			var target = ev.currentTarget,
-				clusterId = target[target.selectedIndex].value;
+        _onSelectedField: function (ev) {
+            var target = ev.currentTarget,
+                id = target[target.selectedIndex].value;
 
-			this._selectedCluster = this._selectedField.get('clusters')
-				.findWhere({id: clusterId});
-		}
-	});
+            var field = this._fields.findWhere({id: id});
 
-	return NoAttachedBoreholesView;
+            this._clusters.reset(field.get('clusters').models);
+            this._selectedField = field;
+        },
+
+        _onSelectedClutser: function (ev) {
+            var target = ev.currentTarget,
+                id = target[target.selectedIndex].value;
+
+            this._selectedCluster = this._selectedField.get('clusters')
+                .findWhere({id: id});
+        }
+    });
+
+    return NoAttachedBoreholesView;
 });

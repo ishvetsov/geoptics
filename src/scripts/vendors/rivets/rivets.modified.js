@@ -1041,7 +1041,8 @@
         return _results;
       }
     },
-    routine: function(el, collection) {
+    routine: function(el, collection) 
+    {
       var binding, data, i, index, k, key, model, modelName, options, previous, template, v, view, _i, _j, _k, _len, _len1, _len2, _ref1, _ref2, _ref3, _ref4, _results;
       modelName = this.args[0];
       collection = collection || [];
