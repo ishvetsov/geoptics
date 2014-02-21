@@ -1,5 +1,22 @@
-define({
-    local: {
+define(function () {
+    'use strict';
+
+    var getPaths = function (basePath, paths) {
+        var result = {};
+
+        Object.keys(paths).forEach(function (key) {
+            result[key] = basePath + paths[key];
+        });
+
+        return result;
+    };
+
+    var basePaths = {
+        src: '../',
+        dist: './'
+    };
+
+    var mockPaths = {
         adminUser: 'data/admin_user.data.json',
         adminUsers: 'data/admin_users.data.json',
 
@@ -19,5 +36,11 @@ define({
         adminTemperatureSensor: '',
 
         graphics: 'data/graphics.data.json'
-    }
+    };
+
+    var rest = {
+        local: getPaths(basePaths.dist, mockPaths)
+    };
+
+    return rest;
 });

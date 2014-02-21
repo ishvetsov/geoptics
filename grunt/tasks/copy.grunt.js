@@ -18,5 +18,12 @@ module.exports = {
         files: getVendorsCopyConfig()
     },
 
-    pages: {}
+    pages: {},
+
+    fonts: {
+        expand: true,
+        cwd: 'src/',
+        src: 'styles/fonts/*',
+        dest: 'dist/'
+    }
 };

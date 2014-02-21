@@ -5,6 +5,7 @@ define(function (require) {
 
     var Marionette = require('backbone.marionette'),
         Bus = require('./bus'),
+        Config = require('./configs/app.config'),
 
         GuestBundle = require('bundles/guest/guest.bundle'),
         SessionBlock = require('blocks/session/session.block');

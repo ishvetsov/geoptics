@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
     var tasks = {
-        production: 'clean:dist sass autoprefixer csso requirejs processhtml',
+        production: 'clean:dist sass autoprefixer cssmin copy:fonts requirejs processhtml',
         css: 'sass csscomb autoprefixer'
     };
 
