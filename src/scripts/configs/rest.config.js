@@ -35,11 +35,14 @@ define(function () {
         adminPressureSensor: '',
         adminTemperatureSensor: '',
 
-        graphics: 'data/graphics.data.json'
+        graphics: 'data/graphics.data.json',
+
+        primeSensorsTree: 'data/prime_sensors_tree.data.json',
+        primeSensorsTreeSet: 'data/prime_sensors_tree_set.data.json'
     };
 
     var rest = {
-        local: getPaths(basePaths.dist, mockPaths)
+        local: getPaths(basePaths.src, mockPaths)
     };
 
     return rest;

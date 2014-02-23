@@ -8,20 +8,23 @@ define(function (require) {
         Navigation: require('blocks/navigation/navigation.block'),
         Graphics: require('blocks/prime/graphics/prime_graphics.block'),
         Journal: require('blocks/prime/journal/prime_journal.block'),
-        Boreholes: require('blocks/prime/boreholes/prime_boreholes.block')
+        SensorsTree: require('blocks/prime/sensors_tree/prime_sensors_tree.block')
     };
 
     var blocks = Utils.getInstances(Blocks),
         primeLayout = new PrimeLayout();
 
     primeLayout.on('show', function () {
-        primeLayout.sidebar.show(blocks.boreholes.getViewInstance());
+        blocks.sensorsTree.fetch()
+            .then(function () {
+                primeLayout.sidebar.show(blocks.sensorsTree.getViewInstance());
+            });
     });
 
     var initialize = function () {
         blocks.graphics.init();
         blocks.journal.init();
-        blocks.boreholes.init();
+        blocks.sensorsTree.init();
     };
 
     var handlers = {
