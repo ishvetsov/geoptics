@@ -23,8 +23,6 @@ define(function (require) {
         ],
 
         initialize: function () {
-            // _.bindAll(this, 'resetSensors');
-
             this._selectedSensors = {};
 
             this.on('nested-change', this._onSensorChanged);
@@ -59,7 +57,7 @@ define(function (require) {
             if (typeof this._selectedSensors[id] === 'undefined') {
                 this._selectedSensors[id] = path;
             } else {
-                delete this._selectedSensors[id]
+                delete this._selectedSensors[id];
             }
 
             this._triggerSensorsStateChange();

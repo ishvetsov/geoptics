@@ -131,7 +131,8 @@
   font-size: 1.2em; }
 
 .sensors-tree {
-  height: 100%; }
+  height: 100%;
+  padding: 0 0 200px; }
 
 .sensors-tree_component > .sensors-tree_component {
   display: none;
@@ -148,13 +149,9 @@
 
 .sensors-tree_fields-container {
   overflow: auto;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
   width: 100%;
   height: 100%;
-  margin: 12px 0 0;
-  padding: 0 0 200px; }
+  margin: 12px 0 0; }
 
 .graphics {
   margin: 0 30px; }

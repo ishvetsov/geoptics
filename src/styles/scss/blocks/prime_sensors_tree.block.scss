@@ -1,5 +1,6 @@
 .sensors-tree {
     height: 100%;
+    padding: 0 0 200px;
 }
 
 .sensors-tree_component > .sensors-tree_component {
@@ -22,10 +23,9 @@
 }
 
 .sensors-tree_fields-container {
-overflow: auto;
+    overflow: auto;
 
-box-sizing: border-box;
-width: 100%;
-height: 100%;
-margin: 12px 0 0;
-padding: 0 0 200px;}
+    width: 100%;
+    height: 100%;
+    margin: 12px 0 0;
+}

@@ -11,13 +11,9 @@ define(function (require) {
         model: SensorsTree.Model,
 
         onInit: function () {
-            this._selectedSensors = {};
-
-            window.m = this._modelInstance;
-
             this._modelInstance.on('sensors:state:change', function (data) {
-                console.log(data)
-            })
+                console.log(data);
+            });
         },
 
         fetch: function () {

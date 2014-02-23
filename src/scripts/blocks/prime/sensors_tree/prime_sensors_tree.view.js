@@ -1,5 +1,3 @@
-/* global _ */
-
 define(function (require) {
     'use strict';
 
@@ -37,6 +35,11 @@ define(function (require) {
             this.delegateEvents();
         },
 
+        onSetClicked: function (ev, data) {
+            ev.preventDefault();
+            this.model.loadSet(data.set.get('id'));
+        },
+
         _onResetClicked: function (ev) {
             ev.preventDefault();
             this.model.resetSensors();
@@ -45,11 +48,6 @@ define(function (require) {
         _onSaveClicked: function (ev) {
             ev.preventDefault();
             alert('dummy');
-        },
-
-        onSetClicked: function (ev, data) {
-            ev.preventDefault();
-            this.model.loadSet(data.set.get('id'));
         },
 
         _onComponentClicked: function (ev) {
