@@ -13,7 +13,8 @@ define(function (require) {
 
         regions: {
             sidebar: '.prime__sidebar',
-            container: '.prime__container',
+            tabs: '.prime__tabs',
+            container: '.prime__container'
         }
     });
 

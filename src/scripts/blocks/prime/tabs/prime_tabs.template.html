@@ -1,0 +1,27 @@
+<style>
+    .content_block {
+        margin-top: 20px;
+    }
+</style>
+
+    <ul id="tab" class="nav nav-tabs">
+        <li class="active" rv-class-selected="state.graphicType | eq temper" rv-toggle="state.graphicType" value="temper"><a href="#temper" data-toggle="tab">Температура</a></li>
+        <li rv-class-selected="state.graphicType | eq pressure" rv-toggle="state.graphicType" value="pressure"><a href="#presure" data-toggle="tab">Давление</a></li>
+    </ul>
+
+    <div rv-show="graphicType | eq temper">
+        A stitch in time
+    </div>
+    <div rv-show="graphicType | eq pressure">
+        If i had a dollar
+    </div>
+
+    <div class="content_block">
+        <div class="btn-group pull-left">
+            <button class="btn btn-small" rv-class-selected="state.periodType | eq hour" rv-toggle="state.periodType" value="hour">час</button>
+            <button class="btn btn-small" rv-class-selected="state.periodType | eq day" rv-toggle="state.periodType" value="day">день</button>
+            <button class="btn btn-small" rv-class-selected="state.periodType | eq week" rv-toggle="state.periodType" value="week">неделя</button>
+            <button class="btn btn-small" rv-class-selected="state.periodType | eq month" rv-toggle="state.periodType" value="month">месяц</button>
+            <button class="btn btn-small" rv-class-selected="state.periodType | eq year" rv-toggle="state.periodType" value="year">год</button>
+            <button class="btn btn-small" rv-class-selected="state.periodType | eq all" rv-toggle="state.periodType" value="all">все</button>
+        </div>

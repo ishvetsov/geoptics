@@ -6,6 +6,7 @@ define(function (require) {
 
     var Blocks = {
         Navigation: require('blocks/navigation/navigation.block'),
+        Tabs: require('blocks/prime/tabs/prime_tabs.block'),
         Graphics: require('blocks/prime/graphics/prime_graphics.block'),
         Journal: require('blocks/prime/journal/prime_journal.block'),
         SensorsTree: require('blocks/prime/sensors_tree/prime_sensors_tree.block')
@@ -24,22 +25,29 @@ define(function (require) {
     var initialize = function () {
         blocks.graphics.init();
         blocks.journal.init();
+<<<<<<< HEAD
         blocks.sensorsTree.init();
+=======
+        blocks.boreholes.init();
+        blocks.tabs.init();
+>>>>>>> Work with graphics block. Add tabs block.
     };
 
     var handlers = {
         journal: function () {
             blocks.navigation.activateItem('journal');
             primeLayout.container.show(blocks.journal.getViewInstance());
+            primeLayout.tabs.close();
         },
 
         graphics: function () {
             blocks.navigation.activateItem('graphics');
 
-            blocks.graphics.fetch([1, 2, 3])
-                .then(function () {
-                    primeLayout.container.show(blocks.graphics.getViewInstance());
-                });
+            //blocks.graphics.fetch([1, 2, 3])
+               // .then(function () {
+            primeLayout.container.show(blocks.graphics.getViewInstance());
+            primeLayout.tabs.show(blocks.tabs.getViewInstance());
+               // });
         }
     };
 

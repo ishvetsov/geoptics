@@ -9,6 +9,13 @@ define(function (require) {
     var GraphicPointModel = Backbone.AssociatedModel.extend();
 
     var GraphicModel = Backbone.AssociatedModel.extend({
+        defaults: {
+            id: '',
+            type: '',
+            period: '',
+            points: []
+        },
+
         relations: [
             {
                 type: Backbone.Many,

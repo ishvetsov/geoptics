@@ -13,6 +13,10 @@ define(function (require) {
         template: _.template(Template),
         className: 'graphics',
 
+        initialize: function () {
+            _.bindAll(this, 'exportGraphic');
+        },
+
         ui: {
             container: '.graphics_container'
         },
@@ -43,7 +47,27 @@ define(function (require) {
         },
 
         onRender: function () {
+            this.binding = Rivets.bind(this.el, {
+                model: this.model,
+                view: this
+            });
+
             this.renderGraphic();
+        },
+
+        exportGraphic: function(e){
+            switch ($(e.target).attr('data-exportType'))
+            {
+                case 'print':
+                    myChart.print();
+                    break;
+                case 'pdf':
+                    myChart.exportChart({type: "application/pdf"});
+                    break;
+                case 'svg':
+                    myChart.exportChart({type: "image/svg+xml"});
+                    break;
+            }
         }
     });
 
