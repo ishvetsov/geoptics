@@ -1,4 +1,5 @@
-<div rv-each-field="fields:models">
+<div class="title">Месторождения</div>
+<div rv-each-field="fields.models">
     <div class="field-item clearfix" rv-on-click="view.expandField">
         <div class="field-name">{ field:name }</div>
         <div class="field-number">№{ field:number }</div>
@@ -23,8 +24,8 @@
                 </div>
             </div>
 
-            <!-- <div hidden="true" class="boreholes">
-                <div rv-each-borehole="cluster:boreholes:models">
+            <div hidden="true" class="boreholes">
+                <div rv-each-borehole="cluster:boreholes">
                     <div class="borehole-item clearfix" rv-on-click="view.expandBorehole">
                         <div class="borehole-id">{ borehole:id }</div>
                         <div class="borehole-number">{ borehole:number }</div>
@@ -38,32 +39,31 @@
 
                     <div hidden="true" class="sensors">
                         <div>Датчики температуры:</div>
-                        <div rv-each-tsensor="borehole:temperatureSensors:models">
+                        <div rv-each-tsensor="borehole:temperatureSensors">
                             <div class="sensor-item clearfix">
                                 <div class="sensor-name">
-                                    { tsensor.name }
+                                    { tsensor:name }
                                 </div>
                                 <div class="sensor-channel-number">
-                                    { tsensor.channelNumber }
+                                    { tsensor:channelNumber }
                                 </div>
                             </div>
                         </div>
 
                         <div>Датчики давления:</div>
-                        <div rv-each-psensor="borehole:pressureSensors:models">
+                        <div rv-each-psensor="borehole:pressureSensors">
                             <div class="sensor-item clearfix">
                                 <div class="sensor-name">
-                                    { psensor.name }
+                                    { psensor:name }
                                 </div>
                                 <div class="sensor-channel-number">
-                                    { psensor.channelNumber }
+                                    { psensor:channelNumber }
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
         </div>
     </div>
 </div>
-

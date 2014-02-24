@@ -1,13 +1,22 @@
 @import url(vendors/bootstrap.css);
 
+@import "common/helpers.common";
 @import "common/clearfix.common";
+@import "common/comment.common";
 
 @import "bundles/common.bundle";
 @import "bundles/admin.bundle";
+@import "bundles/prime.bundle";
 
 @import "blocks/admin_navigation.block";
 @import "blocks/admin_users.block";
 @import "blocks/admin_user.block";
 @import "blocks/admin_fields.block";
+@import "blocks/admin_no_attached_boreholes.block";
 
+<<<<<<< HEAD
+@import "blocks/prime_sensors_tree.block";
+=======
+@import "blocks/prime_tabs.block";
+>>>>>>> Work with graphics block. Add tabs block.
 @import "blocks/prime_graphics.block";

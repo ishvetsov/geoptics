@@ -13,7 +13,7 @@ define(function (require) {
         className: 'admin_user',
 
         initialize: function () {
-            _.bindAll(this, 'addGroup');
+            _.bindAll(this, 'addGroup', 'save');
         },
 
         onRender: function () {
@@ -25,6 +25,10 @@ define(function (require) {
 
         addGroup: function () {
             this.model.get('groups').add(this._group);
+        },
+
+        save: function () {
+            this.trigger('save:click', this.model);
         },
 
         _group: {

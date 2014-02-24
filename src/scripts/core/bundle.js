@@ -9,8 +9,10 @@ define(function (require) {
     var Bundle = Emitter.extend({
         initialize: function () {
             _.bindAll(this, 'init');
-        },
+        }
+    });
 
+    _.extend(Bundle.prototype, {
         init: function () {
             this._settings = _.extend({
                 navigate: false

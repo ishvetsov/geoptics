@@ -12,7 +12,6 @@ define(function (require) {
             name: '',
             channelNumber: '',
             cableDepth: '',
-
             comments: []
         },
 

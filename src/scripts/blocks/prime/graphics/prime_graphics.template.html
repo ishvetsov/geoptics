@@ -1,1 +1,15 @@
-<div class="graphics_container"></div>
+        <div class="btn-group pull-right">
+            <button class="btn btn-small" data-exportType="print" rv-on-click="view.exportGraphic">Печать</button>
+            <div class="btn-group pull-left">
+                <button class="btn btn-small dropdown-toggle" data-toggle="dropdown">Экспорт <span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li data-exportType="3d" rv-on-click="view.exportGraphic"><a href="#">3D</a></li>
+                    <li class="divider"></li>
+                    <li data-exportType="svg" rv-on-click="exportGraphic"><a href="#">SVG</a></li>
+                    <li data-exportType="pdf" rv-on-click="exportGraphic"><a href="#">PDF</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-small">Записать в журнал</button>
+        </div>
+
+        <div class="graphics_container"></div>

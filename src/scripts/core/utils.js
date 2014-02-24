@@ -16,6 +16,19 @@ define(function (require) {
             }, this);
 
             return instances;
-        }
+        },
+
+        getOption: function(target, optionName) {
+            if (!target || !optionName) { return; }
+
+            var options = target.options;
+
+            var hasOption = options && (optionName in options) &&
+                    (typeof options[optionName] !== 'undefined');
+
+            return (hasOption ? options : target)[optionName];
+        },
+
+        strings: strings
     };
 });

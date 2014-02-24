@@ -10,6 +10,10 @@ define(function (require) {
         view: AdminUserView,
         model: AdminUser.Model,
 
+        triggers: {
+            'view:save:click': 'save:click'
+        },
+
         fetch: function (id) {
             return this._modelInstance.fetch({
                 data: {id: id}

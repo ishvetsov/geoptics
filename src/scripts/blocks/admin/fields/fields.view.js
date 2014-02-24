@@ -11,15 +11,11 @@ define(function (require) {
         Template = require('text!./fields.template.html'),
         EmptyTemplate = require('text!./fields_empty.template.html');
 
-    // function showHideSubItems (ev) {
-    //     $(ev.currentTarget).next().toggle();
-    // }
-
     var FieldsView = Marionette.ItemView.extend({
         className: 'admin_fields',
 
         initialize: function () {
-            _.bindAll(this, 'expandField');
+            _.bindAll(this, 'expandField', 'expandCluster', 'expandBorehole');
         },
 
         getTemplate: function () {
@@ -36,40 +32,42 @@ define(function (require) {
             });
         },
 
-        _expand: function (ev, model, children, url) {
-            children = model.get(children);
-            
-            !children.size() && children.fetch({
-                url: url,
-                data: {id: model.get('id')}
-            });
-
+        expandField: function (ev, data) {
             $(ev.currentTarget).next().toggle();
         },
 
-        expandField: function (ev, data) {
-            this._expand(ev, data.field, 'clusters',
-                AppConfig.rest.adminClusters);
+        expandCluster: function (ev, data) {
+            var cluster = data.cluster,
+                boreholes = cluster.get('boreholes');
+
+            if (!boreholes.size()) {
+                boreholes.fetch({
+                    url: AppConfig.rest.adminBoreholes,
+                    data: {id: cluster.get('id')}
+                });
+            }
+            $(ev.currentTarget).next().toggle();
         },
 
-        // expandField: function (ev, data) {
-        //     var field = data.field;
+        expandBorehole: function (ev, data) {
+            var borehole = data.borehole,
+                psensors = borehole.get('pressureSensors'),
+                tsensors = borehole.get('temperatureSensors');
 
-        //     field.get('clusters').fetch({
-        //         url: AppConfig.rest.adminClusters,
-        //         data: {id: field.id}
-        //     }).then(function () {
-        //         showHideSubItems(ev);
-        //     });
-        // },
-
-        // expandCluster: function (ev, data) {
-        //     showHideSubItems(ev);
-        // },
-
-        // expandBorehole: function (ev, data) {
-        //     showHideSubItems(ev);
-        // }
+            if (!psensors.size()) {
+                psensors.fetch({
+                    url: AppConfig.rest.adminPressureSensors,
+                    data: {id: borehole.get('id')}
+                });
+            }
+            if (!tsensors.size()) {
+                tsensors.fetch({
+                    url: AppConfig.rest.adminTemperatureSensors,
+                    data: {id: borehole.get('id')}
+                });
+            }
+            $(ev.currentTarget).next().toggle();
+        }
     });
 
     return FieldsView;

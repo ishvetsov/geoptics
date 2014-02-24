@@ -8,7 +8,14 @@ define(function (require) {
 
     var UserModel = Backbone.AssociatedModel.extend({
         defaults: {
-            groups: []
+            firstName: '',
+            middleName: '',
+            lastName: '',
+            groups: [],
+
+            shortName: function () {
+                return this.getShortName();
+            }
         },
 
         relations: [
@@ -17,7 +24,12 @@ define(function (require) {
                 key: 'groups',
                 relatedModel: UserGroup.Model
             }
-        ]
+        ],
+
+        getShortName: function () {
+            return this.get('lastName') +
+                ' ' + this.get('firstName')[0] + '.';
+        }
     });
 
     var UserCollection = Backbone.Collection.extend({

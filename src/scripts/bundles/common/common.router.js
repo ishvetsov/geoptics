@@ -1,9 +1,9 @@
 define(function (require) {
     'use strict';
 
-    var Marionette = require('backbone.marionette');
+    var Router = require('core/router');
 
-    var CommonRouter = Marionette.AppRouter.extend({
+    var CommonRouter = Router.extend({
         appRoutes: {
             '*path': 'notFound'
         }

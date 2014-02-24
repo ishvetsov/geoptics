@@ -40,6 +40,7 @@ define(function (require) {
 
     var handlers = {
         notFound: function () {
+            Backbone.history.navigate('#graphics', {trigger: true});
             console.log('not found');
         }
     };

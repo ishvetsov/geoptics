@@ -14,15 +14,23 @@ define(function (require) {
             _.bindAll(this, '_onCollectionFetched');
         },
 
-        fetch: function (ids) {
+        onInit: function () {
+            var that = this;
+            /*this._modelInstance.on('change', function (data) {
+                that.fetch(data);
+            });*/
+        },
+
+        fetch: function (data) {
             return this._collectionInstance
                 .fetch({
-                    data: {ids: ids}
+                    data: {ids: data.ids}
                 })
                 .then(this._onCollectionFetched);
         },
 
         _onCollectionFetched: function () {
+            this._viewInstance.renderGraphic();
             console.log(this._collectionInstance.toJSON());
         }
     });
