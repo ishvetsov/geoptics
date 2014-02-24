@@ -25,13 +25,9 @@ define(function (require) {
     var initialize = function () {
         blocks.graphics.init();
         blocks.journal.init();
-<<<<<<< HEAD
         blocks.sensorsTree.init();
-=======
-        blocks.boreholes.init();
         blocks.tabs.init();
->>>>>>> Work with graphics block. Add tabs block.
-    };
+};
 
     var handlers = {
         journal: function () {
