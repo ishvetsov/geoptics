@@ -30,18 +30,13 @@ define(function (require) {
     });
 
     var initialize = function () {
-        blocks.adminUsers.init();
-        blocks.adminUser.init();
-        blocks.adminResources.init();
-        blocks.adminField.init();
-        blocks.adminMonitoring.init();
         blocks.adminNavigation.init();
-        blocks.adminCluster.init();
     };
 
     var handlers = {
         users: function () {
             blocks.adminNavigation.activateItem('users');
+            blocks.adminUsers.init();
             blocks.adminUsers.fetch()
                 .then(function () {
                     adminLayout.container.show(
@@ -51,6 +46,7 @@ define(function (require) {
 
         user: function (id) {
             blocks.adminNavigation.disactivateAll();
+            blocks.adminUser.init();
             blocks.adminUser.fetch(id)
                 .then(function () {
                     adminLayout.container.show(
@@ -60,12 +56,14 @@ define(function (require) {
 
         newUser: function () {
             blocks.adminNavigation.disactivateAll();
+            blocks.adminUser.init();
             adminLayout.container.show(
                 blocks.adminUser.resetModel().getViewInstance());
         },
 
         fields: function () {
             blocks.adminNavigation.activateItem('fields');
+            blocks.adminResources.init();
             blocks.adminResources.fetch()
                 .then(function () {
                     adminLayout.container.show(
@@ -75,6 +73,7 @@ define(function (require) {
 
         field: function (id) {
             blocks.adminNavigation.disactivateAll();
+            blocks.adminField.init();
             blocks.adminField.fetch(id)
                 .then(function () {
                     adminLayout.container.show(
@@ -84,12 +83,14 @@ define(function (require) {
 
         newField: function () {
             blocks.adminNavigation.disactivateAll();
+            blocks.adminField.init();
             adminLayout.container.show(
                 blocks.adminField.resetModel().getViewInstance());
         },
 
         cluster: function (id) {
             blocks.adminNavigation.disactivateAll();
+            blocks.adminCluster.init();
             blocks.adminCluster.fetch(id)
                 .then(function () {
                     adminLayout.container.show(
@@ -99,6 +100,7 @@ define(function (require) {
 
         newCluster: function () {
             blocks.adminNavigation.disactivateAll();
+            blocks.adminCluster.init();
             adminLayout.container.show(
                 blocks.adminCluster.resetModel().getViewInstance());
         },
@@ -117,6 +119,7 @@ define(function (require) {
 
         monitoring: function () {
             blocks.adminNavigation.activateItem('monitoring');
+            blocks.adminMonitoring.init();
             adminLayout.container.show(blocks.adminMonitoring.getViewInstance());
         }
     };
