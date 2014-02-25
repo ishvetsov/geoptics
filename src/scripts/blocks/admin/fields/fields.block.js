@@ -11,15 +11,7 @@ define(function (require) {
         collection: Field.Collection,
 
         fetch: function () {
-            var _this = this;
-            _this._createInstances();
-
-            // Если не делать collection.reset, то возникает ошибка:
-            // "Uncaught TypeError: Cannot read property 'cid' of undefined".
-            // Надо разбираться.
-            _this._collectionInstance.reset();
-
-            return _this._collectionInstance.fetch();
+            return this._collectionInstance.fetch();
         },
 
         getCollection: function () {
