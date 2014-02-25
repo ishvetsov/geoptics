@@ -12,9 +12,8 @@ define(function (require) {
         className: 'prime',
 
         regions: {
-            sidebar: '.prime__sidebar',
-            tabs: '.prime__tabs',
-            container: '.prime__container'
+            sidebar: '.prime_sidebar',
+            container: '.prime_container'
         }
     });
 
