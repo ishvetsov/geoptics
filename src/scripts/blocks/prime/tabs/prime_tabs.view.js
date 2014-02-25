@@ -13,42 +13,27 @@ define(function (require) {
         className: 'tabs',
 
         initialize: function () {
-
-            /*Rivets.formatters.eq = function (value, args) {
-                return value === args;
-            };
-
-            Rivets.binders.toggle = {
-                bind: function(el) {
-                    adapter = this.config.adapters[this.key.interface];
-                    model = this.model;
-                    keypath = this.keypath;
-
-                    this.callback = function() {
-                        value = adapter.read(model, keypath);
-                        adapter.publish(model, keypath, el.getAttribute('value') || el.value );
-                    };
-
-                    el.addEventListener('click', this.callback);
-                },
-
-                unbind: function(el) {
-                    el.removeEventListener('click', this.callback);
-                }
-            };*/
+            _.bindAll(this, 'changeGraphicType', 'changePeriod');
         },
 
         ui: {
-            block: '.graphics_block'
+            tab: '.tab',
+            period: '.period'
+        },
+
+        changeGraphicType: function (e) {
+            this.model.set({type: $(e.target).attr('data-graphicType')});
+        },
+
+        changePeriod: function (e) {
+            this.model.set({period: $(e.target).attr('data-periodType')});
         },
 
         onRender: function () {
-            /*this.binding = Rivets.bind(this.el, {
+            this.binding = Rivets.bind(this.el, {
                 model: this.model,
                 view: this
-            });*/
-
-            Rivets.bind(this.ui.block, this.model);
+            });
         }
     });
 

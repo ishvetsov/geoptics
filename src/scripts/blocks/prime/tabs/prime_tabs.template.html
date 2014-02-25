@@ -1,27 +1,15 @@
-<style>
-    .content_block {
-        margin-top: 20px;
-    }
-</style>
-
-    <ul id="tab" class="nav nav-tabs">
-        <li class="active" rv-class-selected="state.graphicType | eq temper" rv-toggle="state.graphicType" value="temper"><a href="#temper" data-toggle="tab">Температура</a></li>
-        <li rv-class-selected="state.graphicType | eq pressure" rv-toggle="state.graphicType" value="pressure"><a href="#presure" data-toggle="tab">Давление</a></li>
+<div class="tabs-container">
+    <ul id="tab" class="nav nav-tabs tabs-graphics_type-container">
+        <li class="active tab" rv-on-click="view.changeGraphicType"><a href="#temper" data-toggle="tab" data-graphicType="temper">Температура</a></li>
+        <li class="tab" rv-on-click="view.changeGraphicType"><a href="#presure" data-toggle="tab" data-graphicType=pressure">Давление</a></li>
     </ul>
 
-    <!--<div rv-show="graphicType | eq temper">
-        A stitch in time
+    <div class="btn-group pull-left tabs-period_type-container">
+         <button class="btn btn-small period" data-period="hour" rv-on-click="view.changePeriod">час</button>
+         <button class="btn btn-small period" data-period="day" rv-on-click="view.changePeriod">день</button>
+         <button class="btn btn-small period" data-period="week" rv-on-click="view.changePeriod">неделя</button>
+         <button class="btn btn-small period" data-period="month" rv-on-click="view.changePeriod">месяц</button>
+         <button class="btn btn-small period" data-period="year" rv-on-click="view.changePeriod">год</button>
+         <button class="btn btn-small period" data-period="all" rv-on-click="view.changePeriod">все</button>
     </div>
-    <div rv-show="graphicType | eq pressure">
-        If i had a dollar
-    </div>-->
-
-    <div class="content_block">
-        <div class="btn-group pull-left">
-            <button class="btn btn-small" rv-class-selected="state.periodType | eq hour" rv-toggle="state.periodType" value="hour">час</button>
-            <button class="btn btn-small" rv-class-selected="state.periodType | eq day" rv-toggle="state.periodType" value="day">день</button>
-            <button class="btn btn-small" rv-class-selected="state.periodType | eq week" rv-toggle="state.periodType" value="week">неделя</button>
-            <button class="btn btn-small" rv-class-selected="state.periodType | eq month" rv-toggle="state.periodType" value="month">месяц</button>
-            <button class="btn btn-small" rv-class-selected="state.periodType | eq year" rv-toggle="state.periodType" value="year">год</button>
-            <button class="btn btn-small" rv-class-selected="state.periodType | eq all" rv-toggle="state.periodType" value="all">все</button>
-        </div>
+</div>

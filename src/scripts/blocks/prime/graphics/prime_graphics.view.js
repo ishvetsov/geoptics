@@ -9,6 +9,8 @@ define(function (require) {
 
         Template = require('text!./prime_graphics.template.html');
 
+    var CurrentChart;
+
     var GraphicsView = Marionette.ItemView.extend({
         template: _.template(Template),
         className: 'graphics',
@@ -21,18 +23,81 @@ define(function (require) {
             container: '.graphics_container'
         },
 
-        renderGraphic: function () {
-            this.ui.container.highcharts('StockChart', {
+        getGraphicOptions: function () {
+            var options = {
+                chart: {
+                    className: 'currentChart',
+                    type: 'line',
+                    zoomType: 'x'
+                },
+
+                credits: {
+                    enabled: false
+                },
+
                 rangeSelector : {
                     selected : 1
                 },
 
-                title : {
-                    text : 'AAPL Stock Price'
+                zoom: {
+                    enabled: false
                 },
-                
+
+                exporting: {
+                    enabled: false
+                },
+
+                title : {
+                    text : ''
+                },
+
+                xAxis: {
+                    events: {
+                        setExtremes: function(event) {
+                            //Это проверка на кнопку зума
+                            if(typeof(event.rangeSelectorButton)!== 'undefined') {
+                                alert(event.rangeSelectorButton.count + "  " + event.rangeSelectorButton.type )
+                            }
+                        },
+                        afterSetExtremes: function(event) {
+                        }
+                    }
+                },
+
+                plotOptions: {
+                    series: {
+                        cursor: 'pointer',
+                        point: {
+                            events: {
+                                click: function() {
+                                    alert ('Category: '+ this.category +', value: '+ this.y);
+                                }
+                            }
+                        },
+                        marker: {
+                            enabled: false,
+                            states: {
+                                hover: {
+                                    enabled: true
+                                }
+                            }
+                        }
+                    }
+                },
+
+                tooltip: {
+                    crosshairs: true,
+                    shared: true,
+                    useHTML: true,
+                    headerFormat: '<small>{point.key} м</small><table>',
+                    pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
+                        '<td style="text-align: right"><b>{point.y} °C</b></td></tr>',
+                    footerFormat: '</table>',
+                    valueDecimals: 2
+                },
+
                 series : [{
-                    name : 'AAPL',
+                    name : 'Скважина 258',
                     data : [
                         7.0, 6.9, 9.5,
                         14.5, 18.2, 21.5,
@@ -43,7 +108,29 @@ define(function (require) {
                         valueDecimals: 2
                     }
                 }]
+            };
+            return options;
+        },
+
+        findGraphic: function getChartReferenceByClassName(className) {
+            var cssClassName = className;
+            var foundChart = null;
+
+            $(Highcharts.charts).each(function(i,chart){
+                if (typeof(chart)!== 'undefined'){
+                    if(chart.container.classList.contains(cssClassName)){
+                        foundChart = chart;
+                        return;
+                    };
+                }
             });
+            return foundChart;
+        },
+
+        renderGraphic: function () {
+            var chartingOptions = this.getGraphicOptions();
+            this.ui.container.highcharts(chartingOptions);
+            CurrentChart=  this.findGraphic('currentChart');
         },
 
         onRender: function () {
@@ -59,13 +146,13 @@ define(function (require) {
             switch ($(e.target).attr('data-exportType'))
             {
                 case 'print':
-                    myChart.print();
+                    CurrentChart.print();
                     break;
                 case 'pdf':
-                    myChart.exportChart({type: "application/pdf"});
+                    CurrentChart.exportChart({type: "application/pdf"});
                     break;
                 case 'svg':
-                    myChart.exportChart({type: "image/svg+xml"});
+                    CurrentChart.exportChart({type: "image/svg+xml"});
                     break;
             }
         }
