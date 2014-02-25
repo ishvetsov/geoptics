@@ -4,6 +4,8 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
+        AppConfig = require('configs/app.config'),
+
         Comment = require('./comment.entity');
 
     var PressureSensorModel = Backbone.AssociatedModel.extend({
@@ -26,7 +28,8 @@ define(function (require) {
     });
 
     var PressureSensorCollection = Backbone.Collection.extend({
-        model: PressureSensorModel
+        model: PressureSensorModel,
+        url: AppConfig.rest.psensors
     });
 
     return {

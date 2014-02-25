@@ -44,7 +44,7 @@
   height: 100%; }
 
 .prime__tabs {
-    margin: 0 0 0 300px; }
+  margin: 0 0 0 300px; }
 
 .prime__container {
   margin: 0 0 0 300px; }
@@ -156,12 +156,9 @@
   height: 100%;
   margin: 12px 0 0; }
 
-.tabs-period_type-container {
-    margin: 12px; }
-
 .graphics {
   margin: 12px; }
 
 .graphics_container {
-    width: 720px;
-}
+  margin: 0px;
+  width: 100%; }

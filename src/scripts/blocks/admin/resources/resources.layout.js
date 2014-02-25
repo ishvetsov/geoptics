@@ -1,21 +1,19 @@
 /* global _ */
-
 define(function (require) {
     'use strict';
-
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
 
-        Template = require('text!./admin_resources.template.html');
+        Template = require('text!./resources.template.html');
 
-    var AdminResourcesLayout = Marionette.Layout.extend({
+    var ResourcesLayout = Marionette.Layout.extend({
         template: _.template(Template),
 
         regions: {
             fieldsRegion: '#fields-region',
-            noAttachedBoreholesRegion: '#no-attached-boreholes-region'
+            noAttachedRegion: '#no-attached-boreholes-region'
         }
     });
 
-    return AdminResourcesLayout;
+    return ResourcesLayout;
 });

@@ -1,0 +1,12 @@
+[
+    {
+        "name": "name1",
+        "channelNumber": "channelNumber1",
+        "cableDepth": "cableDepth1"
+    },
+    {
+        "name": "name2",
+        "channelNumber": "channelNumber2",
+        "cableDepth": "cableDepth2"
+    }
+]

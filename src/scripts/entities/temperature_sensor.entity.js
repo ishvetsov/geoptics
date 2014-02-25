@@ -4,6 +4,8 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
+        AppConfig = require('configs/app.config'),
+
         Comment = require('./comment.entity');
 
     var TemperatureSensorModel = Backbone.AssociatedModel.extend({
@@ -25,7 +27,8 @@ define(function (require) {
     });
 
     var TemperatureSensorCollection = Backbone.Collection.extend({
-        model: TemperatureSensorModel
+        model: TemperatureSensorModel,
+        url: AppConfig.rest.tsensors
     });
 
     return {

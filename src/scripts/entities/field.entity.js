@@ -32,12 +32,12 @@ define(function (require) {
             }
         ],
 
-        urlRoot: AppConfig.rest.adminFields
+        url: AppConfig.rest.field
     });
 
     var FieldCollection = Backbone.Collection.extend({
         model: FieldModel,
-        url: AppConfig.rest.adminFields
+        url: AppConfig.rest.fields
     });
 
     return {

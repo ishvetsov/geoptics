@@ -13,7 +13,6 @@ define(function (require) {
 
 		fetch: function (id) {
 			return this._modelInstance.fetch({
-				url: AppConfig.rest.adminCluster,
 				data: {id: id}
 			});
 		},

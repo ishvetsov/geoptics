@@ -6,7 +6,7 @@ define(function (require) {
         View = require('./admin_navigation.view'),
         Config = require('./admin_navigation.config');
 
-    var AdminNavigationBlock = Block.create({
+    var NavigationBlock = Block.create({
         view: View,
 
         viewOptions: {
@@ -19,5 +19,5 @@ define(function (require) {
         }
     });
 
-    return AdminNavigationBlock;
+    return NavigationBlock;
 });

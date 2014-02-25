@@ -46,7 +46,7 @@ define(function (require) {
 
         loadSet: function () {
             return this.resetSensors().fetch({
-                url: AppConfig.rest.primeSensorsTreeSet,
+                url: AppConfig.rest.sensorsSets,
                 remove: false
             });
         },

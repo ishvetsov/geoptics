@@ -14,6 +14,7 @@
         "grunt-csscomb": "latest",
         "grunt-autoprefixer": "latest",
         "requirejs": "latest",
-        "matchdep": "latest"
+        "matchdep": "latest",
+        "express": "latest"
     }
 }

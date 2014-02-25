@@ -26,8 +26,8 @@ define(function (require) {
     });
 
     var GraphicCollection = Backbone.Collection.extend({
-        url: AppConfig.rest.graphics,
-        model: GraphicModel
+        model: GraphicModel,
+        url: AppConfig.rest.graphics
     });
 
     return {

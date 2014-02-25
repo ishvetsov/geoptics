@@ -2,13 +2,13 @@ define(function (require) {
     'use strict';
 
     var Block = require('core/block.ui'),
+        User = require('entities/user.entity'),
 
-        AdminUserView = require('./admin_user.view'),
-        AdminUser = require('./admin_user.entity');
+        View = require('./user.view');
 
-    var AdminUserBlock = Block.create({
-        view: AdminUserView,
-        model: AdminUser.Model,
+    var UserBlock = Block.create({
+        view: View,
+        model: User.Model,
 
         triggers: {
             'view:save:click': 'save:click'
@@ -26,5 +26,5 @@ define(function (require) {
         }
     });
 
-    return AdminUserBlock;
+    return UserBlock;
 });

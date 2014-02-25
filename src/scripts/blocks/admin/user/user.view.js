@@ -1,15 +1,13 @@
 /* global _ */
-
 define(function (require) {
     'use strict';
-
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
 
-        AdminUserTemplate = require('text!./admin_user.template.html');
+        Template = require('text!./user.template.html');
 
-    var AdminUsersView = Marionette.ItemView.extend({
-        template: _.template(AdminUserTemplate),
+    var UsersView = Marionette.ItemView.extend({
+        template: _.template(Template),
         className: 'admin_user',
 
         initialize: function () {
@@ -37,5 +35,5 @@ define(function (require) {
         }
     });
 
-    return AdminUsersView;
+    return UsersView;
 });

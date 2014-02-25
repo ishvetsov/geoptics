@@ -3,12 +3,13 @@ define(function (require) {
         Rivets = require('rivets'),
 
         Cluster = require('entities/cluster.entity'),
+        Borehole = require('entities/borehole.entity'),
         AppConfig = require('configs/app.config'),
-        Borehole = require('./borehole.entity'),
-        Template = require('text!./no_attached_boreholes.template.html'),
-        EmptyTemplate = require('text!./no_attached_boreholes_empty.template.html');
 
-    var NoAttachedBoreholesView = Marionette.ItemView.extend({
+        Template = require('text!./no_attached.template.html'),
+        EmptyTemplate = require('text!./no_attached_empty.template.html');
+
+    var NoAttachedView = Marionette.ItemView.extend({
         className: 'admin_no-attached-boreholes',
 
         ui: {
@@ -117,5 +118,5 @@ define(function (require) {
         }
     });
 
-    return NoAttachedBoreholesView;
+    return NoAttachedView;
 });

@@ -4,6 +4,8 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
+        AppConfig = require('configs/app.config'),
+
         Borehole = require('./borehole.entity'),
         Comment = require('./comment.entity');
 
@@ -28,11 +30,14 @@ define(function (require) {
                 key: 'boreholes',
                 relatedModel: Borehole.Model
             }
-        ]
+        ],
+
+        url: AppConfig.rest.cluster
     });
 
     var ClusterCollection = Backbone.Collection.extend({
-        model: ClusterModel
+        model: ClusterModel,
+        url: AppConfig.rest.clusters
     });
 
     return {

@@ -4,6 +4,8 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
+        AppConfig = require('configs/app.config'),
+
         UserGroup = require('./user_group.entity');
 
     var UserModel = Backbone.AssociatedModel.extend({
@@ -26,6 +28,8 @@ define(function (require) {
             }
         ],
 
+        url: AppConfig.rest.user,
+
         getShortName: function () {
             return this.get('lastName') +
                 ' ' + this.get('firstName')[0] + '.';
@@ -33,7 +37,8 @@ define(function (require) {
     });
 
     var UserCollection = Backbone.Collection.extend({
-        model: UserModel
+        model: UserModel,
+        url: AppConfig.rest.users
     });
 
     return {

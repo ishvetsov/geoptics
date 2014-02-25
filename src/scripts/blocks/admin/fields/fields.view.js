@@ -30,6 +30,7 @@ define(function (require) {
                 fields: this.collection,
                 view: this
             });
+            console.log(this.collection);
         },
 
         expandField: function (ev, data) {
@@ -42,10 +43,10 @@ define(function (require) {
 
             if (!boreholes.size()) {
                 boreholes.fetch({
-                    url: AppConfig.rest.adminBoreholes,
-                    data: {id: cluster.get('id')}
+                    // data: {id: cluster.get('id')}
                 });
             }
+
             $(ev.currentTarget).next().toggle();
         },
 
@@ -56,13 +57,11 @@ define(function (require) {
 
             if (!psensors.size()) {
                 psensors.fetch({
-                    url: AppConfig.rest.adminPressureSensors,
                     data: {id: borehole.get('id')}
                 });
             }
             if (!tsensors.size()) {
                 tsensors.fetch({
-                    url: AppConfig.rest.adminTemperatureSensors,
                     data: {id: borehole.get('id')}
                 });
             }

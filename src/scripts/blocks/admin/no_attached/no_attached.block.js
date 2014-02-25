@@ -1,14 +1,12 @@
 define(function (require) {
     'use strict';
-    var $ = require('jquery'),
-
-        Block = require('core/block.ui'),
+    var Block = require('core/block.ui'),
         AppConfig = require('configs/app.config'),
-        Borehole = require('./borehole.entity'),
+        Borehole = require('entities/borehole.entity'),
 
-        View = require('./no_attached_boreholes.view');
+        View = require('./no_attached.view');
 
-    var NoAttachedBoreholesBlock = Block.create({
+    var NoAttachedBlock = Block.create({
         view: View,
 
         collection: Borehole.Collection,
@@ -31,9 +29,7 @@ define(function (require) {
         },
 
         fetch: function () {
-            return this._collectionInstance.fetch({
-                url: AppConfig.rest.adminNoAttachedBoreholes
-            });
+            return this._collectionInstance.fetch();
         },
 
         setFields: function (fields) {
@@ -41,5 +37,5 @@ define(function (require) {
         }
     });
 
-    return NoAttachedBoreholesBlock;
+    return NoAttachedBlock;
 });

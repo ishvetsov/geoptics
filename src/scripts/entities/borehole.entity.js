@@ -4,6 +4,8 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
+        AppConfig = require('configs/app.config'),
+
         PressureSensor = require('./pressure_sensor.entity'),
         TemperatureSensor = require('./temperature_sensor.entity'),
         Comment = require('./comment.entity');
@@ -47,11 +49,14 @@ define(function (require) {
                 key: 'pressureSensors',
                 relatedModel: PressureSensor.Model
             }
-        ]
+        ],
+
+        url: AppConfig.rest.borehole
     });
 
     var BoreholeCollection = Backbone.Collection.extend({
-        model: Borehole
+        model: Borehole,
+        url: AppConfig.rest.boreholes
     });
 
     return {

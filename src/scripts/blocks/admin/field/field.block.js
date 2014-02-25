@@ -19,7 +19,6 @@ define(function (require) {
 
 		fetch: function (id) {
 			return this._modelInstance.fetch({
-				url: AppConfig.rest.adminField,
 				data: {id: id}
 			});
 		},
