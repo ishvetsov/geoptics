@@ -23,7 +23,7 @@
             <div class="cluster-name sensors-tree_component-name">{ cluster:name } { cluster:number }</div>
             <div rv-each-borehole="cluster:boreholes" class="sensors-tree_component">
                 <div class="borehole-name sensors-tree_component-name">{ borehole:name } { borehole:number }</div>
-                <div rv-each-sensor="borehole:temperatureSensors" class="sensors-tree_component">
+                <div rv-each-sensor="borehole:tsensors" class="sensors-tree_component">
                     <span>
                         { sensor:name } { sensor:number }
                         <input rv-checked="sensor:isChecked" type="checkbox" class="">

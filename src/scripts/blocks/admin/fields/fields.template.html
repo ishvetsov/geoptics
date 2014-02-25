@@ -39,7 +39,7 @@
 
                     <div hidden="true" class="sensors">
                         <div>Датчики температуры:</div>
-                        <div rv-each-tsensor="borehole:temperatureSensors">
+                        <div rv-each-tsensor="borehole:tsensors">
                             <div class="sensor-item clearfix">
                                 <div class="sensor-name">
                                     { tsensor:name }
@@ -51,7 +51,7 @@
                         </div>
 
                         <div>Датчики давления:</div>
-                        <div rv-each-psensor="borehole:pressureSensors">
+                        <div rv-each-psensor="borehole:psensors">
                             <div class="sensor-item clearfix">
                                 <div class="sensor-name">
                                     { psensor:name }

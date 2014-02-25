@@ -30,7 +30,6 @@ define(function (require) {
                 fields: this.collection,
                 view: this
             });
-            console.log(this.collection);
         },
 
         expandField: function (ev, data) {
@@ -52,8 +51,8 @@ define(function (require) {
 
         expandBorehole: function (ev, data) {
             var borehole = data.borehole,
-                psensors = borehole.get('pressureSensors'),
-                tsensors = borehole.get('temperatureSensors');
+                psensors = borehole.get('psensors'),
+                tsensors = borehole.get('tsensors');
 
             if (!psensors.size()) {
                 psensors.fetch({

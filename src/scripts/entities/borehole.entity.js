@@ -29,8 +29,8 @@ define(function (require) {
             interestingTimes: [],
             
             adminComments: [],
-            temperatureSensors: [],
-            pressureSensors: []
+            tsensors: [],
+            psensors: []
         },
 
         relations: [
@@ -41,12 +41,12 @@ define(function (require) {
             },
             {
                 type: Backbone.Many,
-                key: 'temperatureSensors',
+                key: 'tsensors',
                 relatedModel: TemperatureSensor.Model
             },
             {
                 type: Backbone.Many,
-                key: 'pressureSensors',
+                key: 'psensors',
                 relatedModel: PressureSensor.Model
             }
         ],
