@@ -16,20 +16,18 @@ define(function (require) {
         onInit: function () {
             var _this = this;
 
-            _this._viewInstance.on('view:save', function (saved) {
-                $.post(
-                    AppConfig.rest.saveNoAttachedBoreholes,
-                    {
-                        clusterId: saved.cluster.get('id'),
-                        boreholesIds: saved.boreholesIds
-                    },
-                    function () {
-                        _this._addNewBoreholes(saved);
-                        _this._viewInstance.removeCheckedBoreholes();
-                        console.log(saved.field.toJSON());
-                    }
-                );
-            });
+            // _this._viewInstance.on('view:apply', function (saved) {
+            //     $.post(
+            //         AppConfig.rest.saveNoAttachedBoreholes,
+            //         {
+            //             clusterId: saved.cluster.get('id'),
+            //             boreholesIds: saved.boreholesIds
+            //         },
+            //         function () {
+            //             _this._viewInstance.updateBoreholeList();
+            //         }
+            //     );
+            // });
         },
 
         fetch: function () {
@@ -40,14 +38,6 @@ define(function (require) {
 
         setFields: function (fields) {
             this._viewInstance.setFields(fields);
-        },
-
-        _addNewBoreholes: function (saved) {
-            saved.boreholesIds.forEach(function (id) {
-                saved.field.get('clusters').findWhere({
-                    id: saved.cluster.get('id')
-                }).get('boreholes').add({id: id});
-            });
         }
     });
 

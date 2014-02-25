@@ -1,3 +1,4 @@
+/* global $ */
 define(function (require) {
 	'use strict';
 
@@ -10,6 +11,11 @@ define(function (require) {
 	var FieldBlock = Block.create({
 		view: View,
 		model: Field.Model,
+
+		onInit: function () {
+			this._viewInstance.on('view:save', function () {
+			});
+		},
 
 		fetch: function (id) {
 			return this._modelInstance.fetch({

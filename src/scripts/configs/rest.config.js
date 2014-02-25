@@ -27,8 +27,6 @@ define(function () {
         adminPressureSensors: 'data/admin_pressure_sensors.json',
         adminTemperatureSensors: 'data/admin_temperature_sensors.json',
 
-        saveNoAttachedBoreholes: 'index.html',
-
         adminField: 'data/admin_field.data.json',
         adminCluster: 'data/admin_cluster.data.json',
         adminBorehole: '',

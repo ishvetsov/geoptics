@@ -11,6 +11,10 @@ define(function (require) {
 		
 		className: 'admin_field',
 
+		triggers: {
+			'click #save-field': 'view:save'
+		},
+
 		onRender: function () {
 			this.binding = Rivets.bind(this.el, {
 				field: this.model

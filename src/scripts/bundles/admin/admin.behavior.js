@@ -73,7 +73,7 @@ define(function (require) {
 
         field: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminField.init();
+            blocks.adminField.init({mode: 'edit'});
             blocks.adminField.fetch(id)
                 .then(function () {
                     adminLayout.container.show(
@@ -83,7 +83,7 @@ define(function (require) {
 
         newField: function () {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminField.init();
+            blocks.adminField.init({mode: 'create'});
             adminLayout.container.show(
                 blocks.adminField.resetModel().getViewInstance());
         },

@@ -22,13 +22,16 @@ define(function (require) {
         },
 
         initialize: function () {
-            _.bindAll(this, 'saveSelectedBoreholes',
-                '_onChecked', '_onSelectedClutser', '_onSelectedField');
+            _.bindAll(this,
+                'apply',
+                '_onChecked',
+                '_onSelectedClutser',
+                '_onSelectedField',
+                '_updateStateSaveBtn',
+                '_firstInitSelects');
 
             this._clusters = new Cluster.Collection();
         },
-
-        template: _.template(Template),
 
         getTemplate: function () {
             if (this.collection.length) {
@@ -37,7 +40,41 @@ define(function (require) {
             return _.template(EmptyTemplate);
         },
 
-        onBeforeRender: function () {
+        onRender: function () {
+            this._firstInitSelects();
+
+            this.binding = Rivets.bind(this.el, {
+                boreholes: this.collection,
+                fields: this._fields,
+                clusters: this._clusters,
+                view: this
+            });
+        },
+
+        apply: function () {
+            var _this = this;
+                _this._selectedBoreholes = this.collection.where({isChecked: true});
+
+            _this._selectedBoreholes.forEach(function (b) {
+                _this._selectedCluster.get('boreholes').add(b);
+            });
+
+            this.trigger('view:apply', {
+                field: _this._selectedField,
+                cluster: _this._selectedCluster
+            });
+        },
+
+        updateBoreholeList: function () {
+            this.collection.remove(this._selectedBoreholes);
+            this._updateStateSaveBtn();
+        },
+
+        setFields: function (fields) {
+            this._fields = fields;
+        },
+
+        _firstInitSelects: function () {
             var firstField = this._fields.at(0);
 
             if (firstField) {
@@ -48,45 +85,17 @@ define(function (require) {
             this._selectedField = firstField;
         },
 
-        onRender: function () {
-            this.binding = Rivets.bind(this.el, {
-                boreholes: this.collection,
-                fields: this._fields,
-                clusters: this._clusters,
-                view: this
-            });
-        },
-
-        saveSelectedBoreholes: function () {
-            this._selectedBoreholes = new Borehole.Collection(
-                this.collection.where({isChecked: true}));
-
-            var result = {
-                field: this._selectedField,
-                cluster: this._selectedCluster,
-                boreholesIds: this._selectedBoreholes.pluck('id')
-            };
-
-            this.trigger('view:save', result);
-        },
-
-        removeCheckedBoreholes: function () {
-            // debugger;
-            this.collection.remove(this._selectedBoreholes.models);
-            this._onChecked();
-        },
-
-        setFields: function (fields) {
-            this._fields = fields;
-        },
-
-        _onChecked: function (ev) {
+        _updateStateSaveBtn: function () {
             var checkeds = this.collection.where({isChecked: true});
             if (checkeds.length) {
                 this.ui.saveBtn.attr('disabled', false);
             } else {
                 this.ui.saveBtn.attr('disabled', true);
             }
+        },
+
+        _onChecked: function (ev) {
+            this._updateStateSaveBtn();
         },
 
         _onSelectedField: function (ev) {
