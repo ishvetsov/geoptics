@@ -7,10 +7,9 @@ define(function (require) {
         AppConfig = require('configs/app.config');
 
     var GraphicStateModel = Backbone.AssociatedModel.extend({
-        state: {
-            ids: [],
-            periodType: 'week',
-            graphicType: 'temper'
+        defaults: {
+            period: 'week',
+            type: 'temper'
         }
     });
 

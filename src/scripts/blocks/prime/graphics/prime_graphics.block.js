@@ -10,15 +10,11 @@ define(function (require) {
         view: GraphicsView,
         collection: Graphic.Collection,
 
-        onBeforeInit: function () {
-            _.bindAll(this, '_onCollectionFetched');
-        },
-
         onInit: function () {
-            var that = this;
-            /*this._modelInstance.on('change', function (data) {
-                that.fetch(data);
-            });*/
+            _.bindAll(this, '_onStateChanged', '_onCollectionFetched');
+
+            this.on('type:state:change', this._onStateChanged);
+            this.on('sensors:state:change', this._onStateChanged);
         },
 
         fetch: function (data) {
@@ -32,6 +28,10 @@ define(function (require) {
         _onCollectionFetched: function () {
             this._viewInstance.renderGraphic();
             console.log(this._collectionInstance.toJSON());
+        },
+
+        _onStateChanged: function (data) {
+            this.fetch(data);
         }
     });
 
