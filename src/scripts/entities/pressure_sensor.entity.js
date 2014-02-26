@@ -22,14 +22,20 @@ define(function (require) {
             {
                 type: Backbone.Many,
                 key: 'comments',
-                relatedModel: Comment.Model
+                relatedModel: Comment.Model,
+                collectionType: Comment.Collection
             }
-        ]
+        ],
+
+        urlRoot: AppConfig.rest.psensors
     });
 
     var PressureSensorCollection = Backbone.Collection.extend({
         model: PressureSensorModel,
-        url: AppConfig.rest.psensors
+
+        url: function () {
+            return this.parents[0].url() + AppConfig.rest.psensors;
+        }
     });
 
     return {

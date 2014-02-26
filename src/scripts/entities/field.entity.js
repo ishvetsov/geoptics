@@ -23,21 +23,25 @@ define(function (require) {
             {
                 type: Backbone.Many,
                 key: 'comments',
-                relatedModel: Comment.Model
+                relatedModel: Comment.Model,
+                collectionType: Comment.Collection
             },
             {
                 type: Backbone.Many,
                 key: 'clusters',
-                relatedModel: Cluster.Model
+                relatedModel: Cluster.Model,
+                collectionType: Cluster.Collection
             }
         ],
 
-        url: AppConfig.rest.field
+        urlRoot: AppConfig.rest.fields
     });
 
     var FieldCollection = Backbone.Collection.extend({
         model: FieldModel,
-        url: AppConfig.rest.fields
+        url: function () {
+            return AppConfig.rest.fields;
+        }
     });
 
     return {

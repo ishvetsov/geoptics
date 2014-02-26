@@ -24,11 +24,12 @@ define(function (require) {
             {
                 type: Backbone.Many,
                 key: 'groups',
-                relatedModel: UserGroup.Model
+                relatedModel: UserGroup.Model,
+                collectionType: UserGroup.Collection
             }
         ],
 
-        url: AppConfig.rest.user,
+        urlRoot: AppConfig.rest.users,
 
         getShortName: function () {
             return this.get('lastName') +
@@ -38,7 +39,9 @@ define(function (require) {
 
     var UserCollection = Backbone.Collection.extend({
         model: UserModel,
-        url: AppConfig.rest.users
+        url: function () {
+            return AppConfig.rest.users;
+        }
     });
 
     return {

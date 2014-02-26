@@ -1,4 +1,4 @@
-'use strict';
+/* global module, require, __dirname */
 
 var path = require('path');
 

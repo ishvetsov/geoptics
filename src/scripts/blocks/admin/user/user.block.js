@@ -15,9 +15,11 @@ define(function (require) {
         },
 
         fetch: function (id) {
-            return this._modelInstance.fetch({
-                data: {id: id}
-            });
+            this._modelInstance.set('id', id);
+
+            return $.when(
+                this._modelInstance.get('groups').fetch(),
+                this._modelInstance.fetch());
         },
 
         resetModel: function () {

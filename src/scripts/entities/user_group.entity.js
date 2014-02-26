@@ -1,26 +1,31 @@
 /* global _ */
-
 define(function (require) {
     'use strict';
-
     var Backbone = require('backbone'),
-        Associations = require('backbone.associations');
+        Associations = require('backbone.associations'),
+
+        AppConfig = require('configs/app.config');
 
     var UserGroupModel = Backbone.AssociatedModel.extend({
-        url: '/',
-        initialize: function () {
-            _.bindAll(this, 'destroy');
+        defaults: {
+            id: '',
+            name: ''
+        }
+    });
 
-            // Dummy
-            this.set('id', Math.random().toString(16).slice(2, 10));
-        },
+    var UserGroupCollection = Backbone.Collection.extend({
+        model: UserGroupModel,
 
-        destroy: function () {
-            Backbone.AssociatedModel.prototype.destroy.call(this);
-        },
+        url: function () {
+            if (this.parents) {
+                return this.parents[0].url() + AppConfig.rest.usergroups;
+            }
+            return AppConfig.rest.usergroups;
+        }
     });
 
     return {
-        Model: UserGroupModel
+        Model: UserGroupModel,
+        Collection: UserGroupCollection
     };
 });

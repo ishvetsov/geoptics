@@ -15,6 +15,7 @@
         "grunt-autoprefixer": "latest",
         "requirejs": "latest",
         "matchdep": "latest",
-        "express": "latest"
+        "express": "latest",
+        "underscore": "latest"
     }
 }

@@ -21,14 +21,20 @@ define(function (require) {
             {
                 type: Backbone.Many,
                 key: 'comments',
-                relatedModel: Comment.Model
+                relatedModel: Comment.Model,
+                collectionType: Comment.Collection
             }
-        ]
+        ],
+
+        urlRoot: AppConfig.rest.tsensors
     });
 
     var TemperatureSensorCollection = Backbone.Collection.extend({
         model: TemperatureSensorModel,
-        url: AppConfig.rest.tsensors
+
+        url: function () {
+            return this.parents[0].url() +  AppConfig.rest.tsensors;
+        }
     });
 
     return {

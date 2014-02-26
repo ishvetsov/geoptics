@@ -1,12 +1,35 @@
 [
     {
-        "id": 1,
-        "name": "Matthew Greene",
-        "group": "User"
+        "id": "userid1",
+        "login": "patriBBB",
+        "password": "123",
+        "org": "novator",
+        "name": "Patrick Weaver",
+        "email": "patrickw@novator.ru",
+        "tel": "",
+        "comment": "",
+        "isActive": true
     },
     {
-        "id": 2,
-        "name": "George Payne",
-        "group": "Admin"
+        "id": "userid2",
+        "login": "patriAAA",
+        "password": "123",
+        "org": "novator",
+        "name": "Patrick Weaver",
+        "email": "patrickw@novator.ru",
+        "tel": "",
+        "comment": "",
+        "isActive": true
+    },
+    {
+        "id": "userid3",
+        "login": "patriCCC",
+        "password": "123",
+        "org": "novator",
+        "name": "Patrick Weaver",
+        "email": "patrickw@novator.ru",
+        "tel": "",
+        "comment": "",
+        "isActive": true
     }
 ]

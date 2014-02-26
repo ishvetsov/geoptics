@@ -3,6 +3,7 @@ define(function (require) {
 
     var Block = require('core/block.ui'),
         Field = require('entities/field.entity'),
+        AppConfig = require('configs/app.config'),
 
         View = require('./fields.view');
 

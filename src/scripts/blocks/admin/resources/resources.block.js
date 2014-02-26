@@ -5,6 +5,7 @@ define(function (require) {
 
         NoAttachedBlock = require('../no_attached/no_attached.block'),
         FieldsBlock = require('../fields/fields.block'),
+
         Layout = require('./resources.layout');
 
     var noAttachedBlock = NoAttachedBlock.getInstance(),
@@ -23,15 +24,9 @@ define(function (require) {
         },
 
         fetch: function () {
-            var fieldsXhr = fieldsBlock.fetch();
-
-            fieldsXhr.then(function () {
-                noAttachedBlock.setFields(fieldsBlock.getCollection());
-            });
-
             return $.when(
                 noAttachedBlock.fetch(),
-                fieldsXhr
+                fieldsBlock.fetch()
             );
         },
 

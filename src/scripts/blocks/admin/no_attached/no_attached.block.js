@@ -3,6 +3,7 @@ define(function (require) {
     var Block = require('core/block.ui'),
         AppConfig = require('configs/app.config'),
         Borehole = require('entities/borehole.entity'),
+        Field = require('entities/field.entity'),
 
         View = require('./no_attached.view');
 
@@ -14,26 +15,23 @@ define(function (require) {
         onInit: function () {
             var _this = this;
 
-            // _this._viewInstance.on('view:apply', function (saved) {
-            //     $.post(
-            //         AppConfig.rest.saveNoAttachedBoreholes,
-            //         {
-            //             clusterId: saved.cluster.get('id'),
-            //             boreholesIds: saved.boreholesIds
-            //         },
-            //         function () {
-            //             _this._viewInstance.updateBoreholeList();
-            //         }
-            //     );
-            // });
+            _this._fields = new Field.Collection();
+            _this._viewInstance.setFields(_this._fields);
+
+            _this._viewInstance.on('view:apply', function (saved) {
+                // _this._viewInstance.updateBoreholeList();
+            });
         },
 
         fetch: function () {
-            return this._collectionInstance.fetch();
-        },
+            var _this = this,
+                fieldsPromiss = _this._fields.fetch();
 
-        setFields: function (fields) {
-            this._viewInstance.setFields(fields);
+            return $.when(
+                _this._collectionInstance.fetch({
+                    url: AppConfig.rest.boreholes + '/noattached'
+                }),
+                fieldsPromiss);
         }
     });
 

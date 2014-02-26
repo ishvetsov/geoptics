@@ -23,21 +23,26 @@ define(function (require) {
             {
                 type: Backbone.Many,
                 key: 'comments',
-                relatedModel: Comment.Model
+                relatedModel: Comment.Model,
+                collectionType: Comment.Collection
             },
             {
                 type: Backbone.Many,
                 key: 'boreholes',
-                relatedModel: Borehole.Model
+                relatedModel: Borehole.Model,
+                collectionType: Borehole.Collection
             }
         ],
 
-        url: AppConfig.rest.cluster
+        urlRoot: AppConfig.rest.clusters
     });
 
     var ClusterCollection = Backbone.Collection.extend({
         model: ClusterModel,
-        url: AppConfig.rest.clusters
+
+        url: function () {
+            return this.parents[0].url() + AppConfig.rest.clusters;
+        }
     });
 
     return {
