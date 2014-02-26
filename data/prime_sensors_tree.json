@@ -24,7 +24,7 @@
                             "id": "borehole_1_1_1",
                             "name": "Скважина",
                             "number": "251",
-                            "temperatureSensors": [
+                            "tsensors": [
                                 {
                                     "id": "sensor_1_1_1_1",
                                     "name": "Датчик",
@@ -46,7 +46,7 @@
                             "id": "borehole_1_1_2",
                             "name": "Скважина",
                             "number": "252",
-                            "temperatureSensors": [
+                            "tsensors": [
                                 {
                                     "id": "sensor_1_1_2_1",
                                     "name": "Датчик",
@@ -75,7 +75,7 @@
                             "id": "borehole_1_2_1",
                             "name": "Скважина",
                             "number": "251",
-                            "temperatureSensors": [
+                            "tsensors": [
                                 {
                                     "id": "sensor_1_2_1_1",
                                     "name": "Датчик",
@@ -97,7 +97,7 @@
                             "id": "borehole_1_2_2",
                             "name": "Скважина",
                             "number": "252",
-                            "temperatureSensors": [
+                            "tsensors": [
                                 {
                                     "id": "sensor_1_2_2_1",
                                     "name": "Датчик",
@@ -133,7 +133,7 @@
                             "id": "borehole_2_1_1",
                             "name": "Скважина",
                             "number": "251",
-                            "temperatureSensors": [
+                            "tsensors": [
                                 {
                                     "id": "sensor_2_1_1_1",
                                     "name": "Датчик",
@@ -155,7 +155,7 @@
                             "id": "borehole_2_1_2",
                             "name": "Скважина",
                             "number": "252",
-                            "temperatureSensors": [
+                            "tsensors": [
                                 {
                                     "id": "sensor_2_1_2_1",
                                     "name": "Датчик",
@@ -184,7 +184,7 @@
                             "id": "borehole_2_2_1",
                             "name": "Скважина",
                             "number": "251",
-                            "temperatureSensors": [
+                            "tsensors": [
                                 {
                                     "id": "sensor_2_2_1_1",
                                     "name": "Датчик",
@@ -206,7 +206,7 @@
                             "id": "borehole_2_2_2",
                             "name": "Скважина",
                             "number": "252",
-                            "temperatureSensors": [
+                            "tsensors": [
                                 {
                                     "id": "sensor_2_2_2_1",
                                     "name": "Датчик",

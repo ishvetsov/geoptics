@@ -29,7 +29,7 @@ define(function () {
         tsensors: 'data/tsensors.json',
         graphics: 'data/graphics.json',
         primeSensorsTree: 'data/prime_sensors_tree.json',
-        sensorsSets: 'data/sensors_set.json'
+        sensorsSets: 'data/sensors_sets.json'
     };
 
     var rest = {

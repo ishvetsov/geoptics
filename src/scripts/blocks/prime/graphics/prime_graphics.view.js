@@ -28,7 +28,8 @@ define(function (require) {
                 chart: {
                     className: 'currentChart',
                     type: 'line',
-                    zoomType: 'x'
+                    zoomType: 'x',
+                    reflow: false
                 },
 
                 credits: {

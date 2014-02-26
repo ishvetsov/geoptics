@@ -8,7 +8,7 @@
                     "boreholes":[
                         {
                             "id":"borehole_1_1_1",
-                            "temperatureSensors": [
+                            "tsensors": [
                                 {
                                     "id": "sensor_1_1_1_1",
                                     "isChecked": true
