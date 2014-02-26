@@ -37,17 +37,20 @@ define(function (require) {
             {
                 type: Backbone.Many,
                 key: 'adminComments',
-                relatedModel: Comment.Model
+                relatedModel: Comment.Model,
+                collectionType: Comment.Collection
             },
             {
                 type: Backbone.Many,
                 key: 'tsensors',
-                relatedModel: TemperatureSensor.Model
+                relatedModel: TemperatureSensor.Model,
+                collectionType: TemperatureSensor.Collection
             },
             {
                 type: Backbone.Many,
                 key: 'psensors',
-                relatedModel: PressureSensor.Model
+                relatedModel: PressureSensor.Model,
+                collectionType: PressureSensor.Collection
             }
         ],
 

@@ -8,5 +8,9 @@ define(function (require) {
         Rivets.formatters.prepend = function (val, arg) {
             return arg + val;
         };
+
+        Rivets.formatters.eq = function (val, arg) {
+            return arg == val;
+        };
     };
 });

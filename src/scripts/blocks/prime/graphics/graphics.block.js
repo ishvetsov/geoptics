@@ -4,7 +4,7 @@ define(function (require) {
     var Block = require('core/block.ui'),
 
         Graphic = require('entities/graphic.entity'),
-        GraphicsView = require('./prime_graphics.view');
+        GraphicsView = require('./graphics.view');
 
     var GraphicsBlock = Block.create({
         view: GraphicsView,

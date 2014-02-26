@@ -6,7 +6,7 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
 
-        JournalTemplate = require('text!./prime_journal.template.html');
+        JournalTemplate = require('text!./journal.template.html');
 
     var JournalView = Marionette.ItemView.extend({
         template: _.template(JournalTemplate),

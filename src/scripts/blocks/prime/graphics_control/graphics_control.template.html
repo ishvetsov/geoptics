@@ -1,8 +1,24 @@
 <ul id="tab" class="nav nav-tabs">
-    <li class="active">
-        <a href="#" data-toggle="tab">Температура</a>
+    {{ _.each(it.config.types, function (type) { }}
+    <li class="{{= it.model.type == type.name ? 'active' : '' }}">
+        <a 
+            href="#" 
+            data-toggle="tab"
+            data-value="{{= type.name }}"
+            class="graphics-control_type">
+            {{= type.alias }}
+        </a>
     </li>
-    <li>
-        <a href="#" data-toggle="tab">Давление</a>
-    </li>
+    {{ }) }}
 </ul>
+
+<div class="btn-group btn-group-sm" data-toggle="buttons">
+    {{ _.each(it.config.periods, function (period) { }}
+    <button 
+        type="button"
+        class="graphics-control_period btn btn-default {{= it.model.period == period.name ? 'active' : '' }}"
+        data-value="{{= period.name }}">
+        <input type="radio" name="period"> {{= period.alias }}
+    </button>
+    {{ }) }}
+</div>
