@@ -54,6 +54,8 @@ define(function (require) {
         _onSensorChanged: function (path, sensorModel) {
             var id = sensorModel.get('id');
 
+            console.log(window.a = sensorModel)
+
             if (typeof this._selectedSensors[id] === 'undefined') {
                 this._selectedSensors[id] = path;
             } else {
@@ -64,7 +66,7 @@ define(function (require) {
         },
 
         _triggerSensorsStateChange: _.debounce(function () {
-            this.trigger('sensors:state:change', this.getSelectedSensorsIds());
+            this.trigger('state:change', this.getSelectedSensorsIds());
         }, 100)
     });
 

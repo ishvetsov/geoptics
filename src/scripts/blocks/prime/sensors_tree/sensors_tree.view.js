@@ -4,7 +4,7 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
 
-        SensorsTreeTemplate = require('text!./prime_sensors_tree.template.html');
+        SensorsTreeTemplate = require('text!./sensors_tree.template.html');
 
     var SensorsTreeView = Marionette.ItemView.extend({
         template: _.template(SensorsTreeTemplate),

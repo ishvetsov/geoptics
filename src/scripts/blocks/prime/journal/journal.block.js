@@ -3,7 +3,7 @@ define(function (require) {
 
     var Block = require('core/block.ui'),
 
-        JournalView = require('./prime_journal.view');
+        JournalView = require('./journal.view');
 
     var JournalBlock = Block.create({
         view: JournalView

@@ -7,7 +7,7 @@ define(function (require) {
         Rivets = require('rivets'),
         HighstockExporting = require('highstock.exporting'),
 
-        Template = require('text!./prime_graphics.template.html');
+        Template = require('text!./graphics.template.html');
 
     var CurrentChart;
 
