@@ -1,60 +1,66 @@
 define(function (require) {
     'use strict';
-
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
+        Utils = require('core/utils'),
         AppConfig = require('configs/app.config'),
 
-        PressureSensor = require('./pressure_sensor.entity'),
-        TemperatureSensor = require('./temperature_sensor.entity'),
+        PSensor = require('./psensor.entity'),
+        TSensor = require('./tsensor.entity'),
         Comment = require('./comment.entity');
 
     var Borehole = Backbone.AssociatedModel.extend({
         defaults: {
             id: '',
-            name: '',
-            location: '',
-            number: '',
-            fishing: '',
-            companyOwner: '',
-            serviceCompany: '',
-            paramsDescription: '',
-            installedEquipmentDescription: '',
-            seaLevelRelativePosition: '',
-            craterDepth: '',
-            bottomDepth: '',
-            perforations: [],
-            interestingDepths: [],
-            interestingTimes: [],
-            
-            adminComments: [],
-            tsensors: [],
-            psensors: []
+            code: '',               // Обозначение
+            location: '',           // Местоположение
+            number: '',             // Номер
+            fieldStation: '',            // Промысел 
+            ownerCompany: '',       // Компания владелец
+            serviceCompany: '',     // Сервисная компания
+            paramsDescription: '',  // Текстовое описание параметров скважины
+            installedEquipmentDescription: '', // Описание установленного оборудования
+            altitude: '',           // Высота над уровнем моря
+            craterDepth: '',        // Глубина воронки
+            bottomholeDepth: '',    // Глубина забоя
+            perforations: [],       // Список зон перфораций 
+            depths: [],             // Список интересных глубин
+            moments: [],            // Список интересных моментов времени
+            сomments: [],           // Комментарии
+            tsensors: [],           // Список датчиков температуры
+            psensors: []            // Список датчиков давления
         },
 
         relations: [
             {
                 type: Backbone.Many,
-                key: 'adminComments',
+                key: 'сomments',
                 relatedModel: Comment.Model,
                 collectionType: Comment.Collection
             },
             {
                 type: Backbone.Many,
                 key: 'tsensors',
-                relatedModel: TemperatureSensor.Model,
-                collectionType: TemperatureSensor.Collection
+                relatedModel: TSensor.Model,
+                collectionType: TSensor.Collection
             },
             {
                 type: Backbone.Many,
                 key: 'psensors',
-                relatedModel: PressureSensor.Model,
-                collectionType: PressureSensor.Collection
+                relatedModel: PSensor.Model,
+                collectionType: PSensor.Collection
             }
         ],
 
-        urlRoot: AppConfig.rest.boreholes
+        urlRoot: AppConfig.rest.boreholes,
+
+        fetchTsensors: Utils.fetchChild('tsensors'),
+        fetchPsensors: Utils.fetchChild('psensors'),
+
+        initialize: function () {
+            _.bindAll(this, 'fetchTsensors', 'fetchPsensors');
+        }
     });
 
     var BoreholeCollection = Backbone.Collection.extend({

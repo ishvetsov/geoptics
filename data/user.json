@@ -1,0 +1,11 @@
+{
+    "firstName": "Patrick",
+    "lastName": "Weaver",
+    "login": "patrick",
+    "password": "123",
+    "org": "yandex",
+    "email": "patrickw@yandex.ru",
+    "tel": "",
+    "comment": "",
+    "isActive": true
+}

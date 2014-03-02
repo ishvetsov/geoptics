@@ -11,7 +11,7 @@ define(function (require) {
         model: SensorsTree.Model,
 
         fetch: function () {
-            return this._modelInstance.fetch();
+            return this._modelInstance.fetchChildren();
         },
 
         triggers: {

@@ -1,6 +1,5 @@
 define(function (require) {
     'use strict';
-
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
         moment = require('moment'),

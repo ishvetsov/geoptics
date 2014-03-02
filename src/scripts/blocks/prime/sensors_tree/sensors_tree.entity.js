@@ -7,7 +7,11 @@ define(function (require) {
     var SetModel = Backbone.AssociatedModel.extend();
 
     var SensorsTreeModel = Backbone.AssociatedModel.extend({
-        urlRoot: AppConfig.rest.primeSensorsTree,
+        // urlRoot: AppConfig.rest.primeSensorsTree,
+        
+        defaults: {
+            fields: []
+        },
 
         relations: [
             {
@@ -18,7 +22,8 @@ define(function (require) {
             {
                 type: Backbone.Many,
                 key: 'fields',
-                relatedModel: Field.Model
+                relatedModel: Field.Model,
+                collectionType: Field.Collection
             }
         ],
 
@@ -26,6 +31,10 @@ define(function (require) {
             this._selectedSensors = {};
 
             this.on('nested-change', this._onSensorChanged);
+        },
+
+        fetchChildren: function () {
+            return this.get('fields').fetch();
         }
     });
 
@@ -53,8 +62,6 @@ define(function (require) {
 
         _onSensorChanged: function (path, sensorModel) {
             var id = sensorModel.get('id');
-
-            console.log(window.a = sensorModel)
 
             if (typeof this._selectedSensors[id] === 'undefined') {
                 this._selectedSensors[id] = path;

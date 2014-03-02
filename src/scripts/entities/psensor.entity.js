@@ -8,12 +8,11 @@ define(function (require) {
 
         Comment = require('./comment.entity');
 
-    var PressureSensorModel = Backbone.AssociatedModel.extend({
+    var PSensorModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
             name: '',
             channelNumber: '',
-            depthPlacement: '',
+            depth: '',
 
             comments: []
         },
@@ -30,8 +29,8 @@ define(function (require) {
         urlRoot: AppConfig.rest.psensors
     });
 
-    var PressureSensorCollection = Backbone.Collection.extend({
-        model: PressureSensorModel,
+    var PSensorCollection = Backbone.Collection.extend({
+        model: PSensorModel,
 
         url: function () {
             return this.parents[0].url() + AppConfig.rest.psensors;
@@ -39,7 +38,7 @@ define(function (require) {
     });
 
     return {
-        Model: PressureSensorModel,
-        Collection: PressureSensorCollection
+        Model: PSensorModel,
+        Collection: PSensorCollection
     };
 });

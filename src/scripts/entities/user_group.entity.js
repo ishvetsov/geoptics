@@ -9,7 +9,10 @@ define(function (require) {
     var UserGroupModel = Backbone.AssociatedModel.extend({
         defaults: {
             id: '',
-            name: ''
+            name: '',
+            access: undefined,
+
+            users: []
         }
     });
 

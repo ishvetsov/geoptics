@@ -1,0 +1,12 @@
+{
+    "code": "скважина#345185",
+    "location": "местоположение",
+    "fieldStation": "промысел",
+    "ownerCompany": "компания владелец",
+    "serviceCompany": "сервисная компания",
+    "paramsDescription": "описание параметров скважины",
+    "installedEquipmentDescription": "описание установленного оборудования",
+    "altitude": "300м",
+    "craterDepth": "100м",
+    "bottomholeDepth": "4км"
+}

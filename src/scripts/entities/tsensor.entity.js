@@ -8,12 +8,12 @@ define(function (require) {
 
         Comment = require('./comment.entity');
 
-    var TemperatureSensorModel = Backbone.AssociatedModel.extend({
+    var TSensorModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
             name: '',
             channelNumber: '',
-            cableDepth: '',
+            depth: '',
+
             comments: []
         },
 
@@ -29,8 +29,8 @@ define(function (require) {
         urlRoot: AppConfig.rest.tsensors
     });
 
-    var TemperatureSensorCollection = Backbone.Collection.extend({
-        model: TemperatureSensorModel,
+    var TSensorCollection = Backbone.Collection.extend({
+        model: TSensorModel,
 
         url: function () {
             return this.parents[0].url() +  AppConfig.rest.tsensors;
@@ -38,7 +38,7 @@ define(function (require) {
     });
 
     return {
-        Model: TemperatureSensorModel,
-        Collection: TemperatureSensorCollection
+        Model: TSensorModel,
+        Collection: TSensorCollection
     };
 });

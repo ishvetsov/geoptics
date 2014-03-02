@@ -1,8 +1,8 @@
 define(function (require) {
     'use strict';
-
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
+        Utils = require('core/utils'),
 
         AppConfig = require('configs/app.config'),
 
@@ -34,7 +34,14 @@ define(function (require) {
             }
         ],
 
-        urlRoot: AppConfig.rest.fields
+        urlRoot: AppConfig.rest.fields,
+
+        fetchClusters: Utils.fetchChild('clusters'),
+
+        initialize: function () {
+            _.bindAll(this, 'fetchClusters');
+        }
+
     });
 
     var FieldCollection = Backbone.Collection.extend({

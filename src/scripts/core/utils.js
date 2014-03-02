@@ -29,6 +29,17 @@ define(function (require) {
             return (hasOption ? options : target)[optionName];
         },
 
-        strings: strings
+        strings: strings,
+
+        fetchChild: function (name) {
+            return function () {
+                var child = this.get(name);
+                if (!child.isLoaded) {
+                    child.fetch().then(function () {
+                        child.isLoaded = true;
+                    });
+                }
+            };
+        }
     };
 });

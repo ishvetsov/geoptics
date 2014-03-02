@@ -16,7 +16,7 @@ define(function (require) {
 
         events: {
             'click @ui.type': '_onTypeSelected',
-            'click @ui.period': '_onPeriodSelected',
+            'click @ui.period': '_onPeriodSelected'
         },
 
         initialize: function () {

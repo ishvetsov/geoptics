@@ -2,13 +2,14 @@ define(function () {
     'use strict';
 
     var rest = {
-        users: '/users',
-        fields: '/fields',
-        clusters: '/clusters',
-        boreholes: '/boreholes',
-        psensors: '/psensors',
-        tsensors: '/tsensors',
-        usergroups: '/usergroups'
+        boreholes:      '/boreholes',
+        clusters:       '/clusters',
+        fields:         '/fields',
+        users:          '/users',
+        usergroups:     '/usergroups',
+        data:           '/data',
+        login:          '/login',
+        logout:         '/logout'
     };
 
     return rest;

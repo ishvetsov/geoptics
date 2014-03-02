@@ -1,8 +1,8 @@
 define(function (require) {
     'use strict';
-
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
+        Utils = require('core/utils'),
 
         AppConfig = require('configs/app.config'),
 
@@ -34,7 +34,13 @@ define(function (require) {
             }
         ],
 
-        urlRoot: AppConfig.rest.clusters
+        urlRoot: AppConfig.rest.clusters,
+
+        fetchBoreholes: Utils.fetchChild('boreholes'),
+
+        initialize: function () {
+            _.bindAll(this, 'fetchBoreholes');
+        }
     });
 
     var ClusterCollection = Backbone.Collection.extend({
