@@ -1,6 +1,5 @@
 # Geoptics
 
-//-----------------------------------------------
 RESTapi:
 
 PUT     /boreholes  
@@ -53,7 +52,6 @@ POST    /logout
 GET     /data/boreholes/:id/tsensors/:number  
 GET     /data/boreholes/:id/psensors/:number  
 
-//------------------------------------------
 Entities:
 
 Borehole
