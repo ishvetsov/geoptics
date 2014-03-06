@@ -27,8 +27,7 @@
             <div hidden="true" class="boreholes">
                 <div rv-each-borehole="cluster:boreholes">
                     <div class="borehole-item clearfix" rv-on-click="view.expandBorehole">
-                        <div class="borehole-id">{ borehole:id }</div>
-                        <div class="borehole-number">{ borehole:number }</div>
+                        <div class="borehole-number">{ borehole:code }</div>
                         <div class="pull-left">
                             <a class="btn btn-default btn-xs"
                                 rv-href="borehole:id | prepend #admin/boreholes/">
@@ -61,6 +60,7 @@
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>

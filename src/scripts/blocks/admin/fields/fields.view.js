@@ -33,38 +33,32 @@ define(function (require) {
         },
 
         expandField: function (ev, data) {
-            $(ev.currentTarget).next().toggle();
+            var field = data.field;
+
+            if (this._toggle(ev)) {
+                field.get('clusters').fetch();
+            }
         },
 
         expandCluster: function (ev, data) {
-            var cluster = data.cluster,
-                boreholes = cluster.get('boreholes');
+            var cluster = data.cluster;
 
-            if (!boreholes.size()) {
-                boreholes.fetch({
-                    // data: {id: cluster.get('id')}
-                });
+            if (this._toggle(ev)) {
+                cluster.get('boreholes').fetch();
             }
-
-            $(ev.currentTarget).next().toggle();
         },
 
         expandBorehole: function (ev, data) {
-            var borehole = data.borehole,
-                psensors = borehole.get('psensors'),
-                tsensors = borehole.get('tsensors');
+            var borehole = data.borehole;
 
-            if (!psensors.size()) {
-                psensors.fetch({
-                    data: {id: borehole.get('id')}
-                });
+            if (this._toggle(ev)) {
+                borehole.get('psensors').fetch();
+                borehole.get('tsensors').fetch();
             }
-            if (!tsensors.size()) {
-                tsensors.fetch({
-                    data: {id: borehole.get('id')}
-                });
-            }
-            $(ev.currentTarget).next().toggle();
+        },
+
+        _toggle: function (ev) {
+            return $(ev.currentTarget).next().toggle().is(':visible');
         }
     });
 

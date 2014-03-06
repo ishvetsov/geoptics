@@ -14,26 +14,28 @@ define(function (require) {
         onInit: function () {
             var _this = this;
 
-            _this._viewInstance.on('view:apply', function (saved) {
-                // _this._viewInstance.updateBoreholeList();
+            _this._viewInstance.on('view:apply', function () {
+                var checkeds = _this._modelInstance.get('boreholes').where({
+                    isChecked: true
+                });
+
+                _this._modelInstance.get('curCluster')
+                    .get('boreholes').add(checkeds);
+
+                _this._modelInstance.get('curCluster').save()
+                    .then(function () {
+                        _this._viewInstance.update();
+                    });
             });
         },
 
         fetch: function () {
-            var _this = this;
+            var boreholes = this._modelInstance.get('boreholes'),
+                p = boreholes.fetch({
+                    url: AppConfig.rest.boreholes + '?noattached=true'
+                });
 
-            var boreholes = _this._modelInstance.get('boreholes'),
-                fields = _this._modelInstance.get('fields');
-
-            return $.when(
-                boreholes.fetch({url: AppConfig.rest.boreholes + '/noattached'}),
-                fields.fetch()
-                );
-            // return $.when(
-            //     _this._collectionInstance.fetch({
-            //         url: AppConfig.rest.boreholes + '/noattached'
-            //     }),
-            //     fieldsPromiss);
+            return $.when(p);
         }
     });
 

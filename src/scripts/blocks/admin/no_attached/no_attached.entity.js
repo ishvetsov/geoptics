@@ -32,22 +32,32 @@ define(function (require) {
 				key: 'boreholes',
 				relatedModel: Borehole.Model,
 				collectionType: Borehole.Collection
+			},
+			{
+				type: Backbone.One,
+				key: 'curField',
+				relatedModel: Field.Model
+			},
+			{
+				type: Backbone.One,
+				key: 'curCluster',
+				relatedModel: Cluster.Model
 			}
 		],
 
 		initialize: function () {
 			var _this = this;
 
-			_this.set('curField', new Field.Model());
-			_this.set('curCluster', new Cluster.Model());
-
-			_this._firstSync = true;
-
 			_this.get('fields').on('sync', function () {
-				if (_this._firstSync) {
-					console.log(_this.get('curField'));
-					// this.get('curField').reset();
-					_this._firstSync = false;
+				if (_this.get('fields').size() > 0) {
+					var clusters = _this.get('fields').at(0).get('clusters');
+
+					clusters.fetch().then(function () {
+						if (clusters.size() > 0) {
+							_this.get('clusters').reset(clusters.models);
+							_this.trigger('firstsync:clusters');
+						}
+					});
 				}
 			});
 		}

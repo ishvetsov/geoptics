@@ -1,8 +1,16 @@
-.admin_no-attached-boreholes {
+.admin_no-attached {
 	padding-top: 20px;
+
+    .select-field {
+        min-width: 300px;
+    }
+
+    .select-cluster {
+        min-width: 300px;
+    }
 }
 
-.admin_no-attached-boreholes .title {
+.admin_no-attached .title {
 	margin-bottom: 5px;
 
 	font-size: 1.2em;

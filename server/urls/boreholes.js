@@ -3,7 +3,7 @@ var gen = require('../gen');
 module.exports.extend = function (server, data) {
     var baseUrl = '/boreholes';
 
-    var noattached = gen.some(data.noattached, 2, 10, 'id');
+    var noattached = gen.some(data.noattached, 5, 10, 'id');
     server.get(baseUrl + '?', function (req, res) {
         if (req.query.noattached && req.query.noattached === 'true') {
             res.json(noattached);
@@ -30,8 +30,39 @@ module.exports.extend = function (server, data) {
         res.json(gen.traverse(data.tsensor, 'channelNumber', req.params.number));
     });
 
-    server.put(baseUrl, function (req, res) {});
-    server.delete(baseUrl, function (req, res) {});
-    server.put(baseUrl + '/:id/psensors', function (req, res) {});
-    server.put(baseUrl + '/:id/tsensors', function (req, res) {});
+    server.get(baseUrl + '/:id/moments', function (req, res) {
+
+    });
+
+    server.get(baseUrl + '/:id/depths', function (req, res) {
+
+    });
+
+    server.get(baseUrl + '/:id/perforations', function (req, res) {
+
+    });
+
+    server.post(baseUrl + '/:id/moments', function (req, res) {
+
+    });
+
+    server.post(baseUrl + '/:id/depths', function (req, res) {
+
+    });
+
+    server.post(baseUrl + '/:id/perforations', function (req, res) {
+
+    });
+
+    server.put(baseUrl + '/:id', function (req, res) {
+        res.json(req.body);
+    });
+
+    server.put(baseUrl + '/:id/psensors/:number', function (req, res) {
+        res.json(req.body);
+    });
+
+    server.put(baseUrl + '/:id/tsensors/:number', function (req, res) {
+        res.json(req.body);
+    });
 };

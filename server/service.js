@@ -40,7 +40,3 @@ module.addUrls = function (server) {
         e.extend(server, data);
     });
 };
-
-module.nclone = function (obj, n) {
-
-};

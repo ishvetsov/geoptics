@@ -19,6 +19,10 @@ module.exports.extend = function (server, data) {
         res.json(data.sensorsSets);
     });
 
+    server.post(baseUrl + '/:id/sensorssets', function (req, res) {
+        res.json(req.body);
+    });
+
     server.post(baseUrl, function (req, res) {});
     server.put(baseUrl, function (req, res) {});
     server.delete(baseUrl, function (req, res) {});

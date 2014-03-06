@@ -4,23 +4,23 @@
         <div class="pull-left">
             <input rv-checked="borehole:isChecked" type="checkbox">
         </div>
-        <div class="pull-left">{ borehole:id }</div>
+        <div class="pull-left">{ borehole:code }</div>
     </div>
 </div>
 <div class="clearfix">
     <div class="pull-left">Переместить в:</div>
     <div class="pull-left">
-        <select class="select-fields">
+        <select class="select-field">
             <option rv-each-field="fields.models" rv-value="field:id">
-                { field:name }
+                { field:name } { field:id }
             </option>
         </select>
     </div>
     <div class="pull-left">Куст:</div>
     <div class="pull-left">
-        <select class="select-clusters">
+        <select class="select-cluster">
             <option rv-each-cluster="clusters.models" rv-value="cluster:id">
-                { cluster:name }
+                { cluster:name } { cluster:id }
             </option>
         </select>
     </div>

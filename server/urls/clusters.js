@@ -11,7 +11,13 @@ module.exports.extend = function (server, data) {
         res.json(gen.some(data.borehole, 3, 10, 'id'));
     });
 
+    server.put(baseUrl + '/:id', function (req, res) {
+        res.json(req.body);
+    });
+
+    server.delete(baseUrl + '/:id', function (req, res) {
+
+    });
+
     server.post(baseUrl, function (req, res) {});
-    server.put(baseUrl, function (req, res) {});
-    server.delete(baseUrl, function (req, res) {});
 };

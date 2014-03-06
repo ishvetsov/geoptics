@@ -16,7 +16,7 @@ define(function (require) {
             code: '',               // Обозначение
             location: '',           // Местоположение
             number: '',             // Номер
-            fieldStation: '',            // Промысел 
+            fieldStation: '',       // Промысел 
             ownerCompany: '',       // Компания владелец
             serviceCompany: '',     // Сервисная компания
             paramsDescription: '',  // Текстовое описание параметров скважины
@@ -24,6 +24,7 @@ define(function (require) {
             altitude: '',           // Высота над уровнем моря
             craterDepth: '',        // Глубина воронки
             bottomholeDepth: '',    // Глубина забоя
+            isChecked: false,
             perforations: [],       // Список зон перфораций 
             depths: [],             // Список интересных глубин
             moments: [],            // Список интересных моментов времени

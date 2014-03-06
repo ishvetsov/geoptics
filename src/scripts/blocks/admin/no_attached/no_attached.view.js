@@ -10,25 +10,33 @@ define(function (require) {
         EmptyTemplate = require('text!./no_attached_empty.template.html');
 
     var NoAttachedView = Marionette.ItemView.extend({
-        className: 'admin_no-attached-boreholes',
+        className: 'admin_no-attached',
 
         ui: {
             saveBtn: 'button'
         },
 
         events: {
-            'change .select-fields': '_onSelectedField',
-            'change .select-clusters': '_onSelectedClutser',
-            'click input': '_onChecked'
+            'change .select-field':     '_onSelectedField',
+            'change .select-cluster':   '_onSelectedClutser',
+            'click input':              '_onChecked'
         },
 
         initialize: function () {
-            _.bindAll(this,
+            var _this = this;
+
+            _.bindAll(_this,
                 'apply',
                 '_onChecked',
                 '_onSelectedClutser',
                 '_onSelectedField',
                 '_updateStateSaveBtn');
+
+            _this.model.on('firstsync:clusters', function () {
+                _this.$('.select-field').trigger('change');
+                _this.$('.select-cluster').trigger('change');
+            });
+            this.model.get('fields').fetch();
         },
 
         getTemplate: function () {
@@ -51,16 +59,28 @@ define(function (require) {
             this.trigger('view:apply');
         },
 
-        updateBoreholeList: function () {
+        update: function () {
+            this._removeCheckeds();
             this._updateStateSaveBtn();
         },
 
+        _removeCheckeds: function () {
+            var checkeds = this.model.get('boreholes').where({isChecked: true});
+            this.model.get('boreholes').remove(checkeds);
+
+            if (!this.model.get('boreholes').length) {
+                this.render();
+            }
+        },
+
         _updateStateSaveBtn: function () {
-            // if (checkeds.length) {
-            //     this.ui.saveBtn.attr('disabled', false);
-            // } else {
-            //     this.ui.saveBtn.attr('disabled', true);
-            // }
+            var checkeds = this.model.get('boreholes').where({isChecked: true});
+
+            if (checkeds.length) {
+                this.ui.saveBtn.attr('disabled', false);
+            } else {
+                this.ui.saveBtn.attr('disabled', true);
+            }
         },
 
         _onChecked: function (ev) {
@@ -68,13 +88,17 @@ define(function (require) {
         },
 
         _onSelectedField: function (ev) {
-            var target = ev.currentTarget,
-                id = target[target.selectedIndex].value;
+            var id = ev.currentTarget[ev.currentTarget.selectedIndex].value,
+                field = this.model.get('fields').findWhere({id: id});
+
+            this.model.set('curField', field);
         },
 
         _onSelectedClutser: function (ev) {
-            var target = ev.currentTarget,
-                id = target[target.selectedIndex].value;
+            var id = ev.currentTarget[ev.currentTarget.selectedIndex].value,
+                cluster = this.model.get('clusters').findWhere({ id: id });
+
+            this.model.set('curCluster', cluster);
         }
     });
 

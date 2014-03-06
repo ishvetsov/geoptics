@@ -1,38 +1,47 @@
 # REST API
 
-PUT     /boreholes  
+PUT     /boreholes/:id  
 GET     /boreholes?noattached=true  
 GET     /boreholes/:id  
-GET     /boreholes/:id/depths  
+GET     /boreholes/:id/depths
+POST    /boreholes/:id/depths  
 GET     /boreholes/:id/moments  
+POST    /boreholes/:id/moments
 GET     /boreholes/:id/perforations  
+POST    /boreholes/:id/perforations
 GET     /boreholes/:id/psensors  
 GET     /boreholes/:id/tsensors  
-PUT     /boreholes/:id/depths  
-PUT     /boreholes/:id/moments  
-PUT     /boreholes/:id/perforations  
-PUT     /boreholes/:id/psensors  
-PUT     /boreholes/:id/tsensors  
+PUT     /boreholes/:id/psensors/:number  
+PUT     /boreholes/:id/tsensors/:number  
 GET     /boreholes/:id/psensors/:number  
 GET     /boreholes/:id/tsensors/:number  
 
-POST    /clusters  
-PUT     /clusters  
-DELETE  /clusters  
+PUT     /depths/:id
+DELETE  /depths/:id
+
+PUT     /moments/:id
+DELETE  /moments/:id
+
+PUT     /perforations/:id
+DELETE  /perforations/:id
+
+PUT     /clusters/:id  
+DELETE  /clusters/:id  
 GET     /clusters/:id  
 GET     /clusters/:id/boreholes  
 
 GET     /fields  
-POST    /fields  
-PUT     /fields  
-DELETE  /fields  
+POST    /fields
+POST    /fields/:id/clusters  
+PUT     /fields/:id  
+DELETE  /fields/:id  
 GET     /fields/:id  
 GET     /fields/:id/clusters  
 
 GET     /users  
-POST    /users  
-PUT     /users  
-DELETE  /users  
+POST    /users/:id  
+PUT     /users/:id  
+DELETE  /users/:id  
 GET     /users/:id  
 GET     /users/:id/usergroups  
 GET     /users/:id/sensorssets  
@@ -40,12 +49,12 @@ POST    /users/:id/sensorssets
 
 GET     /sensorssets/:id  
 GET     /sensorssets/:id/fields  
-PUT     /sensorssets  
-DELETE  /sensorssets  
+PUT     /sensorssets/:id  
+DELETE  /sensorssets/:id  
 
 POST    /usergroups  
-PUT     /usergroups  
-DELETE  /usergroups  
+PUT     /usergroups/:id  
+DELETE  /usergroups/:id  
 GET     /usergroups  
 GET     /usergroups/:id  
 GET     /usergroups/:id/users  

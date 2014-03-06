@@ -33,6 +33,7 @@ define(function (require) {
         _onShowLayout: function () {
             this._viewInstance.noAttachedRegion.show(
                 noAttachedBlock.getViewInstance());
+
             this._viewInstance.fieldsRegion.show(
                 fieldsBlock.getViewInstance());
         }

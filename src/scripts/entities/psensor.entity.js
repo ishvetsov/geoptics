@@ -33,7 +33,7 @@ define(function (require) {
         model: PSensorModel,
 
         url: function () {
-            return this.parents[0].url() + AppConfig.rest.psensors;
+            return this.parents[0].url() + '/psensors';
         }
     });
 

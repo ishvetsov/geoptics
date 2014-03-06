@@ -3,6 +3,11 @@ var express = require('express'),
 
 var server = express();
 
+// server.use(express.bodyParser());
+
+server.use(express.json());
+server.use(express.urlencoded());
+server.use(express.logger());
 server.use('/', express.static(__dirname));
 
 service.addUrls(server);
