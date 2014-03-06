@@ -6,9 +6,9 @@ GET     /boreholes/:id
 GET     /boreholes/:id/depths
 POST    /boreholes/:id/depths  
 GET     /boreholes/:id/moments  
-POST    /boreholes/:id/moments
+POST    /boreholes/:id/moments  
 GET     /boreholes/:id/perforations  
-POST    /boreholes/:id/perforations
+POST    /boreholes/:id/perforations  
 GET     /boreholes/:id/psensors  
 GET     /boreholes/:id/tsensors  
 PUT     /boreholes/:id/psensors/:number  
@@ -16,11 +16,11 @@ PUT     /boreholes/:id/tsensors/:number
 GET     /boreholes/:id/psensors/:number  
 GET     /boreholes/:id/tsensors/:number  
 
-PUT     /depths/:id
-DELETE  /depths/:id
+PUT     /depths/:id  
+DELETE  /depths/:id  
 
-PUT     /moments/:id
-DELETE  /moments/:id
+PUT     /moments/:id  
+DELETE  /moments/:id  
 
 PUT     /perforations/:id
 DELETE  /perforations/:id
@@ -31,7 +31,7 @@ GET     /clusters/:id
 GET     /clusters/:id/boreholes  
 
 GET     /fields  
-POST    /fields
+POST    /fields  
 POST    /fields/:id/clusters  
 PUT     /fields/:id  
 DELETE  /fields/:id  
