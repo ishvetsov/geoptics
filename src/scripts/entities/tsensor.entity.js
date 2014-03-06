@@ -33,7 +33,7 @@ define(function (require) {
         model: TSensorModel,
 
         url: function () {
-            return this.parents[0].url() + '/tsensors';
+            return this.parents[0].url() +  AppConfig.rest.tsensors;
         }
     });
 

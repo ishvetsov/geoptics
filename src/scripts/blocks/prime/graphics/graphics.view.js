@@ -28,8 +28,8 @@ define(function (require) {
                 chart: {
                     className: 'currentChart',
                     type: 'line',
-                    zoomType: 'x',
-                    reflow: false
+                    zoomType: 'x'
+                    // reflow: false
                 },
 
                 credits: {
@@ -122,7 +122,7 @@ define(function (require) {
                     if(chart.container.classList.contains(cssClassName)){
                         foundChart = chart;
                         return;
-                    };
+                    }
                 }
             });
             return foundChart;
@@ -130,8 +130,12 @@ define(function (require) {
 
         renderGraphic: function () {
             var chartingOptions = this.getGraphicOptions();
-            this.ui.container.highcharts(chartingOptions);
-            CurrentChart=  this.findGraphic('currentChart');
+            this.$el.highcharts(chartingOptions);
+            CurrentChart = this.findGraphic('currentChart');
+
+            setTimeout(function () {
+                $(window).resize();
+            }, 0);
         },
 
         onRender: function () {
@@ -143,9 +147,8 @@ define(function (require) {
             this.renderGraphic();
         },
 
-        exportGraphic: function(e){
-            switch ($(e.target).attr('data-exportType'))
-            {
+        exportGraphic: function (type) {
+            switch (type) {
                 case 'print':
                     CurrentChart.print();
                     break;

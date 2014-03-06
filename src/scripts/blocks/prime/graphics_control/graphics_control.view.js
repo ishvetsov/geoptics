@@ -11,12 +11,14 @@ define(function (require) {
 
         ui: {
             type: '.graphics-control_type',
-            period: '.graphics-control_period'
+            period: '.graphics-control_period',
+            exports: '.graphics-control_export'
         },
 
         events: {
             'click @ui.type': '_onTypeSelected',
-            'click @ui.period': '_onPeriodSelected'
+            'click @ui.period': '_onPeriodSelected',
+            'click @ui.exports': '_onExportsClicked',
         },
 
         initialize: function () {
@@ -41,6 +43,12 @@ define(function (require) {
                 this.model.set(param, $(ev.currentTarget).data('value'));
                 this.trigger('state:change', this.model.toJSON());
             };
+        },
+
+        _onExportsClicked: function (ev) {
+            this.trigger(
+                'export:click',
+                $(ev.currentTarget).data('export-type'));
         }
     });
 

@@ -10,6 +10,10 @@ define(function (require) {
         view: GraphicsView,
         collection: Graphic.Collection,
 
+        functions: {
+            'view:exportGraphic': 'export'
+        },
+
         onInit: function () {
             _.bindAll(this, '_onStateChanged', '_onCollectionFetched');
 

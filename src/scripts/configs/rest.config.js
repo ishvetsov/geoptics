@@ -9,7 +9,9 @@ define(function () {
         usergroups:     '/usergroups',
         data:           '/data',
         login:          '/login',
-        logout:         '/logout'
+        logout:         '/logout',
+        tsensors:       '/tsensors',
+        psensors:       '/psensors'
     };
 
     return rest;

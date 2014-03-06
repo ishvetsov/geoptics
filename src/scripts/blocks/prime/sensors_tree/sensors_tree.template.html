@@ -1,4 +1,4 @@
-<h3>Скважины</h3>
+<h3 class="sensors-tree_title">Скважины</h3>
 
 <div class="btn-group">
     <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown">
@@ -27,7 +27,7 @@
             </div>
             <div rv-each-borehole="cluster:boreholes" class="sensors-tree_component">
                 <div class="borehole-name sensors-tree_component-name" rv-on-click="borehole.fetchTsensors">
-                    { borehole:name } { borehole:number }
+                    { borehole:code }
                 </div>
                 <div rv-each-sensor="borehole:tsensors" class="sensors-tree_component">
                     <span>

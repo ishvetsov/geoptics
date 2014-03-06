@@ -16,7 +16,8 @@ define(function (require) {
         },
 
         triggers: {
-            'view:state:change': 'state:change'
+            'view:state:change': 'state:change',
+            'view:export:click': 'export:click',
         }
     });
 

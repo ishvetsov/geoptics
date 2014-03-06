@@ -138,6 +138,13 @@
   height: 100%;
   padding: 0 0 200px; }
 
+.sensors-tree_title {
+  margin: 0 0 24px;
+  line-height: 42px; }
+
+.graphics-control_tabs {
+  margin: 0 0 24px; }
+
 .sensors-tree_component > .sensors-tree_component {
   display: none;
   margin: 0 0 0 20px; }
@@ -158,4 +165,4 @@
   margin: 12px 0 0; }
 
 .graphics {
-  margin: 12px; }
+  margin: 24px 0 0; }

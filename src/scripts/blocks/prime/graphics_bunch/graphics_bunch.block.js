@@ -22,13 +22,15 @@ define(function (require) {
 
             this._viewInstance.on('show', this._onShow);
 
-            graphicsControlBlock.on('state:change', function (d) {
-                console.log('graphics-control > ', d);
-            });
+            graphicsControlBlock.on('export:click', graphicsBlock.export);
 
-            sensorsTreeBlock.on('state:change', function (d) {
-                console.log('sensors-tree > ', d);
-            });
+            // graphicsControlBlock.on('state:change', function (d) {
+            //     console.log('graphics-control > ', d);
+            // });
+
+            // sensorsTreeBlock.on('state:change', function (d) {
+            //     console.log('sensors-tree > ', d);
+            // });
         },
 
         _onShow: function () {
