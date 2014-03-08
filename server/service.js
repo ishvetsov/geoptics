@@ -30,7 +30,9 @@ var extenders = [
     require('./urls/boreholes'),
     require('./urls/clusters'),
     require('./urls/usergroups'),
-    require('./urls/users')
+    require('./urls/users'),
+    require('./urls/login'),
+    require('./urls/sensorssets')
 ];
 
 module.addUrls = function (server) {

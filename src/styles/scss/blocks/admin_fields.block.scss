@@ -3,83 +3,26 @@
 }
 
 .admin_fields .title {
-    margin-bottom: 5px;
+    margin: 0 0 5px;
 
     font-size: 1.2em;
 }
 
-.admin_fields .field-item {}
-
-.field-item .field-name {
-    float: left;
-
-    width: 60%;
-}
-
-.field-item .field-number {
-    float: left;
-
-    width: 35%;
-}
-
-.cluster-item .cluster-name {
-    float: left;
-
-    width: 60%;
-}
-
-.cluster-item .cluster-number {
-    float: left;
-
-    width: 35%;
-}
-
-.borehole-item .borehole-id {
-    float: left;
-
-    width: 60%;
-}
-
-.borehole-item .borehole-number {
-    float: left;
-
-    width: 35%;
-}
-
-.sensor-item {
-    line-height: 25px;
-}
-
-.sensor-item .sensor-name {
-    float: left;
-
-    width: 50%;
-}
-
-.sensor-item .sensor-channel-number {
-    float: left;
-
-    width: 45%;
-}
-
 .clusters,
 .boreholes,
 .sensors {
-    padding-left: 30px;
-}
-
-.clusters,
-.boreholes,
-.sensors {
-    width: 100%;
+    margin: 0 0 0 30px;
 }
 
 .field-item,
 .cluster-item,
 .borehole-item {
-    cursor: pointer;
-
-    line-height: 25px;
+    padding: 5px;
 
     border-bottom: 1px solid #ddd;
+    &:hover {
+        cursor: pointer;
+
+        background: #f5f5f5;
+    }
 }

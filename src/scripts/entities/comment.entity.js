@@ -2,9 +2,15 @@ define(function (require) {
     'use strict';
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
-        moment = require('moment'),
+        moment = require('moment');
 
-        User = require('./user.entity');
+    // User = require('./user.entity');
+
+    // DUMMY
+    // 
+    // Циклическая зависимость
+    // User - SensorsSets - Fields - .. - Comments - User 
+    var AuthorModel = Backbone.AssociatedModel.extend();
 
     var CommentModel = Backbone.AssociatedModel.extend({
         defaults: {
@@ -17,7 +23,7 @@ define(function (require) {
             {
                 type: Backbone.One,
                 key: 'author',
-                relatedModel: User.Model
+                relatedModel: AuthorModel
             }
         ]
     });

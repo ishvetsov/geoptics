@@ -7,6 +7,14 @@ module.exports.extend = function (server, data) {
         res.json(gen.some(data.user, 30, 40, 'id'));
     });
 
+    server.post(baseUrl, function (req, res) {
+        res.json(req.body);
+    });
+
+    server.put(baseUrl + '/:id', function (req, res) {
+        res.json(req.body);
+    });
+
     server.get(baseUrl + '/:id', function (req, res) {
         res.json(gen.traverse(data.user, 'id', req.params.id));
     });
@@ -16,14 +24,12 @@ module.exports.extend = function (server, data) {
     });
 
     server.get(baseUrl + '/:id/sensorssets', function (req, res) {
-        res.json(data.sensorsSets);
+        res.json(gen.some(data.sensorsSets, 2, 4, 'id'));
     });
 
     server.post(baseUrl + '/:id/sensorssets', function (req, res) {
         res.json(req.body);
     });
 
-    server.post(baseUrl, function (req, res) {});
-    server.put(baseUrl, function (req, res) {});
     server.delete(baseUrl, function (req, res) {});
 };

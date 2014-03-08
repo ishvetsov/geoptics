@@ -14,6 +14,10 @@ define(function (require) {
             'view:save:click': 'save:click'
         },
 
+        onInit: function () {
+            this._viewInstance.on('save:click', this._onSaveClicked);
+        },
+
         fetch: function (id) {
             this._modelInstance.set('id', id);
 
@@ -25,6 +29,12 @@ define(function (require) {
         resetModel: function () {
             this._modelInstance.clear().set('groups', []);
             return this;
+        },
+
+        _onSaveClicked: function (model) {
+            model.save().then(function () {
+                Backbone.history.navigate('#/admin/users');
+            });
         }
     });
 

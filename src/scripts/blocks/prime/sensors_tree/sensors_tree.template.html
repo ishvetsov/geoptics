@@ -19,21 +19,30 @@
 <div class="sensors-tree_fields-container">
     <div rv-each-field="model:fields" class="sensors-tree_component">
         <div class="field-name sensors-tree_component-name" rv-on-click="field.fetchClusters">
+            <span class="glyphicon glyphicon-chevron-right"></span>
             { field:name } { field:number }
         </div>
         <div rv-each-cluster="field:clusters" class="sensors-tree_component">
             <div class="cluster-name sensors-tree_component-name" rv-on-click="cluster.fetchBoreholes">
+                <span class="glyphicon glyphicon-chevron-right"></span>
                 { cluster:name } { cluster:number }
             </div>
             <div rv-each-borehole="cluster:boreholes" class="sensors-tree_component">
-                <div class="borehole-name sensors-tree_component-name" rv-on-click="borehole.fetchTsensors">
+                <div class="borehole-name sensors-tree_component-name" rv-on-click="borehole.fetchChildren">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
                     { borehole:code }
                 </div>
                 <div rv-each-sensor="borehole:tsensors" class="sensors-tree_component">
-                    <span>
+                    <label class="sensor">
                         { sensor:name } { sensor:number }
-                        <input rv-checked="sensor:isChecked" type="checkbox" class="">
-                    </span>
+                        <input rv-checked="sensor:isChecked" type="checkbox" class="pull-right">
+                    </label>
+                </div>
+                <div rv-each-sensor="borehole:psensors" class="sensors-tree_component">
+                    <label class="sensor">
+                        { sensor:name } { sensor:number }
+                        <input rv-checked="sensor:isChecked" type="checkbox" class="pull-right">
+                    </label>
                 </div>
             </div>
         </div>

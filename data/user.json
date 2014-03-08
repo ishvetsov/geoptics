@@ -1,10 +1,11 @@
 {
     "firstName": "Patrick",
-    "lastName": "Weaver",
+    "lastName": "Ivanov",
+    "middleName": "Ivanovich",
     "login": "patrick",
     "password": "123",
-    "org": "yandex",
-    "email": "patrickw@yandex.ru",
+    "org": "google",
+    "email": "ivanovich@gmail.ru",
     "tel": "",
     "comment": "",
     "isActive": true

@@ -20,16 +20,13 @@ define(function (require) {
 
         onBeforeInit: function () {
             var userType = sessionBlock.getAccessLevel();
-
             this.viewOptions = {
                 config: Config[userType]
             };
         },
 
         onInit: function () {
-            this._viewInstance.on('user:click', function () {
-                sessionBlock.trigger('session:out');
-            });
+            this._viewInstance.on('user:click', sessionBlock.out);
         }
     });
 

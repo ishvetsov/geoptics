@@ -1,24 +1,20 @@
 define(function (require) {
     'use strict';
 
-    var Field = require('entities/field.entity'),
-        AppConfig = require('configs/app.config');
+    var Backbone = require('backbone'),
+        Associations = require('backbone.associations'),
+        AppConfig = require('configs/app.config'),
 
-    var SetModel = Backbone.AssociatedModel.extend();
+        Field = require('entities/field.entity'),
+        SensorsSet = require('entities/sensors_set.entity');
 
     var SensorsTreeModel = Backbone.AssociatedModel.extend({
-        // urlRoot: AppConfig.rest.primeSensorsTree,
-        
         defaults: {
-            fields: []
+            fields: [],
+            sets: null
         },
 
         relations: [
-            {
-                type: Backbone.Many,
-                key: 'sets',
-                relatedModel: SetModel
-            },
             {
                 type: Backbone.Many,
                 key: 'fields',
@@ -30,12 +26,15 @@ define(function (require) {
         initialize: function () {
             this._selectedSensors = {};
 
+            // Удаление привязки к родительской модели
+            this.get('fields').parents.length = 0;
+
             this.on('nested-change', this._onSensorChanged);
         },
 
         fetchChildren: function () {
-            return this.get('fields').fetch();
-        }
+            return $.when(this.get('fields').fetch(), this.get('sets').fetch());
+        },
     });
 
     _.extend(SensorsTreeModel.prototype, {
@@ -53,10 +52,14 @@ define(function (require) {
             return _this;
         },
 
-        loadSet: function () {
-            return this.resetSensors().fetch({
-                url: AppConfig.rest.sensorsSets,
-                remove: false
+        loadSet: function (set) {
+            var _this = this;
+
+            set.get('fields')
+            .fetch()
+            .then(function (data) {
+                _this.resetSensors()
+                    .get('fields').set(data, {remove: false});
             });
         },
 

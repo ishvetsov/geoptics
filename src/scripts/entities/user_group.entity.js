@@ -20,7 +20,7 @@ define(function (require) {
         model: UserGroupModel,
 
         url: function () {
-            if (this.parents) {
+            if (this.parents && this.parents.length) {
                 return this.parents[0].url() + AppConfig.rest.usergroups;
             }
             return AppConfig.rest.usergroups;

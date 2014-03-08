@@ -1,66 +1,60 @@
 <div class="title">Месторождения</div>
 <div rv-each-field="fields.models">
     <div class="field-item clearfix" rv-on-click="view.expandField">
-        <div class="field-name">{ field:name }</div>
-        <div class="field-number">№{ field:number }</div>
-        <div class="pull-left">
-            <a class="btn btn-default btn-xs"
-                rv-href="field:id | prepend #admin/fields/">
-                <span class="glyphicon glyphicon-pencil"></span>
-            </a>
-        </div>
+        <span class="field-name">
+            { field:name } { field:number }
+        </span>
+        <a class="btn btn-default btn-xs pull-right"
+            rv-href="field:id | prepend #admin/fields/">
+            <span class="glyphicon glyphicon-pencil"></span>
+            Редактировать
+        </a>
     </div>
 
     <div hidden="true" class="clusters">
         <div rv-each-cluster="field:clusters">
             <div class="cluster-item clearfix" rv-on-click="view.expandCluster">
-                <div class="cluster-name">{ cluster:name }</div>
-                <div class="cluster-number">{ cluster:number }</div>
-                <div class="pull-left">
-                    <a class="btn btn-default btn-xs" 
-                        rv-href="cluster:id | prepend #admin/clusters/">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                </div>
+                <span class="cluster-name">
+                    { cluster:name } { cluster:number }
+                </span>
+                <a class="btn btn-default btn-xs pull-right" 
+                    rv-href="cluster:id | prepend #admin/clusters/">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Редактировать
+                </a>
             </div>
 
             <div hidden="true" class="boreholes">
                 <div rv-each-borehole="cluster:boreholes">
                     <div class="borehole-item clearfix" rv-on-click="view.expandBorehole">
-                        <div class="borehole-number">{ borehole:code }</div>
-                        <div class="pull-left">
-                            <a class="btn btn-default btn-xs"
-                                rv-href="borehole:id | prepend #admin/boreholes/">
-                                <span class="glyphicon glyphicon-pencil"></span>
-                            </a>
-                        </div>
+                        <span class="borehole-number">
+                            { borehole:code }
+                        </span>
+                        <a class="btn btn-default btn-xs pull-right"
+                            rv-href="borehole:id | prepend #admin/boreholes/">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            Редактировать
+                        </a>
                     </div>
 
                     <div hidden="true" class="sensors">
                         <div>Датчики температуры:</div>
                         <div rv-each-tsensor="borehole:tsensors">
                             <div class="sensor-item clearfix">
-                                <div class="sensor-name">
-                                    { tsensor:name }
-                                </div>
-                                <div class="sensor-channel-number">
-                                    { tsensor:channelNumber }
-                                </div>
+                                <span class="sensor-name">
+                                    { tsensor:name } { tsensor:channelNumber }
+                                </span>
                             </div>
                         </div>
 
                         <div>Датчики давления:</div>
                         <div rv-each-psensor="borehole:psensors">
                             <div class="sensor-item clearfix">
-                                <div class="sensor-name">
-                                    { psensor:name }
-                                </div>
-                                <div class="sensor-channel-number">
-                                    { psensor:channelNumber }
-                                </div>
+                                <span class="sensor-name">
+                                    { psensor:name } { psensor:channelNumber }
+                                </span>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

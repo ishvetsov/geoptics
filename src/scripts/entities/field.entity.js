@@ -47,6 +47,10 @@ define(function (require) {
     var FieldCollection = Backbone.Collection.extend({
         model: FieldModel,
         url: function () {
+            if (this.parents && this.parents.length) {
+                return this.parents[0].url() + AppConfig.rest.fields;
+            }
+
             return AppConfig.rest.fields;
         }
     });

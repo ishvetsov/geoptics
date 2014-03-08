@@ -15,17 +15,13 @@ define(function (require) {
             signIn: '.login__signin'
         },
 
-        initialize: function () {
-            _.bindAll(this, '_onSignInClicked');
+        triggers: {
+            'click .login__signin': 'signin:click'
         },
 
         onRender: function () {
-            this.ui.signIn.on('click', this._onSignInClicked);
             this.binding = Rivets.bind(this.el, this.model);
-        },
-
-        _onSignInClicked: function () {
-            this.trigger('login:try', this.model.toJSON());
+            this.delegateEvents();
         }
     });
 

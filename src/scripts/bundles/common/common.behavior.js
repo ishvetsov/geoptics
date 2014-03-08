@@ -35,7 +35,7 @@ define(function (require) {
         blocks.navigation.init();
         bundles.prime.init();
 
-        blocks.session.getAccessLevel() > 1 && bundles.admin.init();
+        blocks.session.getAccessLevel() < 1 && bundles.admin.init();
     };
 
     var handlers = {

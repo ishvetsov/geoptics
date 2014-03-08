@@ -1,13 +1,19 @@
-<a href="#admin/user/new" class="btn btn-default pull-right">Добавить пользователя</a>
+<a href="#admin/user/new" class="btn btn-default pull-right">
+    <span class="glyphicon glyphicon-plus"></span>
+    Добавить пользователя
+</a>
 <table class="admin_users-table table table-condensed">
     <tbody>
         <tr rv-each-user="users:models">
-            <td class="user-table-name">{ user:name }</td>
+            <td class="user-table-name">{ user.getFullName }</td>
             <td>{ user:group }</td>
             <td class="user-table-controls">
                 <a
                     class="btn btn-default btn-xs"
-                    rv-href="user:id | prepend #admin/user/">Редактировать</a>
+                    rv-href="user:id | prepend #admin/user/">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Редактировать
+                </a>
             </td>
         </tr>
     </tbody>

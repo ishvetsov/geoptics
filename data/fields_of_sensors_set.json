@@ -1,0 +1,25 @@
+[
+    {
+        "id": "field_1",
+        "clusters": [
+            {
+                "id":"cluster_1_1",
+                "boreholes":[
+                    {
+                        "id":"borehole_1_1_1",
+                        "tsensors": [
+                            {
+                                "id": "sensor_1_1_1_1",
+                                "isChecked": true
+                            },
+                            {
+                                "id": "sensor_1_1_1_2",
+                                "isChecked": true
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -6,7 +6,8 @@ define(function (require) {
 
         AppConfig = require('configs/app.config'),
 
-        UserGroup = require('./user_group.entity');
+        UserGroup = require('./user_group.entity'),
+        SensorsSet = require('./sensors_set.entity');
 
     var UserModel = Backbone.AssociatedModel.extend({
         defaults: {
@@ -21,11 +22,9 @@ define(function (require) {
             tel: '',
             comment: '',
             isActive: true,
-            groups: [],
 
-            shortName: function () {
-                return this.getShortName();
-            }
+            groups: [],
+            sensorsSets: []
         },
 
         relations: [
@@ -34,14 +33,39 @@ define(function (require) {
                 key: 'groups',
                 relatedModel: UserGroup.Model,
                 collectionType: UserGroup.Collection
+            },
+            {
+                type: Backbone.Many,
+                key: 'sensorsSets',
+                relatedModel: SensorsSet.Model,
+                collectionType: SensorsSet.Collection
             }
         ],
 
-        urlRoot: AppConfig.rest.users,
+        urlRoot: AppConfig.rest.users
+    });
 
+    _.extend(UserModel.prototype, {
         getShortName: function () {
-            return this.get('lastName') +
-                ' ' + this.get('firstName')[0] + '.';
+            return this.get('lastName')
+                + ' ' + this.get('firstName')[0]
+                + '.' + this.get('middleName')[0] + '.';
+        },
+
+        getFullName: function () {
+            return this.get('lastName')
+                + ' ' + this.get('firstName')
+                + ' ' + this.get('middleName');
+        },
+
+        getAccessLevel: function () {
+            var groups = this.get('groups').toJSON();
+
+            if (groups.length === 0) { return 0; }
+
+            return _.min(groups, function (group) {
+                return group.access;
+            });
         }
     });
 

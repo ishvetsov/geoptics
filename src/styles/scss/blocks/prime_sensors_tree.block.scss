@@ -23,8 +23,20 @@
     display: block;
 }
 
+.sensors-tree_component .sensor {
+    width: 100%;
+    padding: 0 42px 0 0;
+
+    font-weight: 200;
+    &:hover {
+        cursor: pointer;
+
+        font-weight: 600;
+    }
+}
+
 .sensors-tree_component-name {
-    padding: 6px 12px;
+    padding: 6px 12px 6px 0;
     &:hover {
         cursor: pointer;
 

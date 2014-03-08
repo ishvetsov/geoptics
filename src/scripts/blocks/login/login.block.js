@@ -11,14 +11,26 @@ define(function (require) {
 
     var sessionBlock = SessionBlock.getInstance();
 
-    var LoginBlock = Block.create({
-        view: LoginView,
-        model: Login.Model,
+    var LoginBlock = Block.create(
+        {
+            view: LoginView,
+            model: Login.Model,
 
-        onInit: function () {
-            this._viewInstance.on('login:try', sessionBlock.authorization);
+            onInit: function () {
+                if (sessionBlock.isAuthorized()) {
+                    this.requestUserData()
+                }
+
+                this._viewInstance.on('signin:click', this.requestUserData);
+            }
+        },
+        {
+            requestUserData: function () {
+                this._modelInstance.send()
+                    .then(sessionBlock.in);
+            }
         }
-    });
+    );
 
     return LoginBlock;
 });

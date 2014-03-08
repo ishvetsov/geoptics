@@ -33,7 +33,11 @@ define(function (require) {
 
     var handlers = {
         check: function () {
-            blocks.session.getAccessLevel() > 0 && commonBundle.init();
+            var access = blocks.session.getAccessLevel();
+
+            if (_.isNumber(access) && access < 2) {
+                commonBundle.init();
+            } 
         }
     };
 

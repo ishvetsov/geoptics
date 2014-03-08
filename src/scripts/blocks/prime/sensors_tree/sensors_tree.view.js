@@ -37,7 +37,7 @@ define(function (require) {
 
         onSetClicked: function (ev, data) {
             ev.preventDefault();
-            this.model.loadSet(data.set.get('id'));
+            this.model.loadSet(data.set);
         },
 
         _onResetClicked: function (ev) {
@@ -52,7 +52,12 @@ define(function (require) {
 
         _onComponentClicked: function (ev) {
             ev.stopPropagation();
-            $(ev.currentTarget).toggleClass('active');
+
+            var $component = $(ev.currentTarget).toggleClass('active');
+            
+            $('.glyphicon:first', $component)
+                .toggleClass('glyphicon-chevron-right')
+                .toggleClass('glyphicon-chevron-down');
         }
     });
 

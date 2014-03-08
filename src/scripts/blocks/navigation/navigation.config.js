@@ -17,7 +17,7 @@ define(function (require) {
             ]
         },
             
-        2: {
+        0: {
             items: [
                 {
                     name: 'Графики',

@@ -56,11 +56,19 @@ define(function (require) {
 
         urlRoot: AppConfig.rest.boreholes,
 
-        fetchTsensors: Utils.fetchChild('tsensors'),
-        fetchPsensors: Utils.fetchChild('psensors'),
+        fetchTSensors: Utils.fetchChild('tsensors'),
+        fetchPSensors: Utils.fetchChild('psensors'),
+
+        fetchChildren: function () {
+            return $.when(this.fetchTSensors(), this.fetchPSensors());
+        },
 
         initialize: function () {
-            _.bindAll(this, 'fetchTsensors', 'fetchPsensors');
+            _.bindAll(
+                this,
+                'fetchTSensors',
+                'fetchPSensors',
+                'fetchChildren');
         }
     });
 

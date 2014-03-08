@@ -25,10 +25,6 @@ define(function (require) {
         blocks.navigation.activateItem('admin');
     });
 
-    blocks.adminUser.on('save:click', function (data) {
-        Backbone.history.navigate('#/admin/users');
-    });
-
     var initialize = function () {
         blocks.adminNavigation.init();
     };

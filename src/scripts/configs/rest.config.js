@@ -11,7 +11,8 @@ define(function () {
         login:          '/login',
         logout:         '/logout',
         tsensors:       '/tsensors',
-        psensors:       '/psensors'
+        psensors:       '/psensors',
+        sensorssets:     '/sensorssets'
     };
 
     return rest;
