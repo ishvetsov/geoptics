@@ -57,6 +57,37 @@ define(function (require) {
             }
         },
 
+        editField: function (ev, data) {
+            ev.stopPropagation();
+            Backbone.history.navigate('#/admin/fields/' + data.field.get('id'));
+        },
+
+        editCluster: function (ev, data) {
+            ev.stopPropagation();
+            Backbone.history.navigate('#/admin/clusters/' + data.cluster.get('id'));
+        },
+
+        editBorehole: function (ev, data) {
+            ev.stopPropagation();
+            Backbone.history.navigate('#/admin/boreholes/' + data.borehole.get('id'));
+        },
+
+        editTSensor: function (ev, data) {
+            ev.stopPropagation();
+            var tsensor = data.tsensor;
+            Backbone.history.navigate('#/admin/boreholes/' +
+                tsensor.collection.parents[0].get('id') + '/tsensors/' +
+                tsensor.get('channelNumber'));
+        },
+
+        editPSensor: function (ev, data) {
+            ev.stopPropagation();
+            var psensor = data.psensor;
+            Backbone.history.navigate('#/admin/boreholes/' +
+                psensor.collection.parents[0].get('id') + '/psensors/' +
+                psensor.get('channelNumber'));
+        },
+
         _toggle: function (ev) {
             return $(ev.currentTarget).next().toggle().is(':visible');
         }

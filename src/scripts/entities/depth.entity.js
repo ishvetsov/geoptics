@@ -21,11 +21,17 @@ define(function (require) {
                 relatedModel: Comment.Model,
                 collectionType: Comment.Collection
             }
-        ]
+        ],
+
+        urlRoot: AppConfig.rest.depths
     });
 
     var DepthCollection = Backbone.Collection.extend({
-        model: DepthModel
+        model: DepthModel,
+
+        url: function () {
+            return this.parents[0].url() + AppConfig.rest.depths;
+        }
     });
 
     return {

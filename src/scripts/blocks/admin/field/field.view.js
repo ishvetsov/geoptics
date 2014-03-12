@@ -11,13 +11,14 @@ define(function (require) {
         
         className: 'admin_field',
 
-        triggers: {
-            'click #save-field': 'view:save'
+        initialize: function () {
+            _.bindAll(this, 'save');
         },
 
         onRender: function () {
             this.binding = Rivets.bind(this.el, {
-                field: this.model
+                field: this.model,
+                view: this
             });
         },
 
@@ -25,6 +26,10 @@ define(function (require) {
             return {
                 field: this.model
             };
+        },
+
+        save: function () {
+            this.trigger('view:save');
         }
     });
 

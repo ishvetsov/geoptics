@@ -25,6 +25,10 @@ define(function (require) {
                 _this._modelInstance.get('curCluster').save()
                     .then(function () {
                         _this._viewInstance.update();
+                        _this.trigger('attached', {
+                            field: _this._modelInstance.get('curField'),
+                            cluster: _this._modelInstance.get('curCluster')
+                        });
                     });
             });
         },

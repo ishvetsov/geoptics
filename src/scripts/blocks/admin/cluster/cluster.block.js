@@ -11,15 +11,35 @@ define(function (require) {
 		view: View,
 		model: Cluster.Model,
 
-		fetch: function (id) {
-			return this._modelInstance.fetch({
-				data: {id: id}
+		onInit: function (options) {
+			var _this = this;
+
+			_this._opstions = options;
+			switch (options.mode) {
+				case 'edit':
+
+				break;
+				case 'create':
+					_this._modelInstance.clear();
+					_this._modelInstance.set('boreholes', []);
+					_this._modelInstance.set('comments', []);
+				break;
+			}
+
+			_this._viewInstance.on('view:save', function () {
+				_this._modelInstance.save().then(function () {
+					history.back();
+				});
 			});
 		},
 
-		resetModel: function () {
-			this._modelInstance.clear().set('boreholes', []);
-			return this;
+		fetch: function (id) {
+			this._modelInstance.set('id', id);
+
+			return $.when(
+				this._modelInstance.fetch(),
+				this._modelInstance.get('boreholes').fetch()
+			);
 		}
 	});
 

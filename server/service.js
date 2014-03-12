@@ -32,7 +32,10 @@ var extenders = [
     require('./urls/usergroups'),
     require('./urls/users'),
     require('./urls/login'),
-    require('./urls/sensorssets')
+    require('./urls/sensorssets'),
+    require('./urls/perforations'),
+    require('./urls/depths'),
+    require('./urls/moments')
 ];
 
 module.addUrls = function (server) {

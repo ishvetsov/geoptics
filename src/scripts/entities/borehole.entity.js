@@ -8,7 +8,10 @@ define(function (require) {
 
         PSensor = require('./psensor.entity'),
         TSensor = require('./tsensor.entity'),
-        Comment = require('./comment.entity');
+        Comment = require('./comment.entity'),
+        Perforation = require('./perforation.entity'),
+        Depth = require('./depth.entity'),
+        Moment = require('./moment.entity');
 
     var Borehole = Backbone.AssociatedModel.extend({
         defaults: {
@@ -51,6 +54,24 @@ define(function (require) {
                 key: 'psensors',
                 relatedModel: PSensor.Model,
                 collectionType: PSensor.Collection
+            },
+            {
+                type: Backbone.Many,
+                key: 'perforations',
+                relatedModel: Perforation.Model,
+                collectionType: Perforation.Collection
+            },
+            {
+                type: Backbone.Many,
+                key: 'depths',
+                relatedModel: Depth.Model,
+                collectionType: Depth.Collection
+            },
+            {
+                type: Backbone.Many,
+                key: 'moments',
+                relatedModel: Moment.Model,
+                collectionType: Moment.Collection
             }
         ],
 
@@ -64,8 +85,7 @@ define(function (require) {
         },
 
         initialize: function () {
-            _.bindAll(
-                this,
+            _.bindAll(this,
                 'fetchTSensors',
                 'fetchPSensors',
                 'fetchChildren');

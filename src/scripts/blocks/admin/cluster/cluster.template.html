@@ -1,6 +1,3 @@
-<a href="#admin/boreholes/new" class="btn btn-default pull-right">
-    Добавить скважину
-</a>
 <div class="form-horizontal">
 	<div class="form-group">
 		<label class="col-sm-2 control-label">Название</label>
@@ -16,6 +13,27 @@
 				placeholder="Номер">
 		</div>
 	</div>
+
+	{{ if (it.cluster.get('boreholes')) { }}
+		<div class="form-group">
+			<label class="col-sm-2 control-label">Скважины</label>
+			<div class="col-sm-5">
+				<div class="clearfix" rv-each-borehole="cluster:boreholes">
+					<div class="pull-left">{ borehole:code }</div>
+					<div class="pull-left">
+						<a class="btn btn-default btn-xs"
+	                        rv-href="borehole:id | prepend #admin/boreholes/">
+	                        <span class="glyphicon glyphicon-pencil"></span>
+	                    </a>
+						<button class="btn btn-default btn-xs">
+	                        <span class="glyphicon glyphicon-trash"></span>
+	                    </button>
+					</div>
+				</div>
+			</div>
+		</div>
+	{{ } }}
+
 	{{ if (it.cluster.get('comments')) { }}
 		<div class="form-group">
 			<label class="col-sm-2 control-label">Комментарии</label>
@@ -40,30 +58,11 @@
 		</div>
 	{{ } }}
 
-	{{ if (it.cluster.get('boreholes')) { }}
-		<div class="form-group">
-			<label class="col-sm-2 control-label">Скважины</label>
-			<div class="col-sm-5">
-				<div class="clearfix" rv-each-borehole="cluster:boreholes">
-					<div class="pull-left">{ borehole:name }</div>
-					<div class="pull-left">{ borehole:number }</div>
-					<div class="pull-left">
-						<a class="btn btn-default btn-xs" 
-	                        rv-href="borehole:id | prepend #admin/clusters/">
-	                        <span class="glyphicon glyphicon-pencil"></span>
-	                    </a>
-						<button class="btn btn-default btn-xs">
-	                        <span class="glyphicon glyphicon-trash"></span>
-	                    </button>
-					</div>
-				</div>
-			</div>
-		</div>
-	{{ } }}
-
 	 <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="button" class="btn btn-default">Сохранить</button>
+            <button type="button" class="btn btn-default" rv-on-click="view.save">
+            	Сохранить
+            </button>
         </div>
     </div>
 </div>

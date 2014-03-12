@@ -31,27 +31,15 @@ module.exports.extend = function (server, data) {
     });
 
     server.get(baseUrl + '/:id/moments', function (req, res) {
-
+        res.json(gen.some(data.moment, 5, 10, 'id'));
     });
 
     server.get(baseUrl + '/:id/depths', function (req, res) {
-
+        res.json(gen.some(data.depth, 5, 10, 'id'));
     });
 
     server.get(baseUrl + '/:id/perforations', function (req, res) {
-
-    });
-
-    server.post(baseUrl + '/:id/moments', function (req, res) {
-
-    });
-
-    server.post(baseUrl + '/:id/depths', function (req, res) {
-
-    });
-
-    server.post(baseUrl + '/:id/perforations', function (req, res) {
-
+        res.json(gen.some(data.perforation, 5, 10, 'id'));
     });
 
     server.put(baseUrl + '/:id', function (req, res) {

@@ -13,6 +13,10 @@ define(function (require) {
         AdminResources: require('blocks/admin/resources/resources.block'),
         AdminField: require('blocks/admin/field/field.block'),
         AdminCluster: require('blocks/admin/cluster/cluster.block'),
+        AdminBorehole: require('blocks/admin/borehole/borehole.block'),
+        AdminPerforation: require('blocks/admin/perforation/perforation.block'),
+        AdminDepth: require('blocks/admin/depth/depth.block'),
+        AdminMoment: require('blocks/admin/moment/moment.block'),
         AdminMonitoring: require('blocks/admin/monitoring/monitoring.block'),
         AdminNavigation: require('blocks/admin/navigation/admin_navigation.block')
     };
@@ -80,37 +84,68 @@ define(function (require) {
         newField: function () {
             blocks.adminNavigation.disactivateAll();
             blocks.adminField.init({mode: 'create'});
-            blocks.adminField.resetModel();
             layout.container.show(blocks.adminField.getViewInstance());
         },
 
         cluster: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminCluster.init();
+            blocks.adminCluster.init({mode: 'edit'});
             blocks.adminCluster.fetch(id)
                 .then(function () {
-                    layout.container.show(
-                        blocks.adminCluster.getViewInstance());
+                    layout.container.show(blocks.adminCluster.getViewInstance());
                 });
         },
 
         newCluster: function () {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminCluster.init();
-            layout.container.show(
-                blocks.adminCluster.resetModel().getViewInstance());
+            blocks.adminCluster.init({mode: 'create'});
+            layout.container.show(blocks.adminCluster.getViewInstance());
         },
 
         borehole: function (id) {
             blocks.adminNavigation.disactivateAll();
+            blocks.adminBorehole.init();
+            blocks.adminBorehole.fetch(id)
+                .then(function () {
+                    layout.container.show(blocks.adminBorehole.getViewInstance());
+                });
         },
 
-        temperatureSensor: function (boreholeId, id) {
+        tsensor: function (boreholeId, channelNumber) {
             blocks.adminNavigation.disactivateAll();
+            console.log(boreholeId, channelNumber);
         },
 
-        pressureSensor: function (boreholeId, id) {
+        psensor: function (boreholeId, channelNumber) {
             blocks.adminNavigation.disactivateAll();
+            console.log(boreholeId, channelNumber);
+        },
+
+        perforation: function (id) {
+            blocks.adminNavigation.disactivateAll();
+            blocks.adminPerforation.init();
+            blocks.adminPerforation.fetch(id)
+                .then(function () {
+                    layout.container.show(blocks.adminPerforation.getViewInstance());
+                });
+        },
+
+        depth: function (id) {
+            blocks.adminNavigation.disactivateAll();
+            blocks.adminDepth.init();
+            blocks.adminDepth.fetch(id)
+                .then(function () {
+                    layout.container.show(blocks.adminDepth.getViewInstance());
+                });
+        },
+
+        moment: function (id) {
+            blocks.adminNavigation.disactivateAll();
+            blocks.adminMoment.init();
+            blocks.adminMoment.fetch(id)
+                .then(function () {
+                    layout.container.show(blocks.adminMoment.getViewInstance());
+                });
         },
 
         monitoring: function () {

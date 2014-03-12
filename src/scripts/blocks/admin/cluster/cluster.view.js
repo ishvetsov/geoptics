@@ -11,9 +11,14 @@ define(function (require) {
 		
 		className: 'admin_cluster',
 
+		initialize: function () {
+			_.bindAll(this, 'save');
+		},
+
 		onRender: function () {
 			this.binding = Rivets.bind(this.el, {
-				cluster: this.model
+				cluster: this.model,
+				view: this
 			});
 		},
 
@@ -21,6 +26,10 @@ define(function (require) {
 			return {
 				cluster: this.model
 			};
+		},
+
+		save: function () {
+			this.trigger('view:save');
 		}
 	});
 
