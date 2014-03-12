@@ -16,8 +16,10 @@ module.exports.extend = function (server, data) {
     });
 
     server.delete(baseUrl + '/:id', function (req, res) {
-
+        res.json({});
     });
 
-    server.post(baseUrl, function (req, res) {});
+    server.post(baseUrl + '?', function (req, res) {
+        
+    });
 };

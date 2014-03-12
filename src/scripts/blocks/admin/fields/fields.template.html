@@ -4,11 +4,11 @@
         <span class="field-name">
             { field:name } { field:number }
         </span>
-        <a class="btn btn-default btn-xs pull-right"
-            rv-href="field:id | prepend #admin/fields/">
+        <button class="btn btn-default btn-xs pull-right"
+            rv-on-click="view.editField">
             <span class="glyphicon glyphicon-pencil"></span>
             Редактировать
-        </a>
+        </button>
     </div>
 
     <div hidden="true" class="clusters">
@@ -17,11 +17,11 @@
                 <span class="cluster-name">
                     { cluster:name } { cluster:number }
                 </span>
-                <a class="btn btn-default btn-xs pull-right" 
-                    rv-href="cluster:id | prepend #admin/clusters/">
+                <button class="btn btn-default btn-xs pull-right" 
+                    rv-on-click="view.editCluster">
                     <span class="glyphicon glyphicon-pencil"></span>
                     Редактировать
-                </a>
+                </button>
             </div>
 
             <div hidden="true" class="boreholes">
@@ -30,11 +30,11 @@
                         <span class="borehole-number">
                             { borehole:code }
                         </span>
-                        <a class="btn btn-default btn-xs pull-right"
-                            rv-href="borehole:id | prepend #admin/boreholes/">
+                        <button class="btn btn-default btn-xs pull-right"
+                            rv-on-click="view.editBorehole">
                             <span class="glyphicon glyphicon-pencil"></span>
                             Редактировать
-                        </a>
+                        </button>
                     </div>
 
                     <div hidden="true" class="sensors">
@@ -44,6 +44,11 @@
                                 <span class="sensor-name">
                                     { tsensor:name } { tsensor:channelNumber }
                                 </span>
+                                <button class="btn btn-default btn-xs pull-right"
+                                    rv-on-click="view.editTSensor">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    Редактировать
+                                </button>
                             </div>
                         </div>
 
@@ -53,6 +58,11 @@
                                 <span class="sensor-name">
                                     { psensor:name } { psensor:channelNumber }
                                 </span>
+                                <button class="btn btn-default btn-xs pull-right"
+                                    rv-on-click="view.editPSensor">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                    Редактировать
+                                </button>
                             </div>
                         </div>
                     </div>

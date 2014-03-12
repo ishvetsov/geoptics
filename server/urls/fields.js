@@ -19,9 +19,9 @@ module.exports.extend = function (server, data) {
         res.json(req.body);
     });
 
-    server.post(baseUrl + '/:id/clusters', function (req, res) {});
-
     server.post(baseUrl, function (req, res) {});
 
-    server.delete(baseUrl + '/:id', function (req, res) {});
+    server.delete(baseUrl + '/:id', function (req, res) {
+        res.json({});
+    });
 };

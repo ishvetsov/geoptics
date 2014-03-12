@@ -11,11 +11,17 @@ define(function (require) {
         defaults: {
             id: '',
             depth: 0
-        }
+        },
+
+        urlRoot: AppConfig.rest.perforations
     });
 
     var PerforationCollection = Backbone.Collection.extend({
-        model: PerforationModel
+        model: PerforationModel,
+
+        url: function () {
+            return this.parents[0].url() + AppConfig.rest.perforations;
+        }
     });
 
     return {

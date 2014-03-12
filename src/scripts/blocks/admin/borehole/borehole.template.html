@@ -1,0 +1,197 @@
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Обозначение</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:code" type="text"
+                class="form-control" placeholder="Обозначение">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Местоположение</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:location" type="text"
+                class="form-control" placeholder="Местоположение">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Номер</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:number" type="text"
+                class="form-control" placeholder="Номер">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Промысел</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:fieldStation" type="text"
+                class="form-control" placeholder="Промысел">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Компания владелец</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:ownerCompany" type="text"
+                class="form-control" placeholder="Компания владелец">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Сервисная компания</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:serviceCompany" type="text"
+                class="form-control" placeholder="Сервисная компания">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Параметры скважины</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:paramsDescription" type="text"
+                class="form-control" placeholder="Описание параметров скважины">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Установленное оборудование</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:installedEquipmentDescription" type="text"
+                class="form-control" placeholder="Установленное оборудование">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Высота над уровнем моря</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:altitude" type="text"
+                class="form-control" placeholder="Высота над уровнем моря">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Глубина воронки</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:craterDepth" type="text"
+                class="form-control" placeholder="Глубина воронки">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Глубина забоя</label>
+        <div class="col-sm-5">
+            <input rv-value="borehole:bottomholeDepth" type="text"
+                class="form-control" placeholder="Глубина забоя">
+        </div>
+    </div>
+
+    {{ if (it.borehole.get('psensors')) { }}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Датчики давления</label>
+        <div class="col-sm-5">
+            <div class="clearfix" rv-each-psensor="borehole:psensors">
+                <div class="pull-left">{ psensor:name }</div>
+                <div class="pull-left">{ psensor:channelNumber }</div>
+                <div class="pull-left">
+                    <a class="btn btn-default btn-xs"
+                        rv-href="borehole:id | prepend #admin/psensors/">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ } }}
+
+    {{ if (it.borehole.get('tsensors')) { }}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Датчики температуры</label>
+        <div class="col-sm-5">
+            <div class="clearfix" rv-each-tsensor="borehole:tsensors">
+                <div class="pull-left">{ tsensor:name }</div>
+                <div class="pull-left">{ tsensor:channelNumber }</div>
+                <div class="pull-left">
+                    <a class="btn btn-default btn-xs"
+                        rv-href="borehole:id | prepend #admin/tsensors/">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ } }}
+
+    {{ if (it.borehole.get('perforations')) { }}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Зоны перфорации</label>
+        <div class="col-sm-5">
+            <div class="clearfix" rv-each-perforation="borehole:perforations">
+                <div class="pull-left">{ perforation:depth }</div>
+                <div class="pull-left">
+                    <a class="btn btn-default btn-xs"
+                        rv-href="borehole:id | prepend #admin/perforations/">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <button class="btn btn-default btn-xs"
+                        rv-on-click="view.removePerforation">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ } }}
+
+    {{ if (it.borehole.get('depths')) { }}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Примечательные глубины</label>
+        <div class="col-sm-5">
+            <div class="clearfix" rv-each-depth="borehole:depths">
+                <div class="pull-left">{ depth:value }</div>
+                <div class="pull-left">
+                    <a class="btn btn-default btn-xs"
+                        rv-href="borehole:id | prepend #admin/depths/">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <button class="btn btn-default btn-xs"
+                        rv-on-click="view.removeDepth">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ } }}
+
+    {{ if (it.borehole.get('moments')) { }}
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Примечательные моменты времени</label>
+        <div class="col-sm-5">
+            <div class="clearfix" rv-each-moment="borehole:moments">
+                <div class="pull-left">{ moment:date }</div>
+                <div class="pull-left">
+                    <a class="btn btn-default btn-xs"
+                        rv-href="borehole:id | prepend #admin/moments/">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <button class="btn btn-default btn-xs"
+                        rv-on-click="view.removeMoment">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{ } }}
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="save-borehole" type="button" class="btn btn-default"
+                rv-on-click="view.save">
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>

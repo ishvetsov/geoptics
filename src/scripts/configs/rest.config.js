@@ -12,7 +12,10 @@ define(function () {
         logout:         '/logout',
         tsensors:       '/tsensors',
         psensors:       '/psensors',
-        sensorssets:     '/sensorssets'
+        sensorssets:    '/sensorssets',
+        perforations:   '/perforations',
+        depths:         '/depths',
+        moments:        '/moments'
     };
 
     return rest;

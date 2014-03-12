@@ -19,6 +19,8 @@ module.exports.extend = function (server, data) {
         res.json(req.body);
     });
 
-    server.delete(baseUrl + '/:id', function (req, res) {});
+    server.delete(baseUrl + '/:id', function (req, res) {
+        res.json({});
+    });
     server.post(baseUrl, function (req, res) {});
 };

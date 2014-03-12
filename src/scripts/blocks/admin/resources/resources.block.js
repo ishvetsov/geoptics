@@ -21,6 +21,20 @@ define(function (require) {
             noAttachedBlock.init();
 
             this._viewInstance.on('show', this._onShowLayout);
+            noAttachedBlock.on('attached', function (obj) {
+                var field = fieldsBlock.getCollection().findWhere({
+                    id: obj.field.get('id')
+                });
+
+                var clusters = field.get('clusters');
+                if (clusters.size() > 0) {
+                    var c = clusters.findWhere({id: obj.cluster.get('id')});
+                    // TODO: Убрать проверку, кластер 'c' всегда должен быть найден
+                    if (c) {
+                        c.get('boreholes').add(obj.cluster.get('boreholes').models);
+                    }
+                }
+            });
         },
 
         fetch: function () {
