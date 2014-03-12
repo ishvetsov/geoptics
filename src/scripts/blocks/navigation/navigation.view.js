@@ -12,18 +12,18 @@ define(function (require) {
         className: 'navbar navbar-inverse navbar-fixed-top',
 
         triggers: {
-            'click .nav__user': 'user:click'
+            'click @ui.signout': 'signout:click'
         },
 
         ui: {
-            items: '.nav__item',
-            user: '.nav__user'
+            items: '.nav_item',
+            signout: '.nav_signout'
         },
 
         setActiveItem: function (mod) {
             this.ui.items
                 .removeClass('active')
-                .filter('.nav__item_' + mod)
+                .filter('.nav_item_' + mod)
                 .addClass('active');
         },
 

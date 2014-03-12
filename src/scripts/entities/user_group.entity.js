@@ -13,6 +13,10 @@ define(function (require) {
             access: undefined,
 
             users: []
+        },
+
+        initialize: function () {
+            _.bindAll(this, 'destroy');
         }
     });
 

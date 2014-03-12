@@ -36,8 +36,13 @@ define(function (require) {
             var access = blocks.session.getAccessLevel();
 
             if (_.isNumber(access) && access < 2) {
+                // BUG ?
+                if (!location.hash) {
+                    Backbone.history.navigate('#/')
+                }
+
                 commonBundle.init();
-            } 
+            }
         }
     };
 

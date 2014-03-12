@@ -46,6 +46,18 @@
 .prime_container {
   margin: 0 0 0 300px; }
 
+.nav_signout {
+  margin-right: 15px;
+  color: #fff;
+  border-color: #111;
+  background: #444; }
+  .nav_signout > .glyphicon {
+    margin: 0 4px 0 0; }
+
+.nav_signout:hover {
+  color: #fff;
+  background: #333; }
+
 .admin_navigation .item {
   width: 150px; }
 
@@ -122,7 +134,7 @@
   font-weight: 200; }
   .sensors-tree_component .sensor:hover {
     cursor: pointer;
-    font-weight: 600; }
+    font-weight: 700; }
 
 .sensors-tree_component-name {
   padding: 6px 12px 6px 0; }

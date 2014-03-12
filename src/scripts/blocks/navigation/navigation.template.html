@@ -1,8 +1,11 @@
 <ul class="nav navbar-nav">
     {{ _.each(it.items, function (item) { }}
-        <li class="nav__item nav__item_{{= item.mod }}">
+        <li class="nav_item nav_item_{{= item.mod }}">
             <a href="{{= item.href }}">{{= item.name }}</a>
         </li>
     {{ }) }}
 </ul>
-<button class="nav__user pull-right">Выйти</button>
+<button class="nav_signout pull-right btn navbar-btn">
+    <span class="glyphicon glyphicon-log-out"></span>
+    Выйти
+</button>

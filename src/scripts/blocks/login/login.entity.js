@@ -14,9 +14,9 @@ define(function (require) {
 
     _.extend(LoginModel.prototype, {
         send: function () {
-            return $.post(AppConfig.rest.login, this.toJSON());
+            return $.post(AppConfig.rest.get('login'), this.toJSON());
         }
-    })
+    });
 
     return {
         Model: LoginModel

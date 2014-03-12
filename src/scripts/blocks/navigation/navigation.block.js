@@ -1,5 +1,3 @@
-/* global _ */
-
 define(function (require) {
     'use strict';
 
@@ -26,7 +24,7 @@ define(function (require) {
         },
 
         onInit: function () {
-            this._viewInstance.on('user:click', sessionBlock.out);
+            this._viewInstance.on('signout:click', sessionBlock.out);
         }
     });
 
