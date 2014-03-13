@@ -10,7 +10,7 @@ define(function (require) {
 
     var DepthModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
+            id: null,
             value: 0
         },
 

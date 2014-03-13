@@ -15,31 +15,29 @@
         </div>
     </div>
 
-    {{ if (it.field.get('clusters')) { }}
-        <div class="form-group">
-            <label class="col-sm-2 control-label">Кусты</label>
-            <div class="col-sm-5">
-                <div class="clearfix" rv-each-cluster="field:clusters">
-                    <div class="pull-left">{ cluster:name }</div>
-                    <div class="pull-left">{ cluster:number }</div>
-                    <div class="pull-left">
-                        <a class="btn btn-default btn-xs" 
-                            rv-href="cluster:id | prepend #admin/clusters/">
-                            <span class="glyphicon glyphicon-pencil"></span>
-                        </a>
-                        <button class="btn btn-default btn-xs">
-                            <span class="glyphicon glyphicon-trash"></span>
-                        </button>
-                    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Кусты</label>
+        <div class="col-sm-5">
+            <div class="clearfix" rv-each-cluster="field:clusters">
+                <div class="pull-left">{ cluster:name }</div>
+                <div class="pull-left">{ cluster:number }</div>
+                <div class="pull-left">
+                    <a class="btn btn-default btn-xs" 
+                        rv-href="cluster:id | prepend #admin/clusters/">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                    </a>
+                    <button class="btn btn-default btn-xs">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
                 </div>
-                <a href="#admin/clusters/new" class="btn btn-default btn-xs">
-                    Добавить куст
-                </a>
             </div>
+            <a href="#admin/clusters/new" class="btn btn-default btn-xs">
+                Добавить куст
+            </a>
         </div>
-    {{ } }}
+    </div>
 
-    {{ if (it.field.get('comments')) { }}
+    {{ if (it.mode === 'edit') { }}
         <div class="form-group">
             <label class="col-sm-2 control-label">Комментарии</label>
             <div class="col-sm-5">
@@ -66,7 +64,12 @@
      <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="button" class="btn btn-default" rv-on-click="view.save">
-                Сохранить
+                {{ if (it.mode === 'edit') { }}
+                    Сохранить
+                {{ } }}
+                {{ if (it.mode === 'create') { }}
+                    Создать
+                {{ } }}
             </button>
         </div>
     </div>

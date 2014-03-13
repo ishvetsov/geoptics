@@ -11,20 +11,12 @@ define(function (require) {
 		view: View,
 		model: Cluster.Model,
 
-		onInit: function (options) {
+		onBeforeInit: function (options) {
+			this.viewOptions = {mode: options.mode};
+		},
+
+		onInit: function () {
 			var _this = this;
-
-			_this._opstions = options;
-			switch (options.mode) {
-				case 'edit':
-
-					break;
-				case 'create':
-					_this._modelInstance.clear();
-					_this._modelInstance.set('boreholes', []);
-					_this._modelInstance.set('comments', []);
-					break;
-			}
 
 			_this._viewInstance.on('view:save', function () {
 				_this._modelInstance.save().then(function () {

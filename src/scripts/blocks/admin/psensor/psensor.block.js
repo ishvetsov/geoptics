@@ -26,7 +26,9 @@ define(function (require) {
 
         fetch: function (boreholeId, channelNumber) {
             this._borehole.set('id', boreholeId);
+            this._modelInstance.set('channelNumber', channelNumber);
             this._borehole.get('psensors').add(this._modelInstance);
+
             return this._modelInstance.fetch();
         }
     });

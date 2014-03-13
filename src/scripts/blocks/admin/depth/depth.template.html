@@ -1,3 +1,19 @@
-<div>
-    Depth test
+Редактирование глубины
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Значение</label>
+        <div class="col-sm-5">
+            <input rv-value="depth:value" type="text"
+                class="form-control" placeholder="Значение">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" class="btn btn-default"
+                rv-on-click="view.save">
+                Сохранить
+            </button>
+        </div>
+    </div>
 </div>

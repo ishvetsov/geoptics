@@ -15,7 +15,7 @@ define(function (require) {
 
     var Borehole = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
+            id: null,
             code: '',               // Обозначение
             location: '',           // Местоположение
             number: '',             // Номер

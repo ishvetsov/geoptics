@@ -11,7 +11,7 @@ define(function (require) {
 
     var MomentModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
+            id: null,
             date: null
         },
 

@@ -9,7 +9,7 @@ define(function (require) {
 
     var PerforationModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
+            id: null,
             depth: 0
         },
 

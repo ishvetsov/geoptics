@@ -4,7 +4,7 @@ module.exports.extend = function (server, data) {
     var baseUrl = '/sensorssets';
 
     server.post(baseUrl + '?', function (req, res) {
-
+        res.json(req.body);
     });
 
     server.get(baseUrl + '/:id/fields', function (req, res) {

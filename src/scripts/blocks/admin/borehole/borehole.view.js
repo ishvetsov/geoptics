@@ -66,6 +66,22 @@ define(function (require) {
             moment.destroy({wait: true});
         },
 
+        editTSensor: function (ev, data) {
+            ev.stopPropagation();
+            var tsensor = data.tsensor;
+            Backbone.history.navigate('#/admin/boreholes/' +
+                tsensor.collection.parents[0].get('id') + '/tsensors/' +
+                tsensor.get('channelNumber'));
+        },
+
+        editPSensor: function (ev, data) {
+            ev.stopPropagation();
+            var psensor = data.psensor;
+            Backbone.history.navigate('#/admin/boreholes/' +
+                psensor.collection.parents[0].get('id') + '/psensors/' +
+                psensor.get('channelNumber'));
+        },
+
         save: function () {
             this.trigger('view:save');
         }

@@ -1,1 +1,34 @@
-<div>TSensor test</div>
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Название</label>
+        <div class="col-sm-5">
+            <input rv-value="tsensor:name" type="text"
+                class="form-control" placeholder="Название">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-sm-2 control-label">Номер канала</label>
+        <div class="col-sm-5">
+            <input rv-value="tsensor:channelNumber" type="text"
+                class="form-control" placeholder="Номер канала">
+        </div>
+    </div>
+
+     <div class="form-group">
+        <label class="col-sm-2 control-label">Глубина</label>
+        <div class="col-sm-5">
+            <input rv-value="tsensor:depth" type="text"
+                class="form-control" placeholder="Глубина">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="button" class="btn btn-default"
+                rv-on-click="view.save">
+                Сохранить
+            </button>
+        </div>
+    </div>
+</div>

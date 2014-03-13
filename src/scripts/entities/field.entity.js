@@ -11,7 +11,7 @@ define(function (require) {
 
     var FieldModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
+            id: null,
             name: '',
             number: '',
 

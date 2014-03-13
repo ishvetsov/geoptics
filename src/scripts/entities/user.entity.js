@@ -11,7 +11,7 @@ define(function (require) {
 
     var UserModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
+            id: null,
             firstName: '',
             middleName: '',
             lastName: '',

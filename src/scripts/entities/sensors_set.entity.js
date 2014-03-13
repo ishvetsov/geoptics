@@ -9,7 +9,7 @@ define(function (require) {
 
     var SensorsSetModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
+            id: null,
             name: '',
 
             fields: []

@@ -2,7 +2,7 @@ var gen = require('../gen');
 
 module.exports.extend = function (server, data) {
     server.post('/moments?', function (req, res) {
-
+        res.json(req.body);
     });
 
     server.get('/moments/:id', function (req, res) {
@@ -10,7 +10,7 @@ module.exports.extend = function (server, data) {
     });
 
     server.put('/moments/:id', function (req, res) {
-
+        res.json(req.body);
     });
 
     server.delete('/moments/:id', function (req, res) {

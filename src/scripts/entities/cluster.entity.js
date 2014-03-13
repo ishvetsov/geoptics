@@ -11,7 +11,7 @@ define(function (require) {
 
     var ClusterModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
+            id: null,
             name: '',
             number: '',
 

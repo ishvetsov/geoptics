@@ -31,6 +31,10 @@ define(function (require) {
                 return this.collection.parents[0].url() +
                     '/tsensors/' + this.get('channelNumber');
             }
+        },
+
+        initialize: function () {
+            this.set('id', _.uniqueId());
         }
     });
 

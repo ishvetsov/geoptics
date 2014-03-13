@@ -18,6 +18,7 @@ define(function (require) {
             _this._borehole = new Borehole.Model();
 
             _this._viewInstance.on('view:save', function () {
+                _this._modelInstance.set('id', _.uniqueId());
                 _this._modelInstance.save().then(function () {
                     history.back();
                 });
@@ -26,6 +27,7 @@ define(function (require) {
 
         fetch: function (boreholeId, channelNumber) {
             this._borehole.set('id', boreholeId);
+            this._modelInstance.set('channelNumber', channelNumber);
             this._borehole.get('tsensors').add(this._modelInstance);
             return this._modelInstance.fetch();
         }

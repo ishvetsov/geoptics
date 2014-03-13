@@ -8,7 +8,7 @@ define(function (require) {
 
     var UserGroupModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
+            id: null,
             name: '',
             access: undefined,
 

@@ -11,7 +11,8 @@ define(function (require) {
         
         className: 'admin_field',
 
-        initialize: function () {
+        initialize: function (options) {
+            this._mode = options.mode;
             _.bindAll(this, 'save');
         },
 
@@ -24,7 +25,8 @@ define(function (require) {
 
         serializeData: function () {
             return {
-                field: this.model
+                field: this.model,
+                mode: this._mode
             };
         },
 

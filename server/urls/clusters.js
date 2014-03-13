@@ -20,6 +20,6 @@ module.exports.extend = function (server, data) {
     });
 
     server.post(baseUrl + '?', function (req, res) {
-        
+        res.json(req.body);
     });
 };

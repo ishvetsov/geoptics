@@ -12,21 +12,12 @@ define(function (require) {
         view: View,
         model: Field.Model,
 
-        onInit: function (options) {
+        onBeforeInit: function (options) {
+            this.viewOptions = {mode: options.mode};
+        },
+
+        onInit: function () {
             var _this = this;
-
-            _this._options = options;
-            switch (options.mode) {
-                case 'edit':
-
-                break;
-                case 'create':
-                    _this._modelInstance.clear();
-                    _this._modelInstance.set('clusters', []);
-                    _this._modelInstance.set('comments', []);
-                break;
-            }
-
             _this._viewInstance.on('view:save', function () {
                 _this._modelInstance.save().then(function () {
                     history.back();
