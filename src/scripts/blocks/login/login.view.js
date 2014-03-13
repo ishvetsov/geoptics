@@ -10,13 +10,14 @@ define(function (require) {
 
     var LoginView = Marionette.ItemView.extend({
         template: _.template(LoginTemplate),
+        className: 'login',
 
         ui: {
-            signIn: '.login__signin'
+            signIn: '.login_signin'
         },
 
         triggers: {
-            'click .login__signin': 'signin:click'
+            'click @ui.signIn': 'signin:click'
         },
 
         onRender: function () {

@@ -1,11 +1,19 @@
-<div><input rv-value=":user" /></div>
-<div><input rv-value=":password" /></div>
-<div><button class="login__signin">Sign In</button></div>
-<div>
-    <input type="checkbox" />
-    <label>Remember me</label>
-</div>
-<div>
-    <input type="checkbox" rv-checked=":isAdmin"/>
-    <label>I'm administrator (TEST)</label>
-</div>
+<h1 class="login_title">Геоптикс</h1>
+<form role="form">
+    <div class="form-group">
+        <label class="login_label" for="login">Логин</label>
+        <input rv-value=":user" type="text" class="form-control" id="login" placeholder="Логин">
+    </div>
+    <div class="form-group">
+        <label class="login_label" for="password">Пароль</label>
+        <input rv-value=":password" type="password" class="form-control" id="password" placeholder="Пароль">
+    </div>
+    <div class="checkbox">
+        <label>
+            <input type="checkbox"> запомнить меня
+        </label>
+    </div>
+    <div class="login_buttons">
+        <button type="submit" class="login_signin btn btn-default">Войти</button>
+    </div>
+</form>

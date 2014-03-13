@@ -1,0 +1,25 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title">Наборы датчиков</h4>
+            <span style="color: red">Read only</span>
+        </div>
+        <div class="modal-body">
+            <span class="sensors-sets_title">Сохранить как</span>
+            <div class="list-group">
+                <a rv-each-set="sets.models" href="#" class="list-group-item">
+                    { set:name }
+                </a>
+            </div>
+
+            <span class="sensors-sets_title">Создать новый набор</span>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <input type="text" class="form-control sensors-sets_create-input" placeholder="Название набора">
+                </div>
+                <button type="button" class="btn btn-default sensors-sets_create-button">Создать набор</button>
+            </form>
+        </div>
+    </div>
+</div>
