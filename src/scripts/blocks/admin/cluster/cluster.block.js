@@ -18,12 +18,12 @@ define(function (require) {
 			switch (options.mode) {
 				case 'edit':
 
-				break;
+					break;
 				case 'create':
 					_this._modelInstance.clear();
 					_this._modelInstance.set('boreholes', []);
 					_this._modelInstance.set('comments', []);
-				break;
+					break;
 			}
 
 			_this._viewInstance.on('view:save', function () {

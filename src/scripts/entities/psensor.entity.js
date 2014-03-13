@@ -26,7 +26,12 @@ define(function (require) {
             }
         ],
 
-        urlRoot: AppConfig.rest.psensors
+        url: function () {
+            if (this.collection) {
+                return this.collection.parents[0].url() +
+                    '/psensors/' + this.get('channelNumber');
+            }
+        }
     });
 
     var PSensorCollection = Backbone.Collection.extend({

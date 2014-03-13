@@ -1,5 +1,4 @@
-/* global _ */
-
+/* global _, Backbone */
 define(function (require) {
     'use strict';
 

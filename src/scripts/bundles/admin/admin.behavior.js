@@ -1,5 +1,4 @@
 /* global Backbone */
-
 define(function (require) {
     'use strict';
 
@@ -17,6 +16,8 @@ define(function (require) {
         AdminPerforation: require('blocks/admin/perforation/perforation.block'),
         AdminDepth: require('blocks/admin/depth/depth.block'),
         AdminMoment: require('blocks/admin/moment/moment.block'),
+        AdminTSensor: require('blocks/admin/tsensor/tsensor.block'),
+        AdminPSensor: require('blocks/admin/psensor/psensor.block'),
         AdminMonitoring: require('blocks/admin/monitoring/monitoring.block'),
         AdminNavigation: require('blocks/admin/navigation/admin_navigation.block')
     };
@@ -113,12 +114,20 @@ define(function (require) {
 
         tsensor: function (boreholeId, channelNumber) {
             blocks.adminNavigation.disactivateAll();
-            console.log(boreholeId, channelNumber);
+            blocks.adminTSensor.init();
+            blocks.adminTSensor.fetch(boreholeId, channelNumber)
+                .then(function () {
+                    layout.container.show(blocks.adminTSensor.getViewInstance());
+                });
         },
 
         psensor: function (boreholeId, channelNumber) {
             blocks.adminNavigation.disactivateAll();
-            console.log(boreholeId, channelNumber);
+            blocks.adminPSensor.init();
+            blocks.adminPSensor.fetch(boreholeId, channelNumber)
+                .then(function () {
+                    layout.container.show(blocks.adminPSensor.getViewInstance());
+                });
         },
 
         perforation: function (id) {
