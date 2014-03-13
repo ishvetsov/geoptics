@@ -16,7 +16,8 @@ define(function (require) {
     var app = new Marionette.Application();
 
     app.addRegions({
-        containerRegion: '.app__container'
+        container: '.app__container',
+        modal: '.app__modal'
     });
 
     app.on('initialize:after', function () {
@@ -26,9 +27,8 @@ define(function (require) {
     app.addInitializer(guestBundle.init);
     sessionBlock.on('session:out', guestBundle.init);
 
-    Bus.events.on('app:show', _.bind(
-        app.containerRegion.show,
-        app.containerRegion));
+    Bus.events.on('app:show', _.bind(app.container.show, app.container));
+    Bus.events.on('app:modal:show', _.bind(app.modal.show, app.modal));
 
     return app;
 });

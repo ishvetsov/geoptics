@@ -1,13 +1,16 @@
 @import url(vendors/bootstrap.css);
 
-@import "common/helpers.common";
+@import "common/base.common";
 @import "common/clearfix.common";
 @import "common/comment.common";
 
+@import "bundles/app.bundle";
+@import "bundles/guest.bundle";
 @import "bundles/common.bundle";
 @import "bundles/admin.bundle";
 @import "bundles/prime.bundle";
 
+@import "blocks/login.block";
 @import "blocks/navigation.block";
 
 @import "blocks/admin_navigation.block";
@@ -17,4 +20,5 @@
 @import "blocks/admin_no_attached.block";
 
 @import "blocks/prime_sensors_tree.block";
+@import "blocks/prime_sensors_sets.block";
 @import "blocks/prime_graphics.block";

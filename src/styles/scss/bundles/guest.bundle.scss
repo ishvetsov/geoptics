@@ -1,0 +1,16 @@
+.guest,
+.guest__container {
+    height: 100%;
+}
+
+.guest__container {
+    text-align: center;
+    &:after {
+        display: inline-block;
+
+        height: 100%;
+
+        content: '';
+        vertical-align: middle;
+    }
+}

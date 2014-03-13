@@ -18,7 +18,7 @@ define(function (require) {
 
             onInit: function () {
                 if (sessionBlock.isAuthorized()) {
-                    this.requestUserData()
+                    this.requestUserData();
                 }
 
                 this._viewInstance.on('signin:click', this.requestUserData);

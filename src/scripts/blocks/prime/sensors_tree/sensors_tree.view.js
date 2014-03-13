@@ -23,7 +23,11 @@ define(function (require) {
         },
 
         initialize: function () {
-            _.bindAll(this, '_onResetClicked', 'onSetClicked');
+            _.bindAll(
+                this,
+                '_onResetClicked',
+                '_onSaveClicked',
+                'onSetClicked');
         },
 
         onRender: function () {
@@ -47,7 +51,7 @@ define(function (require) {
 
         _onSaveClicked: function (ev) {
             ev.preventDefault();
-            alert('dummy');
+            this.trigger('save:click', this.model.get('sets'));
         },
 
         _onComponentClicked: function (ev) {
