@@ -36,6 +36,7 @@ define(function (require) {
                 _this.$('.select-field').trigger('change');
                 _this.$('.select-cluster').trigger('change');
             });
+            
             this.model.get('fields').fetch();
         },
 

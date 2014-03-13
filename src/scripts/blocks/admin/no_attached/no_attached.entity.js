@@ -1,7 +1,9 @@
 define(function (require) {
     'use strict';
 
-    var Field = require('entities/field.entity'),
+    var Backbone = require('backbone'),
+
+        Field = require('entities/field.entity'),
         Cluster = require('entities/cluster.entity'),
         Borehole = require('entities/borehole.entity');
 
@@ -10,8 +12,8 @@ define(function (require) {
             fields: [],
             clusters: [],
             boreholes: [],
-            curField: null,
-            curCluster: null
+            curField: {},
+            curCluster: {}
         },
 
         relations: [
@@ -62,6 +64,14 @@ define(function (require) {
                         }
                     });
                 }
+            });
+
+            _this.on('change:curField', function () {
+                var clusters = _this.get('curField').get('clusters');
+                clusters.fetch().then(function () {
+                    _this.get('clusters').reset(clusters.models);
+                    _this.set('curCluster', clusters.at(0));
+                });
             });
         }
     });

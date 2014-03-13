@@ -26,14 +26,19 @@ define(function (require) {
             }
         ],
 
-        urlRoot: AppConfig.rest.tsensors
+        url: function () {
+            if (this.collection) {
+                return this.collection.parents[0].url() +
+                    '/tsensors/' + this.get('channelNumber');
+            }
+        }
     });
 
     var TSensorCollection = Backbone.Collection.extend({
         model: TSensorModel,
 
         url: function () {
-            return this.parents[0].url() +  AppConfig.rest.tsensors;
+            return this.parents[0].url() +  '/tsensors';
         }
     });
 

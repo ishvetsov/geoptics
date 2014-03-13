@@ -95,10 +95,10 @@
                 <div class="pull-left">{ psensor:name }</div>
                 <div class="pull-left">{ psensor:channelNumber }</div>
                 <div class="pull-left">
-                    <a class="btn btn-default btn-xs"
-                        rv-href="borehole:id | prepend #admin/psensors/">
+                    <button class="btn btn-default btn-xs"
+                        rv-on-click="view.editPSensor">
                         <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -113,10 +113,10 @@
                 <div class="pull-left">{ tsensor:name }</div>
                 <div class="pull-left">{ tsensor:channelNumber }</div>
                 <div class="pull-left">
-                    <a class="btn btn-default btn-xs"
-                        rv-href="borehole:id | prepend #admin/tsensors/">
+                    <button class="btn btn-default btn-xs"
+                        rv-on-click="view.editTSensor">
                         <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
@@ -131,7 +131,7 @@
                 <div class="pull-left">{ perforation:depth }</div>
                 <div class="pull-left">
                     <a class="btn btn-default btn-xs"
-                        rv-href="borehole:id | prepend #admin/perforations/">
+                        rv-on-click="view.editPerforation">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     <button class="btn btn-default btn-xs"
@@ -151,10 +151,10 @@
             <div class="clearfix" rv-each-depth="borehole:depths">
                 <div class="pull-left">{ depth:value }</div>
                 <div class="pull-left">
-                    <a class="btn btn-default btn-xs"
-                        rv-href="borehole:id | prepend #admin/depths/">
+                    <button class="btn btn-default btn-xs"
+                        rv-on-click="view.editDepth">
                         <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
+                    </button>
                     <button class="btn btn-default btn-xs"
                         rv-on-click="view.removeDepth">
                         <span class="glyphicon glyphicon-trash"></span>
@@ -173,7 +173,7 @@
                 <div class="pull-left">{ moment:date }</div>
                 <div class="pull-left">
                     <a class="btn btn-default btn-xs"
-                        rv-href="borehole:id | prepend #admin/moments/">
+                        rv-on-click="view.editMoment">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
                     <button class="btn btn-default btn-xs"
