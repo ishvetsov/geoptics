@@ -9,7 +9,7 @@ define(function (require) {
     var DepthView = Marionette.ItemView.extend({
         template: _.template(Template),
         
-        className: 'admin_depth',
+        className: 'admin_depth inner-container',
 
         initialize: function () {
             _.bindAll(this, 'save');

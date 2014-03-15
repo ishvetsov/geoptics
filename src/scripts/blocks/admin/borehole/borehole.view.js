@@ -11,7 +11,7 @@ define(function (require) {
     var BoreholeView = Marionette.ItemView.extend({
         template: _.template(Template),
 
-        className: 'admin_borehole',
+        className: 'admin_borehole inner-container',
 
         initialize: function () {
             _.bindAll(this, 'save',

@@ -22,7 +22,10 @@ define(function (require) {
 
             var currentUser = sessionBlock.getCurrentUser();
 
-            this._modelInstance.set('sets', currentUser.get('sensorsSets'));
+            if (!currentUser.isNew()) {
+                this._modelInstance.set('sets', currentUser.get('sensorsSets'));
+            }
+
             this._viewInstance.on('save:click', sensorsSetsBlock.show);
         },
 

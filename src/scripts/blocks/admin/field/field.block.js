@@ -6,7 +6,11 @@ define(function (require) {
         Field = require('entities/field.entity'),
         AppConfig = require('configs/app.config'),
 
+        ClusterBlock = require('blocks/admin/cluster/cluster.block'),
+
         View = require('./field.view');
+
+    var clusterBlock = ClusterBlock.getInstance();
 
     var FieldBlock = Block.create({
         view: View,
@@ -22,6 +26,10 @@ define(function (require) {
                 _this._modelInstance.save().then(function () {
                     history.back();
                 });
+            });
+
+            _this._viewInstance.on('cluster:add', function () {
+                clusterBlock.create(_this._modelInstance.get('clusters'));
             });
         },
 

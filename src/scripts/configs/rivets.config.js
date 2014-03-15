@@ -12,5 +12,9 @@ define(function (require) {
         Rivets.formatters.eq = function (val, arg) {
             return arg == val;
         };
+
+        Rivets.formatters.empty = function (val, arg) {
+            return val.length === 0;
+        };
     };
 });

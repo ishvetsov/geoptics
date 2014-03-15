@@ -9,9 +9,11 @@ define(function (require) {
     var ResourcesLayout = Marionette.Layout.extend({
         template: _.template(Template),
 
+        className: 'inner-container',
+
         regions: {
-            fieldsRegion: '#fields-region',
-            noAttachedRegion: '#no-attached-boreholes-region'
+            fieldsRegion: '.resources_fields',
+            noAttachedRegion: '.resources_no-attached'
         }
     });
 

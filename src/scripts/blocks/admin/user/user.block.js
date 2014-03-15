@@ -32,7 +32,8 @@ define(function (require) {
         },
 
         _onSaveClicked: function (model) {
-            model.save().then(function () {
+            model.save()
+            .then(function () {
                 Backbone.history.navigate('#/admin/users');
             });
         }

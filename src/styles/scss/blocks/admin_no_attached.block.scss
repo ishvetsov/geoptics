@@ -1,18 +1,25 @@
 .admin_no-attached {
-	padding-top: 20px;
-    .select-field {
-        min-width: 300px;
-    }
+    .select-field,
     .select-cluster {
-        min-width: 300px;
+        min-width: 220px;
     }
 }
 
-.admin_no-attached .title {
-	margin-bottom: 5px;
+.no-attached_title {
+    margin-bottom: 5px;
 
-	font-size: 1.2em;
+    font-size: 1.2em;
 }
 
-.no-attached-borehole-item {
+.no-attached_item {
+    cursor: pointer;
+
+    font-weight: 200;
+}
+
+.no-attached_control {
+    padding: 8px 15px;
+
+    border-radius: 4px;
+    background-color: #f5f5f5;
 }

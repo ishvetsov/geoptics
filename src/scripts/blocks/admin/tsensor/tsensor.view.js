@@ -9,7 +9,7 @@ define(function (require) {
     var TSensorView = Marionette.ItemView.extend({
         template: _.template(Template),
         
-        className: 'admin_tsensor',
+        className: 'admin_tsensor inner-container',
 
         initialize: function () {
             _.bindAll(this, 'save');

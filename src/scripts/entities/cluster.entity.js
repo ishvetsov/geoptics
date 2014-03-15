@@ -43,6 +43,12 @@ define(function (require) {
         }
     });
 
+    ClusterModel.prototype.saveAtContext = function (options) {
+        options = options || {};
+        _.extend(options, {url: _.result(this.collection, 'url')});
+        return this.save(this.attributes, options);
+    };
+
     var ClusterCollection = Backbone.Collection.extend({
         model: ClusterModel,
 

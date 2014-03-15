@@ -1,3 +1,7 @@
+<div class="col-sm-offset-2">
+    <h3>Пользователь { model:lastName } { model:firstName } { model:middleName }</h3>
+</div>
+
 <div class="form-horizontal">
     <div class="form-group">
         <label class="col-sm-2 control-label">Логин</label>
@@ -56,7 +60,7 @@
     <div class="form-group">
         <label class="col-sm-2 control-label">Комментарий</label>
         <div class="col-sm-10">
-            <textarea rv-value="model:comment" class="form-control" rows="3" placeholder="Комментарий"></textarea>
+            <textarea rv-value="model:comment:text" class="form-control" rows="3" placeholder="Комментарий" readonly></textarea>
         </div>
     </div>
 

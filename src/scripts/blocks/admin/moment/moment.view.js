@@ -9,7 +9,7 @@ define(function (require) {
     var MomentView = Marionette.ItemView.extend({
         template: _.template(Template),
         
-        className: 'admin_moment',
+        className: 'admin_moment inner-container',
 
         initialize: function () {
             _.bindAll(this, 'save');

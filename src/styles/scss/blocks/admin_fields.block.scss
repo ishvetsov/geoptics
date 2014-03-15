@@ -1,7 +1,3 @@
-.admin_fields {
-    width: 65%;
-}
-
 .admin_fields .title {
     margin: 0 0 5px;
 
@@ -9,9 +5,30 @@
 }
 
 .clusters,
-.boreholes,
-.sensors {
+.boreholes {
     margin: 0 0 0 30px;
+}
+
+.sensors {
+    margin: 0 0 24px;
+}
+
+.sensors .well {
+    margin: 10px 0 0;
+}
+
+.field-wrap:first-child {
+    border-top: 1px solid #ddd;
+}
+
+.sensor-link {
+    margin: 0 10px 0 0;
+    + .glyphicon {
+        display: none;
+    }
+    &:hover + .glyphicon {
+        display: inline;
+    }
 }
 
 .field-item,

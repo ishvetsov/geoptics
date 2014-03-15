@@ -1,31 +1,32 @@
-<div class="title">Не прикрепленные скважины</div>
 <div rv-each-borehole="boreholes.models">
-    <div class="no-attached-borehole-item clearfix">
-        <div class="pull-left">
-            <input rv-checked="borehole:isChecked" type="checkbox">
-        </div>
-        <div class="pull-left">{ borehole:code }</div>
-    </div>
+    <label class="no-attached_item">
+        <input rv-checked="borehole:isChecked" type="checkbox">
+        Скважина { borehole:code }
+    </label>
 </div>
-<div class="clearfix">
-    <div class="pull-left">Переместить в:</div>
-    <div class="pull-left">
-        <select class="select-field">
+
+<div class="form-inline no-attached_control">
+    <span>Переместить в</span>
+
+    <div class="form-group">
+        <select class="select-field form-control">
             <option rv-each-field="fields.models" rv-value="field:id">
-                { field:name } { field:id }
+                { field:name } { field:number }
             </option>
         </select>
     </div>
-    <div class="pull-left">
-        <select class="select-cluster">
+    <div class="form-group">
+        <select class="select-cluster form-control">
             <option rv-each-cluster="clusters.models" rv-value="cluster:id">
-                { cluster:name } { cluster:id }
+                { cluster:name } { cluster:number }
             </option>
         </select>
     </div>
-    <div class="pull-left">
-        <button disabled="true"
-            id="save-boreholes"
-            rv-on-click="view.apply">Применить</button>
-    </div>
+    <button disabled
+        class="btn btn-default"
+        id="save-boreholes"
+        rv-on-click="view.apply">
+            <span class="glyphicon glyphicon-share-alt"></span>
+            Применить
+    </button>
 </div>

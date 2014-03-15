@@ -12,8 +12,8 @@ define(function (require) {
         className: 'common',
 
         regions: {
-            header: '.common__header',
-            body: '.common__body'
+            header: '.common_header',
+            body: '.common_body'
         }
     });
 

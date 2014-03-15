@@ -9,7 +9,7 @@ define(function (require) {
     var PSensorView = Marionette.ItemView.extend({
         template: _.template(Template),
         
-        className: 'admin_psensor',
+        className: 'admin_psensor inner-container',
 
         initialize: function () {
             _.bindAll(this, 'save');

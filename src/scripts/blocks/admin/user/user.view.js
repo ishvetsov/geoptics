@@ -8,7 +8,7 @@ define(function (require) {
 
     var UsersView = Marionette.ItemView.extend({
         template: _.template(Template),
-        className: 'admin_user',
+        className: 'admin_user inner-container',
 
         initialize: function () {
             _.bindAll(this, 'addGroup', 'save');

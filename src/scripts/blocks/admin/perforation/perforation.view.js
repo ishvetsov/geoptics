@@ -9,7 +9,7 @@ define(function (require) {
     var PerforationView = Marionette.ItemView.extend({
         template: _.template(Template),
         
-        className: 'admin_perforation',
+        className: 'admin_perforation inner-container',
 
         initialize: function () {
             _.bindAll(this, 'save');

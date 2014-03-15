@@ -33,7 +33,11 @@ define(function (require) {
         },
 
         fetchChildren: function () {
-            return $.when(this.get('fields').fetch(), this.get('sets').fetch());
+            var sets = this.get('sets');
+
+            return $.when(
+                this.get('fields').fetch(),
+                sets ? sets.fetch() : null);
         },
     });
 

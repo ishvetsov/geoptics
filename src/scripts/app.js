@@ -16,8 +16,8 @@ define(function (require) {
     var app = new Marionette.Application();
 
     app.addRegions({
-        container: '.app__container',
-        modal: '.app__modal'
+        container: '.app_container',
+        modal: '.app_modal'
     });
 
     app.on('initialize:after', function () {

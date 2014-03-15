@@ -1,5 +1,4 @@
-<div class="title">Месторождения</div>
-<div rv-each-field="fields.models">
+<div rv-each-field="fields.models" class="field-wrap">
     <div class="field-item clearfix" rv-on-click="view.expandField">
         <span class="field-name">
             { field:name } { field:number }
@@ -17,14 +16,18 @@
                 <span class="cluster-name">
                     { cluster:name } { cluster:number }
                 </span>
+
                 <button class="btn btn-default btn-xs pull-right" 
                     rv-on-click="view.editCluster">
                     <span class="glyphicon glyphicon-pencil"></span>
                     Редактировать
                 </button>
             </div>
-
+            
             <div hidden="true" class="boreholes">
+                <span rv-show="cluster:boreholes | empty" class="text-muted">
+                    Скважин нет
+                </span>
                 <div rv-each-borehole="cluster:boreholes">
                     <div class="borehole-item clearfix" rv-on-click="view.expandBorehole">
                         <span class="borehole-number">
@@ -38,31 +41,27 @@
                     </div>
 
                     <div hidden="true" class="sensors">
-                        <div>Датчики температуры:</div>
-                        <div rv-each-tsensor="borehole:tsensors">
-                            <div class="sensor-item clearfix">
-                                <span class="sensor-name">
-                                    { tsensor:name } { tsensor:channelNumber }
-                                </span>
-                                <button class="btn btn-default btn-xs pull-right"
-                                    rv-on-click="view.editTSensor">
+                        <div class="well well-sm">
+                            <span rv-show="borehole:tsensors | empty" class="text-muted">Датчиков температуры нет</span>
+                            <div rv-each-tsensor="borehole:tsensors">
+                                <div class="sensor-item">
+                                    <a rv-on-click="view.editTSensor" href="#" class="noline sensor-link">
+                                        { tsensor:name } { tsensor:channelNumber }
+                                    </a>
                                     <span class="glyphicon glyphicon-pencil"></span>
-                                    Редактировать
-                                </button>
+                                </div>
                             </div>
                         </div>
 
-                        <div>Датчики давления:</div>
-                        <div rv-each-psensor="borehole:psensors">
-                            <div class="sensor-item clearfix">
-                                <span class="sensor-name">
-                                    { psensor:name } { psensor:channelNumber }
-                                </span>
-                                <button class="btn btn-default btn-xs pull-right"
-                                    rv-on-click="view.editPSensor">
+                        <div class="well well-sm">
+                            <span rv-show="borehole:psensors | empty" class="text-muted">Датчиков давления нет</span>
+                            <div rv-each-psensor="borehole:psensors">
+                                <div class="sensor-item">
+                                    <a rv-on-click="view.editPSensor" href="#" class="noline sensor-link">
+                                        { psensor:name } { psensor:channelNumber }
+                                    </a>
                                     <span class="glyphicon glyphicon-pencil"></span>
-                                    Редактировать
-                                </button>
+                                </div>
                             </div>
                         </div>
                     </div>

@@ -19,7 +19,7 @@ module.exports.extend = function (server, data) {
         res.json({});
     });
 
-    server.post(baseUrl + '?', function (req, res) {
-        res.json(req.body);
-    });
+    // server.post(baseUrl + '?', function (req, res) {
+    //     res.json(req.body);
+    // });
 };

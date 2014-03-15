@@ -30,6 +30,11 @@ define(function (require) {
         blocks.navigation.activateItem('admin');
     });
 
+    blocks.adminCluster.on('create', function (view) {
+        blocks.adminNavigation.disactivateAll();
+        layout.container.show(view);
+    });
+
     var initialize = function () {
         blocks.adminNavigation.init();
     };
@@ -37,9 +42,8 @@ define(function (require) {
     var handlers = {
         users: function () {
             blocks.adminNavigation.activateItem('users');
-            blocks.adminUsers.init();
-            blocks.adminUsers.fetch()
-                .then(function () {
+            blocks.adminUsers.init()
+                .fetch().then(function () {
                     layout.container.show(
                         blocks.adminUsers.getViewInstance());
                 });
@@ -47,9 +51,8 @@ define(function (require) {
 
         user: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminUser.init();
-            blocks.adminUser.fetch(id)
-                .then(function () {
+            blocks.adminUser.init()
+                .fetch(id).then(function () {
                     layout.container.show(
                         blocks.adminUser.getViewInstance());
                 });
@@ -64,9 +67,8 @@ define(function (require) {
 
         fields: function () {
             blocks.adminNavigation.activateItem('fields');
-            blocks.adminResources.init();
-            blocks.adminResources.fetch()
-                .then(function () {
+            blocks.adminResources.init()
+                .fetch().then(function () {
                     layout.container.show(
                         blocks.adminResources.getViewInstance());
                 });
@@ -74,9 +76,8 @@ define(function (require) {
 
         field: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminField.init({mode: 'edit'});
-            blocks.adminField.fetch(id)
-                .then(function () {
+            blocks.adminField.init({mode: 'edit'})
+                .fetch(id).then(function () {
                     layout.container.show(
                         blocks.adminField.getViewInstance());
                 });
@@ -90,69 +91,56 @@ define(function (require) {
 
         cluster: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminCluster.init({mode: 'edit'});
-            blocks.adminCluster.fetch(id)
-                .then(function () {
+            blocks.adminCluster.init({mode: 'edit'})
+                .fetch(id).then(function () {
                     layout.container.show(blocks.adminCluster.getViewInstance());
                 });
         },
 
-        newCluster: function () {
-            blocks.adminNavigation.disactivateAll();
-            blocks.adminCluster.init({mode: 'create'});
-            layout.container.show(blocks.adminCluster.getViewInstance());
-        },
-
         borehole: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminBorehole.init();
-            blocks.adminBorehole.fetch(id)
-                .then(function () {
+            blocks.adminBorehole.init()
+                .fetch(id).then(function () {
                     layout.container.show(blocks.adminBorehole.getViewInstance());
                 });
         },
 
         tsensor: function (boreholeId, channelNumber) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminTSensor.init();
-            blocks.adminTSensor.fetch(boreholeId, channelNumber)
-                .then(function () {
+            blocks.adminTSensor.init()
+                .fetch(boreholeId, channelNumber).then(function () {
                     layout.container.show(blocks.adminTSensor.getViewInstance());
                 });
         },
 
         psensor: function (boreholeId, channelNumber) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminPSensor.init();
-            blocks.adminPSensor.fetch(boreholeId, channelNumber)
-                .then(function () {
+            blocks.adminPSensor.init()
+                .fetch(boreholeId, channelNumber).then(function () {
                     layout.container.show(blocks.adminPSensor.getViewInstance());
                 });
         },
 
         perforation: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminPerforation.init();
-            blocks.adminPerforation.fetch(id)
-                .then(function () {
+            blocks.adminPerforation.init()
+                .fetch(id).then(function () {
                     layout.container.show(blocks.adminPerforation.getViewInstance());
                 });
         },
 
         depth: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminDepth.init();
-            blocks.adminDepth.fetch(id)
-                .then(function () {
+            blocks.adminDepth.init()
+                .fetch(id).then(function () {
                     layout.container.show(blocks.adminDepth.getViewInstance());
                 });
         },
 
         moment: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminMoment.init();
-            blocks.adminMoment.fetch(id)
-                .then(function () {
+            blocks.adminMoment.init()
+                .fetch(id).then(function () {
                     layout.container.show(blocks.adminMoment.getViewInstance());
                 });
         },

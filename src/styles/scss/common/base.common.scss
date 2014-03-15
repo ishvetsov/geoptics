@@ -1,3 +1,32 @@
 html {
     height: 100%;
 }
+
+h3 {
+    margin: 0 0 24px;
+}
+
+label {
+    font-weight: 200;
+}
+
+@media screen and (min-width: 1370px) {
+    .inner-container {
+        width: 65%;
+    }
+}
+
+a.underline {
+    text-decoration: none;
+
+    border-bottom: 1px solid #428bca;
+    border-bottom: 1px solid rgba(66, 139, 202, .4);
+    &:hover {
+        border-color: #2a6496;
+        border-color: rgba(42, 100, 150, .4);
+    }
+}
+
+a.noline {
+    text-decoration: none;
+}

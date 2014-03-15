@@ -1,14 +1,18 @@
+<div class="col-sm-offset-2">
+    <h3>Куст { cluster:name }</h3>
+</div>
+
 <div class="form-horizontal">
     <div class="form-group">
         <label class="col-sm-2 control-label">Название</label>
-        <div class="col-sm-5">
+        <div class="col-sm-10">
             <input rv-value="cluster:name" type="text" class="form-control"
                 placeholder="Название">
         </div>
     </div>
     <div class="form-group">
         <label class="col-sm-2 control-label">Номер</label>
-        <div class="col-sm-5">
+        <div class="col-sm-10">
             <input rv-value="cluster:number" type="text" class="form-control"
                 placeholder="Номер">
         </div>
@@ -17,7 +21,7 @@
     {{ if (it.mode === 'edit') { }}
         <div class="form-group">
             <label class="col-sm-2 control-label">Скважины</label>
-            <div class="col-sm-5">
+            <div class="col-sm-10">
                 <div class="clearfix" rv-each-borehole="cluster:boreholes">
                     <div class="pull-left">{ borehole:code }</div>
                     <div class="pull-left">
@@ -34,10 +38,10 @@
         </div>
     {{ } }}
 
-    {{ if (it.mode === 'edit') { }}
+    {{ if (it.mode === 'edit' && it.cluster.get('comments').length) { }}
         <div class="form-group">
             <label class="col-sm-2 control-label">Комментарии</label>
-            <div class="col-sm-5">
+            <div class="col-sm-10">
                 <div class="comment clearfix" rv-each-comment="cluster:comments">
                     <div class="comment-name pull-left">
                         { comment:author:shortName }

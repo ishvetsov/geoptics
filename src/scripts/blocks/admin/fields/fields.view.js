@@ -73,6 +73,7 @@ define(function (require) {
 
         editTSensor: function (ev, data) {
             ev.stopPropagation();
+            ev.preventDefault();
             var tsensor = data.tsensor;
             Backbone.history.navigate('#/admin/boreholes/' +
                 tsensor.collection.parents[0].get('id') + '/tsensors/' +
@@ -81,6 +82,7 @@ define(function (require) {
 
         editPSensor: function (ev, data) {
             ev.stopPropagation();
+            ev.preventDefault();
             var psensor = data.psensor;
             Backbone.history.navigate('#/admin/boreholes/' +
                 psensor.collection.parents[0].get('id') + '/psensors/' +

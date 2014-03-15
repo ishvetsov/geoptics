@@ -11,7 +11,6 @@ define(function (require) {
             'admin/fields':             'fields',
             'admin/fields/new':         'newField',
             'admin/fields/:id':         'field',
-            'admin/clusters/new':       'newCluster',
             'admin/clusters/:id':       'cluster',
             'admin/boreholes/:boreholeId/tsensors/:channelNumber': 'tsensor',
             'admin/boreholes/:boreholeId/psensors/:channelNumber': 'psensor',
