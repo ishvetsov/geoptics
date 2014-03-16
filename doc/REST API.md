@@ -28,7 +28,6 @@ GET     /perforations/:id
 PUT     /perforations/:id  
 DELETE  /perforations/:id  
 
-POST    /clusters?fieldId
 PUT     /clusters/:id  
 DELETE  /clusters/:id  
 GET     /clusters/:id  
@@ -40,6 +39,7 @@ PUT     /fields/:id
 DELETE  /fields/:id  
 GET     /fields/:id  
 GET     /fields/:id/clusters  
+POST    /fields/:id/clusters  
 
 POST    /users  
 PUT     /users/:id  
