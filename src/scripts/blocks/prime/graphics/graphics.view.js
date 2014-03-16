@@ -26,17 +26,19 @@ define(function (require) {
         getGraphicOptions: function () {
             var _this = this,
                 series = [];
-
+            // console.log(_this.collection.size());
             _this.collection.each(function (g) {
-                series.push({
-                    name: g.get('borehole').get('code'),
-                    data: g.get('points').attributes.values,
-                    tooltip: {
-                        valueDecimals: 2
-                    }
-                });
+                if (g.get('points').attributes.values) {
+                    series.push({
+                        name: g.get('borehole').get('code'),
+                        data: g.get('points').attributes.values,
+                        tooltip: {
+                            valueDecimals: 2
+                        }
+                    });
+                }
             });
-            
+            // console.log('series', series);
             
             var options = {
                 chart: {
