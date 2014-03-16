@@ -9,9 +9,6 @@ define(function (require) {
 
         GraphicsBunchLayout = require('./graphics_bunch.layout');
 
-    var Borehole = require('entities/borehole.entity'),
-        PSensor = require('entities/psensor.entity');
-
     var graphicsBlock = GraphicsBlock.getInstance(),
         graphicsControlBlock = GraphicsControlBlock.getInstance(),
         sensorsTreeBlock = SensorsTreeBlock.getInstance();
@@ -43,22 +40,7 @@ define(function (require) {
             });
 
             sensorsTreeBlock.on('state:change', function (d) {
-                // TEST
-                var meta = [
-                    {
-                        borehole: new Borehole.Model({id: 0, code: 'B1'}),
-                        sensor: new PSensor.Model({channelNumber: 0}),
-                        type: 'tsensors'
-                    },
-                    {
-                        borehole: new Borehole.Model({id: 1, code: 'B2'}),
-                        sensor: new PSensor.Model({channelNumber: 1}),
-                        type: 'tsensors'
-                    }
-                ];
-                //-----------------
-
-                graphicsBlock.addMeta(meta);
+                graphicsBlock.addMeta(d);
                 graphicsBlock.fetch({type: _this._graphicType});
             });
         },
