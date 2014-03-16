@@ -22,9 +22,7 @@ define(function (require) {
         fetch: function (options) {
             if (this._collectionInstance.size()) {
                 var promisses = this._collectionInstance.map(function (m) {
-                    console.log(m.get('type'), options.type);
                     if (m.get('type') === options.type) {
-                        console.log('equal');
                         return m.fetch();
                     }
                 });
@@ -32,8 +30,9 @@ define(function (require) {
 
                 $.when.apply($, promisses).then(function () {
                     _this._viewInstance.renderGraphic();
-                    console.log('render graphics');
                 });
+            } else {
+                this._viewInstance.renderGraphic();
             }
         }
     });

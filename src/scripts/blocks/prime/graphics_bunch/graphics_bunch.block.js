@@ -36,13 +36,13 @@ define(function (require) {
                         break;
                 }
 
-                // console.log(_this.meta);
                 graphicsBlock.addMeta(_this.meta);
                 graphicsBlock.fetch({type: _this._graphicType});
             });
 
             sensorsTreeBlock.on('state:change', function (d) {
                 _this.meta = d;
+                
                 graphicsBlock.addMeta(_this.meta);
                 graphicsBlock.fetch({type: _this._graphicType});
             });

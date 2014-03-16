@@ -26,7 +26,7 @@ define(function (require) {
         getGraphicOptions: function () {
             var _this = this,
                 series = [];
-            // console.log(_this.collection.size());
+
             _this.collection.each(function (g) {
                 if (g.get('points').attributes.values) {
                     series.push({
@@ -38,7 +38,6 @@ define(function (require) {
                     });
                 }
             });
-            // console.log('series', series);
             
             var options = {
                 chart: {
