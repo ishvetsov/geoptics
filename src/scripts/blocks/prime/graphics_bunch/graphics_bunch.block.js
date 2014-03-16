@@ -28,9 +28,9 @@ define(function (require) {
             //     console.log('graphics-control > ', d);
             // });
 
-            // sensorsTreeBlock.on('state:change', function (d) {
-            //     console.log('sensors-tree > ', d);
-            // });
+            sensorsTreeBlock.on('state:change', function (d) {
+                console.log('sensors-tree > ', d);
+            });
         },
 
         _onShow: function () {

@@ -85,6 +85,9 @@ define(function (require) {
         },
 
         initialize: function () {
+            this.get('psensors')._selfKey = 'psensors';
+            this.get('tsensors')._selfKey = 'tsensors';
+
             _.bindAll(this,
                 'fetchTSensors',
                 'fetchPSensors',

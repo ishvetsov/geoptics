@@ -42,15 +42,15 @@ define(function (require) {
     });
 
     _.extend(SensorsTreeModel.prototype, {
-        getSelectedSensorsIds: function () {
-            return _.keys(this._selectedSensors);
+        getSelectedSensors: function () {
+            return _.values(this._selectedSensors);
         },
 
         resetSensors: function () {
             var _this = this;
 
-            _.values(_this._selectedSensors).forEach(function (keypath) {
-                _this.set(keypath + '.isChecked', false);
+            _.values(_this._selectedSensors).forEach(function (data) {
+                data.sensor.set('isChecked', false);
             });
 
             return _this;
@@ -68,19 +68,23 @@ define(function (require) {
         },
 
         _onSensorChanged: function (path, sensorModel) {
-            var id = sensorModel.get('id');
+            var cid = sensorModel.cid;
 
-            if (typeof this._selectedSensors[id] === 'undefined') {
-                this._selectedSensors[id] = path;
+            if (typeof this._selectedSensors[cid] === 'undefined') {
+                this._selectedSensors[cid] = {
+                    borehole: sensorModel.collection.parents[0],
+                    type: sensorModel.collection._selfKey,
+                    sensor: sensorModel
+                };
             } else {
-                delete this._selectedSensors[id];
+                delete this._selectedSensors[cid];
             }
 
             this._triggerSensorsStateChange();
         },
 
         _triggerSensorsStateChange: _.debounce(function () {
-            this.trigger('state:change', this.getSelectedSensorsIds());
+            this.trigger('state:change', this.getSelectedSensors());
         }, 100)
     });
 
