@@ -18,6 +18,7 @@ define(function (require) {
         triggers: {
             'view:state:change': 'state:change',
             'view:export:click': 'export:click',
+            'view:refresh:click': 'refresh:click'
         }
     });
 

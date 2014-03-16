@@ -12,13 +12,18 @@ define(function (require) {
         ui: {
             type: '.graphics-control_type',
             period: '.graphics-control_period',
-            exports: '.graphics-control_export'
+            exports: '.graphics-control_export',
+            refresh: '.graphics-control_refresh'
         },
 
         events: {
             'click @ui.type': '_onTypeSelected',
             'click @ui.period': '_onPeriodSelected',
             'click @ui.exports': '_onExportsClicked',
+        },
+
+        triggers: {
+            'click @ui.refresh': 'refresh:click'
         },
 
         initialize: function () {

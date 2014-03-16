@@ -13,46 +13,55 @@ define(function (require) {
         graphicsControlBlock = GraphicsControlBlock.getInstance(),
         sensorsTreeBlock = SensorsTreeBlock.getInstance();
 
-    var GraphicsBunchBlock = Block.create({
-        view: GraphicsBunchLayout,
+    var GraphicsBunchBlock = Block.create(
+        {
+            view: GraphicsBunchLayout,
 
-        onInit: function () {
-            graphicsBlock.init();
-            graphicsControlBlock.init();
+            onInit: function () {
+                graphicsBlock.init();
+                graphicsControlBlock.init();
 
-            var _this = this;
+                this._viewInstance.on('show', this._onShow);
 
-            _this._viewInstance.on('show', _this._onShow);
+                graphicsControlBlock.on('export:click', graphicsBlock.export);
+                graphicsControlBlock.on('refresh:click', this._onRefresh);
+                graphicsControlBlock.on('state:change', this._onControlStateChange);
 
-            graphicsControlBlock.on('export:click', graphicsBlock.export);
+                sensorsTreeBlock.on('state:change', this._onTreeStateChange);
+            },
 
-            graphicsControlBlock.on('state:change', function (d) {
+            _onShow: function () {
+                this.control.show(graphicsControlBlock.getViewInstance());
+                this.graphic.show(graphicsBlock.getViewInstance());
+            }
+        },
+        {
+            _onTreeStateChange: function (d) {
+                this.meta = d;
+
+                graphicsBlock.addMeta(this.meta);
+                graphicsBlock.fetch({type: this._graphicType});
+            },
+
+            _onControlStateChange: function (d) {
                 switch (d.type) {
                     case 'temperature':
-                        _this._graphicType = 'tsensors';
+                        this._graphicType = 'tsensors';
                         break;
                     case 'pressure':
-                        _this._graphicType = 'psensors';
+                        this._graphicType = 'psensors';
                         break;
                 }
 
-                graphicsBlock.addMeta(_this.meta);
-                graphicsBlock.fetch({type: _this._graphicType});
-            });
+                graphicsBlock.addMeta(this.meta);
+                graphicsBlock.fetch({type: this._graphicType});
+            },
 
-            sensorsTreeBlock.on('state:change', function (d) {
-                _this.meta = d;
-                
-                graphicsBlock.addMeta(_this.meta);
-                graphicsBlock.fetch({type: _this._graphicType});
-            });
-        },
-
-        _onShow: function () {
-            this.control.show(graphicsControlBlock.getViewInstance());
-            this.graphic.show(graphicsBlock.getViewInstance());
+            _onRefresh: function () {
+                graphicsBlock.fetch({type: this._graphicType});
+            }
         }
-    });
+    );
 
     return GraphicsBunchBlock;
 });

@@ -7,13 +7,13 @@ define(function (require) {
         Rivets = require('rivets'),
         HighstockExporting = require('highstock.exporting'),
 
-        Template = require('text!./graphics.template.html');
+        GraphicsOptions = require('./graphics.options');
 
     var CurrentChart;
 
     var GraphicsView = Marionette.ItemView.extend({
-        template: _.template(Template),
         className: 'graphics',
+        template: function () {},
 
         initialize: function () {
             _.bindAll(this, 'exportGraphic');
@@ -38,97 +38,22 @@ define(function (require) {
                     });
                 }
             });
-            
-            var options = {
-                chart: {
-                    className: 'currentChart',
-                    type: 'line',
-                    zoomType: 'x'
-                    // reflow: false
-                },
 
-                credits: {
-                    enabled: false
-                },
-
-                rangeSelector : {
-                    selected : 1
-                },
-
-                zoom: {
-                    enabled: false
-                },
-
-                exporting: {
-                    enabled: false
-                },
-
-                title : {
-                    text : ''
-                },
-
-                xAxis: {
-                    events: {
-                        setExtremes: function(event) {
-                            //Это проверка на кнопку зума
-                            if(typeof(event.rangeSelectorButton)!== 'undefined') {
-                                alert(event.rangeSelectorButton.count + "  " + event.rangeSelectorButton.type )
-                            }
-                        },
-                        afterSetExtremes: function(event) {
-                        }
-                    }
-                },
-
-                plotOptions: {
-                    series: {
-                        cursor: 'pointer',
-                        point: {
-                            events: {
-                                click: function() {
-                                    alert ('Category: '+ this.category +', value: '+ this.y);
-                                }
-                            }
-                        },
-                        marker: {
-                            enabled: false,
-                            states: {
-                                hover: {
-                                    enabled: true
-                                }
-                            }
-                        }
-                    }
-                },
-
-                tooltip: {
-                    crosshairs: true,
-                    shared: true,
-                    useHTML: true,
-                    headerFormat: '<small>{point.key} м</small><table>',
-                    pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
-                        '<td style="text-align: right"><b>{point.y} °C</b></td></tr>',
-                    footerFormat: '</table>',
-                    valueDecimals: 2
-                },
-
-                series: series
-            };
-            return options;
+            return GraphicsOptions.get(series);
         },
 
-        findGraphic: function getChartReferenceByClassName(className) {
-            var cssClassName = className;
+        findGraphic: function (className) {
             var foundChart = null;
 
-            $(Highcharts.charts).each(function(i,chart){
-                if (typeof(chart)!== 'undefined'){
-                    if(chart.container.classList.contains(cssClassName)){
+            $(Highcharts.charts).each(function (i, chart) {
+                if (typeof chart !== 'undefined'){
+                    if ($(chart.container).hasClass(className)) {
                         foundChart = chart;
                         return;
                     }
                 }
             });
+
             return foundChart;
         },
 
@@ -143,10 +68,6 @@ define(function (require) {
         },
 
         onRender: function () {
-            this.binding = Rivets.bind(this.el, {
-                view: this
-            });
-
             this.renderGraphic();
         },
 

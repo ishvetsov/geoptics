@@ -6,7 +6,11 @@ define(function (require) {
         Borehole = require('entities/borehole.entity'),
         AppConfig = require('configs/app.config');
 
-    var GraphicPointsModel = Backbone.AssociatedModel.extend();
+    var GraphicPointsModel = Backbone.AssociatedModel.extend({
+        parse: function (response) {
+            return {values: response};
+        }
+    });
 
     var GraphicModel = Backbone.AssociatedModel.extend({
         defaults: {
@@ -34,6 +38,7 @@ define(function (require) {
             var url = '/data/boreholes/' + this.get('borehole').get('id') +
                 '/' + this.get('type') +
                 '/' + this.get('sensor').get('channelNumber');
+
             return this.get('points').fetch({url: url});
         }
     });
