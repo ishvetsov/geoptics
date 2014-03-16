@@ -3,30 +3,43 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
+        Borehole = require('entities/borehole.entity'),
         AppConfig = require('configs/app.config');
 
-    var GraphicPointModel = Backbone.AssociatedModel.extend();
+    var GraphicPointsModel = Backbone.AssociatedModel.extend();
 
     var GraphicModel = Backbone.AssociatedModel.extend({
         defaults: {
-            id: '',
             type: '',
             period: '',
-            points: []
+            borehole: {},
+            sensor: {},
+            points: {}
         },
 
         relations: [
             {
-                type: Backbone.Many,
+                type: Backbone.One,
                 key: 'points',
-                relatedModel: GraphicPointModel
+                relatedModel: GraphicPointsModel
+            },
+            {
+                type: Backbone.One,
+                key: 'borehole',
+                relatedModel: Borehole.Model
             }
-        ]
+        ],
+
+        fetch: function () {
+            var url = '/data/boreholes/' + this.get('borehole').get('id') +
+                '/' + this.get('type') +
+                '/' + this.get('sensor').get('channelNumber');
+            return this.get('points').fetch({url: url});
+        }
     });
 
     var GraphicCollection = Backbone.Collection.extend({
-        model: GraphicModel,
-        url: AppConfig.rest.graphics
+        model: GraphicModel
     });
 
     return {

@@ -24,6 +24,20 @@ define(function (require) {
         },
 
         getGraphicOptions: function () {
+            var _this = this,
+                series = [];
+
+            _this.collection.each(function (g) {
+                series.push({
+                    name: g.get('borehole').get('code'),
+                    data: g.get('points').attributes.values,
+                    tooltip: {
+                        valueDecimals: 2
+                    }
+                });
+            });
+            
+            
             var options = {
                 chart: {
                     className: 'currentChart',
@@ -97,18 +111,7 @@ define(function (require) {
                     valueDecimals: 2
                 },
 
-                series : [{
-                    name : 'Скважина 258',
-                    data : [
-                        7.0, 6.9, 9.5,
-                        14.5, 18.2, 21.5,
-                        25.2, 26.5, 23.3,
-                        18.3, 13.9, 9.6
-                    ],
-                    tooltip: {
-                        valueDecimals: 2
-                    }
-                }]
+                series: series
             };
             return options;
         },
@@ -140,7 +143,6 @@ define(function (require) {
 
         onRender: function () {
             this.binding = Rivets.bind(this.el, {
-                model: this.model,
                 view: this
             });
 

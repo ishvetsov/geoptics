@@ -2,6 +2,7 @@ define(function (require) {
     'use strict';
 
     var Block = require('core/block.ui'),
+        AppConfig = require('configs/app.config'),
 
         Graphic = require('entities/graphic.entity'),
         GraphicsView = require('./graphics.view');
@@ -14,28 +15,23 @@ define(function (require) {
             'view:exportGraphic': 'export'
         },
 
-        onInit: function () {
-            _.bindAll(this, '_onStateChanged', '_onCollectionFetched');
-
-            this.on('type:state:change', this._onStateChanged);
-            this.on('sensors:state:change', this._onStateChanged);
+        addMeta: function (meta) {
+            this._collectionInstance.reset(meta);
         },
 
-        fetch: function (data) {
-            return this._collectionInstance
-                .fetch({
-                    data: {ids: data.ids}
-                })
-                .then(this._onCollectionFetched);
-        },
+        fetch: function (options) {
+            if (this._collectionInstance.size()) {
+                var promisses = this._collectionInstance.map(function (m) {
+                    if (m.get('type') === options.type) {
+                        return m.fetch();
+                    }
+                });
+                var _this = this;
 
-        _onCollectionFetched: function () {
-            this._viewInstance.renderGraphic();
-            console.log(this._collectionInstance.toJSON());
-        },
-
-        _onStateChanged: function (data) {
-            this.fetch(data);
+                $.when.apply($, promisses).then(function () {
+                    _this._viewInstance.renderGraphic();
+                });
+            }
         }
     });
 

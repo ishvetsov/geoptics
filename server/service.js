@@ -35,7 +35,8 @@ var extenders = [
     require('./urls/sensorssets'),
     require('./urls/perforations'),
     require('./urls/depths'),
-    require('./urls/moments')
+    require('./urls/moments'),
+    require('./urls/data')
 ];
 
 module.addUrls = function (server) {
