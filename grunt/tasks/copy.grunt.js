@@ -1,7 +1,7 @@
 /* global module, require */
 
 function getVendorsCopyConfig () {
-    var maps = require('../map.package.json');
+    var maps = require('../../map.package.json');
 
     return Object.keys(maps).map(function (map) {
         return {

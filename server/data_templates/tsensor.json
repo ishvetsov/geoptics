@@ -1,0 +1,5 @@
+{
+    "channelNumber": "{{numeric(1, 10000)}}",
+    "name": "Датчик температуры",
+    "depth": "{{numeric(100, 900)}}"
+}

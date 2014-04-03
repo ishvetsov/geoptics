@@ -1,6 +1,13 @@
+.graphics,
+.graphics_container {
+    height: 100%;
+}
+
 .graphics {
     margin: 24px 0 0;
 }
 
 .graphics_container {
+    width: 55%;
+    min-width: 700px;
 }

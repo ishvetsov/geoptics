@@ -27,8 +27,7 @@ define(function (require) {
 
             return $.when(
                 this._modelInstance.fetch(),
-                this._modelInstance.get('boreholes').fetch()
-            );
+                this._modelInstance.get('boreholes').fetch());
         },
 
         setParentCollection: function (collection) {

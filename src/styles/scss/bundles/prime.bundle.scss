@@ -1,3 +1,9 @@
+.prime,
+.prime_sidebar,
+.prime_container {
+    height: 100%;
+}
+
 .prime {
     padding: 0 30px;
 }
@@ -6,7 +12,6 @@
     position: fixed;
 
     width: 300px;
-    height: 100%;
 }
 
 .prime_container {

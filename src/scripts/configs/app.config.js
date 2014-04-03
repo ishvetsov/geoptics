@@ -6,6 +6,10 @@ define(function (require) {
 
     var rest = require('./rest.config');
 
+    var moment = require('moment');
+    var momentru = require('momentru');
+    moment.lang('ru');
+
     return {
         rest: rest
     };

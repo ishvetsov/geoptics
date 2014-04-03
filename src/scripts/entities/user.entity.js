@@ -47,15 +47,15 @@ define(function (require) {
 
     _.extend(UserModel.prototype, {
         getShortName: function () {
-            return this.get('lastName')
-                + ' ' + this.get('firstName')[0]
-                + '.' + this.get('middleName')[0] + '.';
+            return this.get('lastName') +
+                ' ' + this.get('firstName')[0] +
+                '.' + this.get('middleName')[0] + '.';
         },
 
         getFullName: function () {
-            return this.get('lastName')
-                + ' ' + this.get('firstName')
-                + ' ' + this.get('middleName');
+            return this.get('lastName') +
+                ' ' + this.get('firstName') +
+                ' ' + this.get('middleName');
         },
 
         getAccessLevel: function () {

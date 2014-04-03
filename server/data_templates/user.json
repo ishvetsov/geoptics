@@ -1,0 +1,11 @@
+{
+    "id": "{{guid}}",
+    "firstName": "{{firstName}}",
+    "lastName": "{{surname}}",
+    "login": "{{email}}",
+    "password": "{{numeric(100000, 900000}}",
+    "org": "{{company}}",
+    "email": "{{email}}",
+    "tel": "{{phone}}",
+    "isActive": "{{bool}}"
+}

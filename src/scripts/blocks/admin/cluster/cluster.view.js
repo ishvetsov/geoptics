@@ -32,6 +32,11 @@ define(function (require) {
 
         save: function () {
             this.trigger('view:save');
+        },
+
+        removeBorehole: function (ev, data) {
+            var borehole = data.borehole;
+            borehole.destroy({wait: true});
         }
     });
 

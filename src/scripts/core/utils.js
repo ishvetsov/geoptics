@@ -40,6 +40,10 @@ define(function (require) {
                     });
                 }
             };
+        },
+
+        getDeepNavPath: function (path) {
+            return location.hash.replace(/^#\//, '') + path;
         }
     };
 });

@@ -23,18 +23,6 @@
     display: block;
 }
 
-.sensors-tree_component .sensor {
-    width: 100%;
-    padding: 0 42px 0 0;
-
-    font-weight: 200;
-    &:hover {
-        cursor: pointer;
-
-        font-weight: 700;
-    }
-}
-
 .sensors-tree_component-name {
     padding: 6px 12px 6px 0;
     &:hover {
@@ -50,4 +38,45 @@
     width: 100%;
     height: 100%;
     margin: 12px 0 0;
+}
+
+/** Sensors */
+.sensors-tree_component .sensors-container {
+    margin: 8px 0 0;
+}
+
+.sensors-tree_component .sensor {
+    width: 100%;
+    margin: 0;
+
+    font-weight: 200;
+    &:hover {
+        cursor: pointer;
+
+        color: #000;
+        // font-weight: 700;
+    }
+}
+
+.sensors-tree_component .sensor-checkbox {
+    margin: -2px 4px 0 0;
+
+    vertical-align: middle;
+}
+
+/** Borehole */
+
+.sensors-tree_component .borehole-child {
+    margin: 0;
+    margin-right: 16px;
+    margin-bottom: 8px;
+    margin-left: 10px;
+    padding: 10px;
+
+    list-style: none;
+
+    font-size: 12px;
+
+    border-radius: 3px;
+    background: #f3f3e4;
 }

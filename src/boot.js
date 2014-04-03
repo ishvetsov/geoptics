@@ -15,6 +15,7 @@ require.config({
         'rivets': 'vendors/rivets/rivets.modified',
         'rivets.adapter': 'vendors/rivets/rivets-backbone',
         'moment': 'vendors/moment/moment',
+        'momentru': 'vendors/moment/ru',
         'highstock': 'vendors/highstock/highstock.src',
         'highstock.exporting': 'vendors/highstock/modules/exporting.src'
     },

@@ -11,7 +11,7 @@ define(function (require) {
 
         regions: {
             control: '.graphics-bunch_control',
-            graphic: '.graphics-bunch_graphic',
+            graphic: '.graphics-bunch_graphic'
         }
     });
 

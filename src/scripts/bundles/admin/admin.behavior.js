@@ -33,6 +33,8 @@ define(function (require) {
     blocks.adminCluster.on('create', function (view) {
         blocks.adminNavigation.disactivateAll();
         layout.container.show(view);
+
+        Backbone.history.navigate(Utils.getDeepNavPath('/newcluster'));
     });
 
     var initialize = function () {

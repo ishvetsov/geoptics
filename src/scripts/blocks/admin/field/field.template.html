@@ -18,6 +18,7 @@
         </div>
     </div>
 
+    {{ if (it.mode === 'edit') { }}
     <div class="form-group">
         <label class="col-sm-2 control-label">Кусты</label>
         <div class="col-sm-10">
@@ -29,7 +30,8 @@
                         rv-href="cluster:id | prepend #admin/clusters/">
                         <span class="glyphicon glyphicon-pencil"></span>
                     </a>
-                    <button class="btn btn-default btn-xs">
+                    <button class="btn btn-default btn-xs"
+                        rv-on-click="view.removeCluster">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </div>
@@ -39,6 +41,7 @@
             </a>
         </div>
     </div>
+    {{ } }}
 
     {{ if (it.mode === 'edit') { }}
         <div class="form-group">

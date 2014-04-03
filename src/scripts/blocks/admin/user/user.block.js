@@ -20,7 +20,7 @@ define(function (require) {
 
         fetch: function (id) {
             this._modelInstance.set('id', id);
-
+            console.log(this._modelInstance);
             return $.when(
                 this._modelInstance.get('groups').fetch(),
                 this._modelInstance.fetch());

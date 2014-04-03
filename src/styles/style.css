@@ -11,16 +11,37 @@ label {
 @media screen and (min-width: 1370px) {
   .inner-container {
     width: 65%; } }
-a.underline {
+a,
+.link {
+  cursor: pointer; }
+
+a.underline,
+.link.underline {
   text-decoration: none;
+  color: #428bca;
   border-bottom: 1px solid #428bca;
   border-bottom: 1px solid rgba(66, 139, 202, 0.4); }
-  a.underline:hover {
+  a.underline:hover,
+  .link.underline:hover {
+    color: #2a6496;
     border-color: #2a6496;
     border-color: rgba(42, 100, 150, 0.4); }
 
+a.dotted,
+.link.dotted {
+  text-decoration: none;
+  color: #428bca;
+  border-bottom: 1px dotted #428bca; }
+  a.dotted:hover,
+  .link.dotted:hover {
+    color: #2a6496;
+    border-color: #2a6496; }
+
 a.noline {
   text-decoration: none; }
+
+.help {
+  cursor: help; }
 
 .clearfix:before,
 .clearfix:after {
@@ -61,6 +82,10 @@ a.noline {
     content: '';
     vertical-align: middle; }
 
+.common,
+.common_body {
+  height: 100%; }
+
 .common_body {
   padding: 80px 0 0; }
 
@@ -74,13 +99,17 @@ a.noline {
 .admin_container-region {
   margin: 0 0 0 200px; }
 
+.prime,
+.prime_sidebar,
+.prime_container {
+  height: 100%; }
+
 .prime {
   padding: 0 30px; }
 
 .prime_sidebar {
   position: fixed;
-  width: 300px;
-  height: 100%; }
+  width: 300px; }
 
 .prime_container {
   margin: 0 0 0 300px; }
@@ -139,6 +168,12 @@ a.noline {
     cursor: pointer;
     opacity: 1; }
 
+.admin_user .user_group-add {
+  margin: 0 10px; }
+
+.admin_user .user_groups {
+  margin: 0 0 10px 0; }
+
 .resources_title {
   margin: 0 0 20px;
   font-size: 16px;
@@ -196,9 +231,12 @@ a.noline {
   font-weight: 200; }
 
 .no-attached_control {
-  padding: 8px 15px;
+  margin: 15px 0 40px;
+  padding: 8px 17px;
   border-radius: 4px;
-  background-color: #f5f5f5; }
+  background: #f5f5f5; }
+  .no-attached_control .text {
+    margin: 0 10px 0 0; }
 
 .sensors-tree {
   height: 100%;
@@ -218,14 +256,6 @@ a.noline {
 .sensors-tree_component.active > .sensors-tree_component {
   display: block; }
 
-.sensors-tree_component .sensor {
-  width: 100%;
-  padding: 0 42px 0 0;
-  font-weight: 200; }
-  .sensors-tree_component .sensor:hover {
-    cursor: pointer;
-    font-weight: 700; }
-
 .sensors-tree_component-name {
   padding: 6px 12px 6px 0; }
   .sensors-tree_component-name:hover {
@@ -238,6 +268,34 @@ a.noline {
   height: 100%;
   margin: 12px 0 0; }
 
+/** Sensors */
+.sensors-tree_component .sensors-container {
+  margin: 8px 0 0; }
+
+.sensors-tree_component .sensor {
+  width: 100%;
+  margin: 0;
+  font-weight: 200; }
+  .sensors-tree_component .sensor:hover {
+    cursor: pointer;
+    color: #000; }
+
+.sensors-tree_component .sensor-checkbox {
+  margin: -2px 4px 0 0;
+  vertical-align: middle; }
+
+/** Borehole */
+.sensors-tree_component .borehole-child {
+  margin: 0;
+  margin-right: 16px;
+  margin-bottom: 8px;
+  margin-left: 10px;
+  padding: 10px;
+  list-style: none;
+  font-size: 12px;
+  border-radius: 3px;
+  background: #f3f3e4; }
+
 .sensors-sets_title {
   display: inline-block;
   margin: 0 0 12px;
@@ -249,5 +307,27 @@ a.noline {
 .sensors-sets_create-button {
   float: right; }
 
+.graphics-bunch {
+  overflow: hidden;
+  padding: 0 0 120px; }
+
+.graphics-bunch,
+.graphics-bunch_graphic {
+  height: 100%; }
+
+.graphics,
+.graphics_container {
+  height: 100%; }
+
 .graphics {
   margin: 24px 0 0; }
+
+.graphics_container {
+  width: 55%;
+  min-width: 700px; }
+
+.graphics-control_autorefresh {
+  margin: 0 0 0 24px; }
+
+.graphics-control_autorefresh .form-group {
+  width: 94px; }

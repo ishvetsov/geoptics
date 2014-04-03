@@ -15,10 +15,14 @@ define(function (require) {
             config: GraphicsControlConfig
         },
 
+        functions: {
+            'view:setRefreshState': 'setRefreshState'
+        },
+
         triggers: {
             'view:state:change': 'state:change',
             'view:export:click': 'export:click',
-            'view:refresh:click': 'refresh:click'
+            'view:refresh': 'refresh'
         }
     });
 

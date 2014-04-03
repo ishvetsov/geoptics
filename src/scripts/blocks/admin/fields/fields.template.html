@@ -11,6 +11,9 @@
     </div>
 
     <div hidden="true" class="clusters">
+        <span rv-show="field:clusters | empty" class="text-muted">
+            Кустов нет
+        </span>
         <div rv-each-cluster="field:clusters">
             <div class="cluster-item clearfix" rv-on-click="view.expandCluster">
                 <span class="cluster-name">

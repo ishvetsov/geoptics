@@ -1320,7 +1320,7 @@
   // Cached regex for removing a trailing slash.
   var trailingSlash = /\/$/;
 
-  // Cached regex for stripping urls of hash and query.
+  // Cached regex for stripping extenders of hash and query.
   var pathStripper = /[?#].*$/;
 
   // Has the history handling already been started?

@@ -57,12 +57,14 @@
         </div>
     </div>
 
+    <!--
     <div class="form-group">
         <label class="col-sm-2 control-label">Комментарий</label>
         <div class="col-sm-10">
             <textarea rv-value="model:comment:text" class="form-control" rows="3" placeholder="Комментарий" readonly></textarea>
         </div>
     </div>
+    -->
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
@@ -74,25 +76,35 @@
         </div>
     </div>
 
+    <!--
     <div class="form-group">
         <label class="col-sm-2 control-label">Группы</label>
         <div class="col-sm-10">
-            <div rv-each-group="model:groups">
-                { group:name }
-                <span rv-on-click="group.destroy" class="glyphicon glyphicon-remove user_group-remove js-user_group-remove"></span>
+            <div class="user_groups">
+                <div rv-each-group="model:groups">
+                    { group:name }
+                    <span rv-on-click="view.removeFromGroup" class="glyphicon glyphicon-remove user_group-remove js-user_group-remove"></span>
+                </div>
             </div>
-            <div class="input-group">
-                <input rv-value="view._group.name" type="text" class="form-control" placeholder="Группа">
-                <span class="input-group-btn">
-                    <button rv-on-click="view.addGroup" class="btn btn-default" type="button">Добавить группу</button>
-                </span>
+
+            <div class="form-group col-sm-4">
+                <select class="form-control all-groups">
+                    <option rv-each-group="allGroups.models" rv-value="group:id">
+                        { group:name }
+                    </option>
+                </select>
             </div>
+            <button class="btn btn-default user_group-add" type="button"
+                rv-on-click="view.addInGroup">
+                Добавить в группу
+            </button>
         </div>
     </div>
+    -->
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-            <button type="button" class="btn btn-default" rv-on-click="view.save">Сохранить</button>
+            <button type="button" class="btn btn-info" rv-on-click="view.save">Сохранить</button>
         </div>
     </div>
 </div>

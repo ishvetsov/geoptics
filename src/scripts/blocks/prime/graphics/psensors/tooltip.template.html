@@ -1,0 +1,7 @@
+<small>{{= it.x}}</small>
+{{_.each(it.points, function (point) { }}
+<div>
+    <span style="color:{{= point.series.color}}">{{= point.series.name}}</span>
+    <span style="font-weight: 700">{{= it.y}}</span>
+</div>
+{{ }) }}

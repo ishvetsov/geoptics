@@ -1,0 +1,10 @@
+[
+    {
+        "startPeriod": "{{date(YYYY-MM-ddThh:mm:ss)}}",
+        "millisecondOffset": 10,
+        "values": [
+            "{{repeat(100)}}",
+            "{{numeric(-20.01, 20)}}"
+        ]
+    }
+]

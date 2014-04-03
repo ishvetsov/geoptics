@@ -1,50 +1,80 @@
 define(function (require) {
-    var getOptions = function (series) {
+    'use strict';
+
+    var moment = require('moment');
+
+    var config = {
+        tsensors: require('./tsensors/tsensors.config'),
+        psensors: require('./psensors/psensors.config')
+    };
+
+    var getOptions = function (series, sensorsType, view) {
         return {
             chart: {
                 className: 'currentChart',
                 type: 'line',
-                zoomType: 'x'
+                zoomType: 'x',
+                inverted: true,
+
+                resetZoomButton: {
+                    theme: {
+                        display: 'none'
+                    }
+                }
+            },
+
+            legend: {
+                align: 'right',
+                verticalAlign: 'top',
+                layout: 'vertical',
+                borderWidth: 0
             },
 
             credits: {enabled: false},
 
-            rangeSelector : {selected : 1},
+            rangeSelector: {selected : 1},
 
             zoom: {enabled: false},
 
             exporting: {enabled: false},
 
-            title : {text : ''},
+            title: {text: null},
 
             xAxis: {
-                events: {
-                    setExtremes: function (event) {
-                        if (typeof event.rangeSelectorButton !== 'undefined') {
-                            alert(event.rangeSelectorButton.count + ' ' + event.rangeSelectorButton.type )
-                        }
-                    },
+                type: config[sensorsType].xAxis.type,
 
-                    afterSetExtremes: function(event) {}
+                title: {
+                    text: config[sensorsType].xAxis.text,
+                    style: {fontWeight: 'normal'},
+                    margin: 40
+                },
+
+                dateTimeLabelFormats: config[sensorsType].xAxis.dateTimeLabelFormats,
+
+                events: {
+                    afterSetExtremes: function (ev) {
+                        view.trigger('zoom', config[sensorsType].getZoomData(ev));
+                    }
+                }
+            },
+
+            yAxis: {
+                title: {
+                    text: config[sensorsType].yAxis.text,
+                    style: {fontWeight: 'normal'},
+                    margin: 40
                 }
             },
 
             plotOptions: {
                 series: {
-                    cursor: 'pointer',
-                    point: {
-                        events: {
-                            click: function() {
-                                alert('Category: '+ this.category +', value: '+ this.y);
-                            }
-                        }
-                    },
+                    animation: false,
+
                     marker: {
                         enabled: false,
+
                         states: {
-                            hover: {
-                                enabled: true
-                            }
+                            hover: {enabled: true}
                         }
                     }
                 }
@@ -54,10 +84,7 @@ define(function (require) {
                 crosshairs: true,
                 shared: true,
                 useHTML: true,
-                headerFormat: '<small>{point.key} м</small><table>',
-                pointFormat: '<tr><td style="color: {series.color}">{series.name}: </td>' +
-                    '<td style="text-align: right"><b>{point.y} °C</b></td></tr>',
-                footerFormat: '</table>',
+                formatter: config[sensorsType].tooltip.formatter,
                 valueDecimals: 2
             },
 
@@ -67,5 +94,5 @@ define(function (require) {
 
     return {
         get: getOptions
-    }
+    };
 });

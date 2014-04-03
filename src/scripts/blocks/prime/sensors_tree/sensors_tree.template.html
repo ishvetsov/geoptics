@@ -32,17 +32,33 @@
                     <span class="glyphicon glyphicon-chevron-right"></span>
                     { borehole:code }
                 </div>
-                <div rv-each-sensor="borehole:tsensors" class="sensors-tree_component">
-                    <label class="sensor">
-                        { sensor:name } { sensor:number }
-                        <input rv-checked="sensor:isChecked" type="checkbox" class="pull-right">
-                    </label>
+                <ul class="sensors-tree_component borehole-child">
+                    <li>Глубина забоя: { borehole:bottomholeDepth }м</li>
+                    <li>Глубина воронки: { borehole:craterDepth }м</li>
+                    <li>Высота над уровнем моря: { borehole:altitude }м</li>
+                </ul>
+                <div rv-hide="borehole:tsensors | empty" class="sensors-tree_component borehole-child">
+                    <span class="link dotted">Датчики температуры</span>
+                    <div class="sensors-tree_component sensors-container">
+                        <div rv-each-sensor="borehole:tsensors">
+                            <label class="sensor">
+                                <input rv-checked="sensor:isChecked" type="checkbox" class="sensor-checkbox">
+                                { sensor:name }
+                                <!-- — { sensor:depth }м -->
+                            </label>
+                        </div>
+                    </div>
                 </div>
-                <div rv-each-sensor="borehole:psensors" class="sensors-tree_component">
-                    <label class="sensor">
-                        { sensor:name } { sensor:number }
-                        <input rv-checked="sensor:isChecked" type="checkbox" class="pull-right">
-                    </label>
+                <div rv-hide="borehole:psensors | empty" class="sensors-tree_component borehole-child">
+                    <span class="link dotted">Датчики давления</span>
+                    <div class="sensors-tree_component sensors-container">
+                        <div rv-each-sensor="borehole:psensors">
+                            <label class="sensor">
+                                <input rv-checked="sensor:isChecked" type="checkbox" class="sensor-checkbox">
+                                { sensor:name } — { sensor:depth }м
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

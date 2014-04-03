@@ -38,6 +38,11 @@ define(function (require) {
             };
         },
 
+        removeCluster: function (ev, data) {
+            var cluster = data.cluster;
+            cluster.destroy({wait: true});
+        },
+
         save: function () {
             this.trigger('view:save');
         },

@@ -29,9 +29,14 @@
                             rv-href="borehole:id | prepend #admin/boreholes/">
                             <span class="glyphicon glyphicon-pencil"></span>
                         </a>
-                        <button class="btn btn-default btn-xs">
+                        <button class="btn btn-default btn-xs"
+                            rv-on-click="view.removeBorehole">
                             <span class="glyphicon glyphicon-trash"></span>
                         </button>
+
+<!--                         <button class="btn btn-default btn-xs">
+                            <span class="glyphicon glyphicon-trash"></span>
+                        </button> -->
                     </div>
                 </div>
             </div>

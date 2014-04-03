@@ -1,0 +1,14 @@
+{
+    "id": "{{guid}}",
+    "code": "Скважина",
+    "location": "Местоположение",
+    "number": "{{numeric(1000, 9000)}}",
+    "fieldStation": "Промысел",
+    "ownerCompany": "Компания владелец",
+    "serviceCompany": "Сервисная компания",
+    "paramsDescription": "Описание параметров скважины",
+    "installedEquipmentDescription": "Описание установленного оборудования",
+    "altitude": "{{numeric(100, 900)}}",
+    "craterDepth": "{{numeric(100, 900)}}",
+    "bottomholeDepth": "{{numeric(100, 900)}}"
+}

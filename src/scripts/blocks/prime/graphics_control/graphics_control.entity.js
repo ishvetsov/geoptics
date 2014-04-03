@@ -19,7 +19,7 @@ define(function (require) {
     GraphicsControlModel.prototype.setRange = function () {
         var period = this.get('period'),
             startDate = period === 'all'
-                ? null
+                ? moment().format()
                 : moment().subtract(period, 1).format();
 
         this.set('startDate', startDate);

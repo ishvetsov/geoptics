@@ -24,16 +24,21 @@ define(function (require) {
                 this._viewInstance.on('show', this._onShow);
 
                 graphicsControlBlock.on('export:click', graphicsBlock.export);
-                graphicsControlBlock.on('refresh:click', this._onRefresh);
                 graphicsControlBlock.on('state:change', this._onControlStateChange);
+                graphicsControlBlock.on('refresh', this._onRefresh);
 
                 sensorsTreeBlock.on('state:change', this._onTreeStateChange);
+
+                graphicsBlock.on('zoom', function () {
+                    graphicsControlBlock.setRefreshState(false);
+                });
             },
 
             _onShow: function () {
                 this.control.show(graphicsControlBlock.getViewInstance());
                 this.graphic.show(graphicsBlock.getViewInstance());
             }
+
         },
         {
             _onTreeStateChange: function (d) {
@@ -44,6 +49,11 @@ define(function (require) {
             },
 
             _onControlStateChange: function (d) {
+                this._requestData = {
+                    startDate: d.startDate,
+                    endDate: d.endDate
+                };
+
                 switch (d.type) {
                     case 'temperature':
                         this._graphicType = 'tsensors';
@@ -54,11 +64,17 @@ define(function (require) {
                 }
 
                 graphicsBlock.addMeta(this.meta);
-                graphicsBlock.fetch({type: this._graphicType});
+                graphicsBlock.fetch({
+                    type: this._graphicType,
+                    requestData: this._requestData
+                });
             },
 
             _onRefresh: function () {
-                graphicsBlock.fetch({type: this._graphicType});
+                graphicsBlock.fetch({
+                    type: this._graphicType,
+                    requestData: this._requestData
+                });
             }
         }
     );
