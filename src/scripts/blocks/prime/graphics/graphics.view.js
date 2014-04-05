@@ -25,7 +25,9 @@
             _this.collection.each(function (g) {
                 if (g.get('points').attributes.values) {
                     _this._series.push({
-                        name: g.get('borehole').get('code') + ', Датчик ' + g.get('sensor').get('channelNumber'),
+                        name: g.get('borehole').get('code') +
+                            ', Датчик ' +
+                            g.get('sensor').get('channelNumber'),
                         data: g.get('points').attributes.values,
                         tooltip: {
                             valueDecimals: 2

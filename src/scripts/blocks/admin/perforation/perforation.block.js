@@ -11,6 +11,10 @@ define(function (require) {
         view: View,
         model: Perforation.Model,
 
+        onBeforeInit: function (options) {
+            this.viewOptions = {mode: options.mode};
+        },
+
         onInit: function (options) {
             var _this = this;
 

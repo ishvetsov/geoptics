@@ -20,7 +20,10 @@ define(function (require) {
                 'removeMoment',
                 'editPerforation',
                 'editDepth',
-                'editMoment');
+                'editMoment',
+                'createPerforation',
+                'createDepth',
+                'createMoment');
         },
 
         onRender: function () {
@@ -36,8 +39,15 @@ define(function (require) {
             };
         },
 
+        createPerforation: function (ev, data) {
+            Backbone.history.navigate('#/admin/boreholes/' +
+                this.model.get('id') + '/perforations/new');
+        },
+
         editPerforation: function (ev, data) {
-            Backbone.history.navigate('#/admin/perforations/' +
+            console.log('edit');
+            Backbone.history.navigate('#/admin/boreholes/' +
+                this.model.get('id') + '/perforations/' +
                 data.perforation.get('id'));
         },
 
@@ -46,8 +56,14 @@ define(function (require) {
             perforation.destroy({wait: true});
         },
 
+        createDepth: function (ev, data) {
+            Backbone.history.navigate('#/admin/boreholes/' +
+                this.model.get('id') + '/depths/new');
+        },
+
         editDepth: function (ev, data) {
-            Backbone.history.navigate('#/admin/depths/' +
+            Backbone.history.navigate('#/admin/boreholes/' +
+                this.model.get('id') + '/depths/' +
                 data.depth.get('id'));
         },
 
@@ -56,8 +72,14 @@ define(function (require) {
             depth.destroy({wait: true});
         },
 
+        createMoment: function (ev, data) {
+            Backbone.history.navigate('#/admin/boreholes/' +
+                this.model.get('id') + '/moments/new');
+        },
+
         editMoment: function (ev, data) {
-            Backbone.history.navigate('#/admin/moments/' +
+            Backbone.history.navigate('#/admin/boreholes/' +
+                this.model.get('id') + '/moments/' +
                 data.moment.get('id'));
         },
 
@@ -70,7 +92,7 @@ define(function (require) {
             ev.stopPropagation();
             var tsensor = data.tsensor;
             Backbone.history.navigate('#/admin/boreholes/' +
-                tsensor.collection.parents[0].get('id') + '/tsensors/' +
+                this.model.get('id') + '/tsensors/' +
                 tsensor.get('channelNumber'));
         },
 
@@ -78,7 +100,7 @@ define(function (require) {
             ev.stopPropagation();
             var psensor = data.psensor;
             Backbone.history.navigate('#/admin/boreholes/' +
-                psensor.collection.parents[0].get('id') + '/psensors/' +
+                this.model.get('id') + '/psensors/' +
                 psensor.get('channelNumber'));
         },
 

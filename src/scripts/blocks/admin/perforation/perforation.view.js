@@ -11,7 +11,8 @@ define(function (require) {
         
         className: 'admin_perforation inner-container',
 
-        initialize: function () {
+        initialize: function (options) {
+            this._mode = options.mode;
             _.bindAll(this, 'save');
         },
 

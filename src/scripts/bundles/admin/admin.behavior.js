@@ -125,10 +125,16 @@ define(function (require) {
 
         perforation: function (id) {
             blocks.adminNavigation.disactivateAll();
-            blocks.adminPerforation.init()
+            blocks.adminPerforation.init({mode: 'edit'})
                 .fetch(id).then(function () {
                     layout.container.show(blocks.adminPerforation.getViewInstance());
                 });
+        },
+
+        newPerforation: function (boreholeId) {
+            blocks.adminNavigation.disactivateAll();
+            blocks.adminPerforation.init({mode: 'create'});
+            layout.container.show(blocks.adminPerforation.getViewInstance());
         },
 
         depth: function (id) {
@@ -139,12 +145,24 @@ define(function (require) {
                 });
         },
 
+        newDepth: function (boreholeId) {
+            blocks.adminNavigation.disactivateAll();
+            blocks.adminDepth.init({mode: 'create'});
+            layout.container.show(blocks.adminDepth.getViewInstance());
+        },
+
         moment: function (id) {
             blocks.adminNavigation.disactivateAll();
             blocks.adminMoment.init()
                 .fetch(id).then(function () {
                     layout.container.show(blocks.adminMoment.getViewInstance());
                 });
+        },
+
+        newMoment: function (id) {
+            blocks.adminNavigation.disactivateAll();
+            blocks.adminMoment.init({mode: 'create'});
+            layout.container.show(blocks.adminMoment.getViewInstance());
         },
 
         monitoring: function () {
