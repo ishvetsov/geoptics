@@ -15,14 +15,19 @@ define(function (require) {
             config: GraphicsControlConfig
         },
 
-        functions: {
-            'view:setRefreshState': 'setRefreshState'
-        },
-
         triggers: {
             'view:state:change': 'state:change',
             'view:export:click': 'export:click',
             'view:refresh': 'refresh'
+        },
+
+        setRefreshState: function (value) {
+            this._viewInstance.ui.refreshCheck
+                .prop('checked', value).trigger('change');
+        },
+
+        showResetZoom: function () {
+            this._viewInstance.ui.zoom.removeClass('hide');
         }
     });
 

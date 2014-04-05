@@ -14,7 +14,8 @@ define(function (require) {
             period: '.graphics-control_period',
             exports: '.graphics-control_export',
             refreshCheck: '.graphics-control_autorefresh-check',
-            refreshInput: '.graphics-control_autorefresh-input'
+            refreshInput: '.graphics-control_autorefresh-input',
+            zoom: '.graphics-control_zoom'
         },
 
         events: {
@@ -23,7 +24,9 @@ define(function (require) {
             'click @ui.exports': '_onExportsClicked',
 
             'change @ui.refreshCheck': '_onRefreshCheckChanged',
-            'change @ui.refreshInput': '_onRefreshInputChanged'
+            'change @ui.refreshInput': '_onRefreshInputChanged',
+
+            'click @ui.zoom': '_onZoomClicked'
         },
 
         initialize: function () {
@@ -47,15 +50,16 @@ define(function (require) {
             };
         },
 
-        setRefreshState: function (value) {
-            this.ui.refreshCheck.prop('checked', value).trigger('change');
-        },
-
         _getChangeHandler: function (param) {
             return function (ev) {
                 this.model.set(param, $(ev.currentTarget).data('value'));
                 this.trigger('state:change', this.model.toJSON());
             };
+        },
+
+        _setRefreshState: function (state) {
+            this.ui.refreshInput.prop('disabled', state);
+            this[state ? '_startRefresh' : '_stopRefresh']();
         },
 
         _onExportsClicked: function (ev) {
@@ -66,15 +70,8 @@ define(function (require) {
         },
 
         _onRefreshCheckChanged: function () {
-            var isChecked = this.ui.refreshCheck.prop('checked');
-
-            if (isChecked) {
-                this.ui.refreshInput.prop('disabled', false);
-                this._startRefresh();
-            } else {
-                this.ui.refreshInput.prop('disabled', true);
-                this._stopRefresh();
-            }
+            this._refreshState =  this.ui.refreshCheck.prop('checked');
+            this._setRefreshState(this._refreshState);
         },
 
         _onRefreshInputChanged: function () {
@@ -99,6 +96,12 @@ define(function (require) {
 
         _stopRefresh: function () {
             clearTimeout(this._refreshInterval);
+        },
+
+        _onZoomClicked: function () {
+            this.ui.zoom.addClass('hide');
+            this._setRefreshState(this._refreshState);
+            this.trigger('state:change', this.model.toJSON());
         }
     });
 

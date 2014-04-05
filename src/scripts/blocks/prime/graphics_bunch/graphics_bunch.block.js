@@ -31,6 +31,7 @@ define(function (require) {
 
                 graphicsBlock.on('zoom', function () {
                     graphicsControlBlock.setRefreshState(false);
+                    graphicsControlBlock.showResetZoom();
                 });
             },
 
