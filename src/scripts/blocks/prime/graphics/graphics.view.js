@@ -4,6 +4,7 @@
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
         HighstockExporting = require('highstock.exporting'),
+        moment = require('moment'),
 
         GraphicsTemplate = require('text!./graphics.template.html'),
         GraphicsOptions = require('./graphics.options');
@@ -37,7 +38,6 @@
                             valueDecimals: 2
                         }
                     });
-
                    
                     // Тестовая реализация
                     var perforations = g.get('borehole').get('perforations'),
@@ -50,7 +50,16 @@
                                 color: color,
                                 dashStyle: 'LongDash',
                                 width: 1,
-                                value: +new Date()
+                                text: 'test',
+                                value: +new Date(m.get('date')),
+                                label: {
+                                    align: 'right',
+                                    text: '<div class="moment-symbol" ' +
+                                        'style="border-color:' + color + '; color:' + color + '"' +
+                                        'title="' + moment(m.get('date')).format('YYYY-MM-DD HH:mm:ss') + ' - ' + 'Комментарий' + '"' +
+                                        '>t</div>',
+                                    useHTML: true
+                                }
                             });
                         });
                     } else if (_this._sensorsType === 'tsensors') {
