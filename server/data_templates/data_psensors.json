@@ -1,6 +1,6 @@
 [
     {
-        "startPeriod": "{{date(YYYY-MM-ddThh:mm:ss)}}",
+        "startPeriod": 1396772243144,
         "millisecondOffset": 10,
         "values": [
             "{{repeat(100)}}",
