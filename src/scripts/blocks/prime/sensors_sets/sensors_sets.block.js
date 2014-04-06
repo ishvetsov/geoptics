@@ -11,12 +11,12 @@ define(function (require) {
             view: SensorsSetsView,
 
             onInit: function (options) {
-                this._viewInstance.model = options;
+                this._view.model = options;
             }
         },
         {
             show: function () {
-                Bus.events.trigger('app:modal:show', this._viewInstance);
+                Bus.events.trigger('app:modal:show', this._view);
             }
         }
     );

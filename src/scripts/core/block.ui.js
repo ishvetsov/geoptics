@@ -12,28 +12,28 @@ define(function (require) {
         },
 
         _createInstances: function () {
-            this._modelInstance = this._createInstance(this.model);
-            this._collectionInstance = this._createInstance(this.collection);
-            this._viewInstance = this._createInstance(
+            this._model = this._createInstance(this.model);
+            this._collection = this._createInstance(this.collection);
+            this._view = this._createInstance(
                 this.view,
                 _.extend(
                     {
-                        model: this._modelInstance,
-                        collection: this._collectionInstance,
+                        model: this._model,
+                        collection: this._collection,
                     },
                     this.viewOptions));
         },
 
         _getDefaultInstanceMap: function () {
             return {
-                view: this._viewInstance,
-                collection: this._collectionInstance,
-                model: this._modelInstance
+                view: this._view,
+                collection: this._collection,
+                model: this._model
             };
         },
 
         getViewInstance: function () {
-            return this._viewInstance;
+            return this._view;
         }
     });
 

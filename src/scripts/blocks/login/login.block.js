@@ -21,12 +21,12 @@ define(function (require) {
                     this.requestUserData();
                 }
 
-                this._viewInstance.on('signin:click', this.requestUserData);
+                this._view.on('signin:click', this.requestUserData);
             }
         },
         {
             requestUserData: function () {
-                this._modelInstance.send()
+                this._model.send()
                     .then(sessionBlock.in);
             }
         }

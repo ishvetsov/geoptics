@@ -8,7 +8,9 @@ define(function (require) {
         psensors: require('./psensors/psensors.config')
     };
 
-    var getOptions = function (series, sensorsType, view) {
+    // options.series, options.sensorsType, options.view,
+    // options.xAxis.plotLines
+    var getOptions = function (options) {
         return {
             chart: {
                 className: 'currentChart',
@@ -41,26 +43,30 @@ define(function (require) {
             title: {text: null},
 
             xAxis: {
-                type: config[sensorsType].xAxis.type,
+                type: config[options.sensorsType].xAxis.type,
 
                 title: {
-                    text: config[sensorsType].xAxis.text,
+                    text: config[options.sensorsType].xAxis.text,
                     style: {fontWeight: 'normal'},
                     margin: 40
                 },
 
-                dateTimeLabelFormats: config[sensorsType].xAxis.dateTimeLabelFormats,
+                dateTimeLabelFormats: config[options.sensorsType]
+                    .xAxis.dateTimeLabelFormats,
 
                 events: {
                     afterSetExtremes: function (ev) {
-                        view.trigger('zoom', config[sensorsType].getZoomData(ev));
+                        options.view.trigger('zoom',
+                            config[options.sensorsType].getZoomData(ev));
                     }
-                }
+                },
+
+                plotLines: options.plotLines
             },
 
             yAxis: {
                 title: {
-                    text: config[sensorsType].yAxis.text,
+                    text: config[options.sensorsType].yAxis.text,
                     style: {fontWeight: 'normal'},
                     margin: 40
                 }
@@ -84,11 +90,11 @@ define(function (require) {
                 crosshairs: true,
                 shared: true,
                 useHTML: true,
-                formatter: config[sensorsType].tooltip.formatter,
+                formatter: config[options.sensorsType].tooltip.formatter,
                 valueDecimals: 2
             },
 
-            series: series
+            series: options.series
         };
     };
 

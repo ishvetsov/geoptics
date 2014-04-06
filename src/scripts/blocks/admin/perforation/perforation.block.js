@@ -18,17 +18,17 @@ define(function (require) {
         onInit: function (options) {
             var _this = this;
 
-            _this._viewInstance.on('view:save', function () {
-                _this._modelInstance.save().then(function () {
+            _this._view.on('view:save', function () {
+                _this._model.save().then(function () {
                     history.back();
                 });
             });
         },
 
         fetch: function (id) {
-            this._modelInstance.set('id', id);
+            this._model.set('id', id);
 
-            return this._modelInstance.fetch();
+            return this._model.fetch();
         }
     });
 

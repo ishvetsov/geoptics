@@ -17,8 +17,8 @@ define(function (require) {
 
             _this._borehole = new  Borehole.Model();
 
-            _this._viewInstance.on('view:save', function () {
-                _this._modelInstance.save().then(function () {
+            _this._view.on('view:save', function () {
+                _this._model.save().then(function () {
                     history.back();
                 });
             });
@@ -26,10 +26,10 @@ define(function (require) {
 
         fetch: function (boreholeId, channelNumber) {
             this._borehole.set('id', boreholeId);
-            this._modelInstance.set('channelNumber', channelNumber);
-            this._borehole.get('psensors').add(this._modelInstance);
+            this._model.set('channelNumber', channelNumber);
+            this._borehole.get('psensors').add(this._model);
 
-            return this._modelInstance.fetch();
+            return this._model.fetch();
         }
     });
 

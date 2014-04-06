@@ -123,7 +123,6 @@ a.noline {
   border: 1px solid #e3e3e3;
   border-radius: 4px;
   background: #f5f5f5;
-  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15); }
 
 .login_title {
@@ -325,6 +324,51 @@ a.noline {
 .graphics_container {
   width: 55%;
   min-width: 700px; }
+
+.perforation-symbol {
+  height: 18px;
+  width: 18px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  font-weight: bold;
+  text-align: center;
+  border-width: 1px !important;
+  border: solid;
+  cursor: default;
+  margin-top: 7px;
+  margin-left: 7px;
+  background-color: white; }
+
+.moment-symbol {
+  height: 18px;
+  width: 18px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  font-weight: bold;
+  text-align: center;
+  border-width: 1px !important;
+  border: solid;
+  cursor: default;
+  margin-top: 7px;
+  margin-left: 7px;
+  background-color: white; }
+
+.depth-symbol {
+  height: 18px;
+  width: 18px;
+  -webkit-border-radius: 9px;
+  -moz-border-radius: 9px;
+  border-radius: 9px;
+  font-weight: bold;
+  text-align: center;
+  border-width: 1px !important;
+  border: solid;
+  cursor: default;
+  margin-top: 7px;
+  margin-left: 7px;
+  background-color: white; }
 
 .graphics-control_autorefresh {
   margin: 0 17px; }

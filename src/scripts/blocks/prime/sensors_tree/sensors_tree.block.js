@@ -18,19 +18,19 @@ define(function (require) {
         model: SensorsTree.Model,
 
         onInit: function () {
-            sensorsSetsBlock.init(this._modelInstance);
+            sensorsSetsBlock.init(this._model);
 
             var currentUser = sessionBlock.getCurrentUser();
 
             if (!currentUser.isNew()) {
-                this._modelInstance.set('sets', currentUser.get('sensorsSets'));
+                this._model.set('sets', currentUser.get('sensorsSets'));
             }
 
-            this._viewInstance.on('save:click', sensorsSetsBlock.show);
+            this._view.on('save:click', sensorsSetsBlock.show);
         },
 
         fetch: function () {
-            return this._modelInstance.fetchChildren();
+            return this._model.fetchChildren();
         },
 
         triggers: {

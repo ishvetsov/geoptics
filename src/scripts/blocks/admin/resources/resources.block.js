@@ -20,7 +20,7 @@ define(function (require) {
             fieldsBlock.init();
             noAttachedBlock.init();
 
-            this._viewInstance.on('show', this._onShowLayout);
+            this._view.on('show', this._onShowLayout);
             noAttachedBlock.on('attached', function (obj) {
                 var field = fieldsBlock.getCollection().findWhere({
                     id: obj.field.get('id')
@@ -45,10 +45,10 @@ define(function (require) {
         },
 
         _onShowLayout: function () {
-            this._viewInstance.noAttachedRegion.show(
+            this._view.noAttachedRegion.show(
                 noAttachedBlock.getViewInstance());
 
-            this._viewInstance.fieldsRegion.show(
+            this._view.fieldsRegion.show(
                 fieldsBlock.getViewInstance());
         }
     });

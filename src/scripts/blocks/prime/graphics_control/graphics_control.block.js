@@ -22,12 +22,12 @@ define(function (require) {
         },
 
         setRefreshState: function (value) {
-            this._viewInstance.ui.refreshCheck
+            this._view.ui.refreshCheck
                 .prop('checked', value).trigger('change');
         },
 
         showResetZoom: function () {
-            this._viewInstance.ui.zoom.removeClass('hide');
+            this._view.ui.zoom.removeClass('hide');
         }
     });
 

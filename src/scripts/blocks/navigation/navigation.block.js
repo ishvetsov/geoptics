@@ -24,7 +24,7 @@ define(function (require) {
         },
 
         onInit: function () {
-            this._viewInstance.on('signout:click', sessionBlock.out);
+            this._view.on('signout:click', sessionBlock.out);
         }
     });
 

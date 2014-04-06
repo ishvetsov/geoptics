@@ -17,18 +17,18 @@ define(function (require) {
             },
 
             onInit: function () {
-                this._viewInstance.on('zoom', this._onZoom);
+                this._view.on('zoom', this._onZoom);
             },
 
             addMeta: function (meta) {
-                this._collectionInstance.reset(meta);
+                this._collection.reset(meta);
             },
 
             fetch: function (options) {
-                if (this._collectionInstance.size()) {
+                if (this._collection.size()) {
                     var _this = this;
 
-                    var promises = this._collectionInstance.map(function (graphic) {
+                    var promises = this._collection.map(function (graphic) {
                         if (graphic.get('type') === options.type) {
                             return graphic.fetch({
                                 data: _.extend(
@@ -40,10 +40,21 @@ define(function (require) {
                     });
 
                     $.when.apply($, promises).then(function () {
-                        _this._viewInstance.renderGraphic(options.type);
+                        // Пробная реализация
+                        // var promises = 
+                        var insProms = [];
+                        _this._collection.each(function (graphic) {
+                            var borehole = graphic.get('borehole');
+                            insProms.push(borehole.get('perforations').fetch());
+                            insProms.push(borehole.get('moments').fetch());
+                            insProms.push(graphic.get('borehole').get('depths').fetch());
+                        });
+                        $.when.apply($, insProms).then(function () {
+                            _this._view.renderGraphic(options.type);
+                        });
                     });
                 } else {
-                    this._viewInstance.renderGraphic(options.type);
+                    this._view.renderGraphic(options.type);
                 }
             },
 

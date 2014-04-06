@@ -22,23 +22,23 @@ define(function (require) {
 
         onInit: function () {
             var _this = this;
-            _this._viewInstance.on('view:save', function () {
-                _this._modelInstance.save().then(function () {
+            _this._view.on('view:save', function () {
+                _this._model.save().then(function () {
                     history.back();
                 });
             });
 
-            _this._viewInstance.on('cluster:add', function () {
-                clusterBlock.create(_this._modelInstance.get('clusters'));
+            _this._view.on('cluster:add', function () {
+                clusterBlock.create(_this._model.get('clusters'));
             });
         },
 
         fetch: function (id) {
-            this._modelInstance.set('id', id);
+            this._model.set('id', id);
 
             return $.when(
-                this._modelInstance.fetch(),
-                this._modelInstance.get('clusters').fetch()
+                this._model.fetch(),
+                this._model.get('clusters').fetch()
             );
         }
     });

@@ -14,27 +14,27 @@ define(function (require) {
         onInit: function () {
             var _this = this;
 
-            _this._viewInstance.on('view:apply', function () {
-                var checkeds = _this._modelInstance.get('boreholes').where({
+            _this._view.on('view:apply', function () {
+                var checkeds = _this._model.get('boreholes').where({
                     isChecked: true
                 });
 
-                _this._modelInstance.get('curCluster')
+                _this._model.get('curCluster')
                     .get('boreholes').add(checkeds);
 
-                _this._modelInstance.get('curCluster').save()
+                _this._model.get('curCluster').save()
                     .then(function () {
-                        _this._viewInstance.update();
+                        _this._view.update();
                         _this.trigger('attached', {
-                            field: _this._modelInstance.get('curField'),
-                            cluster: _this._modelInstance.get('curCluster')
+                            field: _this._model.get('curField'),
+                            cluster: _this._model.get('curCluster')
                         });
                     });
             });
         },
 
         fetch: function () {
-            var boreholes = this._modelInstance.get('boreholes'),
+            var boreholes = this._model.get('boreholes'),
                 p = boreholes.fetch({
                     url: AppConfig.rest.boreholes + '?noattached=true'
                 });

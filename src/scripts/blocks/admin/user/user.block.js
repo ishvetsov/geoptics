@@ -15,19 +15,19 @@ define(function (require) {
         },
 
         onInit: function () {
-            this._viewInstance.on('save:click', this._onSaveClicked);
+            this._view.on('save:click', this._onSaveClicked);
         },
 
         fetch: function (id) {
-            this._modelInstance.set('id', id);
-            console.log(this._modelInstance);
+            this._model.set('id', id);
+            console.log(this._model);
             return $.when(
-                this._modelInstance.get('groups').fetch(),
-                this._modelInstance.fetch());
+                this._model.get('groups').fetch(),
+                this._model.fetch());
         },
 
         resetModel: function () {
-            this._modelInstance.clear().set('groups', []);
+            this._model.clear().set('groups', []);
             return this;
         },
 

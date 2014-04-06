@@ -20,11 +20,15 @@
 
         getGraphicOptions: function () {
             var _this = this;
-            this._series = [];
+            var series = [],
+                plotLines = [];
 
-            _this.collection.each(function (g) {
+            this.collection.each(function (g) {
                 if (g.get('points').attributes.values) {
-                    _this._series.push({
+
+                    var color = 'black';
+
+                    series.push({
                         name: g.get('borehole').get('code') +
                             ', Датчик ' +
                             g.get('sensor').get('channelNumber'),
@@ -33,10 +37,66 @@
                             valueDecimals: 2
                         }
                     });
+
+                   
+                    // Тестовая реализация
+                    var perforations = g.get('borehole').get('perforations'),
+                        moments = g.get('borehole').get('moments'),
+                        depths = g.get('borehole').get('depths');
+
+                    if (_this._sensorsType === 'psensors') {
+                        moments.each(function (m) {
+                            plotLines.push({
+                                color: color,
+                                dashStyle: 'LongDash',
+                                width: 1,
+                                value: +new Date()
+                            });
+                        });
+                    } else if (_this._sensorsType === 'tsensors') {
+                        perforations.each(function (p) {
+                            plotLines.push({
+                                color: color,
+                                dashStyle: 'ShortDot',
+                                width: 1,
+                                value: p.get('depth'),
+                                label: {
+                                    align: 'right',
+                                    text: '<div class="perforation-symbol" ' +
+                                        'style="border-color:' + color + '; color:' + color + '"' +
+                                        'title="' + p.get('depth') + 'м: ' + 'Комментарий' + '"' +
+                                        '>П</div>',
+                                    useHTML: true
+                                }
+                            });
+                        });
+
+                        depths.each(function (d) {
+                            plotLines.push({
+                                color: color,
+                                dashStyle: 'Solid',
+                                width: 1,
+                                value: d.get('value'),
+                                label: {
+                                    align: 'right',
+                                    text: '<div class="depth-symbol" ' +
+                                        'style="border-color:' + color + '; color:' + color + '"' +
+                                        'title="' + d.get('value') + 'м: ' + 'Комментарий' + '"' +
+                                        '>h</div>',
+                                    useHTML: true
+                                }
+                            });
+                        });
+                    }
                 }
             });
 
-            return GraphicsOptions.get(this._series, this._sensorsType, this);
+            return GraphicsOptions.get({
+                series: series,
+                sensorsType: this._sensorsType,
+                view: this,
+                plotLines: plotLines
+            });
         },
 
         findGraphic: function (className) {

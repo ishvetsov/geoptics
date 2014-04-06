@@ -21,7 +21,7 @@ define(function (require) {
                 graphicsBlock.init();
                 graphicsControlBlock.init();
 
-                this._viewInstance.on('show', this._onShow);
+                this._view.on('show', this._onShow);
 
                 graphicsControlBlock.on('export:click', graphicsBlock.export);
                 graphicsControlBlock.on('state:change', this._onControlStateChange);

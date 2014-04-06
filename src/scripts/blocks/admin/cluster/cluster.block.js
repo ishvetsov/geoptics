@@ -19,15 +19,15 @@ define(function (require) {
             this._parrentCollection = null;
 
             _.bindAll(this, '_onSave');
-            this._viewInstance.on('view:save', this._onSave);
+            this._view.on('view:save', this._onSave);
         },
 
         fetch: function (id) {
-            this._modelInstance.set('id', id);
+            this._model.set('id', id);
 
             return $.when(
-                this._modelInstance.fetch(),
-                this._modelInstance.get('boreholes').fetch());
+                this._model.fetch(),
+                this._model.get('boreholes').fetch());
         },
 
         setParentCollection: function (collection) {
@@ -38,15 +38,15 @@ define(function (require) {
             this.init({mode: 'create'});
             this._parrentCollection = collection;
 
-            this.trigger('create', this._viewInstance);
+            this.trigger('create', this._view);
         },
 
         _onSave: function () {
-            if (this._parrentCollection && this._modelInstance.isNew()) {
-                this._parrentCollection.add(this._modelInstance);
+            if (this._parrentCollection && this._model.isNew()) {
+                this._parrentCollection.add(this._model);
             }
 
-            this._modelInstance
+            this._model
                 .saveAtContext()
                 .then(function () { history.back(); });
         }

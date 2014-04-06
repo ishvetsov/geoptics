@@ -11,7 +11,7 @@ define(function (require) {
         collection: User.Collection,
 
         fetch: function () {
-            return this._collectionInstance.fetch();
+            return this._collection.fetch();
         }
     });
 

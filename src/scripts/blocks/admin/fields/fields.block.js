@@ -12,11 +12,11 @@ define(function (require) {
         collection: Field.Collection,
 
         fetch: function () {
-            return this._collectionInstance.fetch();
+            return this._collection.fetch();
         },
 
         getCollection: function () {
-            return this._collectionInstance;
+            return this._collection;
         }
     });
 

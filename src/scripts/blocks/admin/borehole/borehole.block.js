@@ -15,23 +15,23 @@ define(function (require) {
         onInit: function () {
             var _this = this;
 
-            this._viewInstance.on('view:save', function () {
-                _this._modelInstance.save().then(function () {
+            this._view.on('view:save', function () {
+                _this._model.save().then(function () {
                     history.back();
                 });
             });
         },
 
         fetch: function (id) {
-            this._modelInstance.set('id', id);
+            this._model.set('id', id);
 
             return $.when(
-                this._modelInstance.fetch(),
-                this._modelInstance.get('psensors').fetch(),
-                this._modelInstance.get('tsensors').fetch(),
-                this._modelInstance.get('perforations').fetch(),
-                this._modelInstance.get('depths').fetch(),
-                this._modelInstance.get('moments').fetch()
+                this._model.fetch(),
+                this._model.get('psensors').fetch(),
+                this._model.get('tsensors').fetch(),
+                this._model.get('perforations').fetch(),
+                this._model.get('depths').fetch(),
+                this._model.get('moments').fetch()
             );
         }
     });
