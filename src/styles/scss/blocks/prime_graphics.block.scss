@@ -12,50 +12,23 @@
     min-width: 700px;
 }
 
-.perforation-symbol {
-    height: 18px;
-    width: 18px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    border-radius: 9px;
-    font-weight: bold;
-    text-align: center;
-    border-width: 1px !important;
-    border: solid;
+.graphics_symbol {
+    width: 20px;
+    height: 20px;
+    margin: 6px 0 0 9px;
+
     cursor: default;
-    margin-top: 7px;
-    margin-left: 7px;
-    background-color: white;
+    text-align: center;
+
+    font-weight: 700;
+
+    border: 1px solid #000;
+    border-radius: 50%;
+    background: #fff;
 }
 
-.moment-symbol {
-    height: 18px;
-    width: 18px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    border-radius: 9px;
-    font-weight: bold;
-    text-align: center;
-    border-width: 1px !important;
-    border: solid;
-    cursor: default;
-    margin-top: 7px;
-    margin-left: 7px;
-    background-color: white;
-}
+// highcharts
 
-.depth-symbol {
-    height: 18px;
-    width: 18px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
-    border-radius: 9px;
-    font-weight: bold;
-    text-align: center;
-    border-width: 1px !important;
-    border: solid;
-    cursor: default;
-    margin-top: 7px;
-    margin-left: 7px;
-    background-color: white;
+.highcharts-tooltip {
+    z-index: 8;
 }

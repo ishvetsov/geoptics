@@ -80,10 +80,6 @@ define(function (require) {
         fetchTSensors: Utils.fetchChild('tsensors'),
         fetchPSensors: Utils.fetchChild('psensors'),
 
-        fetchChildren: function () {
-            return $.when(this.fetchTSensors(), this.fetchPSensors());
-        },
-
         initialize: function () {
             this.get('psensors')._selfKey = 'psensors';
             this.get('tsensors')._selfKey = 'tsensors';
@@ -92,6 +88,28 @@ define(function (require) {
                 'fetchTSensors',
                 'fetchPSensors',
                 'fetchChildren');
+        }
+    });
+
+    _.extend(Borehole.prototype, {
+        fetchChildren: function () {
+            return $.when(this.fetchTSensors(), this.fetchPSensors())
+                .then(_.bind(this._onChildrenFetched, this));
+        },
+
+
+        // TODO: Убрать работу с цветом из базовой сущности
+        _onChildrenFetched: function () {
+            this._setSensorsRate(this.get('tsensors'));
+            this._setSensorsRate(this.get('psensors'));
+
+            this.baseColor = Utils.colors.HSLtoHEX(_.random(0, 360), 100, 20);
+        },
+
+        _setSensorsRate: function (sensors) {
+            sensors.each(function (sensor, i) {
+                sensor.rate = (i + 1) / sensors.length * .7;
+            });
         }
     });
 

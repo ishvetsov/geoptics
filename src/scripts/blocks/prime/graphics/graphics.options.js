@@ -8,12 +8,10 @@ define(function (require) {
         psensors: require('./psensors/psensors.config')
     };
 
-    // options.series, options.sensorsType, options.view,
-    // options.xAxis.plotLines
     var getOptions = function (options) {
         return {
             chart: {
-                className: 'currentChart',
+                className: 'main-graphic',
                 type: 'line',
                 zoomType: 'x',
                 inverted: true,

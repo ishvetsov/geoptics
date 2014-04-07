@@ -21,7 +21,7 @@ module.exports.extend = function (server) {
     server.put(url.spec('psensors/:number'), handlers.body);
     server.put(url.spec('tsensors/:number'), handlers.body);
 
-    server.get(url.spec('moments'), handlers.getGen('moment', 5, 10));
-    server.get(url.spec('depths'), handlers.getGen('depth', 5, 10));
-    server.get(url.spec('perforations'), handlers.getGen('perforation', 5, 10));
+    server.get(url.spec('moments'), handlers.getGen('moment', 1, 2));
+    server.get(url.spec('depths'), handlers.getGen('depth', 1, 2));
+    server.get(url.spec('perforations'), handlers.getGen('perforation', 1, 2));
 };

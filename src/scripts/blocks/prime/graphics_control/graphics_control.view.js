@@ -58,7 +58,7 @@ define(function (require) {
         },
 
         _setRefreshState: function (state) {
-            this.ui.refreshInput.prop('disabled', state);
+            this.ui.refreshInput.prop('disabled', !state);
             this[state ? '_startRefresh' : '_stopRefresh']();
         },
 

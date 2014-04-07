@@ -3,6 +3,8 @@ define(function (require) {
     var Backbone = require('backbone'),
         Associations = require('backbone.associations'),
 
+        Utils = require('core/utils'),
+
         Borehole = require('entities/borehole.entity'),
         AppConfig = require('configs/app.config');
 
@@ -68,8 +70,10 @@ define(function (require) {
                 key: 'borehole',
                 relatedModel: Borehole.Model
             }
-        ],
+        ]
+    });
 
+    _.extend(GraphicModel.prototype, {
         fetch: function (options) {
             var url = '/data/boreholes/'
                 + this.get('borehole').get('id')
@@ -79,6 +83,12 @@ define(function (require) {
             options = _.extend({url: url}, options);
 
             return this.get('points').fetch(options);
+        },
+
+        getSeriesName: function () {
+            return this.get('borehole').get('code')
+                + ', Датчик '
+                + this.get('sensor').get('channelNumber');
         }
     });
 

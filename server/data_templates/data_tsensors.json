@@ -1,8 +1,0 @@
-{
-    "startDistance": 0,
-    "distanceOffset": 10,
-    "values": [
-        "{{repeat(100)}}",
-        "{{numeric(-20.01, 20)}}"
-    ]
-}

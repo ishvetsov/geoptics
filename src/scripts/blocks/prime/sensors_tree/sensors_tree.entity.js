@@ -38,7 +38,7 @@ define(function (require) {
             return $.when(
                 this.get('fields').fetch(),
                 sets ? sets.fetch() : null);
-        },
+        }
     });
 
     _.extend(SensorsTreeModel.prototype, {
@@ -56,23 +56,13 @@ define(function (require) {
             return _this;
         },
 
-        loadSet: function (set) {
-            var _this = this;
-
-            set.get('fields')
-            .fetch()
-            .then(function (data) {
-                _this.resetSensors()
-                    .get('fields').set(data, {remove: false});
-            });
-        },
-
         _onSensorChanged: function (path, sensorModel) {
-            var cid = sensorModel.cid;
+            var cid = sensorModel.cid,
+                borehole = sensorModel.collection.parents[0];
 
             if (typeof this._selectedSensors[cid] === 'undefined') {
                 this._selectedSensors[cid] = {
-                    borehole: sensorModel.collection.parents[0],
+                    borehole: borehole,
                     type: sensorModel.collection._selfKey,
                     sensor: sensorModel
                 };

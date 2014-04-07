@@ -3,7 +3,8 @@
 define(function (require) {
     'use strict';
 
-    var strings = require('./utils.strings');
+    var strings = require('./utils.strings'),
+        colors = require('./utils.colors');
 
     return {
         getInstances: function (deps) {
@@ -30,13 +31,15 @@ define(function (require) {
         },
 
         strings: strings,
+        colors: colors,
 
         fetchChild: function (name) {
             return function () {
                 var child = this.get(name);
                 if (!child.isLoaded) {
-                    child.fetch().then(function () {
+                    return child.fetch().then(function (d) {
                         child.isLoaded = true;
+                        return d;
                     });
                 }
             };

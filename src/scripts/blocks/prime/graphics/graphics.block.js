@@ -39,20 +39,25 @@ define(function (require) {
                         }
                     });
 
-                    $.when.apply($, promises).then(function () {
+                    $.when.apply($, promises)
+                    .then(function () {
                         // Пробная реализация
-                        // var promises = 
                         var insProms = [];
+
                         _this._collection.each(function (graphic) {
                             var borehole = graphic.get('borehole');
+
                             insProms.push(borehole.get('perforations').fetch());
                             insProms.push(borehole.get('moments').fetch());
-                            insProms.push(graphic.get('borehole').get('depths').fetch());
+                            insProms.push(borehole.get('depths').fetch());
                         });
-                        $.when.apply($, insProms).then(function () {
-                            _this._view.renderGraphic(options.type);
-                        });
+
+                        return $.when.apply($, insProms);
+                    })
+                    .then(function () {
+                        _this._view.renderGraphic(options.type);
                     });
+
                 } else {
                     this._view.renderGraphic(options.type);
                 }

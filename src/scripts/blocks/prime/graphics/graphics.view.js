@@ -6,10 +6,11 @@
         HighstockExporting = require('highstock.exporting'),
         moment = require('moment'),
 
+        Utils = require('core/utils'),
+
+        PlotLines = require('./plot_lines/plot_lines'),
         GraphicsTemplate = require('text!./graphics.template.html'),
         GraphicsOptions = require('./graphics.options');
-
-    var CurrentChart;
 
     var GraphicsView = Marionette.ItemView.extend({
         className: 'graphics',
@@ -25,78 +26,22 @@
                 plotLines = [];
 
             this.collection.each(function (g) {
-                if (g.get('points').attributes.values) {
+                var graphicValues = g.get('points').attributes.values;
 
-                    var color = 'black';
+                if (graphicValues) {
+                    var borehole = g.get('borehole'),
+                        color = borehole.baseColor;
 
                     series.push({
-                        name: g.get('borehole').get('code') +
-                            ', Датчик ' +
-                            g.get('sensor').get('channelNumber'),
-                        data: g.get('points').attributes.values,
-                        tooltip: {
-                            valueDecimals: 2
-                        }
+                        name: g.getSeriesName(),
+                        data: graphicValues,
+                        tooltip: { valueDecimals: 2 },
+                        color: Utils.colors.shade(color, g.get('sensor').rate)
                     });
-                   
-                    // Тестовая реализация
-                    var perforations = g.get('borehole').get('perforations'),
-                        moments = g.get('borehole').get('moments'),
-                        depths = g.get('borehole').get('depths');
 
-                    if (_this._sensorsType === 'psensors') {
-                        moments.each(function (m) {
-                            plotLines.push({
-                                color: color,
-                                dashStyle: 'LongDash',
-                                width: 1,
-                                text: 'test',
-                                value: +new Date(m.get('date')),
-                                label: {
-                                    align: 'right',
-                                    text: '<div class="moment-symbol" ' +
-                                        'style="border-color:' + color + '; color:' + color + '"' +
-                                        'title="' + moment(m.get('date')).format('YYYY-MM-DD HH:mm:ss') + ' - ' + 'Комментарий' + '"' +
-                                        '>t</div>',
-                                    useHTML: true
-                                }
-                            });
-                        });
-                    } else if (_this._sensorsType === 'tsensors') {
-                        perforations.each(function (p) {
-                            plotLines.push({
-                                color: color,
-                                dashStyle: 'ShortDot',
-                                width: 1,
-                                value: p.get('depth'),
-                                label: {
-                                    align: 'right',
-                                    text: '<div class="perforation-symbol" ' +
-                                        'style="border-color:' + color + '; color:' + color + '"' +
-                                        'title="' + p.get('depth') + 'м: ' + 'Комментарий' + '"' +
-                                        '>П</div>',
-                                    useHTML: true
-                                }
-                            });
-                        });
+                    var lines = PlotLines.getLines(borehole, _this._sensorsType);
 
-                        depths.each(function (d) {
-                            plotLines.push({
-                                color: color,
-                                dashStyle: 'Solid',
-                                width: 1,
-                                value: d.get('value'),
-                                label: {
-                                    align: 'right',
-                                    text: '<div class="depth-symbol" ' +
-                                        'style="border-color:' + color + '; color:' + color + '"' +
-                                        'title="' + d.get('value') + 'м: ' + 'Комментарий' + '"' +
-                                        '>h</div>',
-                                    useHTML: true
-                                }
-                            });
-                        });
-                    }
+                    plotLines = plotLines.concat(lines);
                 }
             });
 
@@ -111,12 +56,9 @@
         findGraphic: function (className) {
             var foundChart = null;
 
-            $(Highcharts.charts).each(function (i, chart) {
-                if (typeof chart !== 'undefined'){
-                    if ($(chart.container).hasClass(className)) {
-                        foundChart = chart;
-                        return;
-                    }
+            Highcharts.charts.forEach(function (chart) {
+                if (chart && $(chart.container).hasClass(className)) {
+                    return foundChart = chart;
                 }
             });
 
@@ -124,36 +66,29 @@
         },
 
         renderGraphic: function (sensorsType) {
+            var $container = this.$el.find('.graphics_container');
+
             if (sensorsType) { this._sensorsType = sensorsType; }
+            if (!$container.length) { return; }
 
-            var chartingOptions = this.getGraphicOptions(),
-                $container = this.$el.find('.graphics_container');
-
-            if(!$container.length) { return; }
-
-            $container.highcharts(chartingOptions);
-
-            CurrentChart = this.findGraphic('currentChart');
-
-            setTimeout(function () {
-                $(window).resize();
-            }, 0);
+            $container.highcharts(this.getGraphicOptions());
         },
 
         onRender: function () {
+            this._currentGraphic = this.findGraphic('main-graphic');
             this.renderGraphic();
         },
 
         exportGraphic: function (type) {
             switch (type) {
                 case 'print':
-                    CurrentChart.print();
+                    this._currentGraphic.print();
                     break;
                 case 'pdf':
-                    CurrentChart.exportChart({type: "application/pdf"});
+                    this._currentGraphic.exportChart({type: "application/pdf"});
                     break;
                 case 'svg':
-                    CurrentChart.exportChart({type: "image/svg+xml"});
+                    this._currentGraphic.exportChart({type: "image/svg+xml"});
                     break;
             }
         }
