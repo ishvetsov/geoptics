@@ -37,7 +37,7 @@
                     <li>Глубина воронки: { borehole:craterDepth }м</li>
                     <li>Высота над уровнем моря: { borehole:altitude }м</li>
                 </ul>
-                <div rv-hide="borehole:tsensors | empty" class="sensors-tree_component borehole-child">
+                <div rv-hide="borehole:tsensors | empty" class="sensors-tree_component active borehole-child">
                     <span class="link dotted">Датчики температуры</span>
                     <div class="sensors-tree_component sensors-container">
                         <div rv-each-sensor="borehole:tsensors">
@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                <div rv-hide="borehole:psensors | empty" class="sensors-tree_component borehole-child">
+                <div rv-hide="borehole:psensors | empty" class="sensors-tree_component active borehole-child">
                     <span class="link dotted">Датчики давления</span>
                     <div class="sensors-tree_component sensors-container">
                         <div rv-each-sensor="borehole:psensors">

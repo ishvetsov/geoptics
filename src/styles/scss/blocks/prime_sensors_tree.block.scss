@@ -54,7 +54,6 @@
         cursor: pointer;
 
         color: #000;
-        // font-weight: 700;
     }
 }
 
@@ -67,10 +66,7 @@
 /** Borehole */
 
 .sensors-tree_component .borehole-child {
-    margin: 0;
-    margin-right: 16px;
-    margin-bottom: 8px;
-    margin-left: 10px;
+    margin: 0 16px 8px 10px;
     padding: 10px;
 
     list-style: none;

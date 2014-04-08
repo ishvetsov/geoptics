@@ -41,7 +41,6 @@ define(function (require) {
         initialize: function () {
             _.bindAll(this, 'fetchClusters');
         }
-
     });
 
     var FieldCollection = Backbone.Collection.extend({

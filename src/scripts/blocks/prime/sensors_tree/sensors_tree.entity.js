@@ -25,11 +25,16 @@ define(function (require) {
 
         initialize: function () {
             this._selectedSensors = {};
+            this._state = {};
 
             // Удаление привязки к родительской модели
             this.get('fields').parents.length = 0;
 
             this.on('nested-change', this._onSensorChanged);
+
+            this.on(
+                'sync:fields.clusters.boreholes.psensors',
+                this.restoreState);
         },
 
         fetchChildren: function () {
@@ -66,11 +71,24 @@ define(function (require) {
                     type: sensorModel.collection._selfKey,
                     sensor: sensorModel
                 };
+
+                this._state[path] = true;
             } else {
                 delete this._selectedSensors[cid];
+                delete this._state[path];
             }
 
             this._triggerSensorsStateChange();
+        },
+
+        // Возможно некорректное восстановление
+        // после удаления/добавления датчиков
+        restoreState: function () {
+            this._selectedSensors = {};
+
+            _.each(this._state, function (val, key) {
+                this.set(key + '.isChecked', true);
+            }, this);
         },
 
         _triggerSensorsStateChange: _.debounce(function () {
