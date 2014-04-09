@@ -12,6 +12,11 @@ PUT     /boreholes/:id/psensors/:number
 PUT     /boreholes/:id/tsensors/:number  
 GET     /boreholes/:id/psensors/:number  
 GET     /boreholes/:id/tsensors/:number  
+POST    /boreholes/:id/points  
+GET     /boreholes/:id/points  
+DELETE  /boreholes/:id/points/:id  
+GET     /boreholes/:id/points/:id  
+PUT     /boreholes/:id/points/:id  
 
 POST    /depths?boreholeId  
 GET     /depths/:id  
@@ -67,3 +72,10 @@ POST    /logout
 
 GET     /data/boreholes/:id/tsensors/:number  
 GET     /data/boreholes/:id/psensors/:number  
+
+POST    /boreholePointPresets  
+GET     /boreholePointPresets  
+GET     /boreholePointPresets/:id  
+PUT     /boreholePointPresets/:id  
+DELETE  /boreholePointPresets/:id  
+
