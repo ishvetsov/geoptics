@@ -1,0 +1,7 @@
+{
+    "id": "{{guid}}",
+    "name": "Имя {{numeric(1, 10)}}",
+    "propertyName": "Свойство {{numeric(1, 10)}}",
+    "propertyType": "{{numeric(1, 3)}}",
+    "symbol": "{{numeric(0, 9)}}"
+}

@@ -15,7 +15,8 @@ define(function (require) {
             exports: '.graphics-control_export',
             refreshCheck: '.graphics-control_autorefresh-check',
             refreshInput: '.graphics-control_autorefresh-input',
-            zoom: '.graphics-control_zoom'
+            zoom: '.graphics-control_zoom',
+            hidden: '.js-hidden'
         },
 
         events: {
@@ -29,6 +30,10 @@ define(function (require) {
             'click @ui.zoom': '_onZoomClicked'
         },
 
+        modelEvents: {
+            'change:type': '_toggleHiddenItems'
+        },
+
         initialize: function () {
             _.bindAll(this, '_startRefresh', '_stopRefresh');
 
@@ -37,6 +42,7 @@ define(function (require) {
         },
 
         onRender: function () {
+            this._toggleHiddenItems();
             this.trigger('state:change', this.model.toJSON());
             this.delegateEvents();
 
@@ -57,16 +63,16 @@ define(function (require) {
             };
         },
 
-        _setRefreshState: function (state) {
-            this.ui.refreshInput.prop('disabled', !state);
-            this[state ? '_startRefresh' : '_stopRefresh']();
-        },
-
         _onExportsClicked: function (ev) {
             ev.preventDefault();
             this.trigger(
                 'export:click',
                 $(ev.currentTarget).data('export-type'));
+        },
+
+        _setRefreshState: function (state) {
+            this.ui.refreshInput.prop('disabled', !state);
+            this[state ? '_startRefresh' : '_stopRefresh']();
         },
 
         _onRefreshCheckChanged: function () {
@@ -76,11 +82,7 @@ define(function (require) {
 
         _onRefreshInputChanged: function () {
             var val = this.ui.refreshInput.val();
-
-            if (val < 2) {
-                this.ui.refreshInput.val(2);
-            }
-
+            if (val < 2) { this.ui.refreshInput.val(2); }
             this._startRefresh();
         },
 
@@ -102,6 +104,13 @@ define(function (require) {
             this.ui.zoom.addClass('hide');
             this._setRefreshState(this._refreshState);
             this.trigger('state:change', this.model.toJSON());
+        },
+
+        _toggleHiddenItems: function () {
+            this.ui.hidden.hide();
+
+            var type = this.model.get('type');
+            this.ui.hidden.filter('[data-show=' + type + ']').show()
         }
     });
 

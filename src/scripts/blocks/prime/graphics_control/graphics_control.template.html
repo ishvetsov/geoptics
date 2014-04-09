@@ -1,18 +1,25 @@
 <ul id="tab" class="graphics-control_tabs nav nav-tabs">
     {{ _.each(it.config.types, function (type) { }}
     <li class="{{= it.model.type == type.name ? 'active' : '' }}">
-        <a 
+        <a
             href="#" 
             data-toggle="tab"
             data-value="{{= type.name }}"
             class="graphics-control_type">
-            {{= type.alias }}
-        </a>
+            {{= type.alias }} </a>
     </li>
     {{ }) }}
 </ul>
 
-<div class="btn-group btn-group-sm pull-left" data-toggle="buttons">
+<button
+    type="button"
+    class="btn btn-default btn-sm disabled pull-left js-hidden"
+    data-show="temperature">Последнее значение</button>
+
+<div
+    class="btn-group btn-group-sm pull-left js-hidden"
+    data-toggle="buttons"
+    data-show="pressure">
     {{ _.each(it.config.periods, function (period) { }}
     <button
         type="button"

@@ -21,6 +21,13 @@ module.exports.extend = function (server) {
     server.put(url.spec('psensors/:number'), handlers.body);
     server.put(url.spec('tsensors/:number'), handlers.body);
 
+    server.post(url.spec('points'), handlers.body);
+    server.get(url.spec('points'), handlers.getGen('boreholePoint', 4, 8));
+    server.get(url.spec('points/:id'), handlers.getGen('boreholePoint'));
+    server.put(url.spec('points/:id'), handlers.body);
+    server.delete(url.spec('points/:id'), handlers.empty);
+
+    // Deprecated
     server.get(url.spec('moments'), handlers.getGen('moment', 1, 2));
     server.get(url.spec('depths'), handlers.getGen('depth', 1, 2));
     server.get(url.spec('perforations'), handlers.getGen('perforation', 1, 2));

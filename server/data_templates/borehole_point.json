@@ -1,0 +1,5 @@
+{
+    "id": "{{guid}}",
+    "presetId": "{{guid}}",
+    "value": "{{numeric(100, 900)}}"
+}

@@ -268,6 +268,19 @@ a.noline {
   height: 100%;
   margin: 12px 0 0; }
 
+.sensors-tree_icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  margin: -1px 4px 0 -3px;
+  vertical-align: middle;
+  -webkit-background-size: 20px;
+  background-size: 20px; }
+  .sensors-tree_icon.pressure {
+    background-image: url("images/pressure.png"); }
+  .sensors-tree_icon.temperature {
+    background-image: url("images/temperature.png"); }
+
 /** Sensors */
 .sensors-tree_component .sensors-container {
   margin: 8px 0 0; }
@@ -281,7 +294,7 @@ a.noline {
     color: #000; }
 
 .sensors-tree_component .sensor-checkbox {
-  margin: -2px 4px 0 0;
+  margin: -2px 9px 0 0;
   vertical-align: middle; }
 
 /** Borehole */
