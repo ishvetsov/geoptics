@@ -90,3 +90,15 @@ SensorsSet
 - id
 - name
 - fields
+
+BoreholePointPreset
+- id: Guid
+- name: string
+- propertyName: string
+- propertyType: enum{Text, Number, Datetime}
+- symbol: string
+
+BoreholePoint
+- id: Guid
+- presetId: Guid
+- value: dynamic?
