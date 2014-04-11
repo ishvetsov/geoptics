@@ -274,12 +274,11 @@ a.noline {
   height: 20px;
   margin: -1px 4px 0 -3px;
   vertical-align: middle;
-  -webkit-background-size: 20px;
-  background-size: 20px; }
+  background: url("images/sensors-icons.png"); }
   .sensors-tree_icon.pressure {
-    background-image: url("images/pressure.png"); }
+    background-position: 20px 0; }
   .sensors-tree_icon.temperature {
-    background-image: url("images/temperature.png"); }
+    background-position: 0 0; }
 
 /** Sensors */
 .sensors-tree_component .sensors-container {
