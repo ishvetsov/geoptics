@@ -3,6 +3,7 @@
 @import "common/base.common";
 @import "common/clearfix.common";
 @import "common/comment.common";
+@import "common/graphics_symbol.common";
 
 @import "bundles/app.bundle";
 @import "bundles/guest.bundle";
@@ -19,6 +20,7 @@
 @import "blocks/admin_resources.block";
 @import "blocks/admin_fields.block";
 @import "blocks/admin_no_attached.block";
+@import "blocks/admin_borehole_point_presets";
 
 @import "blocks/prime_sensors_tree.block";
 @import "blocks/prime_sensors_sets.block";

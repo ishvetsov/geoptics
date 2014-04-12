@@ -66,6 +66,22 @@ a.noline {
 .comment .comment-remove {
   margin-left: 15px; }
 
+.graphics-symbol {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  cursor: default;
+  text-align: center;
+  font-weight: 700;
+  line-height: 18px;
+  border: 1px solid #888;
+  border-radius: 50%;
+  background: #fff;
+  color: #888; }
+
+.graphics-symbol.plot {
+  margin: 6px 0 0 9px; }
+
 .app,
 .app_container {
   height: 100%; }
@@ -156,10 +172,10 @@ a.noline {
   font-weight: 700;
   line-height: 30px; }
 
-.user-table-name {
+.user-table_name {
   width: 30%; }
 
-.user-table-controls {
+.user-table_controls {
   text-align: right; }
 
 .admin_user .user_group-remove {
@@ -237,6 +253,15 @@ a.noline {
   background: #f5f5f5; }
   .no-attached_control .text {
     margin: 0 10px 0 0; }
+
+.borehole-point-presets_title {
+  margin: 0 0 20px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 30px; }
+
+.borehole-point-presets_table .controls {
+  text-align: right; }
 
 .sensors-tree {
   height: 100%;
@@ -334,17 +359,6 @@ a.noline {
 .graphics_container {
   width: 55%;
   min-width: 700px; }
-
-.graphics_symbol {
-  width: 20px;
-  height: 20px;
-  margin: 6px 0 0 9px;
-  cursor: default;
-  text-align: center;
-  font-weight: 700;
-  border: 1px solid #000;
-  border-radius: 50%;
-  background: #fff; }
 
 .highcharts-tooltip {
   z-index: 8; }

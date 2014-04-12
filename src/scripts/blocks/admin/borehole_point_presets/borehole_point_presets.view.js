@@ -9,7 +9,7 @@ define(function (require) {
     var BoreholePointPresetView = Marionette.ItemView.extend({
         template: _.template(Template),
 
-        className: 'admin_borehole_point_presets inner-container',
+        className: 'admin_borehole-point-presets inner-container',
 
         initialize: function () {
             _.bindAll(this, 'createPreset', 'editPreset', 'removePreset');

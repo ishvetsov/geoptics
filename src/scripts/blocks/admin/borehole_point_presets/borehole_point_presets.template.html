@@ -1,29 +1,32 @@
-<div class="col-sm-offset-2">
-    <h3>Шаблоны точек скважины</h3>
+<div class="borehole-point-presets_title">
+    Шаблоны точек скважины
+
+    <button class="btn btn-default btn-sm pull-right"
+            rv-on-click="view.createPreset">
+        <span class="glyphicon glyphicon-plus"></span>
+        Добавить шаблон точки
+    </button>
 </div>
 
-<div class="form-horizontal">
-    <div class="form-group">
-        <div class="col-sm-10">
-            <div class="clearfix" rv-each-preset="presets.models">
-                <div class="pull-left">{ preset:name }</div>
-                <div class="pull-left">
-                    <a class="btn btn-default btn-xs"
-                        rv-on-click="view.editPreset">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                    <button class="btn btn-default btn-xs"
-                        rv-on-click="view.removePreset">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
-                </div>
-            </div>
-            <div>
+<table class="borehole-point-presets_table table table-condensed">
+    <tbody>
+        <tr rv-each-preset="presets.models">
+            <td>
+                <span class="graphics-symbol">{ preset:symbol }</span>
+            </td>
+            <td>{ preset:name }</td>
+            <td class="controls">
                 <button class="btn btn-default btn-xs"
-                    rv-on-click="view.createPreset">
-                    Добавить шаблон точки
+                        rv-on-click="view.editPreset">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Редактировать
                 </button>
-            </div>
-        </div>
-    </div>
-</div>
+                <button class="btn btn-danger btn-xs"
+                        rv-on-click="view.removePreset">
+                    <span class="glyphicon glyphicon-trash"></span>
+                    Удалить
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

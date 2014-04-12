@@ -1,0 +1,21 @@
+.graphics-symbol {
+    display: inline-block;
+
+    width: 20px;
+    height: 20px;
+
+    cursor: default;
+    text-align: center;
+
+    font-weight: 700;
+    line-height: 18px;
+
+    color: #888;
+    border: 1px solid #888;
+    border-radius: 50%;
+    background: #fff;
+}
+
+.graphics-symbol.plot {
+    margin: 6px 0 0 9px;
+}
