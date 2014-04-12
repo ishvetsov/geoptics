@@ -32,7 +32,7 @@ define(function (require) {
             };
         },
 
-        getViewInstance: function () {
+        getView: function () {
             return this._view;
         }
     });

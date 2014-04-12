@@ -28,7 +28,7 @@ define(function (require) {
     });
 
     commonLayout.on('show', function () {
-        commonLayout.header.show(blocks.navigation.getViewInstance());
+        commonLayout.header.show(blocks.navigation.getView());
     });
 
     var initialize = function () {

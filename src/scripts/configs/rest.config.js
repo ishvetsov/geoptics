@@ -18,9 +18,7 @@ define(function (require) {
         tsensors:       '/tsensors',
         psensors:       '/psensors',
         sensorssets:    '/sensorssets',
-        perforations:   '/perforations',
-        depths:         '/depths',
-        moments:        '/moments',
+        boreholePointPresets: '/boreholePointPresets',
 
         get: function (name) {
             var url = this[name];

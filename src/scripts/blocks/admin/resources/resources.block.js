@@ -46,10 +46,10 @@ define(function (require) {
 
         _onShowLayout: function () {
             this._view.noAttachedRegion.show(
-                noAttachedBlock.getViewInstance());
+                noAttachedBlock.getView());
 
             this._view.fieldsRegion.show(
-                fieldsBlock.getViewInstance());
+                fieldsBlock.getView());
         }
     });
 

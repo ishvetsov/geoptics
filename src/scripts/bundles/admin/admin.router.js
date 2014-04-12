@@ -20,16 +20,9 @@ define(function (require) {
 
             'admin/boreholes/:id': 'borehole',
 
-            'admin/boreholes/:boreholeId/perforations/new': 'newPerforation',
-            'admin/boreholes/:boreholeId/perforations/:id': 'perforation',
+            'admin/monitoring':         'monitoring',
 
-            'admin/boreholes/:boreholeId/depths/new': 'newDepth',
-            'admin/boreholes/:boreholeId/depths/:id': 'depth',
-
-            'admin/boreholes/:boreholeId/moments/new': 'newMoment',
-            'admin/boreholes/:boreholeId/moments/:id': 'moment',
-
-            'admin/monitoring':         'monitoring'
+            'admin/boreholePointPresets': 'boreholePointPresets'
         }
     });
 

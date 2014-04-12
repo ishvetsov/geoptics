@@ -28,10 +28,7 @@ define(function (require) {
             return $.when(
                 this._model.fetch(),
                 this._model.get('psensors').fetch(),
-                this._model.get('tsensors').fetch(),
-                this._model.get('perforations').fetch(),
-                this._model.get('depths').fetch(),
-                this._model.get('moments').fetch()
+                this._model.get('tsensors').fetch()
             );
         }
     });

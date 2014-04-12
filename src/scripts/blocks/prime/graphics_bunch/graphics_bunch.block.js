@@ -36,8 +36,8 @@ define(function (require) {
             },
 
             _onShow: function () {
-                this.control.show(graphicsControlBlock.getViewInstance());
-                this.graphic.show(graphicsBlock.getViewInstance());
+                this.control.show(graphicsControlBlock.getView());
+                this.graphic.show(graphicsBlock.getView());
             }
 
         },

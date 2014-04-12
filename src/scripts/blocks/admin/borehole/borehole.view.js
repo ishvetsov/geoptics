@@ -14,16 +14,7 @@ define(function (require) {
         className: 'admin_borehole inner-container',
 
         initialize: function () {
-            _.bindAll(this, 'save',
-                'removePerforation',
-                'removeDepth',
-                'removeMoment',
-                'editPerforation',
-                'editDepth',
-                'editMoment',
-                'createPerforation',
-                'createDepth',
-                'createMoment');
+            _.bindAll(this, 'save');
         },
 
         onRender: function () {
@@ -37,55 +28,6 @@ define(function (require) {
             return {
                 borehole: this.model
             };
-        },
-
-        createPerforation: function (ev, data) {
-            Backbone.history.navigate('#/admin/boreholes/' +
-                this.model.get('id') + '/perforations/new');
-        },
-
-        editPerforation: function (ev, data) {
-            console.log('edit');
-            Backbone.history.navigate('#/admin/boreholes/' +
-                this.model.get('id') + '/perforations/' +
-                data.perforation.get('id'));
-        },
-
-        removePerforation: function (ev, data) {
-            var perforation = data.perforation;
-            perforation.destroy({wait: true});
-        },
-
-        createDepth: function (ev, data) {
-            Backbone.history.navigate('#/admin/boreholes/' +
-                this.model.get('id') + '/depths/new');
-        },
-
-        editDepth: function (ev, data) {
-            Backbone.history.navigate('#/admin/boreholes/' +
-                this.model.get('id') + '/depths/' +
-                data.depth.get('id'));
-        },
-
-        removeDepth: function (ev, data) {
-            var depth = data.depth;
-            depth.destroy({wait: true});
-        },
-
-        createMoment: function (ev, data) {
-            Backbone.history.navigate('#/admin/boreholes/' +
-                this.model.get('id') + '/moments/new');
-        },
-
-        editMoment: function (ev, data) {
-            Backbone.history.navigate('#/admin/boreholes/' +
-                this.model.get('id') + '/moments/' +
-                data.moment.get('id'));
-        },
-
-        removeMoment: function (ev, data) {
-            var moment = data.moment;
-            moment.destroy({wait: true});
         },
 
         editTSensor: function (ev, data) {

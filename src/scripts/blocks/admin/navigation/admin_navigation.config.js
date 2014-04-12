@@ -17,6 +17,11 @@ define(function (require) {
                 name: 'Мониторинг',
                 href: '#admin/monitoring',
                 mod:'monitoring'
+            },
+            {
+                name: 'Шаблоны точек',
+                href: '#admin/boreholePointPresets',
+                mod: 'boreholePointPresets'
             }
         ]
     };

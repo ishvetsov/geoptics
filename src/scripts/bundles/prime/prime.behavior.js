@@ -17,7 +17,7 @@ define(function (require) {
     primeLayout.on('show', function () {
         blocks.sensorsTree.fetch()
             .then(function () {
-                primeLayout.sidebar.show(blocks.sensorsTree.getViewInstance());
+                primeLayout.sidebar.show(blocks.sensorsTree.getView());
             });
     });
 
@@ -30,12 +30,12 @@ define(function (require) {
     var handlers = {
         journal: function () {
             blocks.navigation.activateItem('journal');
-            primeLayout.container.show(blocks.journal.getViewInstance());
+            primeLayout.container.show(blocks.journal.getView());
         },
 
         graphics: function () {
             blocks.navigation.activateItem('graphics');
-            primeLayout.container.show(blocks.graphicsBunch.getViewInstance());
+            primeLayout.container.show(blocks.graphicsBunch.getView());
         }
     };
 

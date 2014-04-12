@@ -127,7 +127,7 @@
     </div>
     {{ } }}
 
-    {{ if (it.borehole.get('perforations')) { }}
+    <!-- {{ if (it.borehole.get('perforations')) { }}
     <div class="form-group">
         <label class="col-sm-2 control-label">Зоны перфорации</label>
         <div class="col-sm-10">
@@ -152,61 +152,7 @@
             </div>
         </div>
     </div>
-    {{ } }}
-
-    {{ if (it.borehole.get('depths')) { }}
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Примечательные глубины</label>
-        <div class="col-sm-10">
-            <div class="clearfix" rv-each-depth="borehole:depths">
-                <div class="pull-left">{ depth:value }</div>
-                <div class="pull-left">
-                    <button class="btn btn-default btn-xs"
-                        rv-on-click="view.editDepth">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </button>
-                    <button class="btn btn-default btn-xs"
-                        rv-on-click="view.removeDepth">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-default btn-xs"
-                    rv-on-click="view.createDepth">
-                    Добавить глубину
-                </button>
-            </div>
-        </div>
-    </div>
-    {{ } }}
-
-    {{ if (it.borehole.get('moments')) { }}
-    <div class="form-group">
-        <label class="col-sm-2 control-label">Примечательные моменты времени</label>
-        <div class="col-sm-10">
-            <div class="clearfix" rv-each-moment="borehole:moments">
-                <div class="pull-left">{ moment:date }</div>
-                <div class="pull-left">
-                    <a class="btn btn-default btn-xs"
-                        rv-on-click="view.editMoment">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                    <button class="btn btn-default btn-xs"
-                        rv-on-click="view.removeMoment">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-default btn-xs"
-                    rv-on-click="view.createMoment">
-                    Добавить момент времени
-                </button>
-            </div>
-        </div>
-    </div>
-    {{ } }}
+    {{ } }} -->
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

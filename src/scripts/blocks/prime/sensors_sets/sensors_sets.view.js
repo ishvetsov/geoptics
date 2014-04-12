@@ -4,10 +4,10 @@ define(function (require) {
     var Marionette = require('backbone.marionette'),
         Rivets = require('rivets'),
 
-        SensorsSetsTemplate = require('text!./sensors_sets.template.html');
+        Template = require('text!./sensors_sets.template.html');
 
     var SensorsSetsView = Marionette.ItemView.extend({
-        template: _.template(SensorsSetsTemplate),
+        template: _.template(Template),
         className: 'modal fade',
 
         events: {
