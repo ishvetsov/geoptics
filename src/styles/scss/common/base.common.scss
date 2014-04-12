@@ -47,10 +47,15 @@ a.dotted,
     }
 }
 
+.btn-link.noline,
 a.noline {
     text-decoration: none;
 }
 
 .help {
     cursor: help;
+}
+
+.list-group-condensed .list-group-item {
+    padding: 5px 15px;
 }

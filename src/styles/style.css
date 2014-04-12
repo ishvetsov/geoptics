@@ -37,11 +37,15 @@ a.dotted,
     color: #2a6496;
     border-color: #2a6496; }
 
+.btn-link.noline,
 a.noline {
   text-decoration: none; }
 
 .help {
   cursor: help; }
+
+.list-group-condensed .list-group-item {
+  padding: 5px 15px; }
 
 .clearfix:before,
 .clearfix:after {
@@ -74,10 +78,10 @@ a.noline {
   text-align: center;
   font-weight: 700;
   line-height: 18px;
+  color: #888;
   border: 1px solid #888;
   border-radius: 50%;
-  background: #fff;
-  color: #888; }
+  background: #fff; }
 
 .graphics-symbol.plot {
   margin: 6px 0 0 9px; }

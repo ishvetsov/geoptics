@@ -14,7 +14,7 @@ define(function (require) {
         className: 'admin_borehole inner-container',
 
         initialize: function () {
-            _.bindAll(this, 'save');
+            _.bindAll(this, 'save', 'editTSensor', 'editPSensor');
         },
 
         onRender: function () {

@@ -13,6 +13,7 @@ module.exports.extend = function (server) {
 
     server.get(url.spec(), handlers.getGen('borehole'));
     server.put(url.spec(), handlers.body);
+    server.delete(url.spec(), handlers.empty);
 
     server.get(url.spec('psensors'), handlers.getGen('psensor', 3, 6));
     server.get(url.spec('tsensors'), handlers.getGen('tsensor', 3, 6));
