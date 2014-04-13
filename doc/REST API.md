@@ -14,9 +14,10 @@ GET     /boreholes/:id/psensors/:number
 GET     /boreholes/:id/tsensors/:number  
 POST    /boreholes/:id/points  
 GET     /boreholes/:id/points  
-DELETE  /boreholes/:id/points/:id  
-GET     /boreholes/:id/points/:id  
-PUT     /boreholes/:id/points/:id  
+
+DELETE  /points/:id  
+GET     /points/:id  
+PUT     /points/:id  
 
 POST    /depths?boreholeId  
 GET     /depths/:id  
