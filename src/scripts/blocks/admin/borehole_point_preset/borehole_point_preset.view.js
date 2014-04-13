@@ -48,7 +48,7 @@ define(function (require) {
             this.ui.selector.find('option').each(function () {
                 var $el = $(this);
                 if ($el.data('type') === _this.model.get('propertyType')) {
-                    $el.attr("selected",true);
+                    $el.attr('selected', true);
                 } else {
                     $el.removeAttr('selected');
                 }

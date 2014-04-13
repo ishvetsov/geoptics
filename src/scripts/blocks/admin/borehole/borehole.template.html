@@ -129,32 +129,40 @@
     </div>
     {{ } }}
 
-    <!-- {{ if (it.borehole.get('perforations')) { }}
     <div class="form-group">
-        <label class="col-sm-2 control-label">Зоны перфорации</label>
+        <label class="col-sm-2 control-label">Примечательные точки</label>
         <div class="col-sm-10">
-            <div class="clearfix" rv-each-perforation="borehole:perforations">
-                <div class="pull-left">{ perforation:depth }</div>
-                <div class="pull-left">
-                    <a class="btn btn-default btn-xs"
-                        rv-on-click="view.editPerforation">
-                        <span class="glyphicon glyphicon-pencil"></span>
-                    </a>
-                    <button class="btn btn-default btn-xs"
-                        rv-on-click="view.removePerforation">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </button>
-                </div>
-            </div>
+            <table class="borehole-point-presets_table table table-condensed">
+                <tbody>
+                    <tr rv-each-point="borehole:points">
+                        <td>
+                            <span class="graphics-symbol">{ point:preset:symbol }</span>
+                        </td>
+                        <td>{ point:preset:name }</td>
+                        <td>{ point:value }</td>
+                        <td class="controls">
+                            <button class="btn btn-default btn-xs"
+                                    rv-on-click="view.editPoint">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                Редактировать
+                            </button>
+                            <button class="btn btn-danger btn-xs"
+                                    rv-on-click="view.removePoint">
+                                <span class="glyphicon glyphicon-trash"></span>
+                                Удалить
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <div>
                 <button class="btn btn-default btn-xs"
-                    rv-on-click="view.createPerforation">
-                    Добавить зону перфорации
+                    rv-on-click="view.createPoint">
+                    Добавить примечательную точку
                 </button>
             </div>
         </div>
     </div>
-    {{ } }} -->
 
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">

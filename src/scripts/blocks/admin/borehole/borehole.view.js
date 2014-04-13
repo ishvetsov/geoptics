@@ -14,7 +14,8 @@ define(function (require) {
         className: 'admin_borehole inner-container',
 
         initialize: function () {
-            _.bindAll(this, 'save', 'editTSensor', 'editPSensor');
+            _.bindAll(this, 'save', 'editTSensor', 'editPSensor',
+                'editPoint', 'createPoint', 'removePoint');
         },
 
         onRender: function () {
@@ -44,6 +45,20 @@ define(function (require) {
             Backbone.history.navigate('#/admin/boreholes/' +
                 this.model.get('id') + '/psensors/' +
                 psensor.get('channelNumber'));
+        },
+
+        createPoint: function (ev, data) {
+            this.trigger('createPoint');
+        },
+
+        editPoint: function (ev, data) {
+            var point = data.point;
+            this.trigger('editPoint', point);
+        },
+
+        removePoint: function (ev, data) {
+            var point = data.point;
+            point.destroy({wait: true});
         },
 
         save: function () {

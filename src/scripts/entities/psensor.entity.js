@@ -29,7 +29,7 @@ define(function (require) {
         url: function () {
             if (this.collection) {
                 return this.collection.parents[0].url() +
-                    '/psensors/' + this.get('channelNumber');
+                    AppConfig.rest.psensors + '/' + this.get('channelNumber');
             }
         },
 
@@ -42,7 +42,7 @@ define(function (require) {
         model: PSensorModel,
 
         url: function () {
-            return this.parents[0].url() + '/psensors';
+            return this.parents[0].url() + AppConfig.rest.psensors;
         }
     });
 

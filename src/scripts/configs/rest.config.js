@@ -19,6 +19,7 @@ define(function (require) {
         psensors:       '/psensors',
         sensorssets:    '/sensorssets',
         boreholePointPresets: '/boreholePointPresets',
+        boreholePoints: '/points',
 
         get: function (name) {
             var url = this[name];

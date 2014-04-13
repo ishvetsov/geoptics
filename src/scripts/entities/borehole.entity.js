@@ -9,9 +9,7 @@ define(function (require) {
         PSensor = require('./psensor.entity'),
         TSensor = require('./tsensor.entity'),
         Comment = require('./comment.entity'),
-        Perforation = require('./perforation.entity'),
-        Depth = require('./depth.entity'),
-        Moment = require('./moment.entity');
+        BoreholePoint = require('./borehole_point.entity');
 
     var Borehole = Backbone.AssociatedModel.extend({
         defaults: {
@@ -28,9 +26,7 @@ define(function (require) {
             craterDepth: '',        // Глубина воронки
             bottomholeDepth: '',    // Глубина забоя
             isChecked: false,
-            perforations: [],       // Список зон перфораций 
-            depths: [],             // Список интересных глубин
-            moments: [],            // Список интересных моментов времени
+            points: [],
             сomments: [],           // Комментарии
             tsensors: [],           // Список датчиков температуры
             psensors: []            // Список датчиков давления
@@ -57,21 +53,9 @@ define(function (require) {
             },
             {
                 type: Backbone.Many,
-                key: 'perforations',
-                relatedModel: Perforation.Model,
-                collectionType: Perforation.Collection
-            },
-            {
-                type: Backbone.Many,
-                key: 'depths',
-                relatedModel: Depth.Model,
-                collectionType: Depth.Collection
-            },
-            {
-                type: Backbone.Many,
-                key: 'moments',
-                relatedModel: Moment.Model,
-                collectionType: Moment.Collection
+                key: 'points',
+                relatedModel: BoreholePoint.Model,
+                collectionType: BoreholePoint.Collection
             }
         ],
 
@@ -108,7 +92,7 @@ define(function (require) {
 
         _setSensorsRate: function (sensors) {
             sensors.each(function (sensor, i) {
-                sensor.rate = (i + 1) / sensors.length * .7;
+                sensor.rate = (i + 1) / sensors.length * 0.7;
             });
         }
     });
