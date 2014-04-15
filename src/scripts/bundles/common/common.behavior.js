@@ -28,7 +28,7 @@ define(function (require) {
     });
 
     commonLayout.on('show', function () {
-        commonLayout.header.show(blocks.navigation.getView());
+        blocks.navigation.render(commonLayout.header);
     });
 
     var initialize = function () {
@@ -41,7 +41,6 @@ define(function (require) {
     var handlers = {
         notFound: function () {
             Backbone.history.navigate('graphics', {trigger: true});
-            console.log('not found');
         }
     };
 

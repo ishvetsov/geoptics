@@ -34,6 +34,29 @@ define(function (require) {
 
         getView: function () {
             return this._view;
+        },
+
+        /**
+         * Помещает представление блока в заданный регион.
+         * Если блок содержить метод fetch, он будет вызван.
+         *
+         * @param region {Region}
+         * @param [options] {Object}
+         * @returns {Promise|Block}
+         */
+        render: function (region, options) {
+            options = options || {};
+
+            if (_.isFunction(this.fetch) && options.silent !== true) {
+                var _this = this;
+
+                return this.fetch(options.data).then(function () {
+                    region.show(_this._view);
+                });
+            }
+
+            region.show(this._view);
+            return this;
         }
     });
 

@@ -4,3 +4,4 @@ bower_components/
 *.sublime-project
 npm-debug.log
 .idea/
+*.DS_Store

@@ -11,24 +11,26 @@ define(function (require) {
     var BoreholePointBlock = Block.create({
         view: View,
 
+        triggers: {
+            'view:save': 'save'
+        },
+
         onInit: function (options) {
             var _this = this;
+
             if (options.mode === 'create') {
                 _this._view.model = new BoreholePoint.Model();
             }
             else if (options.mode === 'edit') {
                 _this._view.model = new BoreholePoint.Model(options.model.toJSON());
             }
+
             _this._view.presets = new BoreholePointPreset.Collection();
             _this._view.presets.fetch().then(function () {
                 _this.trigger('ready');
             });
 
             _this._view.setMode(options.mode);
-
-            _this._view.on('save', function () {
-                _this.trigger('save', _this._view.model);
-            });
         },
 
         show: function () {

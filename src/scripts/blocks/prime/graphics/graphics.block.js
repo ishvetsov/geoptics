@@ -42,17 +42,14 @@ define(function (require) {
                     $.when.apply($, promises)
                     .then(function () {
                         // Пробная реализация
-                        var insProms = [];
+                        var pointPromises = [];
 
                         _this._collection.each(function (graphic) {
-                            var borehole = graphic.get('borehole');
-
-                            insProms.push(borehole.get('perforations').fetch());
-                            insProms.push(borehole.get('moments').fetch());
-                            insProms.push(borehole.get('depths').fetch());
+                            var points =  graphic.get('borehole').get('points');
+                            pointPromises.push(points.fetch());
                         });
 
-                        return $.when.apply($, insProms);
+                        return $.when.apply($, pointPromises);
                     })
                     .then(function () {
                         _this._view.renderGraphic(options.type);

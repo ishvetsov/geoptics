@@ -4,83 +4,39 @@ define(function (require) {
     var _ = require('underscore'),
         moment = require('moment'),
 
-        MomentTemplate = require('text!./moment.template.html'),
-        PerforationTemplate = require('text!./perforation.template.html'),
-        DepthTemplate = require('text!./depth.template.html');
+        BoreholePointPreset = require('entities/borehole_point_preset.entity'),
 
-    var sets = {
-        psensors: ['moments'],
-        tsensors: ['perforations', 'depths']
-    };
+        LabelTemplate = require('text!./label.template.html');
 
-    var linesConfig = {
-        moments: function (m, color) {
-            return {
-                color: color,
-                dashStyle: 'LongDash',
-                width: 1,
-                value: +new Date(m.get('date')),
-                label: {
-                    align: 'right',
-                    text: _.template(MomentTemplate, {
-                        color: color,
-                        value: moment(m.get('date')).format('YYYY-MM-DD HH:mm:ss')
-                    }),
-                    useHTML: true
-                },
-                zIndex: 7
-            }
-        },
+    var getLineOptions = function (data, color) {
+        var preset = data.get('preset'),
+            isDate = preset.get('propertyType')
+                == BoreholePointPreset.PropertyType.DATETIME,
+            value = data.get('value');
 
-        perforations: function (p, color) {
-            return {
-                color: color,
-                dashStyle: 'ShortDot',
-                width: 1,
-                value: p.get('depth'),
-                label: {
-                    align: 'right',
-                    text: _.template(PerforationTemplate, {
-                        color: color,
-                        value: p.get('depth')
-                    }),
-                    useHTML: true
-                },
-                zIndex: 7
-            };
-        },
-
-        depths: function (d, color) {
-            return {
-                color: color,
-                dashStyle: 'Solid',
-                width: 1,
-                value: d.get('value'),
-                label: {
-                    align: 'right',
-                    text: _.template(DepthTemplate, {
-                        color: color,
-                        value: d.get('value')
-                    }),
-                    useHTML: true
-                },
-                zIndex: 7
-            }
-        }
+        return {
+            color: color,
+            dashStyle: 'Solid',
+            width: 1,
+            value: isDate ? +new Date(value) : value,
+            label: {
+                align: 'right',
+                text: _.template(LabelTemplate, {
+                    color: color,
+                    value: isDate ? moment(value).format('YYYY-MM-DD HH:mm:ss') : value,
+                    symbol: preset.get('symbol')
+                }),
+                useHTML: true
+            },
+            zIndex: 7
+        };
     };
 
     return {
         getLines: function (borehole, type) {
-            var set = sets[type],
-                result = [];
-
-            set.forEach(function (fieldName) {
-                borehole.get(fieldName).each(function (item) {
-                    result.push(linesConfig[fieldName](item, borehole.baseColor));
-                });
+            return borehole.get('points').map(function (item) {
+                return getLineOptions(item, borehole.baseColor)
             });
-
-            return result;
         }
     }
 });

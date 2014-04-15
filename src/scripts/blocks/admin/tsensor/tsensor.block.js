@@ -25,9 +25,9 @@ define(function (require) {
             });
         },
 
-        fetch: function (boreholeId, channelNumber) {
-            this._borehole.set('id', boreholeId);
-            this._model.set('channelNumber', channelNumber);
+        fetch: function (data) {
+            this._borehole.set('id', data.boreholeId);
+            this._model.set('channelNumber', data.channelNumber);
             this._borehole.get('tsensors').add(this._model);
             return this._model.fetch();
         }

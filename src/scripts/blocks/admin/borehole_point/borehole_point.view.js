@@ -78,7 +78,7 @@ define(function (require) {
         },
 
         _onClickSave: function () {
-            this.trigger('save');
+            this.trigger('save', this.model);
         },
 
         _changeTypeValueInput: function () {
@@ -91,6 +91,7 @@ define(function (require) {
                     break;
                 case BoreholePointPreset.PropertyType.DATETIME:
                     this.ui.value.attr('type', 'datetime-local');
+                    this.ui.value.attr('step', 0.001);
                     break;
             }
         },

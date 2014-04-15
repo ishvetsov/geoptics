@@ -15,10 +15,7 @@ define(function (require) {
         primeLayout = new PrimeLayout();
 
     primeLayout.on('show', function () {
-        blocks.sensorsTree.fetch()
-            .then(function () {
-                primeLayout.sidebar.show(blocks.sensorsTree.getView());
-            });
+        blocks.sensorsTree.render(primeLayout.sidebar);
     });
 
     var initialize = function () {
@@ -30,12 +27,12 @@ define(function (require) {
     var handlers = {
         journal: function () {
             blocks.navigation.activateItem('journal');
-            primeLayout.container.show(blocks.journal.getView());
+            blocks.journal.render(primeLayout.container);
         },
 
         graphics: function () {
             blocks.navigation.activateItem('graphics');
-            primeLayout.container.show(blocks.graphicsBunch.getView());
+            blocks.graphicsBunch.render(primeLayout.container);
         }
     };
 

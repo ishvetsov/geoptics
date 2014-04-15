@@ -42,92 +42,76 @@ define(function (require) {
     var handlers = {
         users: function () {
             blocks.navigation.activateItem('users');
-            blocks.users.init()
-                .fetch().then(function () {
-                    layout.container.show(blocks.users.getView());
-                });
+            blocks.users.init().render(layout.container);
         },
 
         user: function (id) {
             blocks.navigation.disactivateAll();
-            blocks.user.init()
-                .fetch(id).then(function () {
-                    layout.container.show(blocks.user.getView());
-                });
+            blocks.user.init().render(layout.container, {data: id});
         },
 
         newUser: function () {
             blocks.navigation.disactivateAll();
-            blocks.user.init();
-            layout.container.show(blocks.user.resetModel().getView());
+            blocks.user.init().resetModel()
+                .render(layout.container, {silent: true});
         },
 
         fields: function () {
             blocks.navigation.activateItem('fields');
-            blocks.resources.init()
-                .fetch().then(function () {
-                    layout.container.show(blocks.resources.getView());
-                });
+            blocks.resources.init().render(layout.container);
         },
 
         field: function (id) {
             blocks.navigation.disactivateAll();
             blocks.field.init({mode: 'edit'})
-                .fetch(id).then(function () {
-                    layout.container.show(blocks.field.getView());
-                });
+                .render(layout.container, {data: id});
         },
 
         newField: function () {
             blocks.navigation.disactivateAll();
-            blocks.field.init({mode: 'create'});
-            layout.container.show(blocks.field.getView());
+            blocks.field.init({mode: 'create'})
+                .render(layout.container, {silent: true});
         },
 
         cluster: function (id) {
             blocks.navigation.disactivateAll();
             blocks.cluster.init({mode: 'edit'})
-                .fetch(id).then(function () {
-                    layout.container.show(blocks.cluster.getView());
-                });
+                .render(layout.container, {data: id});
         },
 
         borehole: function (id) {
             blocks.navigation.disactivateAll();
-            blocks.borehole.init()
-                .fetch(id).then(function () {
-                    layout.container.show(blocks.borehole.getView());
-                });
+            blocks.borehole.init().render(layout.container, {data: id});
         },
 
         tsensor: function (boreholeId, channelNumber) {
             blocks.navigation.disactivateAll();
-            blocks.tSensor.init()
-                .fetch(boreholeId, channelNumber).then(function () {
-                    layout.container.show(blocks.tSensor.getView());
-                });
+            blocks.tSensor.init().render(layout.container, {
+                data: {
+                    boreholeId: boreholeId,
+                    channelNumber: channelNumber
+                }
+            });
         },
 
         psensor: function (boreholeId, channelNumber) {
             blocks.navigation.disactivateAll();
-            blocks.pSensor.init()
-                .fetch(boreholeId, channelNumber).then(function () {
-                    layout.container.show(blocks.pSensor.getView());
-                });
+            blocks.pSensor.init().render(layout.container, {
+                data: {
+                    boreholeId: boreholeId,
+                    channelNumber: channelNumber
+                }
+            });
         },
 
         boreholePointPresets: function () {
             blocks.navigation.activateItem('boreholePointPresets');
-            blocks.boreholePointPresets.init()
-                .fetch().then(function () {
-                    layout.container.show(blocks.boreholePointPresets.getView());
-                });
+            blocks.boreholePointPresets.init().render(layout.container);
         },
 
         monitoring: function () {
             blocks.navigation.activateItem('monitoring');
-            blocks.monitoring.init();
-            layout.container.show(blocks.monitoring.getView());
+            blocks.monitoring.init().render(layout.container);
         }
     };
 

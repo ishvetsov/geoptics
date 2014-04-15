@@ -61,15 +61,16 @@ define(function (require) {
         },
 
         _fetchPoints: function () {
-            var _this = this,
-                defPoints = _this._model.get('points').fetch();
-
-            defPoints.then(function () {
-                _this._model.get('points').each(function (p) {
-                    p.fetchPreset();
-                });
-            });
-            return defPoints;
+            return this._model.get('points').fetch();
+//            var _this = this,
+//                defPoints = _this._model.get('points').fetch();
+//
+//            defPoints.then(function () {
+//                _this._model.get('points').each(function (p) {
+//                    p.fetchPreset();
+//                });
+//            });
+//            return defPoints;
         }
     });
 

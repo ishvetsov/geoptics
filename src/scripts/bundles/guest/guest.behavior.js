@@ -24,7 +24,7 @@ define(function (require) {
     };
 
     guestLayout.on('show', function () {
-        guestLayout.container.show(blocks.login.getView());
+        blocks.login.render(guestLayout.container);
     });
 
     blocks.session.on('session:in', function () {

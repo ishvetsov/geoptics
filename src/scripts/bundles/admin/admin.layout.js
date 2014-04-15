@@ -13,7 +13,7 @@ define(function (require) {
 
         regions: {
             navigation: '#admin-navigation',
-            container: '#admin-container',
+            container: '#admin-container'
         }
     });
 

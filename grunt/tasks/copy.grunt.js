@@ -25,5 +25,12 @@ module.exports = {
         cwd: 'src/',
         src: 'styles/fonts/*',
         dest: 'dist/'
+    },
+
+    images: {
+        expand: true,
+        cwd: 'src/',
+        src: 'styles/images/*',
+        dest: 'dist/'
     }
 };

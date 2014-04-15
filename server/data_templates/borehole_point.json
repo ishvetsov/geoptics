@@ -1,5 +1,11 @@
 {
     "id": "{{guid}}",
-    "presetId": "{{guid}}",
-    "value": "{{numeric(100, 900)}}"
+    "value": "{{numeric(1396772243144, 1396772244144)}}",
+    "preset": {
+        "id": "{{guid}}",
+        "name": "Имя {{numeric(1, 10)}}",
+        "propertyName": "Свойство {{numeric(1, 10)}}",
+        "propertyType": 2,
+        "symbol": "{{numeric(0, 9)}}"
+    }
 }

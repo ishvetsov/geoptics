@@ -22,15 +22,15 @@ define(function (require) {
         ],
 
         initialize: function () {
-            _.bindAll(this, 'fetchPreset');
+//            _.bindAll(this, 'fetchPreset');
         },
 
         urlRoot: AppConfig.rest.boreholePoints,
 
-        fetchPreset: function () {
-            this.get('preset').set('id', this.get('presetId'));
-            this.get('preset').fetch();
-        },
+//        fetchPreset: function () {
+//            this.get('preset').set('id', this.get('presetId'));
+//            this.get('preset').fetch();
+//        },
 
         saveAtContext: function (options) {
             options = options || {};

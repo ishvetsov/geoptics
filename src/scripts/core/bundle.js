@@ -32,6 +32,7 @@ define(function (require) {
 
             _.isFunction(this.render) && this.render(this._layoutInstance);
 
+
             if (this._settings.navigate) {
                 var currentHash = window.location.hash;
                 this._routerInstance

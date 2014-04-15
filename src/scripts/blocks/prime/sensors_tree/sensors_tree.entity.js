@@ -25,7 +25,6 @@ define(function (require) {
 
         initialize: function () {
             this._selectedSensors = {};
-            this._state = {};
 
             // Удаление привязки к родительской модели
             this.get('fields').parents.length = 0;
@@ -62,20 +61,22 @@ define(function (require) {
         },
 
         _onSensorChanged: function (path, sensorModel) {
-            var cid = sensorModel.cid,
+            var key = path,
                 borehole = sensorModel.collection.parents[0];
 
-            if (typeof this._selectedSensors[cid] === 'undefined') {
-                this._selectedSensors[cid] = {
+            var restoreState = sensorModel.get('restoreState');
+
+            if (typeof this._selectedSensors[key] === 'undefined' || restoreState) {
+
+                this._selectedSensors[key] = {
                     borehole: borehole,
                     type: sensorModel.collection._selfKey,
                     sensor: sensorModel
                 };
 
-                this._state[path] = true;
+                sensorModel.set('restoreState', false, {silent: true});
             } else {
-                delete this._selectedSensors[cid];
-                delete this._state[path];
+                delete this._selectedSensors[key];
             }
 
             this._triggerSensorsStateChange();
@@ -84,10 +85,12 @@ define(function (require) {
         // Возможно некорректное восстановление
         // после удаления/добавления датчиков
         restoreState: function () {
-            this._selectedSensors = {};
-
-            _.each(this._state, function (val, key) {
-                this.set(key + '.isChecked', true);
+            _.each(this._selectedSensors, function (val, key) {
+                var sensor = this.get(key);
+                sensor && sensor.set({
+                    isChecked: true,
+                    restoreState: true
+                });
             }, this);
         },
 
